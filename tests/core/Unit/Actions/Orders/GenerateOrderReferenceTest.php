@@ -1,13 +1,13 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
 use Illuminate\Support\Facades\Config;
-use Lunar\Actions\Orders\GenerateOrderReference;
-use Lunar\Models\Currency;
-use Lunar\Models\Language;
-use Lunar\Models\Order;
-use Lunar\Tests\Core\Stubs\TestOrderReferenceGenerator;
+use Payflow\Actions\Orders\GenerateOrderReference;
+use Payflow\Models\Currency;
+use Payflow\Models\Language;
+use Payflow\Models\Order;
+use Payflow\Tests\Core\Stubs\TestOrderReferenceGenerator;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -42,7 +42,7 @@ test('can override generator via config', function () {
         'placed_at' => now(),
     ]);
 
-    Config::set('lunar.orders.reference_generator', TestOrderReferenceGenerator::class);
+    Config::set('payflow.orders.reference_generator', TestOrderReferenceGenerator::class);
 
     expect($order->reference)->toBeNull();
 
@@ -57,7 +57,7 @@ test('can set generator to null', function () {
         'placed_at' => now(),
     ]);
 
-    Config::set('lunar.orders.reference_generator', null);
+    Config::set('payflow.orders.reference_generator', null);
 
     expect($order->reference)->toBeNull();
 

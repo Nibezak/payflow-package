@@ -1,15 +1,15 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\Actions\Taxes\GetTaxZone;
-use Lunar\Models\Address;
-use Lunar\Models\Country;
-use Lunar\Models\State;
-use Lunar\Models\TaxZone;
-use Lunar\Models\TaxZoneCountry;
-use Lunar\Models\TaxZonePostcode;
-use Lunar\Models\TaxZoneState;
+use Payflow\Actions\Taxes\GetTaxZone;
+use Payflow\Models\Address;
+use Payflow\Models\Country;
+use Payflow\Models\State;
+use Payflow\Models\TaxZone;
+use Payflow\Models\TaxZoneCountry;
+use Payflow\Models\TaxZonePostcode;
+use Payflow\Models\TaxZoneState;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class)
     ->group('taxes');

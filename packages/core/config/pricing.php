@@ -1,6 +1,6 @@
 <?php
 
-use Lunar\Pricing\DefaultPriceFormatter;
+use Payflow\Pricing\DefaultPriceFormatter;
 
 return [
 

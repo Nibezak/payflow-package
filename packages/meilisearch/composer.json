@@ -1,32 +1,40 @@
 {
-  "name": "lunarphp/meilisearch",
+  "name": "payflowphp/meilisearch",
   "description": "Meilisearch Addon",
-  "keywords": ["lunarphp", "laravel", "ecommerce", "e-commerce", "headless", "store", "meilisearch"],
+  "keywords": [
+    "payflowphp",
+    "laravel",
+    "ecommerce",
+    "e-commerce",
+    "headless",
+    "store",
+    "meilisearch"
+  ],
   "license": "MIT",
   "authors": [
     {
-      "name": "Lunar",
-      "homepage": "https://lunarphp.io/"
+      "name": "Payflow",
+      "homepage": "https://payflowphp.io/"
     }
   ],
   "require": {
-      "meilisearch/meilisearch-php": "^v1.6.0"
+    "meilisearch/meilisearch-php": "^v1.6.0"
   },
   "autoload": {
-      "psr-4": {
-          "Lunar\\Meilisearch\\": "src/"
-      }
-  },
-  "extra": {
-    "lunar": {
-        "name": "Meilisearch"
-    },
-    "laravel": {
-        "providers": [
-            "Lunar\\Meilisearch\\MeilisearchServiceProvider"
-        ]
+    "psr-4": {
+      "Payflow\\Meilisearch\\": "src/"
     }
   },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+  "extra": {
+    "payflow": {
+      "name": "Meilisearch"
+    },
+    "laravel": {
+      "providers": [
+        "Payflow\\Meilisearch\\MeilisearchServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources;
+namespace Payflow\Admin\Filament\Resources;
 
 use Awcodes\FilamentBadgeableColumn\Components\Badge;
 use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
@@ -13,9 +13,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
-use Lunar\Admin\Filament\Resources\ChannelResource\Pages;
-use Lunar\Admin\Support\Resources\BaseResource;
-use Lunar\Models\Contracts\Channel;
+use Payflow\Admin\Filament\Resources\ChannelResource\Pages;
+use Payflow\Admin\Support\Resources\BaseResource;
+use Payflow\Models\Contracts\Channel;
 
 class ChannelResource extends BaseResource
 {
@@ -27,22 +27,22 @@ class ChannelResource extends BaseResource
 
     public static function getLabel(): string
     {
-        return __('lunarpanel::channel.label');
+        return __('payflowpanel::channel.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('lunarpanel::channel.plural_label');
+        return __('payflowpanel::channel.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::channels');
+        return FilamentIcon::resolve('payflow::channels');
     }
 
     public static function getNavigationGroup(): ?string
     {
-        return __('lunarpanel::global.sections.settings');
+        return __('payflowpanel::global.sections.settings');
     }
 
     protected static function getMainFormComponents(): array
@@ -58,7 +58,7 @@ class ChannelResource extends BaseResource
     protected static function getNameFormComponent(): Component
     {
         return Forms\Components\TextInput::make('name')
-            ->label(__('lunarpanel::channel.form.name.label'))
+            ->label(__('payflowpanel::channel.form.name.label'))
             ->required()
             ->maxLength(255)
             ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
@@ -74,7 +74,7 @@ class ChannelResource extends BaseResource
     protected static function getHandleFormComponent(): Component
     {
         return Forms\Components\TextInput::make('handle')
-            ->label(__('lunarpanel::channel.form.handle.label'))
+            ->label(__('payflowpanel::channel.form.handle.label'))
             ->required()
             ->unique(ignoreRecord: true)
             ->minLength(3)
@@ -84,7 +84,7 @@ class ChannelResource extends BaseResource
     protected static function getUrlFormComponent(): Component
     {
         return Forms\Components\TextInput::make('url')
-            ->label(__('lunarpanel::channel.form.url.label'))
+            ->label(__('payflowpanel::channel.form.url.label'))
             ->maxLength(255)
             ->autofocus();
     }
@@ -92,7 +92,7 @@ class ChannelResource extends BaseResource
     protected static function getDefaultFormComponent(): Component
     {
         return Forms\Components\Toggle::make('default')
-            ->label(__('lunarpanel::channel.form.default.label'));
+            ->label(__('payflowpanel::channel.form.default.label'));
     }
 
     public static function getDefaultTable(Table $table): Table
@@ -119,15 +119,15 @@ class ChannelResource extends BaseResource
                 ->separator('')
                 ->suffixBadges([
                     Badge::make('default')
-                        ->label(__('lunarpanel::channel.table.default.label'))
+                        ->label(__('payflowpanel::channel.table.default.label'))
                         ->color('gray')
                         ->visible(fn (Model $record) => $record->default),
                 ])
-                ->label(__('lunarpanel::channel.table.name.label')),
+                ->label(__('payflowpanel::channel.table.name.label')),
             Tables\Columns\TextColumn::make('handle')
-                ->label(__('lunarpanel::channel.table.handle.label')),
+                ->label(__('payflowpanel::channel.table.handle.label')),
             Tables\Columns\TextColumn::make('url')
-                ->label(__('lunarpanel::channel.table.url.label')),
+                ->label(__('payflowpanel::channel.table.url.label')),
         ];
     }
 

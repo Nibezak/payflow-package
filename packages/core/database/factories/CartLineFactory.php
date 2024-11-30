@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
-use Lunar\Models\Cart;
-use Lunar\Models\CartLine;
-use Lunar\Models\ProductVariant;
+use Payflow\Models\Cart;
+use Payflow\Models\CartLine;
+use Payflow\Models\ProductVariant;
 
 class CartLineFactory extends BaseFactory
 {

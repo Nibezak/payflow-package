@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Admin\Support\Synthesizers;
+namespace Payflow\Admin\Support\Synthesizers;
 
-use Lunar\FieldTypes\Text;
+use Payflow\FieldTypes\Text;
 
 class TextSynth extends AbstractFieldSynth
 {
-    public static $key = 'lunar_text_field';
+    public static $key = 'payflow_text_field';
 
     protected static $targetClass = Text::class;
 }

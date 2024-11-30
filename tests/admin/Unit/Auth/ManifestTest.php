@@ -1,11 +1,11 @@
 <?php
 
-use Lunar\Admin\Auth\Manifest;
-use Lunar\Admin\Support\Facades\LunarPanel;
+use Payflow\Admin\Auth\Manifest;
+use Payflow\Admin\Support\Facades\PayflowPanel;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('unit.manifest');
 
 beforeEach(fn () => $this->manifest = new Manifest);
@@ -23,7 +23,7 @@ test('manifest can get refreshed roles', function () {
 
     Role::create([
         'name' => 'role_one',
-        'guard_name' => LunarPanel::getPanel()->getAuthGuard(),
+        'guard_name' => PayflowPanel::getPanel()->getAuthGuard(),
     ]);
 
     $cachedRoles = $this->manifest->getRoles()->pluck('handle')->toArray();
@@ -53,7 +53,7 @@ test('manifest can get refreshed permissions', function () {
 
     Permission::create([
         'name' => 'perm_one',
-        'guard_name' => LunarPanel::getPanel()->getAuthGuard(),
+        'guard_name' => PayflowPanel::getPanel()->getAuthGuard(),
     ]);
 
     $cachedPermissions = $this->manifest->getPermissions()->pluck('handle')->toArray();
@@ -91,7 +91,7 @@ test('manifest can get grouped permissions', function () {
 });
 
 test('manifest can get refreshed grouped permissions', function () {
-    $guard = LunarPanel::getPanel()->getAuthGuard();
+    $guard = PayflowPanel::getPanel()->getAuthGuard();
     foreach ([
         'group',
         'group:child_1',

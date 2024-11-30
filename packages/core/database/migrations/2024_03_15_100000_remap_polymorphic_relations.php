@@ -1,58 +1,58 @@
 <?php
 
 use Illuminate\Support\Facades\Schema;
-use Lunar\Base\Migration;
+use Payflow\Base\Migration;
 
 class RemapPolymorphicRelations extends Migration
 {
     public function up()
     {
         $modelClasses = collect([
-            \Lunar\Models\CartLine::class,
-            \Lunar\Models\ProductOption::class,
-            \Lunar\Models\Asset::class,
-            \Lunar\Models\Brand::class,
-            \Lunar\Models\TaxZone::class,
-            \Lunar\Models\TaxZoneCountry::class,
-            \Lunar\Models\TaxZoneCustomerGroup::class,
-            \Lunar\Models\DiscountCollection::class,
-            \Lunar\Models\TaxClass::class,
-            \Lunar\Models\ProductOptionValue::class,
-            \Lunar\Models\Channel::class,
-            \Lunar\Models\AttributeGroup::class,
-            \Lunar\Models\Tag::class,
-            \Lunar\Models\Cart::class,
-            \Lunar\Models\Collection::class,
-            \Lunar\Models\Discount::class,
-            \Lunar\Models\TaxRate::class,
-            \Lunar\Models\Price::class,
-            \Lunar\Models\DiscountPurchasable::class,
-            \Lunar\Models\State::class,
-            \Lunar\Models\UserPermission::class,
-            \Lunar\Models\OrderAddress::class,
-            \Lunar\Models\Country::class,
-            \Lunar\Models\Address::class,
-            \Lunar\Models\Url::class,
-            \Lunar\Models\ProductVariant::class,
-            \Lunar\Models\TaxZonePostcode::class,
-            \Lunar\Models\ProductAssociation::class,
-            \Lunar\Models\TaxRateAmount::class,
-            \Lunar\Models\Attribute::class,
-            \Lunar\Models\Order::class,
-            \Lunar\Models\Customer::class,
-            \Lunar\Models\OrderLine::class,
-            \Lunar\Models\CartAddress::class,
-            \Lunar\Models\Language::class,
-            \Lunar\Models\TaxZoneState::class,
-            \Lunar\Models\Currency::class,
-            \Lunar\Models\Product::class,
-            \Lunar\Models\Transaction::class,
-            \Lunar\Models\ProductType::class,
-            \Lunar\Models\CollectionGroup::class,
-            \Lunar\Models\CustomerGroup::class,
+            \Payflow\Models\CartLine::class,
+            \Payflow\Models\ProductOption::class,
+            \Payflow\Models\Asset::class,
+            \Payflow\Models\Brand::class,
+            \Payflow\Models\TaxZone::class,
+            \Payflow\Models\TaxZoneCountry::class,
+            \Payflow\Models\TaxZoneCustomerGroup::class,
+            \Payflow\Models\DiscountCollection::class,
+            \Payflow\Models\TaxClass::class,
+            \Payflow\Models\ProductOptionValue::class,
+            \Payflow\Models\Channel::class,
+            \Payflow\Models\AttributeGroup::class,
+            \Payflow\Models\Tag::class,
+            \Payflow\Models\Cart::class,
+            \Payflow\Models\Collection::class,
+            \Payflow\Models\Discount::class,
+            \Payflow\Models\TaxRate::class,
+            \Payflow\Models\Price::class,
+            \Payflow\Models\DiscountPurchasable::class,
+            \Payflow\Models\State::class,
+            \Payflow\Models\UserPermission::class,
+            \Payflow\Models\OrderAddress::class,
+            \Payflow\Models\Country::class,
+            \Payflow\Models\Address::class,
+            \Payflow\Models\Url::class,
+            \Payflow\Models\ProductVariant::class,
+            \Payflow\Models\TaxZonePostcode::class,
+            \Payflow\Models\ProductAssociation::class,
+            \Payflow\Models\TaxRateAmount::class,
+            \Payflow\Models\Attribute::class,
+            \Payflow\Models\Order::class,
+            \Payflow\Models\Customer::class,
+            \Payflow\Models\OrderLine::class,
+            \Payflow\Models\CartAddress::class,
+            \Payflow\Models\Language::class,
+            \Payflow\Models\TaxZoneState::class,
+            \Payflow\Models\Currency::class,
+            \Payflow\Models\Product::class,
+            \Payflow\Models\Transaction::class,
+            \Payflow\Models\ProductType::class,
+            \Payflow\Models\CollectionGroup::class,
+            \Payflow\Models\CustomerGroup::class,
         ])->mapWithKeys(
             fn ($class) => [
-                $class => \Lunar\Facades\ModelManifest::getMorphMapKey($class),
+                $class => \Payflow\Facades\ModelManifest::getMorphMapKey($class),
             ]
         );
 
@@ -69,7 +69,7 @@ class RemapPolymorphicRelations extends Migration
             'urls' => ['element_type'],
         ];
 
-        $nonLunarTables = [
+        $nonPayflowTables = [
             'activity_log' => 'subject_type',
             'media' => 'model_type',
             'model_has_permissions' => 'model_type',
@@ -78,7 +78,7 @@ class RemapPolymorphicRelations extends Migration
 
         foreach ($modelClasses as $modelClass => $mapping) {
 
-            foreach ($nonLunarTables as $table => $column) {
+            foreach ($nonPayflowTables as $table => $column) {
                 if (! Schema::hasTable($table)) {
                     continue;
                 }

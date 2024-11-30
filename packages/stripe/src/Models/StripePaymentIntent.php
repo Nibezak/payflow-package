@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Stripe\Models;
+namespace Payflow\Stripe\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Lunar\Base\BaseModel;
-use Lunar\Models\Cart;
+use Payflow\Base\BaseModel;
+use Payflow\Models\Cart;
 
 class StripePaymentIntent extends BaseModel
 {

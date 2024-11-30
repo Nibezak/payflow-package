@@ -1,19 +1,19 @@
 <?php
 
-use Lunar\Admin\Filament\Resources\ActivityResource;
-use Lunar\Admin\Filament\Resources\ActivityResource\Pages\ListActivities;
-use Lunar\Admin\Filament\Resources\AttributeGroupResource;
-use Lunar\Admin\Filament\Resources\AttributeGroupResource\Pages\ListAttributeGroups;
-use Lunar\Admin\Filament\Resources\CurrencyResource;
-use Lunar\Admin\Filament\Resources\CurrencyResource\Pages\ListCurrencies;
-use Lunar\Admin\Filament\Resources\CustomerResource;
-use Lunar\Admin\Filament\Resources\LanguageResource;
-use Lunar\Admin\Filament\Resources\LanguageResource\Pages\ListLanguages;
-use Lunar\Admin\Support\Extending\ResourceExtension;
-use Lunar\Admin\Support\Facades\LunarPanel;
-use Lunar\Tests\Admin\Stubs\Filament\TestCustomerAddressRelationManager;
+use Payflow\Admin\Filament\Resources\ActivityResource;
+use Payflow\Admin\Filament\Resources\ActivityResource\Pages\ListActivities;
+use Payflow\Admin\Filament\Resources\AttributeGroupResource;
+use Payflow\Admin\Filament\Resources\AttributeGroupResource\Pages\ListAttributeGroups;
+use Payflow\Admin\Filament\Resources\CurrencyResource;
+use Payflow\Admin\Filament\Resources\CurrencyResource\Pages\ListCurrencies;
+use Payflow\Admin\Filament\Resources\CustomerResource;
+use Payflow\Admin\Filament\Resources\LanguageResource;
+use Payflow\Admin\Filament\Resources\LanguageResource\Pages\ListLanguages;
+use Payflow\Admin\Support\Extending\ResourceExtension;
+use Payflow\Admin\Support\Facades\PayflowPanel;
+use Payflow\Tests\Admin\Stubs\Filament\TestCustomerAddressRelationManager;
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('extending', 'extending.resources');
 
 it('can extend relationship managers', function () {
@@ -27,7 +27,7 @@ it('can extend relationship managers', function () {
         }
     };
 
-    LunarPanel::extensions([
+    PayflowPanel::extensions([
         CustomerResource::class => $class::class,
     ]);
 
@@ -47,7 +47,7 @@ it('can extend table columns', function ($resource, $page) {
         }
     };
 
-    LunarPanel::extensions([
+    PayflowPanel::extensions([
         $resource => $class::class,
     ]);
 
@@ -62,7 +62,7 @@ it('can extend table columns', function ($resource, $page) {
 ]);
 
 it('can extend form schema', function ($resource, $page) {
-    $class = new class extends \Lunar\Admin\Support\Extending\ResourceExtension
+    $class = new class extends \Payflow\Admin\Support\Extending\ResourceExtension
     {
         public function extendForm(Filament\Forms\Form $form): Filament\Forms\Form
         {
@@ -75,7 +75,7 @@ it('can extend form schema', function ($resource, $page) {
         }
     };
 
-    LunarPanel::extensions([
+    PayflowPanel::extensions([
         $resource => $class::class,
     ]);
 

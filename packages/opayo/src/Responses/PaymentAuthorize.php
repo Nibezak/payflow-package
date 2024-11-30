@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Opayo\Responses;
+namespace Payflow\Opayo\Responses;
 
-use Lunar\Base\DataTransferObjects\PaymentAuthorize as GcPaymentAuthorize;
+use Payflow\Base\DataTransferObjects\PaymentAuthorize as GcPaymentAuthorize;
 
 class PaymentAuthorize extends GcPaymentAuthorize
 {

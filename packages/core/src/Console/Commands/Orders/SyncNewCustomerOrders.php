@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Console\Commands\Orders;
+namespace Payflow\Console\Commands\Orders;
 
 use Illuminate\Console\Command;
-use Lunar\Jobs\Orders\MarkAsNewCustomer;
-use Lunar\Models\Order;
+use Payflow\Jobs\Orders\MarkAsNewCustomer;
+use Payflow\Models\Order;
 
 class SyncNewCustomerOrders extends Command
 {
@@ -13,7 +13,7 @@ class SyncNewCustomerOrders extends Command
      *
      * @var string
      */
-    protected $signature = 'lunar:orders:sync-new';
+    protected $signature = 'payflow:orders:sync-new';
 
     /**
      * The console command description.

@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
 use Closure;
-use Lunar\Models\Cart;
-use Lunar\Models\Order;
+use Payflow\Models\Cart;
+use Payflow\Models\Order;
 
 abstract class OrderModifier
 {

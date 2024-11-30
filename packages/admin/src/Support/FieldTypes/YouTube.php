@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Admin\Support\FieldTypes;
+namespace Payflow\Admin\Support\FieldTypes;
 
 use Filament\Forms\Components\Component;
-use Lunar\Admin\Support\Forms\Components\YouTube as YouTubeInput;
-use Lunar\Admin\Support\Synthesizers\YouTubeSynth;
-use Lunar\Models\Attribute;
+use Payflow\Admin\Support\Forms\Components\YouTube as YouTubeInput;
+use Payflow\Admin\Support\Synthesizers\YouTubeSynth;
+use Payflow\Models\Attribute;
 
 class YouTube extends BaseFieldType
 {
@@ -18,7 +18,7 @@ class YouTube extends BaseFieldType
             ->when(filled($attribute->validation_rules), fn (YouTubeInput $component) => $component->rules($attribute->validation_rules))
             ->required((bool) $attribute->required)
             ->helperText(
-                $attribute->translate('description') ?? __('lunarpanel::components.forms.youtube.helperText')
+                $attribute->translate('description') ?? __('payflowpanel::components.forms.youtube.helperText')
             );
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Admin\Database\State;
+namespace Payflow\Admin\Database\State;
 
 use Illuminate\Support\Facades\Schema;
-use Lunar\Admin\Support\Facades\LunarAccessControl;
-use Lunar\Admin\Support\Facades\LunarPanel;
+use Payflow\Admin\Support\Facades\PayflowAccessControl;
+use Payflow\Admin\Support\Facades\PayflowPanel;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -17,12 +17,12 @@ class EnsureBaseRolesAndPermissions
 
     public function run()
     {
-        $guard = LunarPanel::getPanel()->getAuthGuard();
+        $guard = PayflowPanel::getPanel()->getAuthGuard();
 
         $tableNames = config('permission.table_names');
 
         if (Schema::hasTable($tableNames['roles'])) {
-            foreach (LunarAccessControl::getBaseRoles() as $role) {
+            foreach (PayflowAccessControl::getBaseRoles() as $role) {
                 Role::query()->firstOrCreate([
                     'name' => $role,
                     'guard_name' => $guard,
@@ -38,7 +38,7 @@ class EnsureBaseRolesAndPermissions
             Permission::where('name', 'catalogue:manage-customers')->update(['name' => 'sales:manage-customers']);
             Permission::where('name', 'catalogue:manage-discounts')->update(['name' => 'sales:manage-discounts']);
 
-            foreach (LunarAccessControl::getBasePermissions() as $permission) {
+            foreach (PayflowAccessControl::getBasePermissions() as $permission) {
                 Permission::firstOrCreate([
                     'name' => $permission,
                     'guard_name' => $guard,

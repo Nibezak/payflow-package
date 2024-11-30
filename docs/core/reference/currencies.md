@@ -7,7 +7,7 @@ Currencies allow you to charge different amounts relative to the currency you're
 ## Creating a currency
 
 ```php
-\Lunar\Models\Currency::create([
+\Payflow\Models\Currency::create([
     'code' => 'GBP',
     'name' => 'British Pound',
     'exchange_rate' => 1.0000,
@@ -30,7 +30,7 @@ Currencies allow you to charge different amounts relative to the currency you're
 These are relative to the default currency. For example assuming we have the following:
 
 ```php
-\Lunar\Models\Currency::create([
+\Payflow\Models\Currency::create([
     'code' => 'GBP',
     'name' => 'British Pound',
     'exchange_rate' => 1.0000,

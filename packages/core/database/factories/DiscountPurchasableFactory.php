@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
-use Lunar\Models\DiscountPurchasable;
-use Lunar\Models\ProductVariant;
+use Payflow\Models\DiscountPurchasable;
+use Payflow\Models\ProductVariant;
 
 class DiscountPurchasableFactory extends BaseFactory
 {

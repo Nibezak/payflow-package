@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Shipping\Resolvers;
+namespace Payflow\Shipping\Resolvers;
 
 use Illuminate\Support\Collection;
-use Lunar\Models\Cart;
-use Lunar\Shipping\DataTransferObjects\ShippingOptionLookup;
-use Lunar\Shipping\Events\ShippingOptionResolvedEvent;
+use Payflow\Models\Cart;
+use Payflow\Shipping\DataTransferObjects\ShippingOptionLookup;
+use Payflow\Shipping\Events\ShippingOptionResolvedEvent;
 
 class ShippingOptionResolver
 {

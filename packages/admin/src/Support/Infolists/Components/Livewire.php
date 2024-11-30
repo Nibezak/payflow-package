@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Infolists\Components;
+namespace Payflow\Admin\Support\Infolists\Components;
 
 use Closure;
 use Filament\Infolists\Components\Entry;
@@ -8,7 +8,7 @@ use Livewire\Mechanisms\ComponentRegistry;
 
 class Livewire extends Entry
 {
-    protected string $view = 'lunarpanel::infolists.components.livewire';
+    protected string $view = 'payflowpanel::infolists.components.livewire';
 
     protected string $livewireComponent;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Validation\CartLine;
+namespace Payflow\Validation\CartLine;
 
-use Lunar\Validation\BaseValidator;
+use Payflow\Validation\BaseValidator;
 
 class CartLineStock extends BaseValidator
 {

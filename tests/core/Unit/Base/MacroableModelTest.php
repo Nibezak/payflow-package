@@ -1,8 +1,8 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\Models\Product;
+use Payflow\Models\Product;
 
 beforeEach(function () {
     $this->model = new Product;

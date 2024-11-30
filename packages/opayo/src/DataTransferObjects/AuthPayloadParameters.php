@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Opayo\DataTransferObjects;
+namespace Payflow\Opayo\DataTransferObjects;
 
 class AuthPayloadParameters
 {

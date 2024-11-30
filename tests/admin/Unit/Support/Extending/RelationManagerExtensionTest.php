@@ -1,20 +1,20 @@
 <?php
 
-use Lunar\Admin\Filament\Resources\AttributeGroupResource\Pages\EditAttributeGroup;
-use Lunar\Admin\Filament\Resources\AttributeGroupResource\RelationManagers\AttributesRelationManager;
-use Lunar\Admin\Filament\Resources\CustomerResource\Pages\EditCustomer;
-use Lunar\Admin\Filament\Resources\CustomerResource\RelationManagers\AddressRelationManager;
-use Lunar\Admin\Filament\Resources\DiscountResource\Pages\EditDiscount;
-use Lunar\Admin\Filament\Resources\DiscountResource\RelationManagers\ProductLimitationRelationManager;
-use Lunar\Admin\Filament\Resources\ProductOptionResource\Pages\EditProductOption;
-use Lunar\Admin\Filament\Resources\ProductOptionResource\RelationManagers\ValuesRelationManager;
-use Lunar\Admin\Support\Facades\LunarPanel;
+use Payflow\Admin\Filament\Resources\AttributeGroupResource\Pages\EditAttributeGroup;
+use Payflow\Admin\Filament\Resources\AttributeGroupResource\RelationManagers\AttributesRelationManager;
+use Payflow\Admin\Filament\Resources\CustomerResource\Pages\EditCustomer;
+use Payflow\Admin\Filament\Resources\CustomerResource\RelationManagers\AddressRelationManager;
+use Payflow\Admin\Filament\Resources\DiscountResource\Pages\EditDiscount;
+use Payflow\Admin\Filament\Resources\DiscountResource\RelationManagers\ProductLimitationRelationManager;
+use Payflow\Admin\Filament\Resources\ProductOptionResource\Pages\EditProductOption;
+use Payflow\Admin\Filament\Resources\ProductOptionResource\RelationManagers\ValuesRelationManager;
+use Payflow\Admin\Support\Facades\PayflowPanel;
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('extending');
 
 it('can extend table columns', function ($relationManager, $page) {
-    $class = new class extends \Lunar\Admin\Support\Extending\RelationManagerExtension
+    $class = new class extends \Payflow\Admin\Support\Extending\RelationManagerExtension
     {
         public function extendTable(Filament\Tables\Table $table): Filament\Tables\Table
         {
@@ -25,7 +25,7 @@ it('can extend table columns', function ($relationManager, $page) {
         }
     };
 
-    LunarPanel::extensions([
+    PayflowPanel::extensions([
         $relationManager => $class::class,
     ]);
 
@@ -43,7 +43,7 @@ it('can extend table columns', function ($relationManager, $page) {
 ]);
 
 it('can extend form schema', function ($relationManager, $page) {
-    $class = new class extends \Lunar\Admin\Support\Extending\RelationManagerExtension
+    $class = new class extends \Payflow\Admin\Support\Extending\RelationManagerExtension
     {
         public function extendForm(Filament\Forms\Form $form): Filament\Forms\Form
         {
@@ -56,7 +56,7 @@ it('can extend form schema', function ($relationManager, $page) {
         }
     };
 
-    LunarPanel::extensions([
+    PayflowPanel::extensions([
         $relationManager => $class::class,
     ]);
 

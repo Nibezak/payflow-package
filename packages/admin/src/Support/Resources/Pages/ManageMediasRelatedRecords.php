@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Admin\Support\Resources\Pages;
+namespace Payflow\Admin\Support\Resources\Pages;
 
 use Filament\Resources\RelationManagers\RelationGroup;
 use Filament\Support\Facades\FilamentIcon;
-use Lunar\Admin\Support\Pages\BaseManageRelatedRecords;
-use Lunar\Admin\Support\RelationManagers\MediaRelationManager;
+use Payflow\Admin\Support\Pages\BaseManageRelatedRecords;
+use Payflow\Admin\Support\RelationManagers\MediaRelationManager;
 
 class ManageMediasRelatedRecords extends BaseManageRelatedRecords
 {
@@ -13,17 +13,17 @@ class ManageMediasRelatedRecords extends BaseManageRelatedRecords
 
     public function getTitle(): string
     {
-        return __('lunarpanel::relationmanagers.medias.title_plural');
+        return __('payflowpanel::relationmanagers.medias.title_plural');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::media');
+        return FilamentIcon::resolve('payflow::media');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::relationmanagers.medias.title_plural');
+        return __('payflowpanel::relationmanagers.medias.title_plural');
     }
 
     public function getRelationManagers(): array

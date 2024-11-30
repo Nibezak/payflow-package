@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductVariantResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ProductVariantResource\Pages;
 
 use Awcodes\Shout\Components\Shout;
 use Filament\Actions\Action;
@@ -10,11 +10,11 @@ use Filament\Forms\Get;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Filament\Resources\ProductResource;
-use Lunar\Admin\Filament\Resources\ProductVariantResource;
-use Lunar\Admin\Support\Forms\Components\MediaSelect;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
-use Lunar\Models\ProductVariant;
+use Payflow\Admin\Filament\Resources\ProductResource;
+use Payflow\Admin\Filament\Resources\ProductVariantResource;
+use Payflow\Admin\Support\Forms\Components\MediaSelect;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Models\ProductVariant;
 
 class ManageVariantMedia extends BaseEditRecord
 {
@@ -22,17 +22,17 @@ class ManageVariantMedia extends BaseEditRecord
 
     public function getTitle(): string|Htmlable
     {
-        return __('lunarpanel::productvariant.pages.media.title');
+        return __('payflowpanel::productvariant.pages.media.title');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::productvariant.pages.media.title');
+        return __('payflowpanel::productvariant.pages.media.title');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::media');
+        return FilamentIcon::resolve('payflow::media');
     }
 
     protected function getDefaultHeaderActions(): array
@@ -79,12 +79,12 @@ class ManageVariantMedia extends BaseEditRecord
         return $form->schema([
             Section::make()->schema([
                 Shout::make('no_selection')->content(
-                    __('lunarpanel::productvariant.pages.media.form.no_selection.label')
+                    __('payflowpanel::productvariant.pages.media.form.no_selection.label')
                 )->visible(
                     fn (Get $get) => ! $get('images') && $this->getRecord()->product->media()->count()
                 ),
                 Shout::make('no_media_available')->content(
-                    __('lunarpanel::productvariant.pages.media.form.no_media_available.label')
+                    __('payflowpanel::productvariant.pages.media.form.no_media_available.label')
                 )->visible(
                     fn (Get $get) => ! $this->getRecord()->product->media()->count()
                 ),
@@ -93,10 +93,10 @@ class ManageVariantMedia extends BaseEditRecord
                         fn () => $this->getRecord()->product->media()->count()
                     )
                     ->label(
-                        __('lunarpanel::productvariant.pages.media.form.images.label')
+                        __('payflowpanel::productvariant.pages.media.form.images.label')
                     )
                     ->helperText(
-                        __('lunarpanel::productvariant.pages.media.form.images.helper_text')
+                        __('payflowpanel::productvariant.pages.media.form.images.helper_text')
                     )
                     ->afterStateHydrated(function (ProductVariant $record, MediaSelect $component) {
                         $image = $record->images->first(function ($media) {

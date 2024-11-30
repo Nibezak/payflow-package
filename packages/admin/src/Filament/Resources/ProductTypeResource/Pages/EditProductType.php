@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductTypeResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ProductTypeResource\Pages;
 
 use Filament\Actions;
 use Filament\Notifications\Notification;
-use Lunar\Admin\Filament\Resources\ProductTypeResource;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Admin\Filament\Resources\ProductTypeResource;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
 
 class EditProductType extends BaseEditRecord
 {
@@ -19,7 +19,7 @@ class EditProductType extends BaseEditRecord
                     if ($record->products->count() > 0) {
                         Notification::make()
                             ->warning()
-                            ->body(__('lunarpanel::producttype.action.delete.notification.error_protected'))
+                            ->body(__('payflowpanel::producttype.action.delete.notification.error_protected'))
                             ->send();
                         $action->cancel();
                     }

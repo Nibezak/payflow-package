@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources;
+namespace Payflow\Admin\Filament\Resources;
 
 use Awcodes\Shout\Components\Shout;
 use Filament\Forms;
@@ -16,26 +16,26 @@ use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Lunar\Admin\Filament\Resources\ProductResource\Pages;
-use Lunar\Admin\Filament\Resources\ProductResource\RelationManagers\CustomerGroupPricingRelationManager;
-use Lunar\Admin\Filament\Resources\ProductResource\RelationManagers\CustomerGroupRelationManager;
-use Lunar\Admin\Filament\Resources\ProductResource\Widgets\ProductOptionsWidget;
-use Lunar\Admin\Filament\Widgets\Products\VariantSwitcherTable;
-use Lunar\Admin\Support\Forms\Components\Attributes;
-use Lunar\Admin\Support\Forms\Components\Tags as TagsComponent;
-use Lunar\Admin\Support\Forms\Components\TranslatedText as TranslatedTextInput;
-use Lunar\Admin\Support\RelationManagers\ChannelRelationManager;
-use Lunar\Admin\Support\RelationManagers\MediaRelationManager;
-use Lunar\Admin\Support\RelationManagers\PriceRelationManager;
-use Lunar\Admin\Support\Resources\BaseResource;
-use Lunar\Admin\Support\Tables\Columns\TranslatedTextColumn;
-use Lunar\FieldTypes\Text;
-use Lunar\FieldTypes\TranslatedText;
-use Lunar\Models\Attribute;
-use Lunar\Models\Contracts\Product;
-use Lunar\Models\Currency;
-use Lunar\Models\ProductVariant;
-use Lunar\Models\Tag;
+use Payflow\Admin\Filament\Resources\ProductResource\Pages;
+use Payflow\Admin\Filament\Resources\ProductResource\RelationManagers\CustomerGroupPricingRelationManager;
+use Payflow\Admin\Filament\Resources\ProductResource\RelationManagers\CustomerGroupRelationManager;
+use Payflow\Admin\Filament\Resources\ProductResource\Widgets\ProductOptionsWidget;
+use Payflow\Admin\Filament\Widgets\Products\VariantSwitcherTable;
+use Payflow\Admin\Support\Forms\Components\Attributes;
+use Payflow\Admin\Support\Forms\Components\Tags as TagsComponent;
+use Payflow\Admin\Support\Forms\Components\TranslatedText as TranslatedTextInput;
+use Payflow\Admin\Support\RelationManagers\ChannelRelationManager;
+use Payflow\Admin\Support\RelationManagers\MediaRelationManager;
+use Payflow\Admin\Support\RelationManagers\PriceRelationManager;
+use Payflow\Admin\Support\Resources\BaseResource;
+use Payflow\Admin\Support\Tables\Columns\TranslatedTextColumn;
+use Payflow\FieldTypes\Text;
+use Payflow\FieldTypes\TranslatedText;
+use Payflow\Models\Attribute;
+use Payflow\Models\Contracts\Product;
+use Payflow\Models\Currency;
+use Payflow\Models\ProductVariant;
+use Payflow\Models\Tag;
 
 class ProductResource extends BaseResource
 {
@@ -53,22 +53,22 @@ class ProductResource extends BaseResource
 
     public static function getLabel(): string
     {
-        return __('lunarpanel::product.label');
+        return __('payflowpanel::product.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('lunarpanel::product.plural_label');
+        return __('payflowpanel::product.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::products');
+        return FilamentIcon::resolve('payflow::products');
     }
 
     public static function getNavigationGroup(): ?string
     {
-        return __('lunarpanel::global.sections.catalog');
+        return __('payflowpanel::global.sections.catalog');
     }
 
     public static function getDefaultSubNavigation(): array
@@ -102,19 +102,19 @@ class ProductResource extends BaseResource
             ->schema([
                 Shout::make('product-status')
                     ->content(
-                        __('lunarpanel::product.status.unpublished.content')
+                        __('payflowpanel::product.status.unpublished.content')
                     )->type('info')->hidden(
                         fn (Model $record) => $record?->status == 'published'
                     ),
                 Shout::make('product-customer-groups')
                     ->content(
-                        __('lunarpanel::product.status.availability.customer_groups')
+                        __('payflowpanel::product.status.availability.customer_groups')
                     )->type('warning')->hidden(function (Model $record) {
                         return $record->customerGroups()->where('enabled', true)->count();
                     }),
                 Shout::make('product-channels')
                     ->content(
-                        __('lunarpanel::product.status.availability.channels')
+                        __('payflowpanel::product.status.availability.channels')
                     )->type('warning')->hidden(function (Model $record) {
                         return $record->channels()->where('enabled', true)->count();
                     }),
@@ -138,7 +138,7 @@ class ProductResource extends BaseResource
 
     public static function getSkuValidation(): array
     {
-        return static::callStaticLunarHook('extendSkuValidation', [
+        return static::callStaticPayflowHook('extendSkuValidation', [
             'required' => true,
             'unique' => true,
         ]);
@@ -149,7 +149,7 @@ class ProductResource extends BaseResource
         $validation = static::getSkuValidation();
 
         $input = Forms\Components\TextInput::make('sku')
-            ->label(__('lunarpanel::product.form.sku.label'))
+            ->label(__('payflowpanel::product.form.sku.label'))
             ->required($validation['required'] ?? false);
 
         if ($validation['unique'] ?? false) {
@@ -187,13 +187,13 @@ class ProductResource extends BaseResource
             $component = Forms\Components\TextInput::make('name');
         }
 
-        return $component->label(__('lunarpanel::product.form.name.label'))->required();
+        return $component->label(__('payflowpanel::product.form.name.label'))->required();
     }
 
     protected static function getBrandFormComponent(): Component
     {
         return Forms\Components\Select::make('brand_id')
-            ->label(__('lunarpanel::product.form.brand.label'))
+            ->label(__('payflowpanel::product.form.brand.label'))
             ->relationship('brand', 'name')
             ->searchable()
             ->preload()
@@ -206,7 +206,7 @@ class ProductResource extends BaseResource
     public static function getProductTypeFormComponent(): Component
     {
         return Forms\Components\Select::make('product_type_id')
-            ->label(__('lunarpanel::product.form.producttype.label'))
+            ->label(__('payflowpanel::product.form.producttype.label'))
             ->relationship('productType', 'name')
             ->searchable()
             ->preload()
@@ -218,7 +218,7 @@ class ProductResource extends BaseResource
     {
         return TagsComponent::make('tags')
             ->suggestions(Tag::all()->pluck('value')->all())
-            ->label(__('lunarpanel::product.form.tags.label'));
+            ->label(__('payflowpanel::product.form.tags.label'));
     }
 
     protected static function getAttributeDataFormComponent(): Component
@@ -251,34 +251,34 @@ class ProductResource extends BaseResource
     {
         return [
             Tables\Columns\TextColumn::make('status')
-                ->label(__('lunarpanel::product.table.status.label'))
+                ->label(__('payflowpanel::product.table.status.label'))
                 ->badge()
                 ->getStateUsing(
                     fn (Model $record) => $record->deleted_at ? 'deleted' : $record->status
                 )
-                ->formatStateUsing(fn ($state) => __('lunarpanel::product.table.status.states.'.$state))
+                ->formatStateUsing(fn ($state) => __('payflowpanel::product.table.status.states.'.$state))
                 ->color(fn (string $state): string => match ($state) {
                     'draft' => 'warning',
                     'published' => 'success',
                     'deleted' => 'danger',
                 }),
             SpatieMediaLibraryImageColumn::make('thumbnail')
-                ->collection(config('lunar.media.collection'))
+                ->collection(config('payflow.media.collection'))
                 ->conversion('small')
                 ->limit(1)
                 ->square()
                 ->label(''),
             static::getNameTableColumn(),
             Tables\Columns\TextColumn::make('brand.name')
-                ->label(__('lunarpanel::product.table.brand.label'))
+                ->label(__('payflowpanel::product.table.brand.label'))
                 ->toggleable()
                 ->searchable(),
             static::getSkuTableColumn(),
             Tables\Columns\TextColumn::make('variants_sum_stock')
-                ->label(__('lunarpanel::product.table.stock.label'))
+                ->label(__('payflowpanel::product.table.stock.label'))
                 ->sum('variants', 'stock'),
             Tables\Columns\TextColumn::make('productType.name')
-                ->label(__('lunarpanel::product.table.producttype.label'))
+                ->label(__('payflowpanel::product.table.producttype.label'))
                 ->limit(30)
                 ->tooltip(function (Tables\Columns\TextColumn $column): ?string {
                     $state = $column->getState();
@@ -300,14 +300,14 @@ class ProductResource extends BaseResource
             ->attributeData()
             ->limitedTooltip()
             ->limit(50)
-            ->label(__('lunarpanel::product.table.name.label'))
+            ->label(__('payflowpanel::product.table.name.label'))
             ->searchable();
     }
 
     public static function getSkuTableColumn(): Tables\Columns\Column
     {
         return Tables\Columns\TextColumn::make('variants.sku')
-            ->label(__('lunarpanel::product.table.sku.label'))
+            ->label(__('payflowpanel::product.table.sku.label'))
             ->tooltip(function (Tables\Columns\TextColumn $column, Model $record): ?string {
 
                 if ($record->variants->count() <= $column->getListLimit()) {
@@ -392,9 +392,9 @@ class ProductResource extends BaseResource
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         return [
-            __('lunarpanel::product.table.sku.label') => $record->variants->first()->getIdentifier(),
-            __('lunarpanel::product.table.stock.label') => $record->variants->first()->stock,
-            __('lunarpanel::product.table.brand.label') => $record->brand?->name,
+            __('payflowpanel::product.table.sku.label') => $record->variants->first()->getIdentifier(),
+            __('payflowpanel::product.table.stock.label') => $record->variants->first()->stock,
+            __('payflowpanel::product.table.brand.label') => $record->brand?->name,
         ];
     }
 }

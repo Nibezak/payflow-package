@@ -1,28 +1,28 @@
-# Lunar Table Rate Shipping
+# Payflow Table Rate Shipping
 
 
 # Requirements
 
-- LunarPHP Admin `>` `1.x`
+- PayflowPHP Admin `>` `1.x`
 
 # Installation
 
 Install via Composer
 
 ```
-composer require lunarphp/table-rate-shipping
+composer require payflowphp/table-rate-shipping
 ```
 
 Then register the plugin in your service provider
 
 ```php
-use Lunar\Admin\Support\Facades\LunarPanel;
-use Lunar\Shipping\ShippingPlugin;
+use Payflow\Admin\Support\Facades\PayflowPanel;
+use Payflow\Shipping\ShippingPlugin;
 // ...
 
 public function register(): void
 {
-    LunarPanel::panel(function (Panel $panel) {
+    PayflowPanel::panel(function (Panel $panel) {
         return $panel->plugin(new ShippingPlugin());
     })->register();
     
@@ -54,10 +54,10 @@ Sometimes, you might not want to ship certain items to particular Shipping Zone,
 
 # Storefront usage
 
-This addon uses the shipping modifiers provided by the Lunar core, so you shouldn't need to change your existing implementation.
+This addon uses the shipping modifiers provided by the Payflow core, so you shouldn't need to change your existing implementation.
 
 ```php
-$options = \Lunar\Base\ShippingManifest::getOptions(
+$options = \Payflow\Base\ShippingManifest::getOptions(
     $cart
 );
 ```
@@ -67,16 +67,16 @@ $options = \Lunar\Base\ShippingManifest::getOptions(
 ## Return available drivers
 
 ```php
-\Lunar\Shipping\Facades\Shipping::getSupportedDrivers();
+\Payflow\Shipping\Facades\Shipping::getSupportedDrivers();
 ```
 
 ## Using the driver directly
 
 ```php
-\Lunar\Shipping\Facades\Shipping::with('ship-by')->resolve(
-    new \Lunar\Shipping\DataTransferObjects\ShippingOptionRequest(
-        shippingRate: \Lunar\Shipping\Models\ShippingRate $shippingRate,
-        cart: \Lunar\Models\Cart $cart
+\Payflow\Shipping\Facades\Shipping::with('ship-by')->resolve(
+    new \Payflow\Shipping\DataTransferObjects\ShippingOptionRequest(
+        shippingRate: \Payflow\Shipping\Models\ShippingRate $shippingRate,
+        cart: \Payflow\Models\Cart $cart
     )
 );
 ```
@@ -86,12 +86,12 @@ $options = \Lunar\Base\ShippingManifest::getOptions(
 Each method is optional, the more you add the more strict it becomes.
 
 ```php
-$shippingZones = Lunar\Shipping\Facades\Shipping::zones()
-    ->country(\Lunar\Models\Country $country)
-    ->state(\Lunar\Models\State $state)
+$shippingZones = Payflow\Shipping\Facades\Shipping::zones()
+    ->country(\Payflow\Models\Country $country)
+    ->state(\Payflow\Models\State $state)
     ->postcode(
-        new \Lunar\Shipping\DataTransferObjects\PostcodeLookup(
-            country: \Lunar\Models\Country $country,
+        new \Payflow\Shipping\DataTransferObjects\PostcodeLookup(
+            country: \Payflow\Models\Country $country,
             postcode: 'NW1'
         )
     )->get()
@@ -102,15 +102,15 @@ $shippingZones->map(/* .. */);
 ## Shipping Rates
 
 ```php
-$shippingRates = \Lunar\Shipping\Facades\Shipping::shippingRates(
-    \Lunar\Models\Cart $cart
+$shippingRates = \Payflow\Shipping\Facades\Shipping::shippingRates(
+    \Payflow\Models\Cart $cart
 );
 ```
 
 ## Shipping Options
 
 ```php
-$shippingOptions = \Lunar\Shipping\Facades\Shipping::shippingOptions(
-    \Lunar\Models\Cart $cart
+$shippingOptions = \Payflow\Shipping\Facades\Shipping::shippingOptions(
+    \Payflow\Models\Cart $cart
 );
 ```

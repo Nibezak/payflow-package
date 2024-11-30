@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Base\Traits;
+namespace Payflow\Base\Traits;
 
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Collection;
-use Lunar\Jobs\SyncTags;
-use Lunar\Models\Tag;
+use Payflow\Jobs\SyncTags;
+use Payflow\Models\Tag;
 
 trait HasTags
 {
@@ -14,7 +14,7 @@ trait HasTags
      */
     public function tags(): MorphToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->morphToMany(
             Tag::class,

@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
-use Lunar\Drivers\SystemTaxDriver;
+use Payflow\Drivers\SystemTaxDriver;
 
 interface TaxManagerInterface
 {

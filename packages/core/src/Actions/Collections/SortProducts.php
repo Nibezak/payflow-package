@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Actions\Collections;
+namespace Payflow\Actions\Collections;
 
-use Lunar\Models\Collection;
-use Lunar\Models\Currency;
+use Payflow\Models\Collection;
+use Payflow\Models\Currency;
 
 class SortProducts
 {

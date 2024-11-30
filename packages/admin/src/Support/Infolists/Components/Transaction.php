@@ -1,13 +1,13 @@
 <?php
 
-namespace Lunar\Admin\Support\Infolists\Components;
+namespace Payflow\Admin\Support\Infolists\Components;
 
 use Filament\Infolists\Components\Entry;
 use Illuminate\Support\Facades\File;
 
 class Transaction extends Entry
 {
-    protected string $view = 'lunarpanel::infolists.components.transaction';
+    protected string $view = 'payflowpanel::infolists.components.transaction';
 
     protected function setUp(): void
     {

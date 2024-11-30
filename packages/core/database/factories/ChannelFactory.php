@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
 use Illuminate\Support\Str;
-use Lunar\Models\Channel;
+use Payflow\Models\Channel;
 
 class ChannelFactory extends BaseFactory
 {

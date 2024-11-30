@@ -1,7 +1,7 @@
 # Installation
 
 ::: danger Beta Release
-Although many Lunar sites have been launched using v1.x, you may not consider this version production-ready for your own
+Although many Payflow sites have been launched using v1.x, you may not consider this version production-ready for your own
 use and should exercise the same amount of caution as you would with any software in an beta state. 🚀
 :::
 
@@ -15,44 +15,44 @@ use and should exercise the same amount of caution as you would with any softwar
 - bcmath PHP extension (on most systems it will be installed by default)
 - GD PHP extension (used for image manipulation)
 
-## Install Lunar
+## Install Payflow
 
 ### Composer Require Package
 
 ```sh
-composer require lunarphp/lunar:"^1.0.0-beta" -W
+composer require payflowphp/payflow:"^1.0.0-beta" -W
 ```
 
 ::: tip
 You may need to update your app's `composer.json` to set `"minimum-stability": "dev",`
 :::
 
-### Add the LunarUser Trait
+### Add the PayflowUser Trait
 
 Some parts of the core rely on the User model having certain relationships set up. We have bundled these into a trait and an interface, which you must add to any models that represent users in your database.
 
 ```php
-use Lunar\Base\Traits\LunarUser;
-use Lunar\Base\LunarUser as LunarUserInterface;
+use Payflow\Base\Traits\PayflowUser;
+use Payflow\Base\PayflowUser as PayflowUserInterface;
 // ...
 
-class User extends Authenticatable implements LunarUserInterface
+class User extends Authenticatable implements PayflowUserInterface
 {
-    use LunarUser;
+    use PayflowUser;
     // ...
 }
 ```
 
 ### Publish Configuration
-Before you run the Lunar installer command, you may wish to customise some of the set-up.
+Before you run the Payflow installer command, you may wish to customise some of the set-up.
 
 
 ```sh
-php artisan vendor:publish --tag=lunar
+php artisan vendor:publish --tag=payflow
 ```
 
 ## Configure Laravel Scout
-Lunar works best with [Laravel Scout](https://laravel.com/docs/master/scout) and a search engine like Meilisearch, Typesense or Algolia.
+Payflow works best with [Laravel Scout](https://laravel.com/docs/master/scout) and a search engine like Meilisearch, Typesense or Algolia.
 
 ### If you do NOT have a search engine configured
 Add the following to your `.env` file.
@@ -70,44 +70,44 @@ And set the config value in `panel.php` as follows.
 The admin panel needs registering in your app service provider before you can use it.
 
 ```php
-use Lunar\Admin\Support\Facades\LunarPanel;
+use Payflow\Admin\Support\Facades\PayflowPanel;
 
 class AppServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        LunarPanel::register();
+        PayflowPanel::register();
     }
 ```
 
 ## Run the Artisan Installer
 
 ```sh
-php artisan lunar:install
+php artisan payflow:install
 ```
 
-This will take you through a set of questions to configure your Lunar install. The process includes...
+This will take you through a set of questions to configure your Payflow install. The process includes...
 
 - Creating a default admin user (if required)
 - Seeding initial data
 - Inviting you to star our repo on GitHub ⭐
 
-You should now be able to access the panel at `https://<yoursite>/lunar`.
+You should now be able to access the panel at `https://<yoursite>/payflow`.
 
 ## Advanced Installation Options
 
 ### Table Prefix
 
-Lunar uses table prefixes to avoid conflicts with your app's tables. You can change this in the [configuration](/core/configuration.html).
+Payflow uses table prefixes to avoid conflicts with your app's tables. You can change this in the [configuration](/core/configuration.html).
 
 ### User ID Field Type
 
-Lunar assumes your User ID field is a "BIGINT". If you are using an "INT" or "UUID", you will want to update the configuration in `config/lunar/database.php` to set the correct field type before running the migrations.
+Payflow assumes your User ID field is a "BIGINT". If you are using an "INT" or "UUID", you will want to update the configuration in `config/payflow/database.php` to set the correct field type before running the migrations.
 
 ### Publish Migrations
 
-You can optionally publish Lunar's migrations so they're added to your Laravel app.
+You can optionally publish Payflow's migrations so they're added to your Laravel app.
 
 ```sh
-php artisan vendor:publish --tag=lunar.migrations
+php artisan vendor:publish --tag=payflow.migrations
 ```

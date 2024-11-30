@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
 use Illuminate\Support\Str;
-use Lunar\Models\Customer;
+use Payflow\Models\Customer;
 
 class CustomerFactory extends BaseFactory
 {

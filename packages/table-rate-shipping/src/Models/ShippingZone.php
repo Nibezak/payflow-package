@@ -1,16 +1,16 @@
 <?php
 
-namespace Lunar\Shipping\Models;
+namespace Payflow\Shipping\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\DB;
-use Lunar\Base\BaseModel;
-use Lunar\Models\Country;
-use Lunar\Models\Order;
-use Lunar\Models\State;
-use Lunar\Shipping\Database\Factories\ShippingZoneFactory;
+use Payflow\Base\BaseModel;
+use Payflow\Models\Country;
+use Payflow\Models\Order;
+use Payflow\Models\State;
+use Payflow\Shipping\Database\Factories\ShippingZoneFactory;
 
 class ShippingZone extends BaseModel implements Contracts\ShippingZone
 {
@@ -61,7 +61,7 @@ class ShippingZone extends BaseModel implements Contracts\ShippingZone
     {
         return $this->belongsToMany(
             Country::modelClass(),
-            config('lunar.database.table_prefix').'country_shipping_zone'
+            config('payflow.database.table_prefix').'country_shipping_zone'
         )->withTimestamps();
     }
 
@@ -72,7 +72,7 @@ class ShippingZone extends BaseModel implements Contracts\ShippingZone
     {
         return $this->belongsToMany(
             Order::class,
-            config('lunar.database.table_prefix').'order_shipping_zone'
+            config('payflow.database.table_prefix').'order_shipping_zone'
         )->withTimestamps();
     }
 
@@ -83,7 +83,7 @@ class ShippingZone extends BaseModel implements Contracts\ShippingZone
     {
         return $this->belongsToMany(
             State::modelClass(),
-            config('lunar.database.table_prefix').'state_shipping_zone'
+            config('payflow.database.table_prefix').'state_shipping_zone'
         )->withTimestamps();
     }
 
@@ -104,7 +104,7 @@ class ShippingZone extends BaseModel implements Contracts\ShippingZone
     {
         return $this->belongsToMany(
             ShippingExclusionList::modelClass(),
-            config('lunar.database.table_prefix').'exclusion_list_shipping_zone',
+            config('payflow.database.table_prefix').'exclusion_list_shipping_zone',
             'shipping_zone_id',
             'exclusion_id',
         )->withTimestamps();

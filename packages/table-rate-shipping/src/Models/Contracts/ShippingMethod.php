@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Shipping\Models\Contracts;
+namespace Payflow\Shipping\Models\Contracts;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Lunar\Shipping\Interfaces\ShippingRateInterface;
+use Payflow\Shipping\Interfaces\ShippingRateInterface;
 
 interface ShippingMethod
 {

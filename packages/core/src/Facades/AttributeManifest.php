@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Facades;
+namespace Payflow\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Lunar\Base\AttributeManifestInterface;
+use Payflow\Base\AttributeManifestInterface;
 
 class AttributeManifest extends Facade
 {

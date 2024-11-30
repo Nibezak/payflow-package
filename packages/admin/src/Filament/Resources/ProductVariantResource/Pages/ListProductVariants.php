@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductVariantResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ProductVariantResource\Pages;
 
-use Lunar\Admin\Filament\Resources\ProductVariantResource;
-use Lunar\Admin\Support\Pages\BaseListRecords;
+use Payflow\Admin\Filament\Resources\ProductVariantResource;
+use Payflow\Admin\Support\Pages\BaseListRecords;
 
 class ListProductVariants extends BaseListRecords
 {

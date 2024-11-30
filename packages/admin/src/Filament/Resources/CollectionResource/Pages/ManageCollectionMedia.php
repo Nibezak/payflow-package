@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\CollectionResource\Pages;
+namespace Payflow\Admin\Filament\Resources\CollectionResource\Pages;
 
-use Lunar\Admin\Filament\Resources\CollectionResource;
-use Lunar\Admin\Support\Resources\Pages\ManageMediasRelatedRecords;
+use Payflow\Admin\Filament\Resources\CollectionResource;
+use Payflow\Admin\Support\Resources\Pages\ManageMediasRelatedRecords;
 
 class ManageCollectionMedia extends ManageMediasRelatedRecords
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Pricing;
+namespace Payflow\Pricing;
 
 interface PriceFormatterInterface
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\BrandResource\Pages;
+namespace Payflow\Admin\Filament\Resources\BrandResource\Pages;
 
 use Filament\Actions;
-use Lunar\Admin\Filament\Resources\BrandResource;
-use Lunar\Admin\Support\Pages\BaseListRecords;
+use Payflow\Admin\Filament\Resources\BrandResource;
+use Payflow\Admin\Support\Pages\BaseListRecords;
 
 class ListBrands extends BaseListRecords
 {

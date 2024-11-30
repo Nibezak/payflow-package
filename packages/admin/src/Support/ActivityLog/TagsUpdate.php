@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\ActivityLog;
+namespace Payflow\Admin\Support\ActivityLog;
 
 use Spatie\Activitylog\Models\Activity;
 
@@ -13,7 +13,7 @@ class TagsUpdate extends AbstractRender
 
     public function render(Activity $log)
     {
-        return view('lunarpanel::partials.activity-log.tags-update', [
+        return view('payflowpanel::partials.activity-log.tags-update', [
             'log' => $log,
             'added' => $log->getExtraProperty('added'),
             'removed' => $log->getExtraProperty('removed'),

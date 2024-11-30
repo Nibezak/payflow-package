@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Facades\Hash;
 use Livewire\Livewire;
-use Lunar\Admin\Filament\Resources\StaffResource;
-use Lunar\Admin\Filament\Resources\StaffResource\Pages\CreateStaff;
-use Lunar\Admin\Models\Staff;
+use Payflow\Admin\Filament\Resources\StaffResource;
+use Payflow\Admin\Filament\Resources\StaffResource\Pages\CreateStaff;
+use Payflow\Admin\Models\Staff;
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('resource.staff');
 
 beforeEach(fn () => $this->asStaff(admin: true));

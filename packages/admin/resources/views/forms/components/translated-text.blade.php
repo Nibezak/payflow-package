@@ -40,11 +40,11 @@
                 color="gray"
                 >
                 <x-filament::icon 
-                    alias="lunar::languages" 
+                    alias="payflow::languages" 
                     @class(['w-3.5 h-3.5 inline-flex'])
                 />
                 <span class="ml-2">
-                    {{ __('lunarpanel::fieldtypes.translatedtext.form.locales') }}
+                    {{ __('payflowpanel::fieldtypes.translatedtext.form.locales') }}
                 </span>
             </x-filament::button>
             </button>

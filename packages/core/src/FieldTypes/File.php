@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\FieldTypes;
+namespace Payflow\FieldTypes;
 
 use JsonSerializable;
-use Lunar\Base\FieldType;
+use Payflow\Base\FieldType;
 
 class File implements FieldType, JsonSerializable
 {

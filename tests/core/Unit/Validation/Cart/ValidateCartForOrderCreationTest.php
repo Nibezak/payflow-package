@@ -1,17 +1,17 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\DataTypes\Price;
-use Lunar\DataTypes\ShippingOption;
-use Lunar\Exceptions\Carts\CartException;
-use Lunar\Facades\ShippingManifest;
-use Lunar\Models\Cart;
-use Lunar\Models\CartAddress;
-use Lunar\Models\Currency;
-use Lunar\Models\ProductVariant;
-use Lunar\Models\TaxClass;
-use Lunar\Validation\Cart\ValidateCartForOrderCreation;
+use Payflow\DataTypes\Price;
+use Payflow\DataTypes\ShippingOption;
+use Payflow\Exceptions\Carts\CartException;
+use Payflow\Facades\ShippingManifest;
+use Payflow\Models\Cart;
+use Payflow\Models\CartAddress;
+use Payflow\Models\Currency;
+use Payflow\Models\ProductVariant;
+use Payflow\Models\TaxClass;
+use Payflow\Validation\Cart\ValidateCartForOrderCreation;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -27,7 +27,7 @@ test('can validate missing billing address', function () {
     );
 
     $this->expectException(CartException::class);
-    $this->expectExceptionMessage(__('lunar::exceptions.carts.billing_missing'));
+    $this->expectExceptionMessage(__('payflow::exceptions.carts.billing_missing'));
 
     $validator->validate();
 });
@@ -98,7 +98,7 @@ test('can validate missing shipping option', function () {
         'shippable' => true,
     ]);
 
-    \Lunar\Models\Price::factory()->create([
+    \Payflow\Models\Price::factory()->create([
         'currency_id' => $currency->id,
         'priceable_id' => $purchasable->id,
         'priceable_type' => $purchasable->getMorphClass(),
@@ -136,7 +136,7 @@ test('can validate collection with partial shipping address', function () {
         'shippable' => true,
     ]);
 
-    \Lunar\Models\Price::factory()->create([
+    \Payflow\Models\Price::factory()->create([
         'currency_id' => $currency->id,
         'priceable_id' => $purchasable->id,
         'priceable_type' => $purchasable->getMorphClass(),
@@ -195,7 +195,7 @@ test('can validate delivery with partial shipping address', function () {
         'shippable' => true,
     ]);
 
-    \Lunar\Models\Price::factory()->create([
+    \Payflow\Models\Price::factory()->create([
         'currency_id' => $currency->id,
         'priceable_id' => $purchasable->id,
         'priceable_type' => $purchasable->getMorphClass(),
@@ -265,7 +265,7 @@ test('can validate delivery with populated shipping address', function () {
         'shippable' => true,
     ]);
 
-    \Lunar\Models\Price::factory()->create([
+    \Payflow\Models\Price::factory()->create([
         'currency_id' => $currency->id,
         'priceable_id' => $purchasable->id,
         'priceable_type' => $purchasable->getMorphClass(),

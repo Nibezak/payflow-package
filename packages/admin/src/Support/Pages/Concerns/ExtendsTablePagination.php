@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Pages\Concerns;
+namespace Payflow\Admin\Support\Pages\Concerns;
 
 use Illuminate\Contracts\Pagination\CursorPaginator;
 use Illuminate\Contracts\Pagination\Paginator;
@@ -15,7 +15,7 @@ trait ExtendsTablePagination
 
     protected function paginateTableQuery(Builder $query): Paginator|CursorPaginator
     {
-        $query = $this->callLunarHook('paginateTableQuery', $query, $this->getTableRecordsPerPage());
+        $query = $this->callPayflowHook('paginateTableQuery', $query, $this->getTableRecordsPerPage());
 
         return $query instanceof Builder ? $this->getDefaultPaginationQuery($query) : $query;
     }

@@ -1,22 +1,22 @@
 <?php
 
-namespace Lunar\Actions\Orders;
+namespace Payflow\Actions\Orders;
 
-use Lunar\Models\Order;
+use Payflow\Models\Order;
 
 class GenerateOrderReference
 {
     /**
      * Execute the action.
      *
-     * @param  \Lunar\Models\CartLine  $cartLine
+     * @param  \Payflow\Models\CartLine  $cartLine
      * @param  \Illuminate\Database\Eloquent\Collection  $customerGroups
-     * @return \Lunar\Models\CartLine
+     * @return \Payflow\Models\CartLine
      */
     public function execute(
         Order $order
     ) {
-        $generator = config('lunar.orders.reference_generator');
+        $generator = config('payflow.orders.reference_generator');
 
         if (! $generator) {
             return null;

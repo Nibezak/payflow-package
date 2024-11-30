@@ -1,10 +1,10 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
-use Lunar\Jobs\Orders\MarkAsNewCustomer;
-use Lunar\Models\Currency;
-use Lunar\Models\Order;
-use Lunar\Models\OrderAddress;
+uses(\Payflow\Tests\Core\TestCase::class);
+use Payflow\Jobs\Orders\MarkAsNewCustomer;
+use Payflow\Models\Currency;
+use Payflow\Models\Order;
+use Payflow\Models\OrderAddress;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

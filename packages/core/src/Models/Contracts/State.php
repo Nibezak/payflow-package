@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Models\Contracts;
+namespace Payflow\Models\Contracts;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 

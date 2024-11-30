@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\TaxRateResource\Pages;
+namespace Payflow\Admin\Filament\Resources\TaxRateResource\Pages;
 
 use Filament\Actions;
-use Lunar\Admin\Filament\Resources\TaxRateResource;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Admin\Filament\Resources\TaxRateResource;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
 
 class EditTaxRate extends BaseEditRecord
 {

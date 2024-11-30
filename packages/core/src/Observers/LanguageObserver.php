@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Observers;
+namespace Payflow\Observers;
 
-use Lunar\Facades\DB;
-use Lunar\Models\Language;
+use Payflow\Facades\DB;
+use Payflow\Models\Language;
 
 class LanguageObserver
 {
@@ -52,7 +52,7 @@ class LanguageObserver
     /**
      * Ensures that only one default language exists.
      *
-     * @param  \Lunar\Models\Language  $savedLanguage  The language that was just saved.
+     * @param  \Payflow\Models\Language  $savedLanguage  The language that was just saved.
      */
     protected function ensureOnlyOneDefault(Language $savedLanguage): void
     {

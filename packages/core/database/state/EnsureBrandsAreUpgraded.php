@@ -1,13 +1,13 @@
 <?php
 
-namespace Lunar\Database\State;
+namespace Payflow\Database\State;
 
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
-use Lunar\Models\Brand;
-use Lunar\Models\Language;
-use Lunar\Models\Product;
+use Payflow\Models\Brand;
+use Payflow\Models\Language;
+use Payflow\Models\Product;
 
 class EnsureBrandsAreUpgraded
 {
@@ -68,7 +68,7 @@ class EnsureBrandsAreUpgraded
 
     protected function canPrepare()
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         $hasBrandsTable = Schema::hasTable("{$prefix}brands");
         $hasProductsTable = Schema::hasTable("{$prefix}products");
@@ -78,7 +78,7 @@ class EnsureBrandsAreUpgraded
 
     protected function canRun()
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         $hasBrandsTable = Schema::hasTable("{$prefix}brands");
         $hasProductsTable = Schema::hasTable("{$prefix}products");

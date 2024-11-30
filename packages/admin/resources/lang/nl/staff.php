@@ -72,9 +72,9 @@ return [
         'notification' => [
             'updated' => 'Bijgewerkt',
             'error' => 'Fout',
-            'no-role' => 'Rol niet geregistreerd in Lunar',
-            'no-permission' => 'Machtiging niet geregistreerd in Lunar',
-            'no-role-permission' => 'Rol en Machtiging niet geregistreerd in Lunar',
+            'no-role' => 'Rol niet geregistreerd in Payflow',
+            'no-permission' => 'Machtiging niet geregistreerd in Payflow',
+            'no-role-permission' => 'Rol en Machtiging niet geregistreerd in Payflow',
         ],
     ],
 

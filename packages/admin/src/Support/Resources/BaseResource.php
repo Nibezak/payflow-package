@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Resources;
+namespace Payflow\Admin\Support\Resources;
 
 use Filament\Facades\Filament;
 use Filament\Resources\Resource;
@@ -8,10 +8,10 @@ use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
-use Lunar\Admin\Support\Concerns\CallsHooks;
-use Lunar\Base\Traits\Searchable;
-use Lunar\FieldTypes\TranslatedText;
-use Lunar\Models\Attribute;
+use Payflow\Admin\Support\Concerns\CallsHooks;
+use Payflow\Base\Traits\Searchable;
+use Payflow\FieldTypes\TranslatedText;
+use Payflow\Models\Attribute;
 
 use function Filament\Support\generate_search_term_expression;
 
@@ -67,7 +67,7 @@ class BaseResource extends Resource
      */
     protected static function applyGlobalSearchAttributeConstraints(Builder $query, string $search): void
     {
-        $scoutEnabled = config('lunar.panel.scout_enabled', false);
+        $scoutEnabled = config('payflow.panel.scout_enabled', false);
         $isScoutSearchable = in_array(Searchable::class, class_uses_recursive(static::getModel()));
 
         if (

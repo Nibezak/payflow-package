@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Stripe\Actions;
+namespace Payflow\Stripe\Actions;
 
-use Lunar\Stripe\Concerns\ConstructsWebhookEvent;
+use Payflow\Stripe\Concerns\ConstructsWebhookEvent;
 use Stripe\Webhook;
 
 class ConstructWebhookEvent implements ConstructsWebhookEvent

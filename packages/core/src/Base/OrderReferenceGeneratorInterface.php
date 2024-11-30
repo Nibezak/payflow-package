@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
-use Lunar\Models\Order;
+use Payflow\Models\Order;
 
 interface OrderReferenceGeneratorInterface
 {

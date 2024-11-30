@@ -7,7 +7,7 @@ Customers may save addresses to make checking-out easier and quicker.
 ## Addresses
 
 ```php
-Lunar\Models\Address
+Payflow\Models\Address
 ```
 
 |Field|Description|
@@ -38,7 +38,7 @@ Lunar\Models\Address
 ## Countries
 
 ```php
-Lunar\Models\Country
+Payflow\Models\Country
 ```
 
 |Field|Description|
@@ -60,7 +60,7 @@ Lunar\Models\Country
 ## States
 
 ```php
-Lunar\Models\State
+Payflow\Models\State
 ```
 
 |Field|Description|
@@ -79,5 +79,5 @@ Data for Countries and States is provided by https://github.com/dr5hn/countries-
 You can use the following command to import countries and states.
 
 ```sh
-php artisan lunar:import:address-data
+php artisan payflow:import:address-data
 ```

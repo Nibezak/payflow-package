@@ -1,21 +1,21 @@
 <?php
 
 use Livewire\Livewire;
-use Lunar\Admin\Support\RelationManagers\ChannelRelationManager;
+use Payflow\Admin\Support\RelationManagers\ChannelRelationManager;
 
-uses(\Lunar\Tests\Admin\Unit\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Unit\Filament\TestCase::class)
     ->group('support.relationManagers');
 
 it('can render relationship manager', function () {
-    \Lunar\Models\CustomerGroup::factory()->create([
+    \Payflow\Models\CustomerGroup::factory()->create([
         'default' => true,
     ]);
 
-    \Lunar\Models\Language::factory()->create([
+    \Payflow\Models\Language::factory()->create([
         'default' => true,
     ]);
 
-    $product = \Lunar\Models\Product::factory()->create();
+    $product = \Payflow\Models\Product::factory()->create();
 
     $this->asStaff(admin: true);
 

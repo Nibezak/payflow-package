@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Lunar\Base\Migration;
+use Payflow\Base\Migration;
 
 return new class extends Migration
 {

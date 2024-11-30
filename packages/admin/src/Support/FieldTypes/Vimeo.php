@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Admin\Support\FieldTypes;
+namespace Payflow\Admin\Support\FieldTypes;
 
 use Filament\Forms\Components\Component;
-use Lunar\Admin\Support\Forms\Components\Vimeo as VimeoInput;
-use Lunar\Admin\Support\Synthesizers\VimeoSynth;
-use Lunar\Models\Attribute;
+use Payflow\Admin\Support\Forms\Components\Vimeo as VimeoInput;
+use Payflow\Admin\Support\Synthesizers\VimeoSynth;
+use Payflow\Models\Attribute;
 
 class Vimeo extends BaseFieldType
 {
@@ -18,7 +18,7 @@ class Vimeo extends BaseFieldType
             ->when(filled($attribute->validation_rules), fn (VimeoInput $component) => $component->rules($attribute->validation_rules))
             ->required((bool) $attribute->required)
             ->helperText(
-                $attribute->translate('description') ?? __('lunarpanel::components.forms.youtube.helperText')
+                $attribute->translate('description') ?? __('payflowpanel::components.forms.youtube.helperText')
             );
     }
 }

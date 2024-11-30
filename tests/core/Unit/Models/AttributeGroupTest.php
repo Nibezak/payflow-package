@@ -1,9 +1,9 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class)->group('models');
+uses(\Payflow\Tests\Core\TestCase::class)->group('models');
 
-use Lunar\Models\Attribute;
-use Lunar\Models\AttributeGroup;
+use Payflow\Models\Attribute;
+use Payflow\Models\AttributeGroup;
 
 use function Pest\Laravel\{assertDatabaseMissing};
 

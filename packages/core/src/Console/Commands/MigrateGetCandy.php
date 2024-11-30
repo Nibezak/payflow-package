@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Console\Commands;
+namespace Payflow\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Schema;
-use Lunar\Facades\DB;
+use Payflow\Facades\DB;
 use Symfony\Component\Finder\Exception\DirectoryNotFoundException;
 
 class MigrateGetCandy extends Command
@@ -15,14 +15,14 @@ class MigrateGetCandy extends Command
      *
      * @var string
      */
-    protected $signature = 'lunar:migrate:getcandy';
+    protected $signature = 'payflow:migrate:getcandy';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Migrate GetCandy into Lunar';
+    protected $description = 'Migrate GetCandy into Payflow';
 
     /**
      * Execute the console command.
@@ -35,15 +35,15 @@ class MigrateGetCandy extends Command
 
         $tables = $tableNames->filter(fn ($table) => str_contains($table, 'getcandy_'));
 
-        $lunarTables = $tableNames->filter(fn ($table) => str_contains($table, 'lunar_'));
+        $payflowTables = $tableNames->filter(fn ($table) => str_contains($table, 'payflow_'));
 
-        if ($tables->count() && ! $lunarTables->count()) {
+        if ($tables->count() && ! $payflowTables->count()) {
             $this->migrateTableNames($tables);
         }
 
         $this->components->info('Updating Polymorphic relationships');
 
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         // Tables with polymorphic relations...
         $tables = [
@@ -86,7 +86,7 @@ class MigrateGetCandy extends Command
                 foreach ($rows as $row) {
                     DB::table($table)->update([
                         $row => DB::RAW(
-                            "REPLACE({$row}, 'GetCandy', 'Lunar')"
+                            "REPLACE({$row}, 'GetCandy', 'Payflow')"
                         ),
                     ]);
                 }
@@ -109,7 +109,7 @@ class MigrateGetCandy extends Command
 
             DB::table($tableName)->update([
                 'attribute_data' => DB::RAW(
-                    "REPLACE(attribute_data, 'GetCandy', 'Lunar')"
+                    "REPLACE(attribute_data, 'GetCandy', 'Payflow')"
                 ),
             ]);
         }
@@ -143,7 +143,7 @@ class MigrateGetCandy extends Command
 
         foreach ($tables as $table) {
             $old = $table;
-            $new = str_replace('getcandy_', 'lunar_', $table);
+            $new = str_replace('getcandy_', 'payflow_', $table);
 
             if (! Schema::hasTable($old) || ! Schema::hasTable($new)) {
                 continue;
@@ -155,7 +155,7 @@ class MigrateGetCandy extends Command
                 if (Schema::hasColumn('getcandy_products', 'brand')) {
                     $brands = DB::table('getcandy_products')->select('brand')->distinct()->get();
 
-                    DB::table('lunar_brands')->insert(
+                    DB::table('payflow_brands')->insert(
                         $brands->filter()->map(function ($brand) {
                             return [
                                 'name' => $brand->brand,
@@ -165,7 +165,7 @@ class MigrateGetCandy extends Command
                 }
             }
 
-            $brands = DB::table('lunar_brands')->get();
+            $brands = DB::table('payflow_brands')->get();
 
             DB::table($old)->orderBy('id')->chunk(100, function ($rows) use ($new, $brands) {
                 $insert = [];

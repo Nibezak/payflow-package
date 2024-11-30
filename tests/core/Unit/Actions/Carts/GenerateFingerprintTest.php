@@ -1,13 +1,13 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\Actions\Carts\GenerateFingerprint;
-use Lunar\Models\Cart;
-use Lunar\Models\Channel;
-use Lunar\Models\Currency;
-use Lunar\Models\Price;
-use Lunar\Models\ProductVariant;
+use Payflow\Actions\Carts\GenerateFingerprint;
+use Payflow\Models\Cart;
+use Payflow\Models\Channel;
+use Payflow\Models\Currency;
+use Payflow\Models\Price;
+use Payflow\Models\ProductVariant;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

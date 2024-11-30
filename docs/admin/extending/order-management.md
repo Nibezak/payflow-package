@@ -5,8 +5,8 @@ Although orders have access to the same customisation as [Pages](/admin/extendin
 To register your extension:
 
 ```php
-LunarPanel::extensions([
-    \Lunar\Admin\Filament\Resources\OrderResource\Pages\ManageOrder::class => MyManageOrderExtension::class,
+PayflowPanel::extensions([
+    \Payflow\Admin\Filament\Resources\OrderResource\Pages\ManageOrder::class => MyManageOrderExtension::class,
 ]);
 ```
 
@@ -52,8 +52,8 @@ You then have access to these methods in your class to override area's of the or
 ## Extending `OrderItemsTable`
 
 ```php
-\Lunar\Facades\LunarPanel::extensions([
-    \Lunar\Admin\Filament\Resources\OrderResource\Pages\Components\OrderItemsTable::class => OrderItemsTableExtension::class
+\Payflow\Facades\PayflowPanel::extensions([
+    \Payflow\Admin\Filament\Resources\OrderResource\Pages\Components\OrderItemsTable::class => OrderItemsTableExtension::class
 ]);
 ```
 ### Available Methods

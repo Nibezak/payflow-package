@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Tests\Admin;
+namespace Payflow\Tests\Admin;
 
 use Awcodes\Shout\ShoutServiceProvider;
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
@@ -17,11 +17,11 @@ use Filament\Widgets\WidgetsServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Kalnoy\Nestedset\NestedSetServiceProvider;
 use Livewire\LivewireServiceProvider;
-use Lunar\Admin\LunarPanelProvider;
-use Lunar\Admin\Models\Staff;
-use Lunar\LunarServiceProvider;
-use Lunar\Tests\Admin\Providers\LunarPanelTestServiceProvider;
-use Lunar\Tests\Admin\Stubs\User;
+use Payflow\Admin\PayflowPanelProvider;
+use Payflow\Admin\Models\Staff;
+use Payflow\PayflowServiceProvider;
+use Payflow\Tests\Admin\Providers\PayflowPanelTestServiceProvider;
+use Payflow\Tests\Admin\Stubs\User;
 use Marvinosswald\FilamentInputSelectAffix\FilamentInputSelectAffixServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
@@ -48,8 +48,8 @@ class TestCase extends BaseTestCase
     protected function getPackageProviders($app): array
     {
         return [
-            LunarServiceProvider::class,
-            LunarPanelProvider::class,
+            PayflowServiceProvider::class,
+            PayflowPanelProvider::class,
 
             ActionsServiceProvider::class,
             BladeCaptureDirectiveServiceProvider::class,
@@ -66,7 +66,7 @@ class TestCase extends BaseTestCase
             FilamentInputSelectAffixServiceProvider::class,
             ShoutServiceProvider::class,
 
-            LunarPanelTestServiceProvider::class,
+            PayflowPanelTestServiceProvider::class,
 
             LivewireServiceProvider::class,
             MediaLibraryServiceProvider::class,

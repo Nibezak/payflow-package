@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Actions\Taxes;
+namespace Payflow\Actions\Taxes;
 
-use Lunar\Models\TaxZoneState;
+use Payflow\Models\TaxZoneState;
 
 class GetTaxZoneState
 {

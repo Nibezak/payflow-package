@@ -1,31 +1,41 @@
 {
-  "name": "lunarphp/paypal",
+  "name": "payflowphp/paypal",
   "type": "project",
-  "description": "Paypal payment driver for Lunar.",
-  "keywords": ["lunarphp", "laravel", "ecommerce", "e-commerce", "headless", "store", "shop", "cart", "paypal"],
+  "description": "Paypal payment driver for Payflow.",
+  "keywords": [
+    "payflowphp",
+    "laravel",
+    "ecommerce",
+    "e-commerce",
+    "headless",
+    "store",
+    "shop",
+    "cart",
+    "paypal"
+  ],
   "license": "MIT",
   "authors": [
     {
-      "name": "Lunar",
-      "homepage": "https://lunarphp.io/"
+      "name": "Payflow",
+      "homepage": "https://payflowphp.io/"
     }
   ],
   "require": {
     "php": "^8.2",
-    "lunarphp/core": "self.version"
+    "payflowphp/core": "self.version"
   },
   "autoload": {
     "psr-4": {
-      "Lunar\\Paypal\\": "src/"
+      "Payflow\\Paypal\\": "src/"
     }
   },
   "extra": {
-    "lunar": {
+    "payflow": {
       "name": "Paypal Payments"
     },
     "laravel": {
       "providers": [
-        "Lunar\\Paypal\\PaypalServiceProvider"
+        "Payflow\\Paypal\\PaypalServiceProvider"
       ]
     }
   },

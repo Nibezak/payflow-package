@@ -1,12 +1,12 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 use Illuminate\Support\Facades\Route;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Traits\HasModelExtending;
-use Lunar\Models\Collection as ModelsCollection;
-use Lunar\Models\Product;
-use Lunar\Models\Url;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Traits\HasModelExtending;
+use Payflow\Models\Collection as ModelsCollection;
+use Payflow\Models\Product;
+use Payflow\Models\Url;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

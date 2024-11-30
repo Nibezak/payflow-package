@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Admin\Auth;
+namespace Payflow\Admin\Auth;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Lunar\Admin\Support\DataTransferObjects\Permission;
-use Lunar\Admin\Support\DataTransferObjects\Role;
-use Lunar\Admin\Support\Facades\LunarPanel;
+use Payflow\Admin\Support\DataTransferObjects\Permission;
+use Payflow\Admin\Support\DataTransferObjects\Role;
+use Payflow\Admin\Support\Facades\PayflowPanel;
 use Spatie\Permission\Models\Permission as SpatiePermission;
 use Spatie\Permission\Models\Role as SpatieRole;
 
@@ -40,7 +40,7 @@ class Manifest
 
         $baseRoles = $this->getBaseRoles();
 
-        $roles = SpatieRole::where('guard_name', LunarPanel::getPanel()->getAuthGuard())->get('name');
+        $roles = SpatieRole::where('guard_name', PayflowPanel::getPanel()->getAuthGuard())->get('name');
 
         foreach ($roles as $role) {
             $this->roles->push(Role::make($role->name, in_array($role->name, $baseRoles)));
@@ -70,7 +70,7 @@ class Manifest
 
         $basePermissions = $this->getBasePermissions();
 
-        $permissions = SpatiePermission::where('guard_name', LunarPanel::getPanel()->getAuthGuard())->get('name');
+        $permissions = SpatiePermission::where('guard_name', PayflowPanel::getPanel()->getAuthGuard())->get('name');
 
         foreach ($permissions as $permission) {
             $this->permissions->push(Permission::make($permission->name, in_array($permission->name, $basePermissions)));
@@ -122,7 +122,7 @@ class Manifest
     }
 
     /**
-     * Returns the base permissions which are required by Lunar.
+     * Returns the base permissions which are required by Payflow.
      */
     public function getBaseRoles(): array
     {
@@ -133,7 +133,7 @@ class Manifest
     }
 
     /**
-     * Returns the base permissions which are required by Lunar.
+     * Returns the base permissions which are required by Payflow.
      */
     public function getBasePermissions(): array
     {

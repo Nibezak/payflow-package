@@ -1,13 +1,13 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\OrderResource\Pages;
+namespace Payflow\Admin\Filament\Resources\OrderResource\Pages;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Actions;
 use Filament\Forms;
 use Filament\Notifications\Notification;
-use Lunar\Admin\Filament\Resources\OrderResource;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Admin\Filament\Resources\OrderResource;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
 
 class EditOrder extends BaseEditRecord
 {
@@ -20,12 +20,12 @@ class EditOrder extends BaseEditRecord
                 ->color('gray')
                 ->url('#'),
             Actions\Action::make('update_status')
-                ->label(__('lunarpanel::order.action.update_status.label'))
+                ->label(__('payflowpanel::order.action.update_status.label'))
                 ->form([
                     Forms\Components\Select::make('status')
-                        ->label(__('lunarpanel::order.form.status.label'))
+                        ->label(__('payflowpanel::order.form.status.label'))
                         ->default($this->record->status)
-                        ->options(fn () => collect(config('lunar.orders.statuses', []))
+                        ->options(fn () => collect(config('payflow.orders.statuses', []))
                             ->mapWithKeys(fn ($data, $status) => [$status => $data['label']]))
                         ->required(),
                     Forms\Components\Placeholder::make('additional content and mailer'),
@@ -36,14 +36,14 @@ class EditOrder extends BaseEditRecord
                     ->update([
                         'status' => $data['status'],
                     ]))
-                ->after(fn () => Notification::make()->title(__('lunarpanel::order.action.update_status.notification'))->success()->send()),
+                ->after(fn () => Notification::make()->title(__('payflowpanel::order.action.update_status.notification'))->success()->send()),
             Actions\Action::make('download_pdf')
-                ->label(__('lunarpanel::order.action.download_order_pdf.label'))
+                ->label(__('payflowpanel::order.action.download_order_pdf.label'))
                 ->action(function () {
-                    Notification::make()->title(__('lunarpanel::order.action.download_order_pdf.notification'))->success()->send();
+                    Notification::make()->title(__('payflowpanel::order.action.download_order_pdf.notification'))->success()->send();
 
                     return response()->streamDownload(function () {
-                        echo Pdf::loadView('lunarpanel::pdf.order', [
+                        echo Pdf::loadView('payflowpanel::pdf.order', [
                             'record' => $this->record,
                         ])->stream();
                     }, name: "Order-{$this->record->reference}.pdf");

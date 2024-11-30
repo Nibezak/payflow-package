@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductVariantResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ProductVariantResource\Pages;
 
 use Cartalyst\Converter\Laravel\Facades\Converter;
 use Filament\Actions\Action;
@@ -9,9 +9,9 @@ use Filament\Forms\Form;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Filament\Resources\ProductResource;
-use Lunar\Admin\Filament\Resources\ProductVariantResource;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Admin\Filament\Resources\ProductResource;
+use Payflow\Admin\Filament\Resources\ProductVariantResource;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
 
 class ManageVariantShipping extends BaseEditRecord
 {
@@ -19,17 +19,17 @@ class ManageVariantShipping extends BaseEditRecord
 
     public function getTitle(): string|Htmlable
     {
-        return __('lunarpanel::productvariant.pages.shipping.title');
+        return __('payflowpanel::productvariant.pages.shipping.title');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::productvariant.pages.shipping.title');
+        return __('payflowpanel::productvariant.pages.shipping.title');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::product-shipping');
+        return FilamentIcon::resolve('payflow::product-shipping');
     }
 
     protected function getDefaultHeaderActions(): array

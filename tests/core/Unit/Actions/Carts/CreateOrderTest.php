@@ -1,25 +1,25 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\Actions\Carts\CreateOrder;
-use Lunar\DataTypes\Price as PriceDataType;
-use Lunar\DataTypes\ShippingOption;
-use Lunar\Exceptions\DisallowMultipleCartOrdersException;
-use Lunar\Facades\ShippingManifest;
-use Lunar\Models\Cart;
-use Lunar\Models\CartAddress;
-use Lunar\Models\Country;
-use Lunar\Models\Currency;
-use Lunar\Models\Customer;
-use Lunar\Models\CustomerGroup;
-use Lunar\Models\Order;
-use Lunar\Models\OrderAddress;
-use Lunar\Models\OrderLine;
-use Lunar\Models\Price;
-use Lunar\Models\ProductVariant;
-use Lunar\Models\TaxClass;
-use Lunar\Models\TaxRateAmount;
+use Payflow\Actions\Carts\CreateOrder;
+use Payflow\DataTypes\Price as PriceDataType;
+use Payflow\DataTypes\ShippingOption;
+use Payflow\Exceptions\DisallowMultipleCartOrdersException;
+use Payflow\Facades\ShippingManifest;
+use Payflow\Models\Cart;
+use Payflow\Models\CartAddress;
+use Payflow\Models\Country;
+use Payflow\Models\Currency;
+use Payflow\Models\Customer;
+use Payflow\Models\CustomerGroup;
+use Payflow\Models\Order;
+use Payflow\Models\OrderAddress;
+use Payflow\Models\OrderLine;
+use Payflow\Models\Price;
+use Payflow\Models\ProductVariant;
+use Payflow\Models\TaxClass;
+use Payflow\Models\TaxRateAmount;
 
 use function Pest\Laravel\{assertDatabaseHas};
 
@@ -109,9 +109,9 @@ function can_update_draft_order()
 }
 
 test('can create order', function () {
-    \Lunar\Facades\ModelManifest::replace(
-        \Lunar\Models\Contracts\Order::class,
-        \Lunar\Tests\Core\Stubs\Models\CustomOrder::class
+    \Payflow\Facades\ModelManifest::replace(
+        \Payflow\Models\Contracts\Order::class,
+        \Payflow\Tests\Core\Stubs\Models\CustomOrder::class
     );
     CustomerGroup::factory()->create([
         'default' => true,
@@ -209,7 +209,7 @@ test('can create order', function () {
     $datacheck = [
         'user_id' => $cart->user_id,
         'channel_id' => $cart->channel_id,
-        'status' => config('lunar.orders.draft_status'),
+        'status' => config('payflow.orders.draft_status'),
         'customer_reference' => null,
         'sub_total' => $cart->subTotal->value,
         'total' => $cart->total->value,
@@ -342,7 +342,7 @@ test('can create order with customer', function () {
         'user_id' => $cart->user_id,
         'customer_id' => $cart->customer_id,
         'channel_id' => $cart->channel_id,
-        'status' => config('lunar.orders.draft_status'),
+        'status' => config('payflow.orders.draft_status'),
         'customer_reference' => null,
         'sub_total' => $cart->subTotal->value,
         'total' => $cart->total->value,

@@ -116,9 +116,9 @@
         ])
     >
         @if(!$transaction->success)
-            {{ __('lunarpanel::order.transactions.failed') }}
+            {{ __('payflowpanel::order.transactions.failed') }}
         @else
-            {{ __('lunarpanel::order.transactions.'.$transaction->type) }}
+            {{ __('payflowpanel::order.transactions.'.$transaction->type) }}
         @endif
     </div>
 </div>

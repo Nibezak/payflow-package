@@ -1,19 +1,19 @@
 <?php
 
-namespace Lunar\Shipping\Models;
+namespace Payflow\Shipping\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Purchasable;
-use Lunar\Base\Traits\HasPrices;
-use Lunar\DataTypes\ShippingOption;
-use Lunar\Models\Cart;
-use Lunar\Models\TaxClass;
-use Lunar\Shipping\Database\Factories\ShippingRateFactory;
-use Lunar\Shipping\DataTransferObjects\ShippingOptionRequest;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Purchasable;
+use Payflow\Base\Traits\HasPrices;
+use Payflow\DataTypes\ShippingOption;
+use Payflow\Models\Cart;
+use Payflow\Models\TaxClass;
+use Payflow\Shipping\Database\Factories\ShippingRateFactory;
+use Payflow\Shipping\DataTransferObjects\ShippingOptionRequest;
 
 class ShippingRate extends BaseModel implements Contracts\ShippingRate, Purchasable
 {
@@ -141,7 +141,7 @@ class ShippingRate extends BaseModel implements Contracts\ShippingRate, Purchasa
      */
     public function getShippingOption(Cart $cart): ?ShippingOption
     {
-        if (config('lunar.shipping-tables.shipping_rate_tax_calculation') == 'highest') {
+        if (config('payflow.shipping-tables.shipping_rate_tax_calculation') == 'highest') {
             $this->resolvedTaxClass = $this->resolveHighestTaxRateInCart($cart);
         }
 

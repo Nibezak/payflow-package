@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Admin\Support\Synthesizers;
+namespace Payflow\Admin\Support\Synthesizers;
 
 use Livewire\Mechanisms\HandleComponents\Synthesizers\Synth;
-use Lunar\DataTypes\Price;
-use Lunar\Models\Currency;
+use Payflow\DataTypes\Price;
+use Payflow\Models\Currency;
 
 final class PriceSynth extends Synth
 {
-    public static $key = 'lunar_price';
+    public static $key = 'payflow_price';
 
     public static function match($target)
     {

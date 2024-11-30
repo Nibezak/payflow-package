@@ -1,9 +1,9 @@
 <?php
 
-uses(\Lunar\Tests\Shipping\TestCase::class);
+uses(\Payflow\Tests\Shipping\TestCase::class);
 
-use Lunar\Shipping\Models\ShippingZone;
-use Lunar\Shipping\Models\ShippingZonePostcode;
+use Payflow\Shipping\Models\ShippingZone;
+use Payflow\Shipping\Models\ShippingZonePostcode;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

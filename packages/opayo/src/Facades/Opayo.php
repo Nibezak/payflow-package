@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Opayo\Facades;
+namespace Payflow\Opayo\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Lunar\Opayo\DataTransferObjects\AuthPayloadParameters;
-use Lunar\Opayo\OpayoInterface;
+use Payflow\Opayo\DataTransferObjects\AuthPayloadParameters;
+use Payflow\Opayo\OpayoInterface;
 
 /**
  * @method static getAuthPayload(AuthPayloadParameters $parameters): array

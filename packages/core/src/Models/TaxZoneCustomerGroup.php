@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Traits\HasMacros;
-use Lunar\Database\Factories\TaxZoneCustomerGroupFactory;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Traits\HasMacros;
+use Payflow\Database\Factories\TaxZoneCustomerGroupFactory;
 
 /**
  * @property int $id

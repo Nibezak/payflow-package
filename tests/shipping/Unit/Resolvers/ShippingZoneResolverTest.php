@@ -1,12 +1,12 @@
 <?php
 
-uses(\Lunar\Tests\Shipping\TestCase::class);
+uses(\Payflow\Tests\Shipping\TestCase::class);
 
-use Lunar\Models\Country;
-use Lunar\Models\State;
-use Lunar\Shipping\DataTransferObjects\PostcodeLookup;
-use Lunar\Shipping\Models\ShippingZone;
-use Lunar\Shipping\Resolvers\ShippingZoneResolver;
+use Payflow\Models\Country;
+use Payflow\Models\State;
+use Payflow\Shipping\DataTransferObjects\PostcodeLookup;
+use Payflow\Shipping\Models\ShippingZone;
+use Payflow\Shipping\Resolvers\ShippingZoneResolver;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

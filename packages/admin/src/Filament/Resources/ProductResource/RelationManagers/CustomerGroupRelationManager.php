@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductResource\RelationManagers;
+namespace Payflow\Admin\Filament\Resources\ProductResource\RelationManagers;
 
 use Filament;
 use Filament\Forms\Form;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
-use Lunar\Admin\Events\ProductCustomerGroupsUpdated;
-use Lunar\Admin\Support\RelationManagers\BaseRelationManager;
+use Payflow\Admin\Events\ProductCustomerGroupsUpdated;
+use Payflow\Admin\Support\RelationManagers\BaseRelationManager;
 
 class CustomerGroupRelationManager extends BaseRelationManager
 {
@@ -44,7 +44,7 @@ class CustomerGroupRelationManager extends BaseRelationManager
     {
         $columns = collect($pivotColumns)->map(function ($column) {
             return Filament\Forms\Components\Toggle::make($column)->label(
-                __("lunarpanel::relationmanagers.customer_groups.form.{$column}.label")
+                __("payflowpanel::relationmanagers.customer_groups.form.{$column}.label")
             );
         });
 
@@ -60,10 +60,10 @@ class CustomerGroupRelationManager extends BaseRelationManager
             ...$grid,
             ...[Filament\Forms\Components\Grid::make(2)->schema([
                 Filament\Forms\Components\DateTimePicker::make('starts_at')->label(
-                    __('lunarpanel::relationmanagers.customer_groups.form.starts_at.label')
+                    __('payflowpanel::relationmanagers.customer_groups.form.starts_at.label')
                 ),
                 Filament\Forms\Components\DateTimePicker::make('ends_at')->label(
-                    __('lunarpanel::relationmanagers.customer_groups.form.ends_at.label')
+                    __('payflowpanel::relationmanagers.customer_groups.form.ends_at.label')
                 ),
             ])],
         ];
@@ -73,7 +73,7 @@ class CustomerGroupRelationManager extends BaseRelationManager
     {
         $pivotColumns = collect($this->getPivotColumns())->map(function ($column) {
             return Tables\Columns\IconColumn::make($column)->label(
-                __("lunarpanel::relationmanagers.customer_groups.table.{$column}.label")
+                __("payflowpanel::relationmanagers.customer_groups.table.{$column}.label")
             )
                 ->color(fn (string $state): string => match ($state) {
                     '1' => 'success',
@@ -86,7 +86,7 @@ class CustomerGroupRelationManager extends BaseRelationManager
 
         return $table
             ->description(
-                $this->description ?: __('lunarpanel::relationmanagers.customer_groups.table.description', [
+                $this->description ?: __('payflowpanel::relationmanagers.customer_groups.table.description', [
                     'type' => Str::lower(class_basename(get_class($this->getOwnerRecord()))),
                 ])
             )
@@ -99,23 +99,23 @@ class CustomerGroupRelationManager extends BaseRelationManager
                     return $record->name;
                 })->preloadRecordSelect()
                     ->label(
-                        __('lunarpanel::relationmanagers.customer_groups.actions.attach.label')
+                        __('payflowpanel::relationmanagers.customer_groups.actions.attach.label')
                     )->after(
                         fn () => ProductCustomerGroupsUpdated::dispatch($this->getOwnerRecord())
                     ),
             ])->columns([
                 ...[
                     Tables\Columns\TextColumn::make('name')->label(
-                        __('lunarpanel::relationmanagers.customer_groups.table.name.label')
+                        __('payflowpanel::relationmanagers.customer_groups.table.name.label')
                     ),
                 ],
                 ...$pivotColumns,
                 ...[
                     Tables\Columns\TextColumn::make('starts_at')->label(
-                        __('lunarpanel::relationmanagers.customer_groups.table.starts_at.label')
+                        __('payflowpanel::relationmanagers.customer_groups.table.starts_at.label')
                     )->dateTime(),
                     Tables\Columns\TextColumn::make('ends_at')->label(
-                        __('lunarpanel::relationmanagers.customer_groups.table.ends_at.label')
+                        __('payflowpanel::relationmanagers.customer_groups.table.ends_at.label')
                     )->dateTime(),
                 ],
             ])->actions([

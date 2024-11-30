@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Exceptions\Carts;
+namespace Payflow\Exceptions\Carts;
 
 use Illuminate\Contracts\Support\MessageBag;
-use Lunar\Exceptions\LunarException;
+use Payflow\Exceptions\PayflowException;
 
-class CartException extends LunarException
+class CartException extends PayflowException
 {
     /**
      * The cart exception message bag.
@@ -27,7 +27,7 @@ class CartException extends LunarException
         $messages = $messageBag->all();
 
         if (! count($messages) || ! is_string($messages[0])) {
-            return __('lunar::exceptions.carts.invalid_action');
+            return __('payflow::exceptions.carts.invalid_action');
         }
 
         $message = array_shift($messages);

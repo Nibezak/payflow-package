@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\CustomerGroupResource\Pages;
+namespace Payflow\Admin\Filament\Resources\CustomerGroupResource\Pages;
 
-use Lunar\Admin\Filament\Resources\CustomerGroupResource;
-use Lunar\Admin\Support\Pages\BaseCreateRecord;
+use Payflow\Admin\Filament\Resources\CustomerGroupResource;
+use Payflow\Admin\Support\Pages\BaseCreateRecord;
 
 class CreateCustomerGroup extends BaseCreateRecord
 {

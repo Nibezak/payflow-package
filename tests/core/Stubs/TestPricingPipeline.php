@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Tests\Core\Stubs;
+namespace Payflow\Tests\Core\Stubs;
 
 use Closure;
-use Lunar\Base\PricingManagerInterface;
+use Payflow\Base\PricingManagerInterface;
 
 class TestPricingPipeline
 {

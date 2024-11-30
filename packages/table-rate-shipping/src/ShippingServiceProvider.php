@@ -1,38 +1,38 @@
 <?php
 
-namespace Lunar\Shipping;
+namespace Payflow\Shipping;
 
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
-use Lunar\Base\ShippingModifiers;
-use Lunar\Facades\ModelManifest;
-use Lunar\Models\CustomerGroup;
-use Lunar\Models\Order;
-use Lunar\Models\Product;
-use Lunar\Shipping\Interfaces\ShippingMethodManagerInterface;
-use Lunar\Shipping\Managers\ShippingManager;
-use Lunar\Shipping\Models\ShippingExclusion;
-use Lunar\Shipping\Models\ShippingExclusionList;
-use Lunar\Shipping\Models\ShippingMethod;
-use Lunar\Shipping\Models\ShippingRate;
-use Lunar\Shipping\Models\ShippingZone;
-use Lunar\Shipping\Models\ShippingZonePostcode;
-use Lunar\Shipping\Observers\OrderObserver;
+use Payflow\Base\ShippingModifiers;
+use Payflow\Facades\ModelManifest;
+use Payflow\Models\CustomerGroup;
+use Payflow\Models\Order;
+use Payflow\Models\Product;
+use Payflow\Shipping\Interfaces\ShippingMethodManagerInterface;
+use Payflow\Shipping\Managers\ShippingManager;
+use Payflow\Shipping\Models\ShippingExclusion;
+use Payflow\Shipping\Models\ShippingExclusionList;
+use Payflow\Shipping\Models\ShippingMethod;
+use Payflow\Shipping\Models\ShippingRate;
+use Payflow\Shipping\Models\ShippingZone;
+use Payflow\Shipping\Models\ShippingZonePostcode;
+use Payflow\Shipping\Observers\OrderObserver;
 
 class ShippingServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/shipping-tables.php', 'lunar.shipping-tables');
+        $this->mergeConfigFrom(__DIR__.'/../config/shipping-tables.php', 'payflow.shipping-tables');
     }
 
     public function boot(ShippingModifiers $shippingModifiers)
     {
-        if (! config('lunar.shipping-tables.enabled')) {
+        if (! config('payflow.shipping-tables.enabled')) {
             return;
         }
 
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'lunarpanel.shipping');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'payflowpanel.shipping');
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
@@ -45,7 +45,7 @@ class ShippingServiceProvider extends ServiceProvider
         Order::observe(OrderObserver::class);
 
         Order::resolveRelationUsing('shippingZone', function ($orderModel) {
-            $prefix = config('lunar.database.table_prefix');
+            $prefix = config('payflow.database.table_prefix');
 
             return $orderModel->belongsToMany(
                 ShippingZone::class,
@@ -54,7 +54,7 @@ class ShippingServiceProvider extends ServiceProvider
         });
 
         CustomerGroup::resolveRelationUsing('shippingMethods', function ($customerGroup) {
-            $prefix = config('lunar.database.table_prefix');
+            $prefix = config('payflow.database.table_prefix');
 
             return $customerGroup->belongsToMany(
                 ShippingMethod::class,

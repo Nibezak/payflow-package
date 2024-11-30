@@ -2,23 +2,23 @@
 
 use Livewire\Livewire;
 
-uses(\Lunar\Tests\Admin\Unit\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Unit\Filament\TestCase::class)
     ->group('resource.product');
 
 it('can return configured relation managers', function () {
-    \Lunar\Models\CustomerGroup::factory()->create([
+    \Payflow\Models\CustomerGroup::factory()->create([
         'default' => true,
     ]);
 
-    \Lunar\Models\Language::factory()->create([
+    \Payflow\Models\Language::factory()->create([
         'default' => true,
     ]);
 
-    $product = \Lunar\Models\Product::factory()->create();
+    $product = \Payflow\Models\Product::factory()->create();
 
     $this->asStaff(admin: true);
 
-    $component = Livewire::test(\Lunar\Admin\Filament\Resources\ProductResource\Pages\ManageProductMedia::class, [
+    $component = Livewire::test(\Payflow\Admin\Filament\Resources\ProductResource\Pages\ManageProductMedia::class, [
         'record' => $product->id,
         'pageClass' => 'productMediaRelationManager',
     ])->assertSuccessful();

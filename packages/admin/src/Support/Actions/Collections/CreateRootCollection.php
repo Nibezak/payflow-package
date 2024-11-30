@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Admin\Support\Actions\Collections;
+namespace Payflow\Admin\Support\Actions\Collections;
 
 use Filament\Actions\CreateAction;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
-use Lunar\Admin\Support\Forms\Components\TranslatedText;
-use Lunar\Facades\DB;
-use Lunar\Models\Attribute;
-use Lunar\Models\Collection;
+use Payflow\Admin\Support\Forms\Components\TranslatedText;
+use Payflow\Facades\DB;
+use Payflow\Models\Attribute;
+use Payflow\Models\Collection;
 
 class CreateRootCollection extends CreateAction
 {
@@ -63,7 +63,7 @@ class CreateRootCollection extends CreateAction
 
         $formInput = TextInput::class;
 
-        if ($attribute?->type == \Lunar\FieldTypes\TranslatedText::class) {
+        if ($attribute?->type == \Payflow\FieldTypes\TranslatedText::class) {
             $formInput = TranslatedText::class;
         }
 
@@ -72,11 +72,11 @@ class CreateRootCollection extends CreateAction
         ]);
 
         $this->label(
-            __('lunarpanel::actions.collections.create_root.label')
+            __('payflowpanel::actions.collections.create_root.label')
         );
 
         $this->modalHeading(
-            __('lunarpanel::actions.collections.create_root.label')
+            __('payflowpanel::actions.collections.create_root.label')
         );
     }
 }

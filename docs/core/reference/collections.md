@@ -16,7 +16,7 @@ A collection must also belong to a collection group, this allows you to have gre
 Create a collection group
 
 ```php
-$group = \Lunar\Models\CollectionGroup::create([
+$group = \Payflow\Models\CollectionGroup::create([
     'name' => 'Main Catalogue',
     'handle' => 'main-catalogue' // Will auto generate if omitted.
 ]);
@@ -30,9 +30,9 @@ Collections are a hierarchy of models that have products associated to them, you
 ### Create a collection
 
 ```php
-$collection = \Lunar\Models\Collection::create([
+$collection = \Payflow\Models\Collection::create([
     'attribute_data' => [
-        'name' => new \Lunar\FieldTypes\Text('Clearance'),
+        'name' => new \Payflow\FieldTypes\Text('Clearance'),
     ],
     'collection_group_id' => $group->id,
 ]);
@@ -42,7 +42,7 @@ $collection = \Lunar\Models\Collection::create([
 ### Add a child collection
 
 ```php
-$child = new \Lunar\Models\Collection::create([/*..*/]);
+$child = new \Payflow\Models\Collection::create([/*..*/]);
 
 $collection->appendNode($child);
 ```
@@ -54,7 +54,7 @@ This results in the following
     - Child
 ```
 
-Lunar uses the [Laravel Nested Set](https://github.com/lazychaser/laravel-nestedset) package, so feel free to take a look at it to see what's possible.
+Payflow uses the [Laravel Nested Set](https://github.com/lazychaser/laravel-nestedset) package, so feel free to take a look at it to see what's possible.
 
 ### Adding products
 
@@ -79,7 +79,7 @@ The key in the `$products` array is the product id
 
 ### Sorting products
 
-Lunar comes with a handful of criteria out the box for sorting products in a collection:
+Payflow comes with a handful of criteria out the box for sorting products in a collection:
 
 |Name|Description|
 |:-|:-|
@@ -89,4 +89,4 @@ Lunar comes with a handful of criteria out the box for sorting products in a col
 |`sku:desc`|Sorts using the sku descending|
 |`custom`|This will allow you to specify the order of each product manually|
 
-Depending on what you have as the sort time on the collection, Lunar will automatically sort the products for you when you update the products.
+Depending on what you have as the sort time on the collection, Payflow will automatically sort the products for you when you update the products.

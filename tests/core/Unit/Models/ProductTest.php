@@ -1,28 +1,28 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
-use Lunar\Facades\DB;
-use Lunar\Models\Brand;
-use Lunar\Models\Channel;
-use Lunar\Models\Collection;
-use Lunar\Models\CustomerGroup;
-use Lunar\Models\Price;
-use Lunar\Models\Product;
-use Lunar\Models\ProductAssociation;
-use Lunar\Models\ProductType;
-use Lunar\Models\ProductVariant;
+use Payflow\Facades\DB;
+use Payflow\Models\Brand;
+use Payflow\Models\Channel;
+use Payflow\Models\Collection;
+use Payflow\Models\CustomerGroup;
+use Payflow\Models\Price;
+use Payflow\Models\Product;
+use Payflow\Models\ProductAssociation;
+use Payflow\Models\ProductType;
+use Payflow\Models\ProductVariant;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
 test('can make a product', function () {
     $attribute_data = collect([
-        'meta_title' => new \Lunar\FieldTypes\Text('I like cake'),
-        'pack_qty' => new \Lunar\FieldTypes\Number(12345),
-        'description' => new \Lunar\FieldTypes\TranslatedText(collect([
-            'en' => new \Lunar\FieldTypes\Text('Blue'),
-            'fr' => new \Lunar\FieldTypes\Text('Bleu'),
+        'meta_title' => new \Payflow\FieldTypes\Text('I like cake'),
+        'pack_qty' => new \Payflow\FieldTypes\Number(12345),
+        'description' => new \Payflow\FieldTypes\TranslatedText(collect([
+            'en' => new \Payflow\FieldTypes\Text('Blue'),
+            'fr' => new \Payflow\FieldTypes\Text('Bleu'),
         ])),
     ]);
 
@@ -37,11 +37,11 @@ test('can make a product', function () {
 
 test('can fetch product options', function () {
     $attribute_data = collect([
-        'meta_title' => new \Lunar\FieldTypes\Text('I like cake'),
-        'pack_qty' => new \Lunar\FieldTypes\Number(12345),
-        'description' => new \Lunar\FieldTypes\TranslatedText(collect([
-            'en' => new \Lunar\FieldTypes\Text('Blue'),
-            'fr' => new \Lunar\FieldTypes\Text('Bleu'),
+        'meta_title' => new \Payflow\FieldTypes\Text('I like cake'),
+        'pack_qty' => new \Payflow\FieldTypes\Number(12345),
+        'description' => new \Payflow\FieldTypes\TranslatedText(collect([
+            'en' => new \Payflow\FieldTypes\Text('Blue'),
+            'fr' => new \Payflow\FieldTypes\Text('Bleu'),
         ])),
     ]);
 
@@ -51,7 +51,7 @@ test('can fetch product options', function () {
             'attribute_data' => $attribute_data,
         ]);
 
-    $productOptions = \Lunar\Models\ProductOption::factory(2)->create();
+    $productOptions = \Payflow\Models\ProductOption::factory(2)->create();
 
     foreach ($productOptions as $index => $productOption) {
         $product->productOptions()->attach($productOption, ['position' => $index + 1]);
@@ -63,11 +63,11 @@ test('can fetch product options', function () {
 
 test('can fetch using status scope', function () {
     $attribute_data = collect([
-        'meta_title' => new \Lunar\FieldTypes\Text('I like cake'),
-        'pack_qty' => new \Lunar\FieldTypes\Number(12345),
-        'description' => new \Lunar\FieldTypes\TranslatedText(collect([
-            'en' => new \Lunar\FieldTypes\Text('Blue'),
-            'fr' => new \Lunar\FieldTypes\Text('Bleu'),
+        'meta_title' => new \Payflow\FieldTypes\Text('I like cake'),
+        'pack_qty' => new \Payflow\FieldTypes\Number(12345),
+        'description' => new \Payflow\FieldTypes\TranslatedText(collect([
+            'en' => new \Payflow\FieldTypes\Text('Blue'),
+            'fr' => new \Payflow\FieldTypes\Text('Bleu'),
         ])),
     ]);
 
@@ -114,7 +114,7 @@ test('product can be scheduled', function () {
     $product->scheduleChannel($channel, $publishDate);
 
     $this->assertDatabaseHas(
-        'lunar_channelables',
+        'payflow_channelables',
         [
             'channel_id' => $channel->id,
             'channelable_type' => $product->getMorphClass(),
@@ -124,7 +124,7 @@ test('product can be scheduled', function () {
         ],
     );
 
-    expect(DB::table('lunar_channelables')->get())->toHaveCount(1);
+    expect(DB::table('payflow_channelables')->get())->toHaveCount(1);
 })->group('products');
 
 test('customer groups can be enabled', function () {
@@ -137,7 +137,7 @@ test('customer groups can be enabled', function () {
     $product->scheduleCustomerGroup($customerGroup);
 
     $this->assertDatabaseHas(
-        'lunar_customer_group_product',
+        'payflow_customer_group_product',
         [
             'customer_group_id' => $customerGroup->id,
             'enabled' => 1,
@@ -157,7 +157,7 @@ test('customer groups can be scheduled always available', function () {
     $product->scheduleCustomerGroup($customerGroup);
 
     $this->assertDatabaseHas(
-        'lunar_customer_group_product',
+        'payflow_customer_group_product',
         [
             'customer_group_id' => $customerGroup->id,
             'enabled' => 1,
@@ -182,7 +182,7 @@ test('customer groups can be scheduled with start and end', function () {
     $product->scheduleCustomerGroup($customerGroup, $start);
 
     $this->assertDatabaseHas(
-        'lunar_customer_group_product',
+        'payflow_customer_group_product',
         [
             'customer_group_id' => $customerGroup->id,
             'enabled' => 1,
@@ -197,7 +197,7 @@ test('customer groups can be scheduled with start and end', function () {
     $product->scheduleCustomerGroup($customerGroup, $start, $end);
 
     $this->assertDatabaseHas(
-        'lunar_customer_group_product',
+        'payflow_customer_group_product',
         [
             'customer_group_id' => $customerGroup->id,
             'enabled' => 1,
@@ -224,7 +224,7 @@ test('customer groups can be scheduled with pivot data', function () {
     ]);
 
     $this->assertDatabaseHas(
-        'lunar_customer_group_product',
+        'payflow_customer_group_product',
         [
             'customer_group_id' => $customerGroup->id,
             'enabled' => 1,
@@ -239,7 +239,7 @@ test('customer groups can be scheduled with pivot data', function () {
     $product->scheduleCustomerGroup($customerGroup, $start, $end);
 
     $this->assertDatabaseHas(
-        'lunar_customer_group_product',
+        'payflow_customer_group_product',
         [
             'customer_group_id' => $customerGroup->id,
             'enabled' => 1,
@@ -263,7 +263,7 @@ test('customer groups can be unscheduled', function () {
     $product->scheduleCustomerGroup($customerGroup, $start, $end);
 
     $this->assertDatabaseHas(
-        'lunar_customer_group_product',
+        'payflow_customer_group_product',
         [
             'customer_group_id' => $customerGroup->id,
             'enabled' => 1,
@@ -280,7 +280,7 @@ test('customer groups can be unscheduled', function () {
     ]);
 
     $this->assertDatabaseHas(
-        'lunar_customer_group_product',
+        'payflow_customer_group_product',
         [
             'customer_group_id' => $customerGroup->id,
             'enabled' => 0,
@@ -481,11 +481,11 @@ test('can have collections relationship', function () {
 
 test('can retrieve prices', function () {
     $attribute_data = collect([
-        'meta_title' => new \Lunar\FieldTypes\Text('I like cake'),
-        'pack_qty' => new \Lunar\FieldTypes\Number(12345),
-        'description' => new \Lunar\FieldTypes\TranslatedText(collect([
-            'en' => new \Lunar\FieldTypes\Text('Blue'),
-            'fr' => new \Lunar\FieldTypes\Text('Bleu'),
+        'meta_title' => new \Payflow\FieldTypes\Text('I like cake'),
+        'pack_qty' => new \Payflow\FieldTypes\Number(12345),
+        'description' => new \Payflow\FieldTypes\TranslatedText(collect([
+            'en' => new \Payflow\FieldTypes\Text('Blue'),
+            'fr' => new \Payflow\FieldTypes\Text('Bleu'),
         ])),
     ]);
 

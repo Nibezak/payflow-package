@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Console\Commands;
+namespace Payflow\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Pipeline\Pipeline;
-use Lunar\Models\Cart;
+use Payflow\Models\Cart;
 
 class PruneCarts extends Command
 {
@@ -13,7 +13,7 @@ class PruneCarts extends Command
      *
      * @var string
      */
-    protected $signature = 'lunar:prune:carts';
+    protected $signature = 'payflow:prune:carts';
 
     /**
      * The console command description.
@@ -36,7 +36,7 @@ class PruneCarts extends Command
         $carts = app(Pipeline::class)
             ->send($query)
             ->through(
-                config('lunar.cart.prune_tables.pipelines', [])
+                config('payflow.cart.prune_tables.pipelines', [])
             )->then(function ($query) {
                 $query->chunk(200, function ($carts) {
                     $carts->each(fn ($cart) => $this->pruneCart($cart));

@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Database\State;
+namespace Payflow\Database\State;
 
 use Illuminate\Support\Facades\Schema;
-use Lunar\Models\TaxClass;
+use Payflow\Models\TaxClass;
 
 class EnsureDefaultTaxClassExists
 {
@@ -30,7 +30,7 @@ class EnsureDefaultTaxClassExists
 
     protected function canRun()
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return Schema::hasTable("{$prefix}tax_classes");
     }

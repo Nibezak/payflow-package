@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Managers;
+namespace Payflow\Managers;
 
 use Illuminate\Support\Manager;
-use Lunar\Drivers\SystemTaxDriver;
+use Payflow\Drivers\SystemTaxDriver;
 
 class TaxManager extends Manager
 {
@@ -25,6 +25,6 @@ class TaxManager extends Manager
 
     public function getDefaultDriver()
     {
-        return config('lunar.taxes.driver', 'system');
+        return config('payflow.taxes.driver', 'system');
     }
 }

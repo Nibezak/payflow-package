@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\StaffResource\Pages;
+namespace Payflow\Admin\Filament\Resources\StaffResource\Pages;
 
 use Filament\Actions;
-use Lunar\Admin\Filament\Resources\StaffResource;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Admin\Filament\Resources\StaffResource;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
 
 class EditStaff extends BaseEditRecord
 {

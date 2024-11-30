@@ -5,7 +5,7 @@
 Update the package
 
 ```sh
-composer update lunarphp/lunar
+composer update payflowphp/payflow
 ```
 
 Run any migrations
@@ -16,7 +16,7 @@ php artisan migrate
 
 ## Support Policy
 
-Lunar currently provides bug fixes and security updates for only the latest minor release, e.g. `0.8`.
+Payflow currently provides bug fixes and security updates for only the latest minor release, e.g. `0.8`.
 
 ## 1.0.0-beta.1
 
@@ -24,11 +24,11 @@ Lunar currently provides bug fixes and security updates for only the latest mino
 
 #### Model Extending
 
-Model extending has been completely rewritten and will require changes to your Laravel app if you have previously extended Lunar models.
+Model extending has been completely rewritten and will require changes to your Laravel app if you have previously extended Payflow models.
 
-The biggest difference is now Lunar models implement a contract (interface) and support dependency injection across your storefront and the Lunar panel.
+The biggest difference is now Payflow models implement a contract (interface) and support dependency injection across your storefront and the Payflow panel.
 
-You will need to update how you register models in Lunar.
+You will need to update how you register models in Payflow.
 
 ##### Old
 ```php
@@ -41,13 +41,13 @@ You will need to update how you register models in Lunar.
 ##### New
 ```php
 ModelManifest::replace(
-    \Lunar\Models\Contracts\Product::class,
+    \Payflow\Models\Contracts\Product::class,
     \App\Models\Product::class
 );
 ```
 
 ::: tip
-If your models are not extending their Lunar counterpart, you must implement the relevant contract in `Lunar\Models\Contracts`
+If your models are not extending their Payflow counterpart, you must implement the relevant contract in `Payflow\Models\Contracts`
 :::
 
 Look at the [model extending](/core/extending/models) section for all available functionality.
@@ -56,7 +56,7 @@ Look at the [model extending](/core/extending/models) section for all available 
 
 In order to support model extending better, all polymorphic relationships now use an alias instead of the fully qualified class name, this allows relationships to resolve to your custom model when interacting with Eloquent.
 
-There is an additional config setting in `config/lunar/database.php`, where you can set whether these polymorph mappings should be prefixed in Lunar's context.
+There is an additional config setting in `config/payflow/database.php`, where you can set whether these polymorph mappings should be prefixed in Payflow's context.
 
 ```php
 'morph_prefix' => null,
@@ -64,7 +64,7 @@ There is an additional config setting in `config/lunar/database.php`, where you 
 
 By default, this is set as `null` so the mapping for a product would just be `product`.
 
-There is a migration which will handle this change over for Lunar tables and some third party tables, however you may need to add your own migrations to other tables or to switch any custom models you may have.
+There is a migration which will handle this change over for Payflow tables and some third party tables, however you may need to add your own migrations to other tables or to switch any custom models you may have.
 
 #### Shipping methods availability
 
@@ -72,7 +72,7 @@ Shipping methods are now associated to Customer Groups. If you are using the shi
 
 #### Stripe Addon
 
-The Stripe addon will now attempt to update an order's billing and shipping address based on what has been stored against the Payment Intent. This is due to Stripe not always returning this information during their express checkout flows. This can be disabled by setting the `lunar.stripe.sync_addresses` config value to `false`.
+The Stripe addon will now attempt to update an order's billing and shipping address based on what has been stored against the Payment Intent. This is due to Stripe not always returning this information during their express checkout flows. This can be disabled by setting the `payflow.stripe.sync_addresses` config value to `false`.
 
 ##### PaymentIntent storage and reference to carts/orders
 Currently, PaymentIntent information is stored in the Cart model's meta, which is then transferred to the order when created.
@@ -104,14 +104,14 @@ Additionally, the logic in the webhook has been moved to the job queue, which is
 
 The Stripe webhook ENV entry has been changed from `STRIPE_WEBHOOK_PAYMENT_INTENT` to `LUNAR_STRIPE_WEBHOOK_SECRET`.
 
-The stripe config Lunar looks for in `config/services.php` has changed and should now look like:
+The stripe config Payflow looks for in `config/services.php` has changed and should now look like:
 
 ```php
 'stripe' => [
     'key' => env('STRIPE_SECRET'),
     'public_key' => env('STRIPE_PK'),
     'webhooks' => [
-        'lunar' => env('LUNAR_STRIPE_WEBHOOK_SECRET'),
+        'payflow' => env('LUNAR_STRIPE_WEBHOOK_SECRET'),
     ],
 ],
 ```
@@ -120,13 +120,13 @@ The stripe config Lunar looks for in `config/services.php` has changed and shoul
 
 ### High Impact
 
-There is now a new `LunarUser` interface you will need to implement on your `User` model.
+There is now a new `PayflowUser` interface you will need to implement on your `User` model.
 
 ```php
 // ...
-class User extends Authenticatable implements \Lunar\Base\LunarUser
+class User extends Authenticatable implements \Payflow\Base\PayflowUser
 {
-    use \Lunar\Base\Traits\LunarUser;
+    use \Payflow\Base\Traits\PayflowUser;
 }
 ```
 
@@ -138,7 +138,7 @@ Certain parts of `config/cart.php` which are more specific to when you are inter
 
 ```php
 // Move to config/cart_session.php
-'session_key' => 'lunar_cart',
+'session_key' => 'payflow_cart',
 'auto_create' => false,
 ```
 
@@ -163,10 +163,10 @@ If you are creating Collection Group from the admin panel, there is no changes r
 
 #### Update custom shipping modifiers signature
 
-The `\Lunar\Base\ShippingModifier` `handle` method now correctly passes a closure as the second parameter. You will need to update any custom shipping modifiers that extend this as follows:
+The `\Payflow\Base\ShippingModifier` `handle` method now correctly passes a closure as the second parameter. You will need to update any custom shipping modifiers that extend this as follows:
 
 ```php
-public function handle(\Lunar\Models\Cart $cart, \Closure $next)
+public function handle(\Payflow\Models\Cart $cart, \Closure $next)
 {
     //..
     
@@ -203,7 +203,7 @@ Carts now use soft deletes and a cart will be deleted when `CartSession::forget(
 If you don't want to delete the cart when you call `forget` you can pass `delete: false` as a parameter:
 
 ```php
-\Lunar\Facades\CartSession::forget(delete: false);
+\Payflow\Facades\CartSession::forget(delete: false);
 ```
 
 ## 1.0.0-alpha.20
@@ -216,10 +216,10 @@ If you are using the Stripe addon, you need to update the facade as the name has
 
 ```php
 // Old
-\Lunar\Stripe\Facades\StripeFacade;
+\Payflow\Stripe\Facades\StripeFacade;
 
 // New
-\Lunar\Stripe\Facades\Stripe;
+\Payflow\Stripe\Facades\Stripe;
 ```
 
 ## 1.0
@@ -228,7 +228,7 @@ If you are using the Stripe addon, you need to update the facade as the name has
 
 #### Change to Staff model namespace
 
-The Staff model has changed location from `Lunar\Hub\Models\Staff` to `Lunar\Admin\Models\Staff` so this will need to be updated within
+The Staff model has changed location from `Payflow\Hub\Models\Staff` to `Payflow\Admin\Models\Staff` so this will need to be updated within
 your codebase and any polymorphic relations.
 
 #### Spatie Media Library
@@ -236,7 +236,7 @@ This package has been upgrade to version 11, which introduces some breaking chan
 See here for more information https://github.com/spatie/laravel-medialibrary/blob/main/UPGRADING.md
 
 #### Media Conversions
-The `lunar.media.conversions` configuration has been removed, in favour of registering custom media definitionss instead.
+The `payflow.media.conversions` configuration has been removed, in favour of registering custom media definitionss instead.
 Media definition classes allow you to register media collections, conversions and much more. See [Media Collections](/core/reference/media.html#media-collections)
 for further information.
 
@@ -262,7 +262,7 @@ $priceModel->tiers
 $priceModel->priceBreaks
 ```
 
-##### Lunar\Base\DataTransferObjects\PricingResponse
+##### Payflow\Base\DataTransferObjects\PricingResponse
 
 ```php
 // Old
@@ -271,7 +271,7 @@ public Collection $tiered,
 public Collection $priceBreaks,
 ```
 
-##### Lunar\Base\DataTransferObjects\PaymentAuthorize
+##### Payflow\Base\DataTransferObjects\PaymentAuthorize
 
 Two new properties have been added to the constructor for this DTO.
 
@@ -312,7 +312,7 @@ When migrations are run, a state update routine will trigger to convert all exis
 
 #### Discount updates
 
-Limitations and exclusions on discounts have had a revamp, please double-check all discounts you have in Lunar to ensure they are all correct. Generally speaking the integrity should be unaffected, but it's better to be sure.
+Limitations and exclusions on discounts have had a revamp, please double-check all discounts you have in Payflow to ensure they are all correct. Generally speaking the integrity should be unaffected, but it's better to be sure.
 
 #### Calculate lines pipeline update
 
@@ -322,7 +322,7 @@ If you are using unit quantities greater than `1`, there was an issue in the cal
 
 #### Click & Collect parameter added to `ShippingOption`
 
-The `Lunar\DataTypes\ShippingOption` class now has an additional `collect` parameter. This can be used to determine whether the shipping option is considered "collect in store". This defaults to `false` so there are no additional steps if your store doesn't offer click and collect.
+The `Payflow\DataTypes\ShippingOption` class now has an additional `collect` parameter. This can be used to determine whether the shipping option is considered "collect in store". This defaults to `false` so there are no additional steps if your store doesn't offer click and collect.
 
 ```php
 ShippingManifest::addOption(
@@ -364,7 +364,7 @@ to use them.
 You will need ro re-run the addons discover command to update the manifest. No additional steps are required for addons.
 
 ```shell
-$ php artisan lunar:addons:discover
+$ php artisan payflow:addons:discover
 ````
 
 ## 0.5
@@ -383,7 +383,7 @@ with `$model->meta['key'] ?? 'default'` instead of `$model->meta->key`, and with
 
 ### High Impact
 
-#### Changed Lunar Hub authorization to use `spatie/laravel-permission`
+#### Changed Payflow Hub authorization to use `spatie/laravel-permission`
 
 Existing assigned staff permissions are migrated, this should not impact your project.
 If you have custom authorization checking using `Staff->authorize('permission')`, change it
@@ -395,7 +395,7 @@ Added `addOptions`, `getOptionUsing`, `getOption`, `getShippingOption` to Shippi
 
 #### MySQL 8.x Requirement
 
-With MySQL 5.7 EOL coming in October 2023 and Lunar's heavy use of JSON fields, Lunar now only supports MySQL 8.x.
+With MySQL 5.7 EOL coming in October 2023 and Payflow's heavy use of JSON fields, Payflow now only supports MySQL 8.x.
 You may find your project continues to work fine in MySQL 5.7, but we advise upgrading.
 
 #### Carts
@@ -408,8 +408,8 @@ a custom cart pipeline and use the shipping breakdown property as this is where 
 from.
 
 ```php
-use Lunar\Base\ValueObjects\Cart\ShippingBreakdown;
-use Lunar\Base\ValueObjects\Cart\ShippingBreakdownItem;
+use Payflow\Base\ValueObjects\Cart\ShippingBreakdown;
+use Payflow\Base\ValueObjects\Cart\ShippingBreakdownItem;
 
 $shippingBreakdown = $cart->shippingBreakdown ?: new ShippingBreakdown;
 
@@ -447,7 +447,7 @@ $cart->completedOrder
 
 ### Changes to `CreateOrder` action
 
-The `Lunar\Actions\Cart\CreateOrder` action has been refactored to run through pipelines, much like how carts are
+The `Payflow\Actions\Cart\CreateOrder` action has been refactored to run through pipelines, much like how carts are
 currently calculated. If you are currently using your own `CreateOrder` action, you should refactor the logic into
 pipelines and ues the provided action.
 
@@ -460,10 +460,10 @@ See [Extending Orders](/core/extending/orders)
 
 ### Low impact
 
-Add the new fingerprint class reference to `config/lunar/carts.php` if you have published the config.
+Add the new fingerprint class reference to `config/payflow/carts.php` if you have published the config.
 
 ```php
-'fingerprint_generator' => Lunar\Actions\Carts\GenerateFingerprint::class,
+'fingerprint_generator' => Payflow\Actions\Carts\GenerateFingerprint::class,
 ```
 
 ## 0.3
@@ -472,7 +472,7 @@ Add the new fingerprint class reference to `config/lunar/carts.php` if you have 
 
 #### Support for Laravel 8 removed
 
-To install Lunar 0.3 you will need to be on at least Laravel 9. 0.3 introduces support for Laravel 10.
+To install Payflow 0.3 you will need to be on at least Laravel 9. 0.3 introduces support for Laravel 10.
 
 ### Low Impact
 
@@ -535,17 +535,17 @@ $cart->calculate();
 
 #### Publishing changes
 
-All publishing commands for Lunar now use `.` as a separator.
+All publishing commands for Payflow now use `.` as a separator.
 
-- Rename `lunar-hub-translations` to `lunar.hub.translations`
-- Rename `lunar-hub-views` to `lunar.hub.views`
-- Rename `lunar:hub:public` to `lunar.hub.public`
-- Rename `lunar-migrations` to `lunar.migrations`
+- Rename `payflow-hub-translations` to `payflow.hub.translations`
+- Rename `payflow-hub-views` to `payflow.hub.views`
+- Rename `payflow:hub:public` to `payflow.hub.public`
+- Rename `payflow-migrations` to `payflow.migrations`
 
 #### Brand requirement is now configurable.
 
 Whether the product brand is required on your store is now configurable, the default behaviour is set to `true`. If you
-wish to change this, simply update `config/lunar-hub/products.php`.
+wish to change this, simply update `config/payflow-hub/products.php`.
 
 ```php
 'require_brand' => false,
@@ -553,11 +553,11 @@ wish to change this, simply update `config/lunar-hub/products.php`.
 
 ---
 
-## Migrating from GetCandy to Lunar
+## Migrating from GetCandy to Payflow
 
-The initial release of Lunar will be version `0.1.0`. This allows for a rapid development cycle until we reach `1.0.0`.
+The initial release of Payflow will be version `0.1.0`. This allows for a rapid development cycle until we reach `1.0.0`.
 Understandably, a complete name change is not small task, so we've outlined steps you need to take to bring your install
-up to the latest Lunar version and move away from GetCandy.
+up to the latest Payflow version and move away from GetCandy.
 
 ### Update composer dependencies
 
@@ -567,7 +567,7 @@ up to the latest Lunar version and move away from GetCandy.
 ```
 
 ```json
-"lunarphp/lunar": "^0.1"
+"payflowphp/payflow": "^0.1"
 ```
 
 Any add-ons you are using will need their namespaces updated, the package name should remain the same, i.e.
@@ -577,7 +577,7 @@ Any add-ons you are using will need their namespaces updated, the package name s
 ```
 
 ```json
-"lunarphp/stripe": "^0.1"
+"payflowphp/stripe": "^0.1"
 ```
 
 Once done, remember to run `composer update` to pull in the latest packages.
@@ -593,7 +593,7 @@ GetCandy\Models\Product;
 ```
 
 ```php
-Lunar\Models\Product;
+Payflow\Models\Product;
 ```
 
 A simple find and replace in your code should be sufficient, the strings you should search for are:
@@ -606,26 +606,26 @@ getcandy
 
 ### Config changes
 
-- Rename the `config/getcandy` folder to `config/lunar`
-- Rename the `config/getcandy-hub` folder to `config/lunar-hub`
-- Change the prefix in `config/lunar/database.php` from `getcandy_` to `lunar_`
+- Rename the `config/getcandy` folder to `config/payflow`
+- Rename the `config/getcandy-hub` folder to `config/payflow-hub`
+- Change the prefix in `config/payflow/database.php` from `getcandy_` to `payflow_`
 
-Also make sure any class references in your config files have been updated to the `Lunar` namespace.
+Also make sure any class references in your config files have been updated to the `Payflow` namespace.
 
 ### Meilisearch users
 
-Lunar no longer ships with Meilisearch by default. If you use Meilisearch and wish to carry on using it, you will need
-to require the new Lunar meilisearch package.
+Payflow no longer ships with Meilisearch by default. If you use Meilisearch and wish to carry on using it, you will need
+to require the new Payflow meilisearch package.
 
 ```sh
-composer require lunarphp/meilisearch
+composer require payflowphp/meilisearch
 ```
 
 This will install the appropriate packages that Scout needs and also register the set up command so you can keep using
 it, you just need to update the signature.
 
 ```sh
-php artisan lunar:meilisearch:setup
+php artisan payflow:meilisearch:setup
 ```
 
 ### MySQL Search
@@ -634,25 +634,25 @@ If you were previously using the `mysql` Scout driver, you should change this to
 `search_index` table with the terms to be searched upon. You may need to run the scout import command:
 
 ```sh
-php artisan scout:import Lunar\Models\Product
+php artisan scout:import Payflow\Models\Product
 ```
 
 ### Database migration
 
-If you are using the `getcandy_` prefix in your database, then you will likely want to update this to `lunar_`.
+If you are using the `getcandy_` prefix in your database, then you will likely want to update this to `payflow_`.
 We have created a command for this purpose to try make the switch as easy as possible.
 
 ```sh
-php artisan lunar:migrate:getcandy
+php artisan payflow:migrate:getcandy
 ```
 
 #### What this command will do
 
 - Remove any previous GetCandy migrations from the `migrations` table.
-- Run the migrations again with the `lunar_` prefix, creating new tables.
-- Copy across the data from the old `getcandy_` tables into the new `lunar_` tables.
-- Update any polymorphic `GetCandy` classes to the `Lunar` namespace.
-- Update field types in `attribute_data` to the `Lunar` namespace.
+- Run the migrations again with the `payflow_` prefix, creating new tables.
+- Copy across the data from the old `getcandy_` tables into the new `payflow_` tables.
+- Update any polymorphic `GetCandy` classes to the `Payflow` namespace.
+- Update field types in `attribute_data` to the `Payflow` namespace.
 
 #### What this command will not do
 

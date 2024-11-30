@@ -1,30 +1,30 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\OrderResource\Concerns;
+namespace Payflow\Admin\Filament\Resources\OrderResource\Concerns;
 
 use Filament\Infolists;
 use Filament\Support\Enums\IconPosition;
-use Lunar\Admin\Support\OrderStatus;
+use Payflow\Admin\Support\OrderStatus;
 
 trait DisplaysOrderSummary
 {
     public static function getDefaultOrderSummaryNewCustomerEntry(): Infolists\Components\TextEntry
     {
         return Infolists\Components\TextEntry::make('new_customer')
-            ->label(__('lunarpanel::order.infolist.new_returning.label'))
+            ->label(__('payflowpanel::order.infolist.new_returning.label'))
             ->alignEnd()
-            ->formatStateUsing(fn ($state) => __('lunarpanel::order.infolist.'.($state ? 'new' : 'returning').'_customer.label'));
+            ->formatStateUsing(fn ($state) => __('payflowpanel::order.infolist.'.($state ? 'new' : 'returning').'_customer.label'));
     }
 
     public static function getOrderSummaryNewCustomerEntry(): Infolists\Components\Entry
     {
-        return self::callStaticLunarHook('extendOrderSummaryNewCustomerEntry', static::getDefaultOrderSummaryNewCustomerEntry());
+        return self::callStaticPayflowHook('extendOrderSummaryNewCustomerEntry', static::getDefaultOrderSummaryNewCustomerEntry());
     }
 
     public static function getDefaultOrderSummaryStatusEntry(): Infolists\Components\TextEntry
     {
         return Infolists\Components\TextEntry::make('status')
-            ->label(__('lunarpanel::order.infolist.status.label'))
+            ->label(__('payflowpanel::order.infolist.status.label'))
             ->formatStateUsing(fn ($state) => OrderStatus::getLabel($state))
             ->alignEnd()
             ->color(fn ($state) => OrderStatus::getColor($state))
@@ -33,13 +33,13 @@ trait DisplaysOrderSummary
 
     public static function getOrderSummaryStatusEntry(): Infolists\Components\Entry
     {
-        return self::callStaticLunarHook('extendOrderSummaryStatusEntry', static::getDefaultOrderSummaryStatusEntry());
+        return self::callStaticPayflowHook('extendOrderSummaryStatusEntry', static::getDefaultOrderSummaryStatusEntry());
     }
 
     public static function getDefaultOrderReferenceEntry(): Infolists\Components\TextEntry
     {
         return Infolists\Components\TextEntry::make('reference')
-            ->label(__('lunarpanel::order.infolist.reference.label'))
+            ->label(__('payflowpanel::order.infolist.reference.label'))
             ->alignEnd()
             ->icon('heroicon-o-clipboard')
             ->iconPosition(IconPosition::After)
@@ -48,13 +48,13 @@ trait DisplaysOrderSummary
 
     public static function getOrderSummaryReferenceEntry(): Infolists\Components\Entry
     {
-        return self::callStaticLunarHook('extendOrderSummaryReferenceEntry', static::getDefaultOrderReferenceEntry());
+        return self::callStaticPayflowHook('extendOrderSummaryReferenceEntry', static::getDefaultOrderReferenceEntry());
     }
 
     public static function getDefaultOrderSummaryCustomerReferenceEntry(): Infolists\Components\TextEntry
     {
         return Infolists\Components\TextEntry::make('customer_reference')
-            ->label(__('lunarpanel::order.infolist.customer_reference.label'))
+            ->label(__('payflowpanel::order.infolist.customer_reference.label'))
             ->alignEnd()
             ->icon('heroicon-o-clipboard')
             ->iconPosition(IconPosition::After)
@@ -63,25 +63,25 @@ trait DisplaysOrderSummary
 
     public static function getOrderSummaryCustomerReferenceEntry(): Infolists\Components\Entry
     {
-        return self::callStaticLunarHook('extendOrderSummaryCustomerReferenceEntry', static::getDefaultOrderSummaryCustomerReferenceEntry());
+        return self::callStaticPayflowHook('extendOrderSummaryCustomerReferenceEntry', static::getDefaultOrderSummaryCustomerReferenceEntry());
     }
 
     public static function getDefaultOrderSummaryChannelEntry(): Infolists\Components\TextEntry
     {
         return Infolists\Components\TextEntry::make('channel.name')
-            ->label(__('lunarpanel::order.infolist.channel.label'))
+            ->label(__('payflowpanel::order.infolist.channel.label'))
             ->alignEnd();
     }
 
     public static function getOrderSummaryChannelEntry(): Infolists\Components\Entry
     {
-        return self::callStaticLunarHook('extendOrderSummaryChannelEntry', static::getDefaultOrderSummaryChannelEntry());
+        return self::callStaticPayflowHook('extendOrderSummaryChannelEntry', static::getDefaultOrderSummaryChannelEntry());
     }
 
     public static function getDefaultOrderSummaryCreatedAtEntry(): Infolists\Components\TextEntry
     {
         return Infolists\Components\TextEntry::make('created_at')
-            ->label(__('lunarpanel::order.infolist.date_created.label'))
+            ->label(__('payflowpanel::order.infolist.date_created.label'))
             ->alignEnd()
             ->dateTime('Y-m-d h:i a')
             ->visible(fn ($record) => ! $record->placed_at);
@@ -89,13 +89,13 @@ trait DisplaysOrderSummary
 
     public static function getOrderSummaryCreatedAtEntry(): Infolists\Components\Entry
     {
-        return self::callStaticLunarHook('extendOrderSummaryCreatedAtEntry', static::getDefaultOrderSummaryCreatedAtEntry());
+        return self::callStaticPayflowHook('extendOrderSummaryCreatedAtEntry', static::getDefaultOrderSummaryCreatedAtEntry());
     }
 
     public static function getDefaultOrderSummaryPlacedAtEntry(): Infolists\Components\TextEntry
     {
         return Infolists\Components\TextEntry::make('placed_at')
-            ->label(__('lunarpanel::order.infolist.date_placed.label'))
+            ->label(__('payflowpanel::order.infolist.date_placed.label'))
             ->alignEnd()
             ->dateTime('Y-m-d h:i a')
             ->placeholder('-');
@@ -103,12 +103,12 @@ trait DisplaysOrderSummary
 
     public static function getOrderSummaryPlacedAtEntry(): Infolists\Components\Entry
     {
-        return self::callStaticLunarHook('extendOrderSummaryPlacedAtEntry', static::getDefaultOrderSummaryPlacedAtEntry());
+        return self::callStaticPayflowHook('extendOrderSummaryPlacedAtEntry', static::getDefaultOrderSummaryPlacedAtEntry());
     }
 
     public static function getOrderSummarySchema(): array
     {
-        return self::callStaticLunarHook('extendOrderSummarySchema', [
+        return self::callStaticPayflowHook('extendOrderSummarySchema', [
             static::getOrderSummaryNewCustomerEntry(),
             static::getOrderSummaryStatusEntry(),
             static::getOrderSummaryReferenceEntry(),
@@ -131,6 +131,6 @@ trait DisplaysOrderSummary
 
     public static function getOrderSummaryInfolist(): Infolists\Components\Section
     {
-        return self::callStaticLunarHook('exendOrderSummaryInfolist', static::getDefaultOrderSummaryInfolist());
+        return self::callStaticPayflowHook('exendOrderSummaryInfolist', static::getDefaultOrderSummaryInfolist());
     }
 }

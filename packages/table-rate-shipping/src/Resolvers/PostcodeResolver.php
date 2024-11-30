@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Shipping\Resolvers;
+namespace Payflow\Shipping\Resolvers;
 
 use Illuminate\Support\Collection;
 

@@ -1,3 +1,3 @@
-# Lunar PayPal Payments
+# Payflow PayPal Payments
 
 WIP

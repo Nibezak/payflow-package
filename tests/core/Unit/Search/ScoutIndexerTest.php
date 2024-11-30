@@ -1,15 +1,15 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
 use Illuminate\Support\Facades\Config;
-use Lunar\FieldTypes\Text;
-use Lunar\FieldTypes\TranslatedText;
-use Lunar\Models\Attribute;
-use Lunar\Models\Collection;
-use Lunar\Models\Language;
-use Lunar\Models\Product;
-use Lunar\Search\ScoutIndexer;
+use Payflow\FieldTypes\Text;
+use Payflow\FieldTypes\TranslatedText;
+use Payflow\Models\Attribute;
+use Payflow\Models\Collection;
+use Payflow\Models\Language;
+use Payflow\Models\Product;
+use Payflow\Search\ScoutIndexer;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

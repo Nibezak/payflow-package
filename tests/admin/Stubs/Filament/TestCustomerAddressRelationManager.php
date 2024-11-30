@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Tests\Admin\Stubs\Filament;
+namespace Payflow\Tests\Admin\Stubs\Filament;
 
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;

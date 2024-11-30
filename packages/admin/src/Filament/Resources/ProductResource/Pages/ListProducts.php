@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ProductResource\Pages;
 
 use Filament\Actions;
 use Filament\Forms\Components\Grid;
@@ -8,13 +8,13 @@ use Filament\Resources\Components\Tab;
 use Filament\Support\Enums\MaxWidth;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Filament\Resources\ProductResource;
-use Lunar\Admin\Support\Pages\BaseListRecords;
-use Lunar\Facades\DB;
-use Lunar\Models\Attribute;
-use Lunar\Models\Currency;
-use Lunar\Models\Product;
-use Lunar\Models\TaxClass;
+use Payflow\Admin\Filament\Resources\ProductResource;
+use Payflow\Admin\Support\Pages\BaseListRecords;
+use Payflow\Facades\DB;
+use Payflow\Models\Attribute;
+use Payflow\Models\Currency;
+use Payflow\Models\Product;
+use Payflow\Models\TaxClass;
 
 class ListProducts extends BaseListRecords
 {

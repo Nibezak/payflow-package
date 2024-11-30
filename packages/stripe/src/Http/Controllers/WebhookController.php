@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Stripe\Http\Controllers;
+namespace Payflow\Stripe\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
-use Lunar\Stripe\Concerns\ConstructsWebhookEvent;
-use Lunar\Stripe\Jobs\ProcessStripeWebhook;
-use Lunar\Stripe\Models\StripePaymentIntent;
+use Payflow\Stripe\Concerns\ConstructsWebhookEvent;
+use Payflow\Stripe\Jobs\ProcessStripeWebhook;
+use Payflow\Stripe\Models\StripePaymentIntent;
 use Stripe\Exception\SignatureVerificationException;
 use Stripe\Exception\UnexpectedValueException;
 
@@ -16,7 +16,7 @@ final class WebhookController extends Controller
 {
     public function __invoke(Request $request): JsonResponse
     {
-        $secret = config('services.stripe.webhooks.lunar');
+        $secret = config('services.stripe.webhooks.payflow');
         $stripeSig = $request->header('Stripe-Signature');
 
         try {

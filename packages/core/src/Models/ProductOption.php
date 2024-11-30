@@ -1,18 +1,18 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Traits\HasMacros;
-use Lunar\Base\Traits\HasMedia;
-use Lunar\Base\Traits\HasTranslations;
-use Lunar\Base\Traits\Searchable;
-use Lunar\Database\Factories\ProductOptionFactory;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Traits\HasMacros;
+use Payflow\Base\Traits\HasMedia;
+use Payflow\Base\Traits\HasTranslations;
+use Payflow\Base\Traits\Searchable;
+use Payflow\Database\Factories\ProductOptionFactory;
 use Spatie\MediaLibrary\HasMedia as SpatieHasMedia;
 
 /**
@@ -76,7 +76,7 @@ class ProductOption extends BaseModel implements Contracts\ProductOption, Spatie
 
     public function products(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(
             Product::modelClass(),

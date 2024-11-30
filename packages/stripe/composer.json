@@ -1,33 +1,43 @@
 {
-  "name": "lunarphp/stripe",
+  "name": "payflowphp/stripe",
   "type": "project",
-  "description": "Stripe payment driver for Lunar.",
-  "keywords": ["lunarphp", "laravel", "ecommerce", "e-commerce", "headless", "store", "shop", "cart", "stripe"],
+  "description": "Stripe payment driver for Payflow.",
+  "keywords": [
+    "payflowphp",
+    "laravel",
+    "ecommerce",
+    "e-commerce",
+    "headless",
+    "store",
+    "shop",
+    "cart",
+    "stripe"
+  ],
   "license": "MIT",
   "authors": [
     {
-      "name": "Lunar",
-      "homepage": "https://lunarphp.io/"
+      "name": "Payflow",
+      "homepage": "https://payflowphp.io/"
     }
   ],
   "require": {
-      "php": "^8.2",
-      "lunarphp/core": "self.version",
-      "stripe/stripe-php": "^14.4"
+    "php": "^8.2",
+    "payflowphp/core": "self.version",
+    "stripe/stripe-php": "^14.4"
   },
   "autoload": {
-      "psr-4": {
-          "Lunar\\Stripe\\": "src/"
-      }
+    "psr-4": {
+      "Payflow\\Stripe\\": "src/"
+    }
   },
   "extra": {
-    "lunar": {
-        "name": "Stripe Payments"
+    "payflow": {
+      "name": "Stripe Payments"
     },
     "laravel": {
-        "providers": [
-            "Lunar\\Stripe\\StripePaymentsServiceProvider"
-        ]
+      "providers": [
+        "Payflow\\Stripe\\StripePaymentsServiceProvider"
+      ]
     }
   },
   "minimum-stability": "dev",

@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\CollectionResource\Pages;
+namespace Payflow\Admin\Filament\Resources\CollectionResource\Pages;
 
-use Lunar\Admin\Filament\Resources\CollectionResource;
-use Lunar\Admin\Support\Resources\Pages\ManageUrlsRelatedRecords;
-use Lunar\Models\Collection;
+use Payflow\Admin\Filament\Resources\CollectionResource;
+use Payflow\Admin\Support\Resources\Pages\ManageUrlsRelatedRecords;
+use Payflow\Models\Collection;
 
 class ManageCollectionUrls extends ManageUrlsRelatedRecords
 {

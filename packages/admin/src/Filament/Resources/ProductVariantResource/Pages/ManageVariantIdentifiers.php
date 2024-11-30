@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductVariantResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ProductVariantResource\Pages;
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\Section;
@@ -8,9 +8,9 @@ use Filament\Forms\Form;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Filament\Resources\ProductResource;
-use Lunar\Admin\Filament\Resources\ProductVariantResource;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Admin\Filament\Resources\ProductResource;
+use Payflow\Admin\Filament\Resources\ProductVariantResource;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
 
 class ManageVariantIdentifiers extends BaseEditRecord
 {
@@ -18,12 +18,12 @@ class ManageVariantIdentifiers extends BaseEditRecord
 
     public function getTitle(): string|Htmlable
     {
-        return __('lunarpanel::productvariant.pages.identifiers.title');
+        return __('payflowpanel::productvariant.pages.identifiers.title');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::productvariant.pages.identifiers.title');
+        return __('payflowpanel::productvariant.pages.identifiers.title');
     }
 
     protected function getCancelFormAction(): Action
@@ -49,7 +49,7 @@ class ManageVariantIdentifiers extends BaseEditRecord
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::product-identifiers');
+        return FilamentIcon::resolve('payflow::product-identifiers');
     }
 
     public function form(Form $form): Form

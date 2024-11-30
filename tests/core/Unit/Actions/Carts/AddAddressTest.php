@@ -1,11 +1,11 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
-use Lunar\Actions\Carts\AddAddress;
-use Lunar\Models\Address;
-use Lunar\Models\Cart;
-use Lunar\Models\CartAddress;
-use Lunar\Models\Currency;
+uses(\Payflow\Tests\Core\TestCase::class);
+use Payflow\Actions\Carts\AddAddress;
+use Payflow\Models\Address;
+use Payflow\Models\Cart;
+use Payflow\Models\CartAddress;
+use Payflow\Models\Currency;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

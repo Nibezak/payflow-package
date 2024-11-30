@@ -1,20 +1,20 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
-use Lunar\Base\DataTransferObjects\PaymentAuthorize;
-use Lunar\Base\DataTransferObjects\PaymentCapture;
-use Lunar\Base\DataTransferObjects\PaymentRefund;
-use Lunar\Models\Cart;
-use Lunar\Models\Order;
-use Lunar\Models\Transaction;
+use Payflow\Base\DataTransferObjects\PaymentAuthorize;
+use Payflow\Base\DataTransferObjects\PaymentCapture;
+use Payflow\Base\DataTransferObjects\PaymentRefund;
+use Payflow\Models\Cart;
+use Payflow\Models\Order;
+use Payflow\Models\Transaction;
 
 interface PaymentTypeInterface
 {
     /**
      * Set the cart.
      *
-     * @param  \Lunar\Models\Cart  $order
+     * @param  \Payflow\Models\Cart  $order
      */
     public function cart(Cart $cart): self;
 

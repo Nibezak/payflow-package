@@ -6,12 +6,12 @@
         <div class="fi-ta-header flex flex-col gap-3 p-4 sm:px-6 sm:flex-row sm:items-center">
           <div class="grid gap-y-1">
             <h3 class="fi-ta-header-heading text-base font-semibold leading-6 text-gray-950 dark:text-white">
-              {{ __('lunarpanel::productoption.widgets.product-options.options-table.title') }}
+              {{ __('payflowpanel::productoption.widgets.product-options.options-table.title') }}
             </h3>
           </div>
           <div class="fi-ta-actions flex shrink-0 items-center gap-3 flex-wrap justify-start sm:ms-auto">
             <x-filament::button type="button" wire:click="$set('configuringOptions', true)">
-              {{ __('lunarpanel::productoption.widgets.product-options.options-table.configure-options.label') }}
+              {{ __('payflowpanel::productoption.widgets.product-options.options-table.configure-options.label') }}
             </x-filament::button>
           </div>
         </div>
@@ -22,12 +22,12 @@
                 <tr class="bg-gray-50 dark:bg-white/5">
                   <x-filament-tables::header-cell>
                       <span class="fi-ta-header-cell-label text-sm font-semibold text-gray-950 dark:text-white">
-                        {{ __('lunarpanel::productoption.widgets.product-options.options-table.table.option.label') }}
+                        {{ __('payflowpanel::productoption.widgets.product-options.options-table.table.option.label') }}
                       </span>
                   </x-filament-tables::header-cell>
                   <x-filament-tables::header-cell>
                       <span class="fi-ta-header-cell-label text-sm font-semibold text-gray-950 dark:text-white">
-                        {{ __('lunarpanel::productoption.widgets.product-options.options-table.table.values.label') }}
+                        {{ __('payflowpanel::productoption.widgets.product-options.options-table.table.values.label') }}
                       </span>
                   </x-filament-tables::header-cell>
                 </tr>
@@ -68,7 +68,7 @@
         <div class="fi-ta-header flex flex-col gap-3 p-4 sm:px-6 sm:flex-row sm:items-center">
           <div class="grid gap-y-1">
             <h3 class="fi-ta-header-heading text-base font-semibold leading-6 text-gray-950 dark:text-white">
-              {{ __('lunarpanel::productoption.widgets.product-options.variants-table.title') }}
+              {{ __('payflowpanel::productoption.widgets.product-options.variants-table.title') }}
             </h3>
           </div>
         </div>
@@ -83,22 +83,22 @@
                     @endif
                     <x-filament-tables::header-cell class="fi-ta-header-cell px-3 py-3.5 sm:first-of-type:ps-6 sm:last-of-type:pe-6">
                       <span class="fi-ta-header-cell-label text-sm font-semibold text-gray-950 dark:text-white">
-                        {{ __('lunarpanel::productoption.widgets.product-options.variants-table.table.option.label') }}
+                        {{ __('payflowpanel::productoption.widgets.product-options.variants-table.table.option.label') }}
                       </span>
                     </x-filament-tables::header-cell>
                     <x-filament-tables::header-cell>
                       <span class="fi-ta-header-cell-label text-sm font-semibold text-gray-950 dark:text-white">
-                        {{ __('lunarpanel::productoption.widgets.product-options.variants-table.table.sku.label') }}
+                        {{ __('payflowpanel::productoption.widgets.product-options.variants-table.table.sku.label') }}
                       </span>
                     </x-filament-tables::header-cell>
                     <x-filament-tables::header-cell>
                       <span class="fi-ta-header-cell-label text-sm font-semibold text-gray-950 dark:text-white">
-                        {{ __('lunarpanel::productoption.widgets.product-options.variants-table.table.price.label') }}
+                        {{ __('payflowpanel::productoption.widgets.product-options.variants-table.table.price.label') }}
                       </span>
                     </x-filament-tables::header-cell>
                     <x-filament-tables::header-cell>
                       <span class="fi-ta-header-cell-label text-sm font-semibold text-gray-950 dark:text-white">
-                        {{ __('lunarpanel::productoption.widgets.product-options.variants-table.table.stock.label') }}
+                        {{ __('payflowpanel::productoption.widgets.product-options.variants-table.table.stock.label') }}
                       </span>
                     </x-filament-tables::header-cell>
                     <x-filament-tables::header-cell>
@@ -114,7 +114,7 @@
                         <div class="fi-ta-text grid w-full gap-y-1 px-3 py-4">
                           @if(!$permutation['variant_id'])
                             <x-filament::badge color="info">
-                              {{ __('lunarpanel::productoption.widgets.product-options.variants-table.table.new.label') }}
+                              {{ __('payflowpanel::productoption.widgets.product-options.variants-table.table.new.label') }}
                             </x-filament::badge>
                           @endif
                         </div>
@@ -163,11 +163,11 @@
                       <div class="flex items-center space-x-2">
                         @if($permutation['variant_id'])
                           <x-filament::link :href="$this->getVariantLink($permutation['variant_id'])">
-                            {{ __('lunarpanel::productoption.widgets.product-options.variants-table.actions.edit.label') }}
+                            {{ __('payflowpanel::productoption.widgets.product-options.variants-table.actions.edit.label') }}
                           </x-filament::link>
                         @endif
                         <button type="button" wire:click="removeVariant('{{ $permutationIndex }}')" class="text-red-500 font-semibold text-sm hover:underline">
-                          {{ __('lunarpanel::productoption.widgets.product-options.variants-table.actions.delete.label') }}
+                          {{ __('payflowpanel::productoption.widgets.product-options.variants-table.actions.delete.label') }}
                         </button>
                       </div>
                     </x-filament-tables::cell>
@@ -177,7 +177,7 @@
                 </tbody>
               </x-filament-tables::table>
             @else
-              <x-filament-tables::empty-state :heading="__('lunarpanel::productoption.widgets.product-options.variants-table.empty.heading')" icon="lucide-shapes"></x-filament-tables::empty-state>
+              <x-filament-tables::empty-state :heading="__('payflowpanel::productoption.widgets.product-options.variants-table.empty.heading')" icon="lucide-shapes"></x-filament-tables::empty-state>
             @endif
         </div>
       </div>
@@ -192,7 +192,7 @@
       <div class="text-right">
         <div class="flex space-x-2 items-end justify-end">
         <x-filament::button color="gray" wire:click="addRestrictedOption">
-          {{ __('lunarpanel::productoption.widgets.product-options.actions.add-restricted-option.label') }}
+          {{ __('payflowpanel::productoption.widgets.product-options.actions.add-restricted-option.label') }}
         </x-filament::button>
         {{ $this->addSharedOptionAction }}
         </div>
@@ -200,14 +200,14 @@
       @if(!count($this->configuredOptions))
         <div wire:key="product_options">
           <x-filament-tables::empty-state
-            :heading="__('lunarpanel::productoption.widgets.product-options.options-list.empty.heading')"
-            :description="__('lunarpanel::productoption.widgets.product-options.options-list.empty.description')"
+            :heading="__('payflowpanel::productoption.widgets.product-options.options-list.empty.heading')"
+            :description="__('payflowpanel::productoption.widgets.product-options.options-list.empty.description')"
             icon="lucide-shapes"
           ></x-filament-tables::empty-state>
         </div>
       @else
         <div>
-          <x-lunarpanel::products.variants.product-options-list
+          <x-payflowpanel::products.variants.product-options-list
             :items="$configuredOptions"
             group="product_options"
             state-path="configuredOptions"
@@ -217,10 +217,10 @@
 
       <div class="flex space-x-2 border-t dark:border-white/10 pt-4">
         <x-filament::button type="button" wire:click="updateConfiguredOptions">
-          {{ __('lunarpanel::productoption.widgets.product-options.actions.save-options.label') }}
+          {{ __('payflowpanel::productoption.widgets.product-options.actions.save-options.label') }}
         </x-filament::button>
         <x-filament::button color="gray" wire:click="cancelOptionConfiguring">
-          {{ __('lunarpanel::productoption.widgets.product-options.actions.cancel.label') }}
+          {{ __('payflowpanel::productoption.widgets.product-options.actions.cancel.label') }}
         </x-filament::button>
       </div>
     </div>

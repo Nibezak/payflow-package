@@ -1,12 +1,12 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
 use Illuminate\Support\Facades\Config;
-use Lunar\Generators\UrlGenerator;
-use Lunar\Models\Brand;
-use Lunar\Models\Language;
-use Lunar\Models\Url;
+use Payflow\Generators\UrlGenerator;
+use Payflow\Models\Brand;
+use Payflow\Models\Language;
+use Payflow\Models\Url;
 
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertDatabaseMissing;
@@ -21,7 +21,7 @@ test('can make a brand', function () {
 });
 
 test('can generate url', function () {
-    Config::set('lunar.urls.generator', UrlGenerator::class);
+    Config::set('payflow.urls.generator', UrlGenerator::class);
 
     Language::factory()->create([
         'default' => true,
@@ -39,7 +39,7 @@ test('can generate url', function () {
 });
 
 test('generates unique urls', function () {
-    Config::set('lunar.urls.generator', UrlGenerator::class);
+    Config::set('payflow.urls.generator', UrlGenerator::class);
 
     Language::factory()->create([
         'default' => true,
@@ -71,7 +71,7 @@ test('generates unique urls', function () {
 });
 
 test('can return mapped attributes', function () {
-    \Lunar\Models\Attribute::factory()->create([
+    \Payflow\Models\Attribute::factory()->create([
         'attribute_type' => 'brand',
     ]);
     $brand = Brand::factory()->create([
@@ -85,12 +85,12 @@ test('can delete a brand', function () {
         'name' => 'Test Brand',
     ]);
 
-    \Lunar\Models\Product::factory()->create([
+    \Payflow\Models\Product::factory()->create([
         'brand_id' => $brand->id,
     ]);
 
-    $discount = \Lunar\Models\Discount::factory()->create();
-    $collection = \Lunar\Models\Collection::factory()->create();
+    $discount = \Payflow\Models\Discount::factory()->create();
+    $collection = \Payflow\Models\Collection::factory()->create();
 
     $brand->discounts()->attach($discount);
     $brand->collections()->attach($collection);

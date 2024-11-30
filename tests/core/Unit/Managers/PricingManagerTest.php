@@ -1,17 +1,17 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\Base\DataTransferObjects\PricingResponse;
-use Lunar\Managers\PricingManager;
-use Lunar\Models\Currency;
-use Lunar\Models\Customer;
-use Lunar\Models\CustomerGroup;
-use Lunar\Models\Price;
-use Lunar\Models\Product;
-use Lunar\Models\ProductVariant;
-use Lunar\Tests\Core\Stubs\TestPricingPipeline;
-use Lunar\Tests\Core\Stubs\User;
+use Payflow\Base\DataTransferObjects\PricingResponse;
+use Payflow\Managers\PricingManager;
+use Payflow\Models\Currency;
+use Payflow\Models\Customer;
+use Payflow\Models\CustomerGroup;
+use Payflow\Models\Price;
+use Payflow\Models\Product;
+use Payflow\Models\ProductVariant;
+use Payflow\Tests\Core\Stubs\TestPricingPipeline;
+use Payflow\Tests\Core\Stubs\User;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -382,7 +382,7 @@ test('can pipeline purchasable price', function () {
     expect($pricing->matched->id)->toEqual($price->id);
     expect($pricing->matched->price->value)->toEqual($price->price->value);
 
-    config()->set('lunar.pricing.pipelines', [
+    config()->set('payflow.pricing.pipelines', [
         // set price to 200
         TestPricingPipeline::class,
     ]);

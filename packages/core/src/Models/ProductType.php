@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Traits\HasAttributes;
-use Lunar\Base\Traits\HasMacros;
-use Lunar\Database\Factories\ProductTypeFactory;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Traits\HasAttributes;
+use Payflow\Base\Traits\HasMacros;
+use Payflow\Database\Factories\ProductTypeFactory;
 
 /**
  * @property int $id
@@ -40,7 +40,7 @@ class ProductType extends BaseModel implements Contracts\ProductType
 
     public function mappedAttributes(): MorphToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->morphToMany(
             Attribute::modelClass(),

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;

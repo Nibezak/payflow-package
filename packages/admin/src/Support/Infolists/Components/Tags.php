@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Infolists\Components;
+namespace Payflow\Admin\Support\Infolists\Components;
 
 use Filament\Infolists\Components\TextEntry;
 use Illuminate\Support\Str;

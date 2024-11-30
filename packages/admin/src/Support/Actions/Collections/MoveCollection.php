@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Admin\Support\Actions\Collections;
+namespace Payflow\Admin\Support\Actions\Collections;
 
 use Filament\Actions\Action;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Facades\DB;
-use Lunar\Models\Collection;
+use Payflow\Facades\DB;
+use Payflow\Models\Collection;
 
 class MoveCollection extends Action
 {
@@ -31,7 +31,7 @@ class MoveCollection extends Action
         });
 
         $this->label(
-            __('lunarpanel::actions.collections.move.label')
+            __('payflowpanel::actions.collections.move.label')
         );
     }
 }

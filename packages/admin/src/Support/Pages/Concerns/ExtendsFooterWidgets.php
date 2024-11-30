@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Pages\Concerns;
+namespace Payflow\Admin\Support\Pages\Concerns;
 
 trait ExtendsFooterWidgets
 {
@@ -11,6 +11,6 @@ trait ExtendsFooterWidgets
 
     protected function getFooterWidgets(): array
     {
-        return $this->callLunarHook('footerWidgets', $this->getDefaultFooterWidgets());
+        return $this->callPayflowHook('footerWidgets', $this->getDefaultFooterWidgets());
     }
 }

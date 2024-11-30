@@ -1,15 +1,15 @@
 <?php
 
-namespace Lunar\Jobs\Collections;
+namespace Payflow\Jobs\Collections;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Lunar\Actions\Collections\SortProducts;
-use Lunar\Facades\DB;
-use Lunar\Models\Collection;
+use Payflow\Actions\Collections\SortProducts;
+use Payflow\Facades\DB;
+use Payflow\Models\Collection;
 
 class UpdateProductPositions implements ShouldQueue
 {

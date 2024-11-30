@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\CustomerResource\RelationManagers;
+namespace Payflow\Admin\Filament\Resources\CustomerResource\RelationManagers;
 
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\TextInput;
@@ -8,8 +8,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
-use Lunar\Admin\Events\CustomerUserEdited;
-use Lunar\Admin\Support\RelationManagers\BaseRelationManager;
+use Payflow\Admin\Events\CustomerUserEdited;
+use Payflow\Admin\Support\RelationManagers\BaseRelationManager;
 
 class UserRelationManager extends BaseRelationManager
 {
@@ -24,9 +24,9 @@ class UserRelationManager extends BaseRelationManager
     {
         return $table->columns([
             Tables\Columns\TextColumn::make('name')
-                ->label(__('lunarpanel::user.table.name.label')),
+                ->label(__('payflowpanel::user.table.name.label')),
             Tables\Columns\TextColumn::make('email')
-                ->label(__('lunarpanel::user.table.email.label')),
+                ->label(__('payflowpanel::user.table.email.label')),
         ])->actions([
             Tables\Actions\EditAction::make('edit')
                 ->after(
@@ -36,14 +36,14 @@ class UserRelationManager extends BaseRelationManager
                     Group::make([
                         TextInput::make('email')
                             ->label(
-                                __('lunarpanel::user.form.email.label')
+                                __('payflowpanel::user.form.email.label')
                             )
                             ->required()
                             ->email()
                             ->columnSpan(2),
                         TextInput::make('password')
                             ->label(
-                                __('lunarpanel::user.form.password.label')
+                                __('payflowpanel::user.form.password.label')
                             )
                             ->password()
                             ->minLength(8)
@@ -54,7 +54,7 @@ class UserRelationManager extends BaseRelationManager
                             ->confirmed(),
                         TextInput::make('password_confirmation')
                             ->label(
-                                __('lunarpanel::user.form.password_confirmation.label')
+                                __('payflowpanel::user.form.password_confirmation.label')
                             )
                             ->password()
                             ->minLength(8),

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\StaffResource\Pages;
+namespace Payflow\Admin\Filament\Resources\StaffResource\Pages;
 
 use Exception;
 use Filament\Actions\Action;
@@ -12,9 +12,9 @@ use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Lunar\Admin\Filament\Resources\StaffResource;
-use Lunar\Admin\Support\Facades\LunarAccessControl;
-use Lunar\Admin\Support\Facades\LunarPanel;
+use Payflow\Admin\Filament\Resources\StaffResource;
+use Payflow\Admin\Support\Facades\PayflowAccessControl;
+use Payflow\Admin\Support\Facades\PayflowPanel;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -27,7 +27,7 @@ class AccessControl extends Page
 {
     protected static string $resource = StaffResource::class;
 
-    protected static string $view = 'lunarpanel::resources.staff-resource.pages.access-control';
+    protected static string $view = 'payflowpanel::resources.staff-resource.pages.access-control';
 
     public array $state = [];
 
@@ -35,14 +35,14 @@ class AccessControl extends Page
 
     public function getTitle(): string|Htmlable
     {
-        return __('lunarpanel::staff.acl.title');
+        return __('payflowpanel::staff.acl.title');
     }
 
     public function mount()
     {
         foreach ($this->roles as $role) {
             /** @var Role $roleModel */
-            $roleModel = Role::findByName($role->handle, LunarPanel::getPanel()->getAuthGuard());
+            $roleModel = Role::findByName($role->handle, PayflowPanel::getPanel()->getAuthGuard());
 
             $this->syncRolePermissions($roleModel);
         }
@@ -102,7 +102,7 @@ class AccessControl extends Page
             }
 
             Notification::make()
-                ->title(__('lunarpanel::staff.acl.notification.updated'))
+                ->title(__('payflowpanel::staff.acl.notification.updated'))
                 ->success()
                 ->send();
         }
@@ -115,7 +115,7 @@ class AccessControl extends Page
         try {
             [$roleHandle, $permissionHandle] = explode($this->stateSeparator, $path);
         } catch (Exception $e) {
-            $error = __('lunarpanel::staff.acl.notification.error');
+            $error = __('payflowpanel::staff.acl.notification.error');
         }
 
         if (blank($error)) {
@@ -123,23 +123,23 @@ class AccessControl extends Page
             $registeredPermission = $this->permissions->first(fn ($p) => $permissionHandle == $p->handle);
 
             try {
-                $role = Role::findByName($roleHandle, LunarPanel::getPanel()->getAuthGuard());
+                $role = Role::findByName($roleHandle, PayflowPanel::getPanel()->getAuthGuard());
             } catch (Exception $e) {
                 $role = null;
             }
 
             try {
-                $permission = Permission::findByName($permissionHandle, LunarPanel::getPanel()->getAuthGuard());
+                $permission = Permission::findByName($permissionHandle, PayflowPanel::getPanel()->getAuthGuard());
             } catch (Exception $e) {
                 $permission = null;
             }
 
             if (blank($registeredRole) || blank($role)) {
-                $error = __('lunarpanel::staff.acl.notification.no-role');
+                $error = __('payflowpanel::staff.acl.notification.no-role');
             }
 
             if (blank($registeredPermission) || blank($permission)) {
-                $error = blank($error) ? __('lunarpanel::staff.acl.notification.no-permission') : __('lunarpanel::staff.acl.notification.no-role-permission');
+                $error = blank($error) ? __('payflowpanel::staff.acl.notification.no-permission') : __('payflowpanel::staff.acl.notification.no-role-permission');
             }
         }
 
@@ -152,37 +152,37 @@ class AccessControl extends Page
 
     public function getRolesProperty(): Collection
     {
-        $admin = LunarAccessControl::getAdmin();
+        $admin = PayflowAccessControl::getAdmin();
 
-        return LunarAccessControl::getRoles()->reject(fn ($role) => $admin->contains($role->handle));
+        return PayflowAccessControl::getRoles()->reject(fn ($role) => $admin->contains($role->handle));
     }
 
     public function getPermissionsProperty(): Collection
     {
-        return LunarAccessControl::getPermissions();
+        return PayflowAccessControl::getPermissions();
     }
 
     public function getGroupedPermissionsProperty(): Collection
     {
-        return LunarAccessControl::getGroupedPermissions();
+        return PayflowAccessControl::getGroupedPermissions();
     }
 
     protected function getHeaderActions(): array
     {
         return [
             Action::make('add_role')
-                ->label('lunarpanel::staff.action.add-role.label')
+                ->label('payflowpanel::staff.action.add-role.label')
                 ->translateLabel()
                 ->form([
                     TextInput::make('name')
-                        ->label('lunarpanel::staff.form.role.label')
+                        ->label('payflowpanel::staff.form.role.label')
                         ->translateLabel()
                         ->unique(table: Role::class)
                         ->required(),
                 ])
                 ->action(fn ($data) => $this->syncRolePermissions(Role::create([
                     'name' => $data['name'],
-                    'guard_name' => LunarPanel::getPanel()->getAuthGuard(),
+                    'guard_name' => PayflowPanel::getPanel()->getAuthGuard(),
                 ])))
                 ->modalWidth('md'),
         ];
@@ -194,16 +194,16 @@ class AccessControl extends Page
             ->icon('heroicon-m-trash')
             ->color('danger')
             ->size(ActionSize::Small)
-            ->tooltip(__('lunarpanel::staff.action.delete-role.label'))
+            ->tooltip(__('payflowpanel::staff.action.delete-role.label'))
             ->iconButton()
             ->requiresConfirmation()
             ->modalHeading(function (Page $livewire) {
                 $arguments = Arr::last($livewire->mountedActionsArguments);
 
                 if ($handle = $arguments['handle'] ?? null) {
-                    $role = LunarAccessControl::getRoles()->first(fn ($r) => $r->handle == $handle);
+                    $role = PayflowAccessControl::getRoles()->first(fn ($r) => $r->handle == $handle);
 
-                    return __('lunarpanel::staff.action.delete-role.heading', ['role' => $role->transLabel]);
+                    return __('payflowpanel::staff.action.delete-role.heading', ['role' => $role->transLabel]);
                 }
 
                 return null;

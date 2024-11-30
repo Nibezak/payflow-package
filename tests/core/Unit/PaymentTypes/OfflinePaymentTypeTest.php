@@ -1,20 +1,20 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 use Illuminate\Support\Facades\Config;
-use Lunar\Base\DataTransferObjects\PaymentAuthorize;
-use Lunar\Facades\Payments;
-use Lunar\Models\Cart;
-use Lunar\Models\CartAddress;
-use Lunar\Models\Country;
-use Lunar\Models\Order;
+use Payflow\Base\DataTransferObjects\PaymentAuthorize;
+use Payflow\Facades\Payments;
+use Payflow\Models\Cart;
+use Payflow\Models\CartAddress;
+use Payflow\Models\Country;
+use Payflow\Models\Order;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
 test('can authorize payment', function () {
     $cart = Cart::factory()->create();
 
-    Config::set('lunar.payments.types.offline', [
+    Config::set('payflow.payments.types.offline', [
         'authorized' => 'offline-payment',
     ]);
 
@@ -49,7 +49,7 @@ test('can authorize payment', function () {
 test('can override status', function () {
     $cart = Cart::factory()->create();
 
-    Config::set('lunar.payments.types.offline', [
+    Config::set('payflow.payments.types.offline', [
         'authorized' => 'offline-payment',
     ]);
 
@@ -85,7 +85,7 @@ test('can override status', function () {
 test('can set additional meta', function () {
     $cart = Cart::factory()->create();
 
-    Config::set('lunar.payments.types.offline', [
+    Config::set('payflow.payments.types.offline', [
         'authorized' => 'offline-payment',
     ]);
 

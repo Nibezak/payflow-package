@@ -1,17 +1,17 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ProductResource\Pages;
 
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Support\Facades\FilamentIcon;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Lunar\Admin\Events\ProductAssociationsUpdated;
-use Lunar\Admin\Filament\Resources\ProductResource;
-use Lunar\Admin\Support\Pages\BaseManageRelatedRecords;
-use Lunar\Models\Product;
-use Lunar\Models\ProductAssociation;
+use Payflow\Admin\Events\ProductAssociationsUpdated;
+use Payflow\Admin\Filament\Resources\ProductResource;
+use Payflow\Admin\Support\Pages\BaseManageRelatedRecords;
+use Payflow\Models\Product;
+use Payflow\Models\ProductAssociation;
 
 class ManageProductAssociations extends BaseManageRelatedRecords
 {
@@ -21,17 +21,17 @@ class ManageProductAssociations extends BaseManageRelatedRecords
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::product-associations');
+        return FilamentIcon::resolve('payflow::product-associations');
     }
 
     public function getTitle(): string
     {
-        return __('lunarpanel::product.pages.associations.label');
+        return __('payflowpanel::product.pages.associations.label');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::product.pages.associations.label');
+        return __('payflowpanel::product.pages.associations.label');
     }
 
     public function form(Form $form): Form
@@ -77,7 +77,7 @@ class ManageProductAssociations extends BaseManageRelatedRecords
                         // Only render the tooltip if the column contents exceeds the length limit.
                         return $record->target->translateAttribute('name');
                     })
-                    ->label(__('lunarpanel::product.table.name.label')),
+                    ->label(__('payflowpanel::product.table.name.label')),
                 Tables\Columns\TextColumn::make('target.variants.sku')
                     ->label('SKU'),
                 Tables\Columns\TextColumn::make('type'),

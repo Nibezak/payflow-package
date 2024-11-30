@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Base\Validation;
+namespace Payflow\Base\Validation;
 
-use Lunar\DiscountTypes\AmountOff;
-use Lunar\DiscountTypes\BuyXGetY;
-use Lunar\Models\Discount;
+use Payflow\DiscountTypes\AmountOff;
+use Payflow\DiscountTypes\BuyXGetY;
+use Payflow\Models\Discount;
 
 class CouponValidator implements CouponValidatorInterface
 {

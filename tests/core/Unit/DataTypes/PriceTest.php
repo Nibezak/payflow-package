@@ -1,9 +1,9 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
-use Lunar\DataTypes\Price;
-use Lunar\Exceptions\InvalidDataTypeValueException;
-use Lunar\Models\Currency;
+uses(\Payflow\Tests\Core\TestCase::class);
+use Payflow\DataTypes\Price;
+use Payflow\Exceptions\InvalidDataTypeValueException;
+use Payflow\Models\Currency;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

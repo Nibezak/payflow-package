@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Base\DataTransferObjects;
+namespace Payflow\Base\DataTransferObjects;
 
 use Illuminate\Support\Collection;
-use Lunar\Models\Price;
+use Payflow\Models\Price;
 
 class PricingResponse
 {

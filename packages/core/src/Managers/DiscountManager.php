@@ -1,18 +1,18 @@
 <?php
 
-namespace Lunar\Managers;
+namespace Payflow\Managers;
 
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
-use Lunar\Base\DataTransferObjects\CartDiscount;
-use Lunar\Base\DiscountManagerInterface;
-use Lunar\Base\Validation\CouponValidator;
-use Lunar\DiscountTypes\AmountOff;
-use Lunar\DiscountTypes\BuyXGetY;
-use Lunar\Models\Cart;
-use Lunar\Models\Channel;
-use Lunar\Models\CustomerGroup;
-use Lunar\Models\Discount;
+use Payflow\Base\DataTransferObjects\CartDiscount;
+use Payflow\Base\DiscountManagerInterface;
+use Payflow\Base\Validation\CouponValidator;
+use Payflow\DiscountTypes\AmountOff;
+use Payflow\DiscountTypes\BuyXGetY;
+use Payflow\Models\Cart;
+use Payflow\Models\Channel;
+use Payflow\Models\CustomerGroup;
+use Payflow\Models\Discount;
 
 class DiscountManager implements DiscountManagerInterface
 {
@@ -71,7 +71,7 @@ class DiscountManager implements DiscountManagerInterface
 
         if ($nonChannel = $channels->filter(fn ($channel) => ! $channel instanceof Channel)->first()) {
             throw new InvalidArgumentException(
-                __('lunar::exceptions.discounts.invalid_type', [
+                __('payflow::exceptions.discounts.invalid_type', [
                     'expected' => Channel::class,
                     'actual' => $nonChannel->getMorphClass(),
                 ])
@@ -94,7 +94,7 @@ class DiscountManager implements DiscountManagerInterface
 
         if ($nonGroup = $customerGroups->filter(fn ($channel) => ! $channel instanceof CustomerGroup)->first()) {
             throw new InvalidArgumentException(
-                __('lunar::exceptions.discounts.invalid_type', [
+                __('payflow::exceptions.discounts.invalid_type', [
                     'expected' => CustomerGroup::class,
                     'actual' => $nonGroup->getMorphClass(),
                 ])
@@ -223,7 +223,7 @@ class DiscountManager implements DiscountManagerInterface
     public function validateCoupon(string $coupon): bool
     {
         return app(
-            config('lunar.discounts.coupon_validator', CouponValidator::class)
+            config('payflow.discounts.coupon_validator', CouponValidator::class)
         )->validate($coupon);
     }
 }

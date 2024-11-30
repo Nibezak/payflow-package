@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Base\Traits;
+namespace Payflow\Base\Traits;
 
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Lunar\Facades\Pricing;
-use Lunar\Managers\PricingManager;
-use Lunar\Models\Price;
+use Payflow\Facades\Pricing;
+use Payflow\Managers\PricingManager;
+use Payflow\Models\Price;
 
 trait HasPrices
 {

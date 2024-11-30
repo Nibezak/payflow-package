@@ -8,7 +8,7 @@
                 'flex items-center text-gray-400 hover:text-gray-500',
                 'cursor-grab',
             ]) x-sortable-handle>
-                <x-filament::icon alias="lunar::reorder" class="w-5 h-5" />
+                <x-filament::icon alias="payflow::reorder" class="w-5 h-5" />
             </div>
 
             <div class="flex grow bg-white border shadow-sm rounded">
@@ -20,7 +20,7 @@
                             wire:click.prevent="toggleChildren"
                     >
                         <x-filament::icon
-                                alias="lunar::chevron-right"
+                                alias="payflow::chevron-right"
                                 @class([
                                     'w-3.5 h-3.5 transition ease-in-out duration-200 rtl:rotate-180',
                                     'ltr:rotate-90 rtl:!rotate-90' => !!$node['children'],
@@ -46,7 +46,7 @@
                             @if($node['thumbnail'])
                             <img src="{{ $node['thumbnail'] }}" class="w-10 border rounded p-0.5">
                             @else
-                                <x-filament::icon alias="lunar::image-placeholder" class="p-1 text-gray-200 w-10 h-10" />
+                                <x-filament::icon alias="payflow::image-placeholder" class="p-1 text-gray-200 w-10 h-10" />
                             @endif
                         </div>
                         <span>{{ $node['name'] }}</span>

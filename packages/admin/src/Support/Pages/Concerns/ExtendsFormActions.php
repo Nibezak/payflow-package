@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Pages\Concerns;
+namespace Payflow\Admin\Support\Pages\Concerns;
 
 trait ExtendsFormActions
 {
@@ -13,7 +13,7 @@ trait ExtendsFormActions
     {
         return [
             ...parent::getFormActions(),
-            ...$this->callLunarHook('formActions', $this->getDefaultFormActions()),
+            ...$this->callPayflowHook('formActions', $this->getDefaultFormActions()),
         ];
     }
 }

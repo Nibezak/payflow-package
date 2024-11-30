@@ -1,12 +1,12 @@
 <?php
 
-use Lunar\Admin\Filament\Resources\CollectionGroupResource\Widgets\CollectionTreeView;
+use Payflow\Admin\Filament\Resources\CollectionGroupResource\Widgets\CollectionTreeView;
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('resource.product.widgets');
 
 it('can mount widget', function () {
-    $group = \Lunar\Models\CollectionGroup::factory()->create();
+    $group = \Payflow\Models\CollectionGroup::factory()->create();
 
     \Livewire\Livewire::test(CollectionTreeView::class, [
         'record' => $group,
@@ -14,13 +14,13 @@ it('can mount widget', function () {
 });
 
 it('can render collection tree', function () {
-    $group = \Lunar\Models\CollectionGroup::factory()->create();
+    $group = \Payflow\Models\CollectionGroup::factory()->create();
 
-    \Lunar\Models\Language::factory()->create([
+    \Payflow\Models\Language::factory()->create([
         'default' => true,
     ]);
 
-    $collection = \Lunar\Models\Collection::factory(1)->create([
+    $collection = \Payflow\Models\Collection::factory(1)->create([
         'collection_group_id' => $group->id,
     ]);
 
@@ -32,15 +32,15 @@ it('can render collection tree', function () {
 });
 
 it('can create root collection', function () {
-    $group = \Lunar\Models\CollectionGroup::factory()->create();
+    $group = \Payflow\Models\CollectionGroup::factory()->create();
 
-    \Lunar\Models\Attribute::factory()->create([
+    \Payflow\Models\Attribute::factory()->create([
         'handle' => 'name',
-        'type' => \Lunar\FieldTypes\TranslatedText::class,
+        'type' => \Payflow\FieldTypes\TranslatedText::class,
         'attribute_type' => 'collection',
     ]);
 
-    $language = \Lunar\Models\Language::factory()->create([
+    $language = \Payflow\Models\Language::factory()->create([
         'default' => true,
     ]);
 
@@ -53,17 +53,17 @@ it('can create root collection', function () {
 });
 
 it('can toggle collection children', function () {
-    $group = \Lunar\Models\CollectionGroup::factory()->create();
+    $group = \Payflow\Models\CollectionGroup::factory()->create();
 
-    \Lunar\Models\Language::factory()->create([
+    \Payflow\Models\Language::factory()->create([
         'default' => true,
     ]);
 
-    $collection = \Lunar\Models\Collection::factory()->create([
+    $collection = \Payflow\Models\Collection::factory()->create([
         'collection_group_id' => $group->id,
     ]);
 
-    \Lunar\Models\Collection::factory(2)->create([
+    \Payflow\Models\Collection::factory(2)->create([
         'collection_group_id' => $group->id,
     ])->each(
         fn ($child) => $collection->prependNode($child)
@@ -82,23 +82,23 @@ it('can toggle collection children', function () {
 });
 
 it('can create child collection', function () {
-    $group = \Lunar\Models\CollectionGroup::factory()->create();
+    $group = \Payflow\Models\CollectionGroup::factory()->create();
 
-    \Lunar\Models\Attribute::factory()->create([
+    \Payflow\Models\Attribute::factory()->create([
         'handle' => 'name',
-        'type' => \Lunar\FieldTypes\TranslatedText::class,
+        'type' => \Payflow\FieldTypes\TranslatedText::class,
         'attribute_type' => 'collection',
     ]);
 
-    $language = \Lunar\Models\Language::factory()->create([
+    $language = \Payflow\Models\Language::factory()->create([
         'default' => true,
     ]);
 
-    $collection = \Lunar\Models\Collection::factory()->create([
+    $collection = \Payflow\Models\Collection::factory()->create([
         'collection_group_id' => $group->id,
     ]);
 
-    $child = \Lunar\Models\Collection::factory()->create([
+    $child = \Payflow\Models\Collection::factory()->create([
         'collection_group_id' => $group->id,
     ]);
 
@@ -117,19 +117,19 @@ it('can create child collection', function () {
 });
 
 it('can set child collection as root', function () {
-    $group = \Lunar\Models\CollectionGroup::factory()->create();
+    $group = \Payflow\Models\CollectionGroup::factory()->create();
 
-    \Lunar\Models\Attribute::factory()->create([
+    \Payflow\Models\Attribute::factory()->create([
         'handle' => 'name',
-        'type' => \Lunar\FieldTypes\TranslatedText::class,
+        'type' => \Payflow\FieldTypes\TranslatedText::class,
         'attribute_type' => 'collection',
     ]);
 
-    $language = \Lunar\Models\Language::factory()->create([
+    $language = \Payflow\Models\Language::factory()->create([
         'default' => true,
     ]);
 
-    $collection = \Lunar\Models\Collection::factory()->create([
+    $collection = \Payflow\Models\Collection::factory()->create([
         'collection_group_id' => $group->id,
     ]);
 
@@ -142,17 +142,17 @@ it('can set child collection as root', function () {
 });
 
 it('can reorder collections', function () {
-    $group = \Lunar\Models\CollectionGroup::factory()->create();
+    $group = \Payflow\Models\CollectionGroup::factory()->create();
 
-    \Lunar\Models\Language::factory()->create([
+    \Payflow\Models\Language::factory()->create([
         'default' => true,
     ]);
 
-    $collectionA = \Lunar\Models\Collection::factory()->create([
+    $collectionA = \Payflow\Models\Collection::factory()->create([
         'collection_group_id' => $group->id,
     ]);
 
-    $collectionB = \Lunar\Models\Collection::factory()->create([
+    $collectionB = \Payflow\Models\Collection::factory()->create([
         'collection_group_id' => $group->id,
     ]);
 

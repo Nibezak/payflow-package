@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Widgets\Products;
+namespace Payflow\Admin\Filament\Widgets\Products;
 
 use Closure;
 use Filament\Tables;
@@ -9,9 +9,9 @@ use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Lunar\Admin\Filament\Resources\ProductVariantResource;
-use Lunar\Models\ProductOptionValue;
-use Lunar\Models\ProductVariant;
+use Payflow\Admin\Filament\Resources\ProductVariantResource;
+use Payflow\Models\ProductOptionValue;
+use Payflow\Models\ProductVariant;
 
 class VariantSwitcherTable extends TableWidget
 {
@@ -70,11 +70,11 @@ class VariantSwitcherTable extends TableWidget
         return [
             Tables\Columns\TextColumn::make('sku')
                 ->label(
-                    __('lunarpanel::widgets.variant_switcher.table.sku.label')
+                    __('payflowpanel::widgets.variant_switcher.table.sku.label')
                 )->searchable(),
             Tables\Columns\TextColumn::make('values')
                 ->label(
-                    __('lunarpanel::widgets.variant_switcher.table.values.label')
+                    __('payflowpanel::widgets.variant_switcher.table.values.label')
                 )
                 ->formatStateUsing(
                     function (Model $record) {

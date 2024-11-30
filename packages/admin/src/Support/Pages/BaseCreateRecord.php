@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Pages;
+namespace Payflow\Admin\Support\Pages;
 
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Database\Eloquent\Model;
@@ -13,19 +13,19 @@ abstract class BaseCreateRecord extends CreateRecord
     use Concerns\ExtendsHeaderActions;
     use Concerns\ExtendsHeaderWidgets;
     use Concerns\ExtendsHeadings;
-    use \Lunar\Admin\Support\Concerns\CallsHooks;
+    use \Payflow\Admin\Support\Concerns\CallsHooks;
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        return $this->callLunarHook('beforeCreate', $data);
+        return $this->callPayflowHook('beforeCreate', $data);
     }
 
     protected function handleRecordCreation(array $data): Model
     {
-        $data = $this->callLunarHook('beforeCreation', $data);
+        $data = $this->callPayflowHook('beforeCreation', $data);
 
         $record = parent::handleRecordCreation($data);
 
-        return $this->callLunarHook('afterCreation', $record, $data);
+        return $this->callPayflowHook('afterCreation', $record, $data);
     }
 }

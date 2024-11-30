@@ -1,13 +1,13 @@
 <?php
 
-namespace Lunar\Pipelines\Cart;
+namespace Payflow\Pipelines\Cart;
 
 use Closure;
-use Lunar\Base\ValueObjects\Cart\ShippingBreakdown;
-use Lunar\Base\ValueObjects\Cart\ShippingBreakdownItem;
-use Lunar\DataTypes\Price;
-use Lunar\Facades\ShippingManifest;
-use Lunar\Models\Cart;
+use Payflow\Base\ValueObjects\Cart\ShippingBreakdown;
+use Payflow\Base\ValueObjects\Cart\ShippingBreakdownItem;
+use Payflow\DataTypes\Price;
+use Payflow\Facades\ShippingManifest;
+use Payflow\Models\Cart;
 
 final class ApplyShipping
 {

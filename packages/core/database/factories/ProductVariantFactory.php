@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
 use Illuminate\Support\Str;
-use Lunar\Models\Product;
-use Lunar\Models\ProductVariant;
-use Lunar\Models\TaxClass;
-use Lunar\Models\TaxRateAmount;
+use Payflow\Models\Product;
+use Payflow\Models\ProductVariant;
+use Payflow\Models\TaxClass;
+use Payflow\Models\TaxRateAmount;
 
 class ProductVariantFactory extends BaseFactory
 {

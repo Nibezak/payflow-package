@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Admin\Support\FieldTypes;
+namespace Payflow\Admin\Support\FieldTypes;
 
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
-use Lunar\Admin\Support\Synthesizers\NumberSynth;
-use Lunar\Models\Attribute;
+use Payflow\Admin\Support\Synthesizers\NumberSynth;
+use Payflow\Models\Attribute;
 
 class Number extends BaseFieldType
 {
@@ -40,10 +40,10 @@ class Number extends BaseFieldType
             Grid::make(2)->schema([
                 \Filament\Forms\Components\TextInput::make('min')
                     ->label(
-                        __('lunarpanel::fieldtypes.number.form.min.label')
+                        __('payflowpanel::fieldtypes.number.form.min.label')
                     )->nullable()->numeric(),
                 \Filament\Forms\Components\TextInput::make('max')->label(
-                    __('lunarpanel::fieldtypes.number.form.max.label')
+                    __('payflowpanel::fieldtypes.number.form.max.label')
                 )->nullable()->numeric(),
             ]),
         ];

@@ -1,15 +1,15 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Casts\AsAttributeData;
-use Lunar\Base\Traits\HasAttributes;
-use Lunar\Base\Traits\HasDefaultRecord;
-use Lunar\Base\Traits\HasMacros;
-use Lunar\Database\Factories\CustomerGroupFactory;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Casts\AsAttributeData;
+use Payflow\Base\Traits\HasAttributes;
+use Payflow\Base\Traits\HasDefaultRecord;
+use Payflow\Base\Traits\HasMacros;
+use Payflow\Database\Factories\CustomerGroupFactory;
 
 /**
  * @property int $id
@@ -49,7 +49,7 @@ class CustomerGroup extends BaseModel implements Contracts\CustomerGroup
 
     public function customers(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(
             Customer::modelClass(),
@@ -62,7 +62,7 @@ class CustomerGroup extends BaseModel implements Contracts\CustomerGroup
      */
     public function discounts(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(
             Discount::modelClass(),
@@ -75,7 +75,7 @@ class CustomerGroup extends BaseModel implements Contracts\CustomerGroup
      */
     public function products(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(
             Product::modelClass(),
@@ -85,7 +85,7 @@ class CustomerGroup extends BaseModel implements Contracts\CustomerGroup
 
     public function collections(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(
             Collection::modelClass(),
@@ -100,7 +100,7 @@ class CustomerGroup extends BaseModel implements Contracts\CustomerGroup
      */
     public function mappedAttributes()
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->morphToMany(
             Attribute::class,

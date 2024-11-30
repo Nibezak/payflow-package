@@ -16,17 +16,17 @@ The class which handles price formatting is referenced in the `config/pricing.ph
 ```php
 return [
     // ...
-    'formatter' => \Lunar\Pricing\DefaultPriceFormatter::class,
+    'formatter' => \Payflow\Pricing\DefaultPriceFormatter::class,
 ];
 ```
 
-When you retrieve a `Lunar\Models\Price` model, you will have access to the `->price` attribute which will return
-a `Lunar\DataTypes\Price` object. This is what we will use to get our formatted values.
+When you retrieve a `Payflow\Models\Price` model, you will have access to the `->price` attribute which will return
+a `Payflow\DataTypes\Price` object. This is what we will use to get our formatted values.
 
-The `Lunar\DataTypes\Price` class is not limited to database columns and can be found throughout the Lunar core when
+The `Payflow\DataTypes\Price` class is not limited to database columns and can be found throughout the Payflow core when
 dealing with prices, other examples include:
 
-### `Lunar\Models\Order`
+### `Payflow\Models\Order`
 
 - `subTotal`
 - `total`
@@ -34,7 +34,7 @@ dealing with prices, other examples include:
 - `discount_total`
 - `shipping_total`
 
-### `Lunar\Models\OrderLine`
+### `Payflow\Models\OrderLine`
 
 - `unit_price`
 - `sub_total`
@@ -42,23 +42,23 @@ dealing with prices, other examples include:
 - `discount_total`
 - `total`
 
-### `Lunar\Models\Transaction`
+### `Payflow\Models\Transaction`
 
 - `amount`
 
 ### `DefaultPriceFormatter`
 
-The default price formatter ships with Lunar and will handle most use cases for formatting a price, lets go through
+The default price formatter ships with Payflow and will handle most use cases for formatting a price, lets go through
 them, first we'll create a standard price model.
 
 ```php
-$priceModel = \Lunar\Models\Price::create([
+$priceModel = \Payflow\Models\Price::create([
     // ...
     'price' => 1000, // Price is an int and should be in the lowest common denominator
     'min_quantity' => 1,
 ]);
 
-// Lunar\DataTypes\Price
+// Payflow\DataTypes\Price
 $priceDataType = $priceModel->price;
 ```
 
@@ -81,13 +81,13 @@ You may have noticed these two values are the same, so what's happening? Well th
 the unit quantity of the purchasable we have the price for. Let's show another example:
 
 ```php
-$productVariant = \Lunar\Models\ProductVariant::create([
+$productVariant = \Payflow\Models\ProductVariant::create([
     // ...
     'unit_quantity' => 10,
 ]);
 ```
 
-By setting `unit_quantity` to 10 we're telling Lunar that 10 individual units make up this product at this price point,
+By setting `unit_quantity` to 10 we're telling Payflow that 10 individual units make up this product at this price point,
 this is useful if you're selling something that by itself would be under 1 cent i.e. 0.001EUR, which isn't a valid
 price.
 
@@ -96,7 +96,7 @@ $priceModel = $productVariant->prices()->create([
     'price' => 10, // 0.10 EUR
 ]);
 
-// Lunar\DataTypes\Price
+// Payflow\DataTypes\Price
 $priceDataType = $priceModel->price;
 ```
 
@@ -155,10 +155,10 @@ the `$value`, `$currency` and `$unitQty` properties.
 ```php
 <?php
 
-namespace Lunar\Pricing;
+namespace Payflow\Pricing;
 
 use Illuminate\Support\Facades\App;
-use Lunar\Models\Currency;
+use Payflow\Models\Currency;
 use NumberFormatter;
 
 class CustomPriceFormatter implements PriceFormatterInterface
@@ -198,7 +198,7 @@ class CustomPriceFormatter implements PriceFormatterInterface
 The methods you implement can accept any number of arguments you want to support, you are not bound to what
 the `DefaultPriceFormatter` accepts.
 
-Once you have implemented the required methods, simply swap it out in `config/lunar/pricing.php`:
+Once you have implemented the required methods, simply swap it out in `config/payflow/pricing.php`:
 
 ```php
 return [
@@ -209,7 +209,7 @@ return [
 
 ## Model Casting
 
-If you have your own models which you want to use price formatting for, Lunar has a cast class you can use. The only
+If you have your own models which you want to use price formatting for, Payflow has a cast class you can use. The only
 requirement is the column returns an `integer`.
 
 ```php
@@ -217,7 +217,7 @@ class MyModel extends Model
 {
     protected $casts = [
         //...
-        'price' => \Lunar\Base\Casts\Price::class
+        'price' => \Payflow\Base\Casts\Price::class
     ];
 }
 ```

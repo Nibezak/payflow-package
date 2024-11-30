@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\FieldTypes;
+namespace Payflow\FieldTypes;
 
 use Illuminate\Support\Collection;
 use JsonSerializable;
-use Lunar\Base\FieldType;
-use Lunar\Exceptions\FieldTypeException;
+use Payflow\Base\FieldType;
+use Payflow\Exceptions\FieldTypeException;
 
 class TranslatedText implements FieldType, JsonSerializable
 {

@@ -2,8 +2,8 @@
   "name": "opayo",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://lunarphp@github.com/lunarphp/opayo.git",
-  "author": "LunarPHP <hello@lunarphp.io>",
+  "repository": "https://payflowphp@github.com/payflowphp/opayo.git",
+  "author": "PayflowPHP <hello@payflowphp.io>",
   "license": "MIT",
   "scripts": {
     "dev": "npm run development",

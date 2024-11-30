@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductResource\RelationManagers;
+namespace Payflow\Admin\Filament\Resources\ProductResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -9,12 +9,12 @@ use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Validation\Rules\Unique;
-use Lunar\Admin\Events\ProductPricingUpdated;
-use Lunar\Admin\Support\RelationManagers\BaseRelationManager;
-use Lunar\Facades\DB;
-use Lunar\Models\Currency;
-use Lunar\Models\CustomerGroup;
-use Lunar\Models\Price;
+use Payflow\Admin\Events\ProductPricingUpdated;
+use Payflow\Admin\Support\RelationManagers\BaseRelationManager;
+use Payflow\Facades\DB;
+use Payflow\Models\Currency;
+use Payflow\Models\CustomerGroup;
+use Payflow\Models\Price;
 
 class CustomerGroupPricingRelationManager extends BaseRelationManager
 {
@@ -24,12 +24,12 @@ class CustomerGroupPricingRelationManager extends BaseRelationManager
 
     public static function getTitle(Model $ownerRecord, string $pageClass): string
     {
-        return __('lunarpanel::relationmanagers.customer_group_pricing.title');
+        return __('payflowpanel::relationmanagers.customer_group_pricing.title');
     }
 
     protected function getTableHeading(): string|Htmlable|null
     {
-        return __('lunarpanel::relationmanagers.customer_group_pricing.table.heading');
+        return __('payflowpanel::relationmanagers.customer_group_pricing.table.heading');
     }
 
     public function getDefaultForm(Form $form): Form
@@ -39,19 +39,19 @@ class CustomerGroupPricingRelationManager extends BaseRelationManager
                 Forms\Components\Group::make([
                     Forms\Components\Select::make('currency_id')
                         ->label(
-                            __('lunarpanel::relationmanagers.pricing.form.currency_id.label')
+                            __('payflowpanel::relationmanagers.pricing.form.currency_id.label')
                         )->relationship(name: 'currency', titleAttribute: 'name')
                         ->default(function () {
                             return Currency::getDefault()?->id;
                         })
                         ->helperText(
-                            __('lunarpanel::relationmanagers.pricing.form.currency_id.helper_text')
+                            __('payflowpanel::relationmanagers.pricing.form.currency_id.helper_text')
                         )->required(),
                     Forms\Components\Select::make('customer_group_id')
                         ->label(
-                            __('lunarpanel::relationmanagers.pricing.form.customer_group_id.label')
+                            __('payflowpanel::relationmanagers.pricing.form.customer_group_id.label')
                         )->helperText(
-                            __('lunarpanel::relationmanagers.pricing.form.customer_group_id.helper_text')
+                            __('payflowpanel::relationmanagers.pricing.form.customer_group_id.helper_text')
                         )->relationship(name: 'customerGroup', titleAttribute: 'name')
                         ->required()
                         ->unique(ignoreRecord: true, modifyRuleUsing: function (Unique $rule, Forms\Get $get) {
@@ -85,14 +85,14 @@ class CustomerGroupPricingRelationManager extends BaseRelationManager
                                 ->where('priceable_id', $owner->id);
                         }
                     )->helperText(
-                        __('lunarpanel::relationmanagers.pricing.form.price.helper_text')
+                        __('payflowpanel::relationmanagers.pricing.form.price.helper_text')
                     )->required(),
                     Forms\Components\TextInput::make('compare_price')->formatStateUsing(
                         fn ($state) => $state?->decimal(rounding: false)
                     )->label(
-                        __('lunarpanel::relationmanagers.pricing.form.compare_price.label')
+                        __('payflowpanel::relationmanagers.pricing.form.compare_price.label')
                     )->helperText(
-                        __('lunarpanel::relationmanagers.pricing.form.compare_price.helper_text')
+                        __('payflowpanel::relationmanagers.pricing.form.compare_price.helper_text')
                     )->numeric(),
                 ])->columns(2),
             ])->columns(1);
@@ -106,7 +106,7 @@ class CustomerGroupPricingRelationManager extends BaseRelationManager
         return $table
             ->recordTitleAttribute('name')
             ->description(
-                __('lunarpanel::relationmanagers.customer_group_pricing.table.description')
+                __('payflowpanel::relationmanagers.customer_group_pricing.table.description')
             )
             ->modifyQueryUsing(
                 fn ($query) => $query
@@ -116,21 +116,21 @@ class CustomerGroupPricingRelationManager extends BaseRelationManager
             )
             ->defaultSort(fn ($query) => $query->orderBy('cg.name')->orderBy('min_quantity'))
             ->emptyStateHeading(
-                __('lunarpanel::relationmanagers.customer_group_pricing.table.empty_state.label')
+                __('payflowpanel::relationmanagers.customer_group_pricing.table.empty_state.label')
             )
-            ->emptyStateDescription(__('lunarpanel::relationmanagers.customer_group_pricing.table.empty_state.description'))
+            ->emptyStateDescription(__('payflowpanel::relationmanagers.customer_group_pricing.table.empty_state.description'))
             ->columns([
                 Tables\Columns\TextColumn::make('price')
                     ->label(
-                        __('lunarpanel::relationmanagers.pricing.table.price.label')
+                        __('payflowpanel::relationmanagers.pricing.table.price.label')
                     )->formatStateUsing(
                         fn ($state) => $state->formatted,
                     )->sortable(),
                 Tables\Columns\TextColumn::make('currency.code')->label(
-                    __('lunarpanel::relationmanagers.pricing.table.currency.label')
+                    __('payflowpanel::relationmanagers.pricing.table.currency.label')
                 )->sortable(),
                 Tables\Columns\TextColumn::make('customerGroup.name')->label(
-                    __('lunarpanel::relationmanagers.pricing.table.customer_group.label')
+                    __('payflowpanel::relationmanagers.pricing.table.customer_group.label')
                 )->sortable(),
             ])
             ->filters([
@@ -138,7 +138,7 @@ class CustomerGroupPricingRelationManager extends BaseRelationManager
                     ->relationship(name: 'currency', titleAttribute: 'name')
                     ->preload()
                     ->label(
-                        __('lunarpanel::relationmanagers.pricing.table.currency.label')
+                        __('payflowpanel::relationmanagers.pricing.table.currency.label')
                     ),
             ])
             ->headerActions([
@@ -150,8 +150,8 @@ class CustomerGroupPricingRelationManager extends BaseRelationManager
 
                     return $data;
                 })->label(
-                    __('lunarpanel::relationmanagers.customer_group_pricing.table.actions.create.label')
-                )->modalHeading(__('lunarpanel::relationmanagers.customer_group_pricing.table.actions.create.modal.heading'))
+                    __('payflowpanel::relationmanagers.customer_group_pricing.table.actions.create.label')
+                )->modalHeading(__('payflowpanel::relationmanagers.customer_group_pricing.table.actions.create.modal.heading'))
                     ->after(
                         fn () => ProductPricingUpdated::dispatch($this->getOwnerRecord())
                     ),

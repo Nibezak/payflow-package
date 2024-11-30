@@ -1,17 +1,17 @@
 <?php
 
-namespace Lunar\Stripe;
+namespace Payflow\Stripe;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
-use Lunar\Facades\Payments;
-use Lunar\Models\Cart;
-use Lunar\Stripe\Actions\ConstructWebhookEvent;
-use Lunar\Stripe\Components\PaymentForm;
-use Lunar\Stripe\Concerns\ConstructsWebhookEvent;
-use Lunar\Stripe\Managers\StripeManager;
-use Lunar\Stripe\Models\StripePaymentIntent;
+use Payflow\Facades\Payments;
+use Payflow\Models\Cart;
+use Payflow\Stripe\Actions\ConstructWebhookEvent;
+use Payflow\Stripe\Components\PaymentForm;
+use Payflow\Stripe\Concerns\ConstructsWebhookEvent;
+use Payflow\Stripe\Managers\StripeManager;
+use Payflow\Stripe\Models\StripePaymentIntent;
 
 class StripePaymentsServiceProvider extends ServiceProvider
 {
@@ -35,7 +35,7 @@ class StripePaymentsServiceProvider extends ServiceProvider
             return $app->make(ConstructWebhookEvent::class);
         });
 
-        $this->app->singleton('lunar:stripe', function ($app) {
+        $this->app->singleton('payflow:stripe', function ($app) {
             return $app->make(StripeManager::class);
         });
 
@@ -45,18 +45,18 @@ class StripePaymentsServiceProvider extends ServiceProvider
             EOT;
         });
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'lunar');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'payflow');
         $this->loadRoutesFrom(__DIR__.'/../routes/webhooks.php');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        $this->mergeConfigFrom(__DIR__.'/../config/stripe.php', 'lunar.stripe');
+        $this->mergeConfigFrom(__DIR__.'/../config/stripe.php', 'payflow.stripe');
 
         $this->publishes([
-            __DIR__.'/../config/stripe.php' => config_path('lunar/stripe.php'),
-        ], 'lunar.stripe.config');
+            __DIR__.'/../config/stripe.php' => config_path('payflow/stripe.php'),
+        ], 'payflow.stripe.config');
 
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/lunar'),
-        ], 'lunar.stripe.components');
+            __DIR__.'/../resources/views' => resource_path('views/vendor/payflow'),
+        ], 'payflow.stripe.components');
 
         if (class_exists(Livewire::class)) {
             // Register the stripe payment component.

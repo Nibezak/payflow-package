@@ -44,8 +44,8 @@ return [
     |--------------------------------------------------------------------------
     |
     | When a payment intent is retrieved from Stripe it will have a status which is
-    | unique to Stripe and potentially not what you have in Lunar. Here you can define
-    | what each Stripe status should be in Lunar.
+    | unique to Stripe and potentially not what you have in Payflow. Here you can define
+    | what each Stripe status should be in Payflow.
     |
     | Reference: https://stripe.com/docs/api/charges/object
     */
@@ -71,6 +71,6 @@ return [
         |
         | Reference: https://stripe.com/docs/api/charges/object
         */
-        'store_charges' => \Lunar\Stripe\Actions\StoreCharges::class,
+        'store_charges' => \Payflow\Stripe\Actions\StoreCharges::class,
     ],
 ];

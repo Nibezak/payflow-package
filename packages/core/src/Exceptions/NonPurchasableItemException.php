@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Exceptions;
+namespace Payflow\Exceptions;
 
-class NonPurchasableItemException extends LunarException
+class NonPurchasableItemException extends PayflowException
 {
     public function __construct(string $classname)
     {
-        $this->message = __('lunar::exceptions.non_purchasable_item', [
+        $this->message = __('payflow::exceptions.non_purchasable_item', [
             'class' => $classname,
         ]);
     }

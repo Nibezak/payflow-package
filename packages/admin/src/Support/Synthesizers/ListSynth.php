@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Admin\Support\Synthesizers;
+namespace Payflow\Admin\Support\Synthesizers;
 
-use Lunar\FieldTypes\ListField;
+use Payflow\FieldTypes\ListField;
 
 class ListSynth extends AbstractFieldSynth
 {
-    public static $key = 'lunar_list_field';
+    public static $key = 'payflow_list_field';
 
     protected static $targetClass = ListField::class;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Pipelines\Order\Creation;
+namespace Payflow\Pipelines\Order\Creation;
 
 use Closure;
-use Lunar\Actions\Orders\GenerateOrderReference;
-use Lunar\Models\Currency;
-use Lunar\Models\Order;
+use Payflow\Actions\Orders\GenerateOrderReference;
+use Payflow\Models\Currency;
+use Payflow\Models\Order;
 
 class FillOrderFromCart
 {
@@ -20,7 +20,7 @@ class FillOrderFromCart
             'user_id' => $cart->user_id,
             'customer_id' => $cart->customer_id,
             'channel_id' => $cart->channel_id,
-            'status' => config('lunar.orders.draft_status'),
+            'status' => config('payflow.orders.draft_status'),
             'reference' => null,
             'customer_reference' => null,
             'sub_total' => $cart->subTotal->value,

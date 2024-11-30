@@ -1,13 +1,13 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ProductResource\Pages;
 
 use Filament\Actions;
 use Filament\Forms;
 use Filament\Support\Facades\FilamentIcon;
-use Lunar\Admin\Filament\Resources\ProductResource;
-use Lunar\Admin\Support\Actions\Products\ForceDeleteProductAction;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Admin\Filament\Resources\ProductResource;
+use Payflow\Admin\Support\Actions\Products\ForceDeleteProductAction;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
 
 class EditProduct extends BaseEditRecord
 {
@@ -17,17 +17,17 @@ class EditProduct extends BaseEditRecord
 
     public function getTitle(): string
     {
-        return __('lunarpanel::product.pages.edit.title');
+        return __('payflowpanel::product.pages.edit.title');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::product.pages.edit.title');
+        return __('payflowpanel::product.pages.edit.title');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::basic-information');
+        return FilamentIcon::resolve('payflow::basic-information');
     }
 
     protected function getDefaultHeaderActions(): array
@@ -35,21 +35,21 @@ class EditProduct extends BaseEditRecord
         return [
             Actions\EditAction::make('update_status')
                 ->label(
-                    __('lunarpanel::product.actions.edit_status.label')
+                    __('payflowpanel::product.actions.edit_status.label')
                 )
                 ->modalHeading(
-                    __('lunarpanel::product.actions.edit_status.heading')
+                    __('payflowpanel::product.actions.edit_status.heading')
                 )
                 ->record(
                     $this->record
                 )->form([
                     Forms\Components\Radio::make('status')->options([
-                        'published' => __('lunarpanel::product.form.status.options.published.label'),
-                        'draft' => __('lunarpanel::product.form.status.options.draft.label'),
+                        'published' => __('payflowpanel::product.form.status.options.published.label'),
+                        'draft' => __('payflowpanel::product.form.status.options.draft.label'),
                     ])
                         ->descriptions([
-                            'published' => __('lunarpanel::product.form.status.options.published.description'),
-                            'draft' => __('lunarpanel::product.form.status.options.draft.description'),
+                            'published' => __('payflowpanel::product.form.status.options.published.description'),
+                            'draft' => __('payflowpanel::product.form.status.options.draft.description'),
                         ])->live(),
                 ]),
             Actions\DeleteAction::make(),

@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Paypal;
+namespace Payflow\Paypal;
 
 use Illuminate\Support\Facades\Http;
-use Lunar\Models\Cart;
+use Payflow\Models\Cart;
 
 class Paypal implements PaypalInterface
 {
@@ -70,7 +70,7 @@ class Paypal implements PaypalInterface
         $billingAddress = $cart->billingAddress;
         $shippingAddress = $cart->shippingAddress ?: $billingAddress;
 
-        $successRoute = config('lunar.payments.paypal.success_route', 'checkout.success');
+        $successRoute = config('payflow.payments.paypal.success_route', 'checkout.success');
 
         $requestData = [
             'intent' => 'CAPTURE',

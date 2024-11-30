@@ -1,11 +1,11 @@
 <?php
 
 use Livewire\Livewire;
-use Lunar\Admin\Filament\Resources\AttributeGroupResource\Pages\EditAttributeGroup;
-use Lunar\Admin\Filament\Resources\AttributeGroupResource\RelationManagers\AttributesRelationManager;
-use Lunar\Models\AttributeGroup;
+use Payflow\Admin\Filament\Resources\AttributeGroupResource\Pages\EditAttributeGroup;
+use Payflow\Admin\Filament\Resources\AttributeGroupResource\RelationManagers\AttributesRelationManager;
+use Payflow\Models\AttributeGroup;
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('resource.attribute-group');
 
 it('can render relation manager', function () {
@@ -22,7 +22,7 @@ it('can render relation manager', function () {
 
 it('can create attributes', function ($type, $configuration = [], $expectedData = []) {
 
-    $lang = \Lunar\Models\Language::factory()->create([
+    $lang = \Payflow\Models\Language::factory()->create([
         'default' => true,
         'code' => 'en',
     ]);
@@ -41,7 +41,7 @@ it('can create attributes', function ($type, $configuration = [], $expectedData 
         'configuration' => $configuration,
     ])->assertHasNoTableActionErrors();
 
-    $this->assertDatabaseHas((new \Lunar\Models\Attribute)->getTable(), [
+    $this->assertDatabaseHas((new \Payflow\Models\Attribute)->getTable(), [
         'attribute_group_id' => $attributeGroup->id,
         'name' => '{"en":"Foobar"}',
         'handle' => 'foobar',
@@ -49,32 +49,32 @@ it('can create attributes', function ($type, $configuration = [], $expectedData 
     ]);
 })->with([
     'text' => [
-        \Lunar\FieldTypes\Text::class,
+        \Payflow\FieldTypes\Text::class,
         ['richtext' => false],
         '{"richtext":false}',
     ],
     'richtext' => [
-        \Lunar\FieldTypes\Text::class,
+        \Payflow\FieldTypes\Text::class,
         ['richtext' => true],
         '{"richtext":true}',
     ],
     'dropdown' => [
-        \Lunar\FieldTypes\Dropdown::class,
+        \Payflow\FieldTypes\Dropdown::class,
         [],
         '{"lookups":[]}',
     ],
     'dropdown-with-lookups' => [
-        \Lunar\FieldTypes\Dropdown::class,
+        \Payflow\FieldTypes\Dropdown::class,
         ['lookups' => ['Foo' => 'foo', 'Bar' => 'bar']],
         '{"lookups":[{"label":"Foo","value":"foo"},{"label":"Bar","value":"bar"}]}',
     ],
     'number' => [
-        \Lunar\FieldTypes\Number::class,
+        \Payflow\FieldTypes\Number::class,
         [],
         '{"min":null,"max":null}',
     ],
     'number-with-min-max' => [
-        \Lunar\FieldTypes\Number::class,
+        \Payflow\FieldTypes\Number::class,
         ['min' => 5, 'max' => 10],
         '{"min":5,"max":10}',
     ],

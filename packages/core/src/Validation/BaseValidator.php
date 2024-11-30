@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Validation;
+namespace Payflow\Validation;
 
 use Illuminate\Support\MessageBag;
-use Lunar\Exceptions\Carts\CartException;
+use Payflow\Exceptions\Carts\CartException;
 
 abstract class BaseValidator
 {

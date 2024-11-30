@@ -1,20 +1,20 @@
 <?php
 
-namespace Lunar\Stripe;
+namespace Payflow\Stripe;
 
-use Lunar\Base\DataTransferObjects\PaymentAuthorize;
-use Lunar\Base\DataTransferObjects\PaymentCapture;
-use Lunar\Base\DataTransferObjects\PaymentCheck;
-use Lunar\Base\DataTransferObjects\PaymentChecks;
-use Lunar\Base\DataTransferObjects\PaymentRefund;
-use Lunar\Events\PaymentAttemptEvent;
-use Lunar\Exceptions\Carts\CartException;
-use Lunar\Exceptions\DisallowMultipleCartOrdersException;
-use Lunar\Models\Transaction;
-use Lunar\PaymentTypes\AbstractPayment;
-use Lunar\Stripe\Actions\UpdateOrderFromIntent;
-use Lunar\Stripe\Facades\Stripe;
-use Lunar\Stripe\Models\StripePaymentIntent;
+use Payflow\Base\DataTransferObjects\PaymentAuthorize;
+use Payflow\Base\DataTransferObjects\PaymentCapture;
+use Payflow\Base\DataTransferObjects\PaymentCheck;
+use Payflow\Base\DataTransferObjects\PaymentChecks;
+use Payflow\Base\DataTransferObjects\PaymentRefund;
+use Payflow\Events\PaymentAttemptEvent;
+use Payflow\Exceptions\Carts\CartException;
+use Payflow\Exceptions\DisallowMultipleCartOrdersException;
+use Payflow\Models\Transaction;
+use Payflow\PaymentTypes\AbstractPayment;
+use Payflow\Stripe\Actions\UpdateOrderFromIntent;
+use Payflow\Stripe\Facades\Stripe;
+use Payflow\Stripe\Models\StripePaymentIntent;
 use Stripe\Exception\InvalidRequestException;
 use Stripe\PaymentIntent;
 
@@ -46,7 +46,7 @@ class StripePaymentType extends AbstractPayment
     {
         $this->stripe = Stripe::getClient();
 
-        $this->policy = config('lunar.stripe.policy', 'automatic');
+        $this->policy = config('payflow.stripe.policy', 'automatic');
     }
 
     /**

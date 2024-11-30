@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Exceptions\FieldTypes;
+namespace Payflow\Exceptions\FieldTypes;
 
-use Lunar\Exceptions\LunarException;
+use Payflow\Exceptions\PayflowException;
 
-class FieldTypeMissingException extends LunarException
+class FieldTypeMissingException extends PayflowException
 {
     public function __construct(string $classname)
     {
-        $this->message = __('lunar::exceptions.fieldtype_missing', [
+        $this->message = __('payflow::exceptions.fieldtype_missing', [
             'class' => $classname,
         ]);
     }

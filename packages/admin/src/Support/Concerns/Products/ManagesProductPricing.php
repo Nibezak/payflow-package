@@ -1,15 +1,15 @@
 <?php
 
-namespace Lunar\Admin\Support\Concerns\Products;
+namespace Payflow\Admin\Support\Concerns\Products;
 
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Filament\Resources\ProductVariantResource;
-use Lunar\Models\Currency;
-use Lunar\Models\Price;
+use Payflow\Admin\Filament\Resources\ProductVariantResource;
+use Payflow\Models\Currency;
+use Payflow\Models\Price;
 
 trait ManagesProductPricing
 {
@@ -33,17 +33,17 @@ trait ManagesProductPricing
 
     public function getTitle(): string|Htmlable
     {
-        return __('lunarpanel::relationmanagers.pricing.title');
+        return __('payflowpanel::relationmanagers.pricing.title');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::relationmanagers.pricing.title');
+        return __('payflowpanel::relationmanagers.pricing.title');
     }
 
     protected function handleRecordUpdate(Model $record, array $data): Model
     {
-        $data = $this->callLunarHook('beforeUpdate', $data, $record);
+        $data = $this->callPayflowHook('beforeUpdate', $data, $record);
 
         $variant = $this->getOwnerRecord();
 
@@ -74,13 +74,13 @@ trait ManagesProductPricing
 
         $this->dispatch('refresh-relation-manager');
 
-        return $this->callLunarHook('afterUpdate', $record, $data);
+        return $this->callPayflowHook('afterUpdate', $record, $data);
     }
 
     public function getBasePriceFormSection(): Section
     {
         return Forms\Components\Section::make(
-            __('lunarpanel::relationmanagers.pricing.form.basePrices.title')
+            __('payflowpanel::relationmanagers.pricing.form.basePrices.title')
         )
             ->schema(
                 collect($this->basePrices)->map(function ($price, $index): Forms\Components\Fieldset {
@@ -90,10 +90,10 @@ trait ManagesProductPricing
                             ->statePath($index.'.value')
                             ->numeric()
                             ->label(
-                                __('lunarpanel::relationmanagers.pricing.form.basePrices.form.price.label')
+                                __('payflowpanel::relationmanagers.pricing.form.basePrices.form.price.label')
                             )
                             ->helperText(
-                                __('lunarpanel::relationmanagers.pricing.form.basePrices.form.price.helper_text')
+                                __('payflowpanel::relationmanagers.pricing.form.basePrices.form.price.helper_text')
                             )
                             ->hintColor('warning')
                             ->extraInputAttributes([
@@ -104,23 +104,23 @@ trait ManagesProductPricing
                                     return null;
                                 }
 
-                                return FilamentIcon::resolve('lunar::info');
+                                return FilamentIcon::resolve('payflow::info');
                             })->hintIconTooltip(function (Forms\Get $get, Forms\Components\TextInput $component) use ($index) {
                                 if ($get('basePrices.'.$index.'.id', true)) {
                                     return null;
                                 }
 
-                                return __('lunarpanel::relationmanagers.pricing.form.basePrices.tooltip');
+                                return __('payflowpanel::relationmanagers.pricing.form.basePrices.tooltip');
                             })->live(),
                         Forms\Components\TextInput::make('compare_price')
                             ->label('')
                             ->statePath($index.'.compare_price')
                             ->numeric()
                             ->label(
-                                __('lunarpanel::relationmanagers.pricing.form.basePrices.form.compare_price.label')
+                                __('payflowpanel::relationmanagers.pricing.form.basePrices.form.compare_price.label')
                             )
                             ->helperText(
-                                __('lunarpanel::relationmanagers.pricing.form.basePrices.form.compare_price.helper_text')
+                                __('payflowpanel::relationmanagers.pricing.form.basePrices.form.compare_price.helper_text')
                             )
                             ->hintColor('warning')
                             ->extraInputAttributes([
@@ -131,13 +131,13 @@ trait ManagesProductPricing
                                     return null;
                                 }
 
-                                return FilamentIcon::resolve('lunar::info');
+                                return FilamentIcon::resolve('payflow::info');
                             })->hintIconTooltip(function (Forms\Get $get, Forms\Components\TextInput $component) use ($index) {
                                 if ($get('basePrices.'.$index.'.id', true)) {
                                     return null;
                                 }
 
-                                return __('lunarpanel::relationmanagers.pricing.form.basePrices.tooltip');
+                                return __('payflowpanel::relationmanagers.pricing.form.basePrices.tooltip');
                             })->live(),
                     ])->columns(2);
                 })->toArray()
@@ -160,7 +160,7 @@ trait ManagesProductPricing
             $this->getBasePriceFormSection(),
         ])->statePath('');
 
-        $this->callLunarHook('extendForm', $form);
+        $this->callPayflowHook('extendForm', $form);
 
         return $form;
     }

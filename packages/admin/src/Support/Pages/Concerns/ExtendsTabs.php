@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Pages\Concerns;
+namespace Payflow\Admin\Support\Pages\Concerns;
 
 trait ExtendsTabs
 {
@@ -11,6 +11,6 @@ trait ExtendsTabs
 
     public function getTabs(): array
     {
-        return $this->callLunarHook('getTabs', $this->getDefaultTabs());
+        return $this->callPayflowHook('getTabs', $this->getDefaultTabs());
     }
 }

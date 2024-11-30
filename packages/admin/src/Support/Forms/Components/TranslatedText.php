@@ -1,17 +1,17 @@
 <?php
 
-namespace Lunar\Admin\Support\Forms\Components;
+namespace Payflow\Admin\Support\Forms\Components;
 
 use Closure;
 use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Support\Collection;
-use Lunar\Models\Language;
+use Payflow\Models\Language;
 
 class TranslatedText extends TextInput
 {
-    protected string $view = 'lunarpanel::forms.components.translated-text';
+    protected string $view = 'payflowpanel::forms.components.translated-text';
 
     public bool $expanded = false;
 

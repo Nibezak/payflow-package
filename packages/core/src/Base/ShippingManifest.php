@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
 use Closure;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Collection;
-use Lunar\DataTypes\ShippingOption;
-use Lunar\Models\Cart;
+use Payflow\DataTypes\ShippingOption;
+use Payflow\Models\Cart;
 
 class ShippingManifest implements ShippingManifestInterface
 {

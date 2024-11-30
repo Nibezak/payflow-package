@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Observers;
+namespace Payflow\Observers;
 
-use Lunar\Models\ProductOptionValue;
+use Payflow\Models\ProductOptionValue;
 
 class ProductOptionValueObserver
 {

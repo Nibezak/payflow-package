@@ -16,12 +16,12 @@ return [
         /*
          * These models are required by the system, do not change them.
          */
-        Lunar\Models\Brand::class,
-        Lunar\Models\Collection::class,
-        Lunar\Models\Customer::class,
-        Lunar\Models\Order::class,
-        Lunar\Models\Product::class,
-        Lunar\Models\ProductOption::class,
+        Payflow\Models\Brand::class,
+        Payflow\Models\Collection::class,
+        Payflow\Models\Customer::class,
+        Payflow\Models\Order::class,
+        Payflow\Models\Product::class,
+        Payflow\Models\ProductOption::class,
 
         /*
          * Below you can add your own models for indexing...
@@ -39,18 +39,18 @@ return [
     |
     */
     'engine_map' => [
-        // Lunar\Models\Product::class => 'algolia',
-        // Lunar\Models\Order::class => 'meilisearch',
-        // Lunar\Models\Collection::class => 'meilisearch',
+        // Payflow\Models\Product::class => 'algolia',
+        // Payflow\Models\Order::class => 'meilisearch',
+        // Payflow\Models\Collection::class => 'meilisearch',
     ],
 
     'indexers' => [
-        Lunar\Models\Brand::class => Lunar\Search\BrandIndexer::class,
-        Lunar\Models\Collection::class => Lunar\Search\CollectionIndexer::class,
-        Lunar\Models\Customer::class => Lunar\Search\CustomerIndexer::class,
-        Lunar\Models\Order::class => Lunar\Search\OrderIndexer::class,
-        Lunar\Models\Product::class => Lunar\Search\ProductIndexer::class,
-        Lunar\Models\ProductOption::class => Lunar\Search\ProductOptionIndexer::class,
+        Payflow\Models\Brand::class => Payflow\Search\BrandIndexer::class,
+        Payflow\Models\Collection::class => Payflow\Search\CollectionIndexer::class,
+        Payflow\Models\Customer::class => Payflow\Search\CustomerIndexer::class,
+        Payflow\Models\Order::class => Payflow\Search\OrderIndexer::class,
+        Payflow\Models\Product::class => Payflow\Search\ProductIndexer::class,
+        Payflow\Models\ProductOption::class => Payflow\Search\ProductOptionIndexer::class,
     ],
 
 ];

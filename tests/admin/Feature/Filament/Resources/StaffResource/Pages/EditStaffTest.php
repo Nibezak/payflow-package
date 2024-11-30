@@ -1,13 +1,13 @@
 <?php
 
 use Livewire\Livewire;
-use Lunar\Admin\Filament\Resources\StaffResource;
-use Lunar\Admin\Filament\Resources\StaffResource\Pages\EditStaff;
-use Lunar\Admin\Models\Staff;
-use Lunar\Admin\Support\Facades\LunarAccessControl;
+use Payflow\Admin\Filament\Resources\StaffResource;
+use Payflow\Admin\Filament\Resources\StaffResource\Pages\EditStaff;
+use Payflow\Admin\Models\Staff;
+use Payflow\Admin\Support\Facades\PayflowAccessControl;
 use Spatie\Permission\Models\Role;
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('resource.staff');
 
 beforeEach(fn () => $this->asStaff(admin: true));
@@ -58,7 +58,7 @@ it('can assign staff role and permissions', function () {
     ]);
 
     $roles = ['staff'];
-    $permissions = LunarAccessControl::getGroupedPermissions()->random(4)->mapWithKeys(fn ($perm) => [$perm->handle => true]);
+    $permissions = PayflowAccessControl::getGroupedPermissions()->random(4)->mapWithKeys(fn ($perm) => [$perm->handle => true]);
     $rolePermission = array_keys($permissions->take(1)->toArray());
 
     $staffRole = Role::findByName('staff');

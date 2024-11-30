@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Admin\Filament\Widgets\Dashboard\Orders;
+namespace Payflow\Admin\Filament\Widgets\Dashboard\Orders;
 
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget;
-use Lunar\Facades\DB;
-use Lunar\Models\OrderLine;
+use Payflow\Facades\DB;
+use Payflow\Models\OrderLine;
 
 class PopularProductsTable extends TableWidget
 {
@@ -19,17 +19,17 @@ class PopularProductsTable extends TableWidget
 
     public static function getHeading(): ?string
     {
-        return __('lunarpanel::widgets.dashboard.latest_orders.heading');
+        return __('payflowpanel::widgets.dashboard.latest_orders.heading');
     }
 
     public function table(Table $table): Table
     {
         return $table
             ->heading(
-                fn () => __('lunarpanel::widgets.dashboard.orders.popular_products.heading')
+                fn () => __('payflowpanel::widgets.dashboard.orders.popular_products.heading')
             )
             ->description(
-                fn () => __('lunarpanel::widgets.dashboard.orders.popular_products.description')
+                fn () => __('payflowpanel::widgets.dashboard.orders.popular_products.description')
             )
             ->query(function () {
                 return OrderLine::query()->whereHas('order', function ($relation) {

@@ -1,12 +1,12 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class)
+uses(\Payflow\Tests\Core\TestCase::class)
     ->group('validation.cart_line');
 
-use Lunar\Exceptions\Carts\CartException;
-use Lunar\Models\Cart;
-use Lunar\Models\Currency;
-use Lunar\Validation\CartLine\CartLineQuantity;
+use Payflow\Exceptions\Carts\CartException;
+use Payflow\Models\Cart;
+use Payflow\Models\Currency;
+use Payflow\Validation\CartLine\CartLineQuantity;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -17,7 +17,7 @@ test('can validate zero quantity', function () {
         'currency_id' => $currency->id,
     ]);
 
-    $purchasable = \Lunar\Models\ProductVariant::factory()->create();
+    $purchasable = \Payflow\Models\ProductVariant::factory()->create();
 
     $validator = (new CartLineQuantity)->using(
         cart: $cart,
@@ -27,7 +27,7 @@ test('can validate zero quantity', function () {
     );
 
     expect(fn () => $validator->validate())
-        ->toThrow(CartException::class, __('lunar::exceptions.invalid_cart_line_quantity', ['quantity' => 0]));
+        ->toThrow(CartException::class, __('payflow::exceptions.invalid_cart_line_quantity', ['quantity' => 0]));
 });
 
 test('can validate excessive quantity', function () {
@@ -37,7 +37,7 @@ test('can validate excessive quantity', function () {
         'currency_id' => $currency->id,
     ]);
 
-    $purchasable = \Lunar\Models\ProductVariant::factory()->create();
+    $purchasable = \Payflow\Models\ProductVariant::factory()->create();
 
     $quantity = 1000001;
 
@@ -49,7 +49,7 @@ test('can validate excessive quantity', function () {
     );
 
     expect(fn () => $validator->validate())
-        ->toThrow(CartException::class, __('lunar::exceptions.maximum_cart_line_quantity', ['quantity' => 1000000]));
+        ->toThrow(CartException::class, __('payflow::exceptions.maximum_cart_line_quantity', ['quantity' => 1000000]));
 });
 
 test('can validate minimum quantity', function () {
@@ -59,7 +59,7 @@ test('can validate minimum quantity', function () {
         'currency_id' => $currency->id,
     ]);
 
-    $purchasable = \Lunar\Models\ProductVariant::factory()->create([
+    $purchasable = \Payflow\Models\ProductVariant::factory()->create([
         'min_quantity' => 10,
     ]);
 
@@ -73,7 +73,7 @@ test('can validate minimum quantity', function () {
     );
 
     expect(fn () => $validator->validate())
-        ->toThrow(CartException::class, __('lunar::exceptions.minimum_quantity', ['quantity' => $purchasable->min_quantity]));
+        ->toThrow(CartException::class, __('payflow::exceptions.minimum_quantity', ['quantity' => $purchasable->min_quantity]));
 });
 
 test('can validate quantity increment quantity', function (array $quantities, int $increment) {
@@ -83,7 +83,7 @@ test('can validate quantity increment quantity', function (array $quantities, in
         'currency_id' => $currency->id,
     ]);
 
-    $purchasable = \Lunar\Models\ProductVariant::factory()->create([
+    $purchasable = \Payflow\Models\ProductVariant::factory()->create([
         'min_quantity' => 1,
         'quantity_increment' => $increment,
     ]);
@@ -100,7 +100,7 @@ test('can validate quantity increment quantity', function (array $quantities, in
             expect(fn () => $validator->validate())
                 ->toThrow(
                     CartException::class,
-                    __('lunar::exceptions.quantity_increment', [
+                    __('payflow::exceptions.quantity_increment', [
                         'increment' => $purchasable->quantity_increment,
                         'quantity' => $quantity,
                     ])
@@ -172,12 +172,12 @@ test('can validate from cart line id', function () {
         'currency_id' => $currency->id,
     ]);
 
-    $purchasable = \Lunar\Models\ProductVariant::factory()->create([
+    $purchasable = \Payflow\Models\ProductVariant::factory()->create([
         'quantity_increment' => 25,
     ]);
 
     $cart->lines()->create([
-        'purchasable_type' => \Lunar\Models\ProductVariant::class,
+        'purchasable_type' => \Payflow\Models\ProductVariant::class,
         'purchasable_id' => $purchasable->id,
         'quantity' => 50,
     ]);

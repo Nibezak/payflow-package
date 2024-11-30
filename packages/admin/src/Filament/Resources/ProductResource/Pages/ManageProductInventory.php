@@ -1,15 +1,15 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ProductResource\Pages;
 
 use Filament\Forms\Form;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Filament\Resources\ProductResource;
-use Lunar\Admin\Filament\Resources\ProductVariantResource\Pages\ManageVariantInventory;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
-use Lunar\Models\ProductVariant;
+use Payflow\Admin\Filament\Resources\ProductResource;
+use Payflow\Admin\Filament\Resources\ProductVariantResource\Pages\ManageVariantInventory;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Models\ProductVariant;
 
 class ManageProductInventory extends BaseEditRecord
 {
@@ -29,12 +29,12 @@ class ManageProductInventory extends BaseEditRecord
 
     public function getTitle(): string|Htmlable
     {
-        return __('lunarpanel::product.pages.inventory.label');
+        return __('payflowpanel::product.pages.inventory.label');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::product.pages.inventory.label');
+        return __('payflowpanel::product.pages.inventory.label');
     }
 
     public static function shouldRegisterNavigation(array $parameters = []): bool
@@ -44,12 +44,12 @@ class ManageProductInventory extends BaseEditRecord
 
     public function getBreadcrumb(): string
     {
-        return __('lunarpanel::product.pages.inventory.label');
+        return __('payflowpanel::product.pages.inventory.label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::product-inventory');
+        return FilamentIcon::resolve('payflow::product-inventory');
     }
 
     protected function getDefaultHeaderActions(): array

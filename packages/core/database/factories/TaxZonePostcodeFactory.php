@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
-use Lunar\Models\Country;
-use Lunar\Models\TaxZone;
-use Lunar\Models\TaxZonePostcode;
+use Payflow\Models\Country;
+use Payflow\Models\TaxZone;
+use Payflow\Models\TaxZonePostcode;
 
 class TaxZonePostcodeFactory extends BaseFactory
 {

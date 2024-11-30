@@ -1,13 +1,13 @@
 <?php
 
-use Lunar\Admin\Filament\Resources\CustomerResource\Pages\EditCustomer;
-use Lunar\Admin\Support\Facades\LunarPanel;
+use Payflow\Admin\Filament\Resources\CustomerResource\Pages\EditCustomer;
+use Payflow\Admin\Support\Facades\PayflowPanel;
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('extending.edit');
 
 it('can change data before fill', function () {
-    $class = new class extends \Lunar\Admin\Support\Extending\EditPageExtension
+    $class = new class extends \Payflow\Admin\Support\Extending\EditPageExtension
     {
         public function beforeFill(array $data): array
         {
@@ -17,11 +17,11 @@ it('can change data before fill', function () {
         }
     };
 
-    $customer = \Lunar\Models\Customer::factory()->create([
+    $customer = \Payflow\Models\Customer::factory()->create([
         'first_name' => 'Geoff',
     ]);
 
-    LunarPanel::extensions([
+    PayflowPanel::extensions([
         EditCustomer::class => $class::class,
     ]);
 
@@ -33,13 +33,13 @@ it('can change data before fill', function () {
         'first_name' => 'Jacob',
     ])->call('save');
 
-    $this->assertDatabaseHas(\Lunar\Models\Customer::class, [
+    $this->assertDatabaseHas(\Payflow\Models\Customer::class, [
         'first_name' => 'Jacob',
     ]);
 });
 
 it('can change data before save', function () {
-    $class = new class extends \Lunar\Admin\Support\Extending\EditPageExtension
+    $class = new class extends \Payflow\Admin\Support\Extending\EditPageExtension
     {
         public function beforeSave(array $data): array
         {
@@ -49,11 +49,11 @@ it('can change data before save', function () {
         }
     };
 
-    $customer = \Lunar\Models\Customer::factory()->create([
+    $customer = \Payflow\Models\Customer::factory()->create([
         'first_name' => 'Geoff',
     ]);
 
-    LunarPanel::extensions([
+    PayflowPanel::extensions([
         EditCustomer::class => $class::class,
     ]);
 
@@ -66,7 +66,7 @@ it('can change data before save', function () {
     ])->call('save')
         ->assertHasNoFormErrors();
 
-    $this->assertDatabaseHas(\Lunar\Models\Customer::class, [
+    $this->assertDatabaseHas(\Payflow\Models\Customer::class, [
         'first_name' => 'Tony',
     ]);
 });

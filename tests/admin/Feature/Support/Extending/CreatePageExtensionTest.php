@@ -1,13 +1,13 @@
 <?php
 
-use Lunar\Admin\Filament\Resources\CustomerResource\Pages\CreateCustomer;
-use Lunar\Admin\Support\Facades\LunarPanel;
+use Payflow\Admin\Filament\Resources\CustomerResource\Pages\CreateCustomer;
+use Payflow\Admin\Support\Facades\PayflowPanel;
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('extending');
 
 it('can customise page headings', function () {
-    $class = new class extends \Lunar\Admin\Support\Extending\CreatePageExtension
+    $class = new class extends \Payflow\Admin\Support\Extending\CreatePageExtension
     {
         public function heading($title): string
         {
@@ -20,7 +20,7 @@ it('can customise page headings', function () {
         }
     };
 
-    LunarPanel::extensions([
+    PayflowPanel::extensions([
         CreateCustomer::class => $class::class,
     ]);
 
@@ -32,7 +32,7 @@ it('can customise page headings', function () {
 });
 
 it('can change data before creation', function () {
-    $class = new class extends \Lunar\Admin\Support\Extending\CreatePageExtension
+    $class = new class extends \Payflow\Admin\Support\Extending\CreatePageExtension
     {
         public function beforeCreate(array $data): array
         {
@@ -42,7 +42,7 @@ it('can change data before creation', function () {
         }
     };
 
-    LunarPanel::extensions([
+    PayflowPanel::extensions([
         CreateCustomer::class => $class::class,
     ]);
 
@@ -56,13 +56,13 @@ it('can change data before creation', function () {
         ])->call('create')
         ->assertHasNoFormErrors();
 
-    $this->assertDatabaseHas(\Lunar\Models\Customer::class, [
+    $this->assertDatabaseHas(\Payflow\Models\Customer::class, [
         'first_name' => 'Jacob',
     ]);
 });
 
 it('can manipulate model after creation', function () {
-    $class = new class extends \Lunar\Admin\Support\Extending\CreatePageExtension
+    $class = new class extends \Payflow\Admin\Support\Extending\CreatePageExtension
     {
         public function afterCreation(Illuminate\Database\Eloquent\Model $record, array $data): Illuminate\Database\Eloquent\Model
         {
@@ -74,7 +74,7 @@ it('can manipulate model after creation', function () {
         }
     };
 
-    LunarPanel::extensions([
+    PayflowPanel::extensions([
         CreateCustomer::class => $class::class,
     ]);
 
@@ -88,7 +88,7 @@ it('can manipulate model after creation', function () {
         ])->call('create')
         ->assertHasNoFormErrors();
 
-    $this->assertDatabaseHas(\Lunar\Models\Customer::class, [
+    $this->assertDatabaseHas(\Payflow\Models\Customer::class, [
         'first_name' => 'Geoff',
     ]);
 });

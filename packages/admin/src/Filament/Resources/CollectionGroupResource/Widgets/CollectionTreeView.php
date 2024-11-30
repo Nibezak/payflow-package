@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\CollectionGroupResource\Widgets;
+namespace Payflow\Admin\Filament\Resources\CollectionGroupResource\Widgets;
 
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
@@ -13,13 +13,13 @@ use Filament\Support\Facades\FilamentIcon;
 use Filament\Widgets\Widget;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
-use Lunar\Admin\Filament\Resources\CollectionResource;
-use Lunar\Admin\Support\Actions\Collections\CreateChildCollection;
-use Lunar\Admin\Support\Actions\Collections\CreateRootCollection;
-use Lunar\Admin\Support\Actions\Collections\DeleteCollection;
-use Lunar\Admin\Support\Actions\Collections\MoveCollection;
-use Lunar\Facades\DB;
-use Lunar\Models\Collection;
+use Payflow\Admin\Filament\Resources\CollectionResource;
+use Payflow\Admin\Support\Actions\Collections\CreateChildCollection;
+use Payflow\Admin\Support\Actions\Collections\CreateRootCollection;
+use Payflow\Admin\Support\Actions\Collections\DeleteCollection;
+use Payflow\Admin\Support\Actions\Collections\MoveCollection;
+use Payflow\Facades\DB;
+use Payflow\Models\Collection;
 
 class CollectionTreeView extends Widget implements HasActions, HasForms
 {
@@ -34,7 +34,7 @@ class CollectionTreeView extends Widget implements HasActions, HasForms
 
     protected static bool $isLazy = false;
 
-    protected static string $view = 'lunarpanel::resources.collectiongroup-resource.widgets.collection-treeview';
+    protected static string $view = 'payflowpanel::resources.collectiongroup-resource.widgets.collection-treeview';
 
     public function mount()
     {
@@ -92,7 +92,7 @@ class CollectionTreeView extends Widget implements HasActions, HasForms
 
         Notification::make()
             ->title(
-                __('lunarpanel::components.collection-tree-view.notifications.collections-reordered.success')
+                __('payflowpanel::components.collection-tree-view.notifications.collections-reordered.success')
             )
             ->success()
             ->send();
@@ -105,7 +105,7 @@ class CollectionTreeView extends Widget implements HasActions, HasForms
         if (! $index) {
             Notification::make()
                 ->title(
-                    __('lunarpanel::components.collection-tree-view.notifications.node-expanded.danger')
+                    __('payflowpanel::components.collection-tree-view.notifications.node-expanded.danger')
                 )
                 ->danger()
                 ->send();
@@ -150,7 +150,7 @@ class CollectionTreeView extends Widget implements HasActions, HasForms
     {
         return CreateChildCollection::make('addChildCollection')
             ->icon(
-                fn () => FilamentIcon::resolve('lunar::sub-collection')
+                fn () => FilamentIcon::resolve('payflow::sub-collection')
             )->after(
                 fn (array $arguments) => $this->toggleChildren($arguments['id'], keepOpen: true)
             );
@@ -185,11 +185,11 @@ class CollectionTreeView extends Widget implements HasActions, HasForms
     {
         return MoveCollection::make('move')
             ->icon(
-                fn () => FilamentIcon::resolve('lunar::move-collection')
+                fn () => FilamentIcon::resolve('payflow::move-collection')
             )->form([
                 Forms\Components\Select::make('target_id')
                     ->label(
-                        __('lunarpanel::components.collection-tree-view.actions.move.form.target_id.label')
+                        __('payflowpanel::components.collection-tree-view.actions.move.form.target_id.label')
                     )
                     ->model(Collection::class)
                     ->searchable()

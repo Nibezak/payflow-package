@@ -1,5 +1,5 @@
 <?php
 
-namespace Lunar\Paypal\Exceptions;
+namespace Payflow\Paypal\Exceptions;
 
 class RefundFailedException extends \Exception {}

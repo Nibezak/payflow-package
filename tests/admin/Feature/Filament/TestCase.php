@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Tests\Admin\Feature\Filament;
+namespace Payflow\Tests\Admin\Feature\Filament;
 
-use Lunar\Tests\Admin\TestCase as BaseTestCase;
+use Payflow\Tests\Admin\TestCase as BaseTestCase;
 
 class TestCase extends BaseTestCase
 {

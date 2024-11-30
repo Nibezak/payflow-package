@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Base\Traits;
+namespace Payflow\Base\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
 use Laravel\Scout\EngineManager;
 use Laravel\Scout\Searchable as ScoutSearchable;
-use Lunar\Search\ScoutIndexer;
+use Payflow\Search\ScoutIndexer;
 
 trait Searchable
 {
@@ -72,7 +72,7 @@ trait Searchable
 
     public function indexer()
     {
-        $config = config('lunar.search.indexers', []);
+        $config = config('payflow.search.indexers', []);
 
         return app($config[self::class] ?? ScoutIndexer::class);
     }
@@ -93,7 +93,7 @@ trait Searchable
      */
     public function searchableUsing()
     {
-        $engines = config('lunar.search.engine_map', []);
+        $engines = config('payflow.search.engine_map', []);
 
         if (isset($engines[self::class])) {
             return app(EngineManager::class)->engine(

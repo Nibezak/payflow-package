@@ -1,13 +1,13 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\FieldTypes\Text;
-use Lunar\FieldTypes\TranslatedText;
-use Lunar\Models\Attribute;
-use Lunar\Models\Brand;
-use Lunar\Models\Language;
-use Lunar\Search\BrandIndexer;
+use Payflow\FieldTypes\Text;
+use Payflow\FieldTypes\TranslatedText;
+use Payflow\Models\Attribute;
+use Payflow\Models\Brand;
+use Payflow\Models\Language;
+use Payflow\Search\BrandIndexer;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

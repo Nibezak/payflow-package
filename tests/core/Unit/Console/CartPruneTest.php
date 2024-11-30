@@ -1,11 +1,11 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
 use Illuminate\Support\Carbon;
-use Lunar\Models\Cart;
-use Lunar\Models\Channel;
-use Lunar\Models\Currency;
+use Payflow\Models\Cart;
+use Payflow\Models\Channel;
+use Payflow\Models\Currency;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -29,7 +29,7 @@ test('can prune carts with default settings', function () {
 
     expect(Cart::query()->get())->toHaveCount(2);
 
-    $this->artisan('lunar:prune:carts');
+    $this->artisan('payflow:prune:carts');
 
     expect(Cart::query()->get())->toHaveCount(1);
 });

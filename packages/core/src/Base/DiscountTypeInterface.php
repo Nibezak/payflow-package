@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
-use Lunar\Models\Cart;
-use Lunar\Models\CartLine;
+use Payflow\Models\Cart;
+use Payflow\Models\CartLine;
 
 interface DiscountTypeInterface
 {

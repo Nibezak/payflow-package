@@ -1,11 +1,11 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\Exceptions\SchedulingException;
-use Lunar\Models\Channel;
-use Lunar\Models\CustomerGroup;
-use Lunar\Models\Product;
+use Payflow\Exceptions\SchedulingException;
+use Payflow\Models\Channel;
+use Payflow\Models\CustomerGroup;
+use Payflow\Models\Product;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -17,7 +17,7 @@ test('can schedule using single model', function () {
     $product->scheduleCustomerGroup($customerGroup);
 
     $this->assertDatabaseHas(
-        'lunar_customer_group_product',
+        'payflow_customer_group_product',
         [
             'customer_group_id' => $customerGroup->id,
             'enabled' => 1,
@@ -35,7 +35,7 @@ test('can schedule always available', function () {
     $product->scheduleCustomerGroup($customerGroup);
 
     $this->assertDatabaseHas(
-        'lunar_customer_group_product',
+        'payflow_customer_group_product',
         [
             'customer_group_id' => $customerGroup->id,
             'enabled' => 1,
@@ -56,7 +56,7 @@ test('can schedule using array of models', function () {
 
     foreach ($groups as $group) {
         $this->assertDatabaseHas(
-            'lunar_customer_group_product',
+            'payflow_customer_group_product',
             [
                 'customer_group_id' => $group->id,
                 'enabled' => 1,
@@ -76,7 +76,7 @@ test('can schedule using collection of models', function () {
 
     foreach ($groups as $group) {
         $this->assertDatabaseHas(
-            'lunar_customer_group_product',
+            'payflow_customer_group_product',
             [
                 'customer_group_id' => $group->id,
                 'enabled' => 1,
@@ -108,7 +108,7 @@ test('can schedule using array of ids', function () {
 
     foreach ($groups as $group) {
         $this->assertDatabaseHas(
-            'lunar_customer_group_product',
+            'payflow_customer_group_product',
             [
                 'customer_group_id' => $group->id,
                 'enabled' => 1,
@@ -128,7 +128,7 @@ test('can schedule using collection of ids', function () {
 
     foreach ($groups as $group) {
         $this->assertDatabaseHas(
-            'lunar_customer_group_product',
+            'payflow_customer_group_product',
             [
                 'customer_group_id' => $group->id,
                 'enabled' => 1,
@@ -250,7 +250,7 @@ test('customer groups are synced on model creation', function () {
     Product::factory()->create();
 
     \Pest\Laravel\assertDatabaseHas(
-        'lunar_customer_group_product',
+        'payflow_customer_group_product',
         [
             'customer_group_id' => $customerGroupA->id,
             'enabled' => 1,
@@ -260,7 +260,7 @@ test('customer groups are synced on model creation', function () {
     );
 
     \Pest\Laravel\assertDatabaseHas(
-        'lunar_customer_group_product',
+        'payflow_customer_group_product',
         [
             'customer_group_id' => $customerGroupB->id,
             'enabled' => 0,

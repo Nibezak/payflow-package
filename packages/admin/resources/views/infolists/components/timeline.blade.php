@@ -4,7 +4,7 @@
     </x-filament::section.heading>
 
 
-    @livewire('lunar.admin.livewire.components.activity-log-feed', [
+    @livewire('payflow.admin.livewire.components.activity-log-feed', [
         'subject' => $getRecord()
     ])
 </section>

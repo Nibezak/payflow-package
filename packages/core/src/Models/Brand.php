@@ -1,21 +1,21 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Casts\AsAttributeData;
-use Lunar\Base\Traits\HasAttributes;
-use Lunar\Base\Traits\HasMacros;
-use Lunar\Base\Traits\HasMedia;
-use Lunar\Base\Traits\HasTranslations;
-use Lunar\Base\Traits\HasUrls;
-use Lunar\Base\Traits\LogsActivity;
-use Lunar\Base\Traits\Searchable;
-use Lunar\Database\Factories\BrandFactory;
-use Lunar\Facades\DB;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Casts\AsAttributeData;
+use Payflow\Base\Traits\HasAttributes;
+use Payflow\Base\Traits\HasMacros;
+use Payflow\Base\Traits\HasMedia;
+use Payflow\Base\Traits\HasTranslations;
+use Payflow\Base\Traits\HasUrls;
+use Payflow\Base\Traits\LogsActivity;
+use Payflow\Base\Traits\Searchable;
+use Payflow\Database\Factories\BrandFactory;
+use Payflow\Facades\DB;
 use Spatie\MediaLibrary\HasMedia as SpatieHasMedia;
 
 /**
@@ -76,14 +76,14 @@ class Brand extends BaseModel implements Contracts\Brand, SpatieHasMedia
 
     public function discounts()
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(Discount::modelClass(), "{$prefix}brand_discount");
     }
 
     public function collections(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(Collection::modelClass(), "{$prefix}brand_collection");
     }

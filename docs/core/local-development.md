@@ -1,12 +1,12 @@
-# Setting Up Lunar For Local Development
+# Setting Up Payflow For Local Development
 
 ## Overview
 
-This guide is here to help you set-up Lunar locally so you can contribute to the core and admin hub.
+This guide is here to help you set-up Payflow locally so you can contribute to the core and admin hub.
 
 ## Before your start
 
-You will need a Laravel application to run Lunar in.
+You will need a Laravel application to run Payflow in.
 
 ## Set-Up
 
@@ -25,10 +25,10 @@ Add the "packages" folder to your `.gitignore` file so the folder is not committ
 /packages
 ```
 
-Fork and then clone the [monorepo](https://github.com/lunarphp/lunar) to the `packages` folder, e.g. `/packages/lunar/`.
+Fork and then clone the [monorepo](https://github.com/payflowphp/payflow) to the `packages` folder, e.g. `/packages/payflow/`.
 
 ```sh
-git clone https://github.com/YOUR-USERNAME/lunar
+git clone https://github.com/YOUR-USERNAME/payflow
 ````
 
 Update your `composer.json` file similar to the following.
@@ -41,7 +41,7 @@ Update your `composer.json` file similar to the following.
     }],
 
     "require": {
-        "lunarphp/lunar": "*",
+        "payflowphp/payflow": "*",
     }
 ````
 
@@ -57,4 +57,4 @@ composer update
 ````
 
 ## Done
-You can now follow the Lunar installation process and start contributing.
+You can now follow the Payflow installation process and start contributing.

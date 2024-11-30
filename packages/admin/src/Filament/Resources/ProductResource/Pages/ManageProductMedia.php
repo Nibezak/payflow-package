@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ProductResource\Pages;
 
-use Lunar\Admin\Filament\Resources\ProductResource;
-use Lunar\Admin\Support\Resources\Pages\ManageMediasRelatedRecords;
+use Payflow\Admin\Filament\Resources\ProductResource;
+use Payflow\Admin\Support\Resources\Pages\ManageMediasRelatedRecords;
 
 class ManageProductMedia extends ManageMediasRelatedRecords
 {

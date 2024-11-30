@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Admin\Filament\Widgets\Dashboard\Orders;
+namespace Payflow\Admin\Filament\Widgets\Dashboard\Orders;
 
 use Carbon\CarbonPeriod;
 use Leandrocfe\FilamentApexCharts\Widgets\ApexChartWidget;
-use Lunar\Facades\DB;
-use Lunar\Models\Currency;
-use Lunar\Models\Order;
+use Payflow\Facades\DB;
+use Payflow\Models\Currency;
+use Payflow\Models\Order;
 
 class NewVsReturningCustomersChart extends ApexChartWidget
 {
@@ -19,7 +19,7 @@ class NewVsReturningCustomersChart extends ApexChartWidget
 
     protected function getHeading(): ?string
     {
-        return __('lunarpanel::widgets.dashboard.orders.new_returning_customers.heading');
+        return __('payflowpanel::widgets.dashboard.orders.new_returning_customers.heading');
     }
 
     protected function getOrderQuery(?\DateTime $from = null, ?\DateTime $to = null)
@@ -95,11 +95,11 @@ class NewVsReturningCustomersChart extends ApexChartWidget
             ],
             'series' => [
                 [
-                    'name' => __('lunarpanel::widgets.dashboard.orders.new_returning_customers.series_one.label'),
+                    'name' => __('payflowpanel::widgets.dashboard.orders.new_returning_customers.series_one.label'),
                     'data' => $newCustomers,
                 ],
                 [
-                    'name' => __('lunarpanel::widgets.dashboard.orders.new_returning_customers.series_two.label'),
+                    'name' => __('payflowpanel::widgets.dashboard.orders.new_returning_customers.series_two.label'),
                     'data' => $returningCustomers,
                 ],
             ],

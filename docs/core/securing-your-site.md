@@ -2,11 +2,11 @@
 
 ## Overview
 
-When you move to production, you will want to make sure you have taken all the steps possible to secure your site and the data that powers it. Lunar takes this very seriously and always do our best to follow industry practices.
+When you move to production, you will want to make sure you have taken all the steps possible to secure your site and the data that powers it. Payflow takes this very seriously and always do our best to follow industry practices.
 
 ## Reporting Vulnerabilities
 
-If you find a security issue with Lunar, please reach out to us privately on Discord or via email [security@lunarphp.io](mailto:security@lunarphp.io) so we can address it and patch with a new release as soon as possible.
+If you find a security issue with Payflow, please reach out to us privately on Discord or via email [security@payflowphp.io](mailto:security@payflowphp.io) so we can address it and patch with a new release as soon as possible.
 
 ## Securing Laravel
 
@@ -18,23 +18,23 @@ As a Laravel developer, we are sure you are well versed in their security practi
 
 ## Securing search
 
-Depending on which search driver you are using will depend on how you lock down the data that Lunar indexes in a production environment. To provide a rich search experience in the hub. We currently index the following models, which may contain sensitive information.
+Depending on which search driver you are using will depend on how you lock down the data that Payflow indexes in a production environment. To provide a rich search experience in the hub. We currently index the following models, which may contain sensitive information.
 
 ### What is sensitive information?
 
 We classify sensitive information as data that contains information about your customers or orders, whether identifiable or not. Information such as addresses, emails, names is likely to be indexed for use in the hub.
 
-### Lunar's indexes
+### Payflow's indexes
 
 Index names are relative to the `SCOUT_PREFIX` env variable.
 
 |Model|Index|Contains Sensitive Information|
 |:-|:-|:-|
-`\Lunar\Models\Product`|`products`|❌|
-`\Lunar\Models\Collection`|`collections`|❌|
-`\Lunar\Models\ProductOption`|`product_options`|❌|
-`\Lunar\Models\Customer`|`customers`|✅|
-`\Lunar\Models\Order`|`orders`|✅|
+`\Payflow\Models\Product`|`products`|❌|
+`\Payflow\Models\Collection`|`collections`|❌|
+`\Payflow\Models\ProductOption`|`product_options`|❌|
+`\Payflow\Models\Customer`|`customers`|✅|
+`\Payflow\Models\Order`|`orders`|✅|
 
 
 ## Securing Meilisearch

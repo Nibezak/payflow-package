@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\TagResource\Pages;
+namespace Payflow\Admin\Filament\Resources\TagResource\Pages;
 
 use Filament\Actions;
-use Lunar\Admin\Filament\Resources\TagResource;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Admin\Filament\Resources\TagResource;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
 
 class EditTag extends BaseEditRecord
 {

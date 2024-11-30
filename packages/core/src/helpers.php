@@ -1,21 +1,21 @@
 <?php
 
-use Lunar\Base\Traits\LunarUser;
-use Lunar\Facades\DB;
+use Payflow\Base\Traits\PayflowUser;
+use Payflow\Facades\DB;
 
-if (! function_exists('is_lunar_user')) {
-    function is_lunar_user($user)
+if (! function_exists('is_payflow_user')) {
+    function is_payflow_user($user)
     {
         $traits = class_uses_recursive($user);
 
-        return in_array(LunarUser::class, $traits);
+        return in_array(PayflowUser::class, $traits);
     }
 }
 
 if (! function_exists('prices_inc_tax')) {
     function prices_inc_tax()
     {
-        return config('lunar.pricing.stored_inclusive_of_tax', false);
+        return config('payflow.pricing.stored_inclusive_of_tax', false);
     }
 }
 

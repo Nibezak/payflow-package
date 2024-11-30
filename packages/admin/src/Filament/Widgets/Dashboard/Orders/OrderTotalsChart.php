@@ -1,13 +1,13 @@
 <?php
 
-namespace Lunar\Admin\Filament\Widgets\Dashboard\Orders;
+namespace Payflow\Admin\Filament\Widgets\Dashboard\Orders;
 
 use Carbon\CarbonPeriod;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Leandrocfe\FilamentApexCharts\Widgets\ApexChartWidget;
-use Lunar\Facades\DB;
-use Lunar\Models\Currency;
-use Lunar\Models\Order;
+use Payflow\Facades\DB;
+use Payflow\Models\Currency;
+use Payflow\Models\Order;
 
 class OrderTotalsChart extends ApexChartWidget
 {
@@ -22,7 +22,7 @@ class OrderTotalsChart extends ApexChartWidget
 
     protected function getHeading(): ?string
     {
-        return __('lunarpanel::widgets.dashboard.orders.order_totals_chart.heading');
+        return __('payflowpanel::widgets.dashboard.orders.order_totals_chart.heading');
     }
 
     protected function getOrderQuery(?\DateTime $from = null, ?\DateTime $to = null)
@@ -61,11 +61,11 @@ class OrderTotalsChart extends ApexChartWidget
             ],
             'series' => [
                 [
-                    'name' => __('lunarpanel::widgets.dashboard.orders.order_totals_chart.series_one.label'),
+                    'name' => __('payflowpanel::widgets.dashboard.orders.order_totals_chart.series_one.label'),
                     'data' => $currentPeriod->pluck('sub_total'),
                 ],
                 [
-                    'name' => __('lunarpanel::widgets.dashboard.orders.order_totals_chart.series_two.label'),
+                    'name' => __('payflowpanel::widgets.dashboard.orders.order_totals_chart.series_two.label'),
                     'data' => $previousPeriod->pluck('sub_total'),
                 ],
             ],
@@ -76,7 +76,7 @@ class OrderTotalsChart extends ApexChartWidget
             ],
             'yaxis' => [
                 'title' => [
-                    'text' => __('lunarpanel::widgets.dashboard.orders.order_totals_chart.yaxis.label', [
+                    'text' => __('payflowpanel::widgets.dashboard.orders.order_totals_chart.yaxis.label', [
                         'currency' => $currency->code,
                     ]),
                 ],

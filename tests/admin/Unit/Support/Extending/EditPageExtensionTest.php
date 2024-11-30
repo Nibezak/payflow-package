@@ -1,13 +1,13 @@
 <?php
 
-use Lunar\Admin\Filament\Resources\CustomerResource\Pages\EditCustomer;
-use Lunar\Admin\Support\Facades\LunarPanel;
+use Payflow\Admin\Filament\Resources\CustomerResource\Pages\EditCustomer;
+use Payflow\Admin\Support\Facades\PayflowPanel;
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('extending');
 
 it('can extend header actions', function () {
-    $class = new class extends \Lunar\Admin\Support\Extending\EditPageExtension
+    $class = new class extends \Payflow\Admin\Support\Extending\EditPageExtension
     {
         public function headerActions(array $actions): array
         {
@@ -17,13 +17,13 @@ it('can extend header actions', function () {
         }
     };
 
-    LunarPanel::extensions([
+    PayflowPanel::extensions([
         EditCustomer::class => $class::class,
     ]);
 
     $this->asStaff(admin: true);
 
-    $customer = \Lunar\Models\Customer::factory()->create([
+    $customer = \Payflow\Models\Customer::factory()->create([
         'first_name' => 'Geoff',
     ]);
 
@@ -33,7 +33,7 @@ it('can extend header actions', function () {
 });
 
 it('can extend form actions', function () {
-    $class = new class extends \Lunar\Admin\Support\Extending\EditPageExtension
+    $class = new class extends \Payflow\Admin\Support\Extending\EditPageExtension
     {
         public function formActions(array $actions): array
         {
@@ -43,13 +43,13 @@ it('can extend form actions', function () {
         }
     };
 
-    LunarPanel::extensions([
+    PayflowPanel::extensions([
         EditCustomer::class => $class::class,
     ]);
 
     $this->asStaff(admin: true);
 
-    $customer = \Lunar\Models\Customer::factory()->create([
+    $customer = \Payflow\Models\Customer::factory()->create([
         'first_name' => 'Geoff',
     ]);
 

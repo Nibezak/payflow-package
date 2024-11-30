@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Actions\Carts;
+namespace Payflow\Actions\Carts;
 
-use Lunar\Actions\AbstractAction;
-use Lunar\Base\LunarUser;
-use Lunar\Models\Cart;
+use Payflow\Actions\AbstractAction;
+use Payflow\Base\PayflowUser;
+use Payflow\Models\Cart;
 
 class AssociateUser extends AbstractAction
 {
@@ -13,7 +13,7 @@ class AssociateUser extends AbstractAction
      *
      * @param  string  $policy
      */
-    public function execute(Cart $cart, LunarUser $user, $policy = 'merge'): self
+    public function execute(Cart $cart, PayflowUser $user, $policy = 'merge'): self
     {
         if ($policy == 'merge') {
             $userCart = Cart::whereUserId($user->getKey())->active()->unMerged()->latest()->first();

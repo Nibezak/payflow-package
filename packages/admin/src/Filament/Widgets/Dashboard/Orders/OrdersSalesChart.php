@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Admin\Filament\Widgets\Dashboard\Orders;
+namespace Payflow\Admin\Filament\Widgets\Dashboard\Orders;
 
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Leandrocfe\FilamentApexCharts\Widgets\ApexChartWidget;
-use Lunar\Facades\DB;
-use Lunar\Models\Currency;
-use Lunar\Models\Order;
+use Payflow\Facades\DB;
+use Payflow\Models\Currency;
+use Payflow\Models\Order;
 
 class OrdersSalesChart extends ApexChartWidget
 {
@@ -21,7 +21,7 @@ class OrdersSalesChart extends ApexChartWidget
 
     protected function getHeading(): ?string
     {
-        return __('lunarpanel::widgets.dashboard.orders.order_sales_chart.heading');
+        return __('payflowpanel::widgets.dashboard.orders.order_sales_chart.heading');
     }
 
     protected function getOrderQuery(?\DateTime $from = null, ?\DateTime $to = null)
@@ -80,11 +80,11 @@ class OrdersSalesChart extends ApexChartWidget
             ],
             'series' => [
                 [
-                    'name' => __('lunarpanel::widgets.dashboard.orders.order_sales_chart.series_one.label'),
+                    'name' => __('payflowpanel::widgets.dashboard.orders.order_sales_chart.series_one.label'),
                     'data' => $ordersData,
                 ],
                 [
-                    'name' => __('lunarpanel::widgets.dashboard.orders.order_sales_chart.series_two.label'),
+                    'name' => __('payflowpanel::widgets.dashboard.orders.order_sales_chart.series_two.label'),
                     'data' => $salesData,
                 ],
             ],
@@ -97,14 +97,14 @@ class OrdersSalesChart extends ApexChartWidget
                     'min' => 0,
                     'decimalsInFloat' => 0,
                     'title' => [
-                        'text' => __('lunarpanel::widgets.dashboard.orders.order_sales_chart.yaxis.series_one.label'),
+                        'text' => __('payflowpanel::widgets.dashboard.orders.order_sales_chart.yaxis.series_one.label'),
                     ],
                 ],
                 [
                     'seriesName' => 'SalesRevenue',
                     'opposite' => true,
                     'title' => [
-                        'text' => __('lunarpanel::widgets.dashboard.orders.order_sales_chart.yaxis.series_two.label', [
+                        'text' => __('payflowpanel::widgets.dashboard.orders.order_sales_chart.yaxis.series_two.label', [
                             'currency' => $currency->code,
                         ]),
                     ],

@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Database\Seeders;
+namespace Payflow\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use Lunar\Models\Attribute;
-use Lunar\Models\AttributeGroup;
-use Lunar\Models\Channel;
-use Lunar\Models\ProductType;
+use Payflow\Models\Attribute;
+use Payflow\Models\AttributeGroup;
+use Payflow\Models\Channel;
+use Payflow\Models\ProductType;
 
 class DemoSeeder extends Seeder
 {
@@ -22,7 +22,7 @@ class DemoSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
 
         foreach ($this->toTruncate as $table) {
-            DB::table(config('lunar.table_prefix').$table)->truncate();
+            DB::table(config('payflow.table_prefix').$table)->truncate();
         }
 
         Schema::enableForeignKeyConstraints();

@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Generators;
+namespace Payflow\Generators;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Lunar\Models\Language;
-use Lunar\Models\Url;
+use Payflow\Models\Language;
+use Payflow\Models\Url;
 
 class UrlGenerator
 {

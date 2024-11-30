@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Actions\Carts;
+namespace Payflow\Actions\Carts;
 
-use Lunar\Models\Cart;
-use Lunar\Models\CartLine;
+use Payflow\Models\Cart;
+use Payflow\Models\CartLine;
 
 class GenerateFingerprint
 {

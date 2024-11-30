@@ -1,13 +1,13 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\DiscountResource\Pages;
+namespace Payflow\Admin\Filament\Resources\DiscountResource\Pages;
 
 use Filament\Actions;
-use Lunar\Admin\Base\LunarPanelDiscountInterface;
-use Lunar\Admin\Filament\Resources\DiscountResource;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
-use Lunar\DiscountTypes\BuyXGetY;
-use Lunar\Models\Currency;
+use Payflow\Admin\Base\PayflowPanelDiscountInterface;
+use Payflow\Admin\Filament\Resources\DiscountResource;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
+use Payflow\DiscountTypes\BuyXGetY;
+use Payflow\Models\Currency;
 
 class EditDiscount extends BaseEditRecord
 {
@@ -25,8 +25,8 @@ class EditDiscount extends BaseEditRecord
         if (class_exists($data['type'])) {
             $type = new $data['type'];
 
-            if ($type instanceof LunarPanelDiscountInterface) {
-                return $type->lunarPanelOnFill($data);
+            if ($type instanceof PayflowPanelDiscountInterface) {
+                return $type->payflowPanelOnFill($data);
             }
         }
 
@@ -38,8 +38,8 @@ class EditDiscount extends BaseEditRecord
         if (class_exists($data['type'])) {
             $type = new $data['type'];
 
-            if ($type instanceof LunarPanelDiscountInterface) {
-                return $type->lunarPanelOnSave($data);
+            if ($type instanceof PayflowPanelDiscountInterface) {
+                return $type->payflowPanelOnSave($data);
             }
         }
 

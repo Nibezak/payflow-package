@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Exceptions;
+namespace Payflow\Exceptions;
 
-class FingerprintMismatchException extends LunarException
+class FingerprintMismatchException extends PayflowException
 {
     //
 }

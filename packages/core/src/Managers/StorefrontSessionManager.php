@@ -1,16 +1,16 @@
 <?php
 
-namespace Lunar\Managers;
+namespace Payflow\Managers;
 
 use Illuminate\Auth\AuthManager;
 use Illuminate\Session\SessionManager;
 use Illuminate\Support\Collection;
-use Lunar\Base\StorefrontSessionInterface;
-use Lunar\Exceptions\CustomerNotBelongsToUserException;
-use Lunar\Models\Channel;
-use Lunar\Models\Currency;
-use Lunar\Models\Customer;
-use Lunar\Models\CustomerGroup;
+use Payflow\Base\StorefrontSessionInterface;
+use Payflow\Exceptions\CustomerNotBelongsToUserException;
+use Payflow\Models\Channel;
+use Payflow\Models\Currency;
+use Payflow\Models\Customer;
+use Payflow\Models\CustomerGroup;
 
 class StorefrontSessionManager implements StorefrontSessionInterface
 {
@@ -138,7 +138,7 @@ class StorefrontSessionManager implements StorefrontSessionInterface
         );
 
         if (! $customer_id) {
-            if ($this->authManager->check() && is_lunar_user($this->authManager->user())) {
+            if ($this->authManager->check() && is_payflow_user($this->authManager->user())) {
                 $user = $this->authManager->user();
 
                 if ($customer = $user->latestCustomer()) {
@@ -167,7 +167,7 @@ class StorefrontSessionManager implements StorefrontSessionInterface
      */
     public function getSessionKey(): string
     {
-        return 'lunar_storefront';
+        return 'payflow_storefront';
     }
 
     /**
@@ -205,7 +205,7 @@ class StorefrontSessionManager implements StorefrontSessionInterface
 
         if (
             $this->authManager->check()
-            && is_lunar_user($this->authManager->user())
+            && is_payflow_user($this->authManager->user())
             && ! $this->customerBelongsToUser($customer)
         ) {
             throw new CustomerNotBelongsToUserException;

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Lunar is currently on a `0.x` version. This means in order to get to a stable `1.0.0` release, we need to go through quite a rapid development cycle to ensure we are delivering bug fixes and features you expect from your e-commerce system.
+Payflow is currently on a `0.x` version. This means in order to get to a stable `1.0.0` release, we need to go through quite a rapid development cycle to ensure we are delivering bug fixes and features you expect from your e-commerce system.
 
 For this reason we have committed to a release schedule that we feel will communicate what new features you can expect, when they will arrive and when important bug fixes will be released. Also, importantly, contributors will know with a certain level of accuracy when the feature they are proposing will be included and at what version.
 

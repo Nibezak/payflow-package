@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ChannelResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ChannelResource\Pages;
 
 use Filament\Actions;
-use Lunar\Admin\Filament\Resources\ChannelResource;
-use Lunar\Admin\Support\Pages\BaseListRecords;
+use Payflow\Admin\Filament\Resources\ChannelResource;
+use Payflow\Admin\Support\Pages\BaseListRecords;
 
 class ListChannels extends BaseListRecords
 {

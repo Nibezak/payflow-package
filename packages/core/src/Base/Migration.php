@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
 use Illuminate\Database\Migrations\Migration as BaseMigration;
 
@@ -16,7 +16,7 @@ abstract class Migration extends BaseMigration
      */
     public function __construct()
     {
-        $this->prefix = config('lunar.database.table_prefix');
+        $this->prefix = config('payflow.database.table_prefix');
     }
 
     /**
@@ -24,7 +24,7 @@ abstract class Migration extends BaseMigration
      */
     public function getConnection(): ?string
     {
-        if ($connection = config('lunar.database.connection')) {
+        if ($connection = config('payflow.database.connection')) {
             return $connection;
         }
 

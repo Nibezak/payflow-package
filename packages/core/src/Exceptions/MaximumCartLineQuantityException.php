@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Exceptions;
+namespace Payflow\Exceptions;
 
-class MaximumCartLineQuantityException extends LunarException
+class MaximumCartLineQuantityException extends PayflowException
 {
     //
 }

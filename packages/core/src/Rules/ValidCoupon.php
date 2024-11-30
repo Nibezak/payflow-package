@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Rules;
+namespace Payflow\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use Lunar\Base\Validation\CouponValidator;
+use Payflow\Base\Validation\CouponValidator;
 
 class ValidCoupon implements Rule
 {
@@ -17,7 +17,7 @@ class ValidCoupon implements Rule
     public function passes($attribute, $value)
     {
         return app(
-            config('lunar.discounts.coupon_validator', CouponValidator::class)
+            config('payflow.discounts.coupon_validator', CouponValidator::class)
         )->validate($value);
     }
 

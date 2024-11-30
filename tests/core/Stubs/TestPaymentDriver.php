@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Tests\Core\Stubs;
+namespace Payflow\Tests\Core\Stubs;
 
-use Lunar\Base\DataTransferObjects\PaymentAuthorize;
-use Lunar\Base\DataTransferObjects\PaymentCapture;
-use Lunar\Base\DataTransferObjects\PaymentRefund;
-use Lunar\Models\Transaction;
-use Lunar\PaymentTypes\AbstractPayment;
+use Payflow\Base\DataTransferObjects\PaymentAuthorize;
+use Payflow\Base\DataTransferObjects\PaymentCapture;
+use Payflow\Base\DataTransferObjects\PaymentRefund;
+use Payflow\Models\Transaction;
+use Payflow\PaymentTypes\AbstractPayment;
 
 class TestPaymentDriver extends AbstractPayment
 {

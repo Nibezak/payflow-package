@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Managers;
+namespace Payflow\Managers;
 
 use Illuminate\Support\Manager;
 use Illuminate\Support\Str;
-use Lunar\PaymentTypes\OfflinePayment;
+use Payflow\PaymentTypes\OfflinePayment;
 
 class PaymentManager extends Manager
 {
@@ -25,7 +25,7 @@ class PaymentManager extends Manager
     {
         $originalDriver = $driver;
 
-        $type = config("lunar.payments.types.{$driver}");
+        $type = config("payflow.payments.types.{$driver}");
 
         $driver = $type['driver'] ?? $originalDriver;
 
@@ -64,6 +64,6 @@ class PaymentManager extends Manager
 
     public function getDefaultDriver()
     {
-        return config('lunar.payments.default');
+        return config('payflow.payments.default');
     }
 }

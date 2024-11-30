@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Base\Traits;
+namespace Payflow\Base\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Lunar\Base\BaseModel;
-use Lunar\Facades\ModelManifest;
+use Payflow\Base\BaseModel;
+use Payflow\Facades\ModelManifest;
 
 trait HasModelExtending
 {
@@ -73,7 +73,7 @@ trait HasModelExtending
     public static function __callStatic($method, $parameters)
     {
         if (
-            ! static::isLunarInstance()
+            ! static::isPayflowInstance()
         ) {
             $extendedClass = static::modelClass();
 
@@ -111,14 +111,14 @@ trait HasModelExtending
 
         $parentClass = get_parent_class(static::class);
 
-        if (ModelManifest::isLunarModel($parentClass) && $lunarModelMorphMap = array_search($parentClass, $morphMap, true)) {
-            return $lunarModelMorphMap;
+        if (ModelManifest::isPayflowModel($parentClass) && $payflowModelMorphMap = array_search($parentClass, $morphMap, true)) {
+            return $payflowModelMorphMap;
         }
 
         return parent::getMorphClass();
     }
 
-    public static function isLunarInstance(): bool
+    public static function isPayflowInstance(): bool
     {
         return static::class == static::modelClass();
     }
@@ -128,7 +128,7 @@ trait HasModelExtending
         $instance = new static;
 
         if (
-            ! static::isLunarInstance()
+            ! static::isPayflowInstance()
         ) {
             $extendedClass = static::modelClass();
             $instance = new $extendedClass;

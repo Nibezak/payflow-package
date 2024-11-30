@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Tests\Core\Stubs;
+namespace Payflow\Tests\Core\Stubs;
 
-use Lunar\DiscountTypes\AbstractDiscountType;
-use Lunar\Models\Cart;
-use Lunar\Models\CartLine;
+use Payflow\DiscountTypes\AbstractDiscountType;
+use Payflow\Models\Cart;
+use Payflow\Models\CartLine;
 
 class TestDiscountType extends AbstractDiscountType
 {

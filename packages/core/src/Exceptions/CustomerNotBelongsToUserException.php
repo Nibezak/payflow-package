@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Exceptions;
+namespace Payflow\Exceptions;
 
-class CustomerNotBelongsToUserException extends LunarException
+class CustomerNotBelongsToUserException extends PayflowException
 {
     //
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Console\Commands;
+namespace Payflow\Console\Commands;
 
 use Illuminate\Console\Command;
-use Lunar\Addons\Manifest;
+use Payflow\Addons\Manifest;
 
 class AddonsDiscover extends Command
 {
@@ -12,7 +12,7 @@ class AddonsDiscover extends Command
      *
      * @var string
      */
-    protected $signature = 'lunar:addons:discover';
+    protected $signature = 'payflow:addons:discover';
 
     /**
      * The console command description.

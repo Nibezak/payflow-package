@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\CollectionGroupResource\Pages;
+namespace Payflow\Admin\Filament\Resources\CollectionGroupResource\Pages;
 
 use Filament\Actions;
-use Lunar\Admin\Filament\Resources\CollectionGroupResource;
-use Lunar\Admin\Support\Pages\BaseListRecords;
+use Payflow\Admin\Filament\Resources\CollectionGroupResource;
+use Payflow\Admin\Support\Pages\BaseListRecords;
 
 class ListCollectionGroups extends BaseListRecords
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Opayo\Components;
+namespace Payflow\Opayo\Components;
 
 use Livewire\Component;
-use Lunar\Facades\CartSession;
-use Lunar\Facades\Payments;
-use Lunar\Models\Cart;
-use Lunar\Opayo\Facades\Opayo;
+use Payflow\Facades\CartSession;
+use Payflow\Facades\Payments;
+use Payflow\Models\Cart;
+use Payflow\Opayo\Facades\Opayo;
 
 class PaymentForm extends Component
 {
@@ -241,6 +241,6 @@ class PaymentForm extends Component
      */
     public function render()
     {
-        return view('lunar::opayo.components.payment-form');
+        return view('payflow::opayo.components.payment-form');
     }
 }

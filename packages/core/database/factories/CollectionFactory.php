@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
-use Lunar\FieldTypes\Text;
-use Lunar\Models\Collection;
-use Lunar\Models\CollectionGroup;
+use Payflow\FieldTypes\Text;
+use Payflow\Models\Collection;
+use Payflow\Models\CollectionGroup;
 
 class CollectionFactory extends BaseFactory
 {

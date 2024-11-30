@@ -1,9 +1,9 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
-use Lunar\Models\Currency;
-use Lunar\Models\Language;
-use Lunar\Models\Order;
+uses(\Payflow\Tests\Core\TestCase::class);
+use Payflow\Models\Currency;
+use Payflow\Models\Language;
+use Payflow\Models\Order;
 use Spatie\Activitylog\Models\Activity;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);

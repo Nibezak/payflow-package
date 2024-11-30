@@ -1,16 +1,16 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ProductResource\Pages;
 
 use Filament\Forms;
 use Filament\Support\Facades\FilamentIcon;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Lunar\Admin\Events\ProductCollectionsUpdated;
-use Lunar\Admin\Filament\Resources\ProductResource;
-use Lunar\Admin\Support\Pages\BaseManageRelatedRecords;
-use Lunar\Admin\Support\Tables\Columns\TranslatedTextColumn;
-use Lunar\Models\Collection;
+use Payflow\Admin\Events\ProductCollectionsUpdated;
+use Payflow\Admin\Filament\Resources\ProductResource;
+use Payflow\Admin\Support\Pages\BaseManageRelatedRecords;
+use Payflow\Admin\Support\Tables\Columns\TranslatedTextColumn;
+use Payflow\Models\Collection;
 
 class ManageProductCollections extends BaseManageRelatedRecords
 {
@@ -20,17 +20,17 @@ class ManageProductCollections extends BaseManageRelatedRecords
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::collections');
+        return FilamentIcon::resolve('payflow::collections');
     }
 
     public function getTitle(): string
     {
-        return __('lunarpanel::product.pages.collections.label');
+        return __('payflowpanel::product.pages.collections.label');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::product.pages.collections.label');
+        return __('payflowpanel::product.pages.collections.label');
     }
 
     public function table(Table $table): Table
@@ -42,7 +42,7 @@ class ManageProductCollections extends BaseManageRelatedRecords
                     ->attributeData()
                     ->limitedTooltip()
                     ->limit(50)
-                    ->label(__('lunarpanel::product.table.name.label')),
+                    ->label(__('payflowpanel::product.table.name.label')),
             ])
             ->filters([
                 //

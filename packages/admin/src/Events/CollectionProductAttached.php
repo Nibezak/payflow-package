@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Events;
+namespace Payflow\Admin\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Database\Eloquent\Model;

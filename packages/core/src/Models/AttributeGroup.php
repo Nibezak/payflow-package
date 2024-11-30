@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Traits\HasMacros;
-use Lunar\Base\Traits\HasTranslations;
-use Lunar\Database\Factories\AttributeGroupFactory;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Traits\HasMacros;
+use Payflow\Base\Traits\HasTranslations;
+use Payflow\Database\Factories\AttributeGroupFactory;
 
 /**
  * @property int $id

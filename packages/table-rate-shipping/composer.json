@@ -1,8 +1,8 @@
 {
-  "name": "lunarphp/table-rate-shipping",
-  "description": "Lunar Table Rate Shipping Addon",
+  "name": "payflowphp/table-rate-shipping",
+  "description": "Payflow Table Rate Shipping Addon",
   "keywords": [
-    "lunar",
+    "payflow",
     "laravel",
     "ecommerce",
     "e-commerce",
@@ -15,28 +15,28 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Lunar",
-      "homepage": "https://lunarphp.io/"
+      "name": "Payflow",
+      "homepage": "https://payflowphp.io/"
     }
   ],
   "autoload": {
     "psr-4": {
-      "Lunar\\Shipping\\": "src",
-      "Lunar\\Shipping\\Database\\Factories\\": "database/factories"
+      "Payflow\\Shipping\\": "src",
+      "Payflow\\Shipping\\Database\\Factories\\": "database/factories"
     }
   },
   "extra": {
-    "lunar": {
+    "payflow": {
       "name": "Table Rate Shipping"
     },
     "laravel": {
       "providers": [
-        "Lunar\\Shipping\\ShippingServiceProvider"
+        "Payflow\\Shipping\\ShippingServiceProvider"
       ]
     }
   },
   "require": {
     "php": "^8.2",
-    "lunarphp/lunar": "self.version"
+    "payflowphp/payflow": "self.version"
   }
 }

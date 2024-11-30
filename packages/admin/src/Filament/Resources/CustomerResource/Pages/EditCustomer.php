@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\CustomerResource\Pages;
+namespace Payflow\Admin\Filament\Resources\CustomerResource\Pages;
 
-use Lunar\Admin\Filament\Resources\CustomerResource;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Admin\Filament\Resources\CustomerResource;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
 
 class EditCustomer extends BaseEditRecord
 {

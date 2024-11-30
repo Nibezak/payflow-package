@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Base\DataTransferObjects;
+namespace Payflow\Base\DataTransferObjects;
 
 class PaymentChecks implements \ArrayAccess, \Iterator
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Tests\Shipping;
+namespace Payflow\Tests\Shipping;
 
-use Lunar\Models\Cart;
-use Lunar\Models\Currency;
-use Lunar\Models\Price;
-use Lunar\Models\ProductVariant;
+use Payflow\Models\Cart;
+use Payflow\Models\Currency;
+use Payflow\Models\Price;
+use Payflow\Models\ProductVariant;
 
 trait TestUtils
 {

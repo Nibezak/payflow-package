@@ -47,7 +47,7 @@
             ])
              x-sortable-handle
           >
-            <x-filament::icon alias="lunar::reorder" class="w-5 h-5" />
+            <x-filament::icon alias="payflow::reorder" class="w-5 h-5" />
           </div>
           @endif
           <div
@@ -84,7 +84,7 @@
   @if($canAddValues)
     <div class="text-center mt-4">
       <x-filament::button color="gray" size="xs" type="button" wire:click.prevent="addOptionValue('{{ $key }}')">
-        {{ __('lunarpanel::components.product-options-list.add-value.label') }}
+        {{ __('payflowpanel::components.product-options-list.add-value.label') }}
       </x-filament::button>
       <hr class="-mt-3.5" />
     </div>

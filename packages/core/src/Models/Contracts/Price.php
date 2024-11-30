@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Models\Contracts;
+namespace Payflow\Models\Contracts;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -25,10 +25,10 @@ interface Price
     /**
      * Return the price exclusive of tax.
      */
-    public function priceExTax(): \Lunar\DataTypes\Price;
+    public function priceExTax(): \Payflow\DataTypes\Price;
 
     /**
      * Return the price inclusive of tax.
      */
-    public function priceIncTax(): int|\Lunar\DataTypes\Price;
+    public function priceIncTax(): int|\Payflow\DataTypes\Price;
 }

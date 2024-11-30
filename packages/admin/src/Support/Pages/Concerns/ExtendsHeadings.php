@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Pages\Concerns;
+namespace Payflow\Admin\Support\Pages\Concerns;
 
 use Illuminate\Contracts\Support\Htmlable;
 
@@ -13,7 +13,7 @@ trait ExtendsHeadings
 
     public function getHeading(): string|Htmlable
     {
-        return $this->callLunarHook('heading', $this->getDefaultHeading(), $this->record ?? null);
+        return $this->callPayflowHook('heading', $this->getDefaultHeading(), $this->record ?? null);
     }
 
     public function getDefaultSubheading(): ?string
@@ -23,6 +23,6 @@ trait ExtendsHeadings
 
     public function getSubheading(): string|Htmlable|null
     {
-        return $this->callLunarHook('subHeading', $this->getDefaultSubheading(), $this->record ?? null);
+        return $this->callPayflowHook('subHeading', $this->getDefaultSubheading(), $this->record ?? null);
     }
 }

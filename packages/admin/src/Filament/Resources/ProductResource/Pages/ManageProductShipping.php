@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ProductResource\Pages;
 
 use Cartalyst\Converter\Laravel\Facades\Converter;
 use Filament\Forms\Components\Section;
@@ -10,10 +10,10 @@ use Filament\Forms\Form;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Filament\Resources\ProductResource;
-use Lunar\Admin\Filament\Resources\ProductVariantResource\Pages\ManageVariantShipping;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
-use Lunar\Models\ProductVariant;
+use Payflow\Admin\Filament\Resources\ProductResource;
+use Payflow\Admin\Filament\Resources\ProductVariantResource\Pages\ManageVariantShipping;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Models\ProductVariant;
 use Marvinosswald\FilamentInputSelectAffix\TextInputSelectAffix;
 
 class ManageProductShipping extends BaseEditRecord
@@ -35,12 +35,12 @@ class ManageProductShipping extends BaseEditRecord
 
     public function getTitle(): string|Htmlable
     {
-        return __('lunarpanel::product.pages.shipping.label');
+        return __('payflowpanel::product.pages.shipping.label');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::product.pages.shipping.label');
+        return __('payflowpanel::product.pages.shipping.label');
     }
 
     public static function shouldRegisterNavigation(array $parameters = []): bool
@@ -50,12 +50,12 @@ class ManageProductShipping extends BaseEditRecord
 
     public function getBreadcrumb(): string
     {
-        return __('lunarpanel::product.pages.shipping.label');
+        return __('payflowpanel::product.pages.shipping.label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::product-shipping');
+        return FilamentIcon::resolve('payflow::product-shipping');
     }
 
     protected function getDefaultHeaderActions(): array
@@ -136,55 +136,55 @@ class ManageProductShipping extends BaseEditRecord
         return $form->schema([
             Section::make()->schema([
                 Toggle::make('shippable')->label(
-                    __('lunarpanel::productvariant.form.shippable.label')
+                    __('payflowpanel::productvariant.form.shippable.label')
                 )->columnSpan(2),
 
                 TextInputSelectAffix::make('dimensions.length_value')
                     ->label(
-                        __('lunarpanel::productvariant.form.length_value.label')
+                        __('payflowpanel::productvariant.form.length_value.label')
                     )
                     ->numeric()
                     ->select(
                         fn () => Select::make('length_unit')
                             ->options($lengths)
                             ->label(
-                                __('lunarpanel::pproductvariant.form.length_unit.label')
+                                __('payflowpanel::pproductvariant.form.length_unit.label')
                             )->selectablePlaceholder(false)
                     ),
                 TextInputSelectAffix::make('dimensions.width_value')
                     ->label(
-                        __('lunarpanel::productvariant.form.width_value.label')
+                        __('payflowpanel::productvariant.form.width_value.label')
                     )
                     ->numeric()
                     ->select(
                         fn () => Select::make('width_unit')
                             ->options($lengths)
                             ->label(
-                                __('lunarpanel::productvariant.form.width_unit.label')
+                                __('payflowpanel::productvariant.form.width_unit.label')
                             )->selectablePlaceholder(false)
                     ),
                 TextInputSelectAffix::make('dimensions.height_value')
                     ->label(
-                        __('lunarpanel::productvariant.form.height_value.label')
+                        __('payflowpanel::productvariant.form.height_value.label')
                     )
                     ->numeric()
                     ->select(
                         fn () => Select::make('height_unit')
                             ->options($lengths)
                             ->label(
-                                __('lunarpanel::productvariant.form.height_unit.label')
+                                __('payflowpanel::productvariant.form.height_unit.label')
                             )->selectablePlaceholder(false)
                     ),
                 TextInputSelectAffix::make('dimensions.weight_value')
                     ->label(
-                        __('lunarpanel::productvariant.form.weight_value.label')
+                        __('payflowpanel::productvariant.form.weight_value.label')
                     )
                     ->numeric()
                     ->select(
                         fn () => Select::make('weight_unit')
                             ->options($weights)
                             ->label(
-                                __('lunarpanel::productvariant.form.weight_unit.label')
+                                __('payflowpanel::productvariant.form.weight_unit.label')
                             )->selectablePlaceholder(false)
                     ),
             ])->columns([

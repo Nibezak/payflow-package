@@ -1,15 +1,15 @@
 <?php
 
-namespace Lunar\Paypal;
+namespace Payflow\Paypal;
 
 use Illuminate\Http\Client\HttpClientException;
-use Lunar\Base\DataTransferObjects\PaymentAuthorize;
-use Lunar\Base\DataTransferObjects\PaymentCapture;
-use Lunar\Base\DataTransferObjects\PaymentRefund;
-use Lunar\Events\PaymentAttemptEvent;
-use Lunar\Models\Transaction;
-use Lunar\PaymentTypes\AbstractPayment;
-use Lunar\Paypal\Facades\Paypal;
+use Payflow\Base\DataTransferObjects\PaymentAuthorize;
+use Payflow\Base\DataTransferObjects\PaymentCapture;
+use Payflow\Base\DataTransferObjects\PaymentRefund;
+use Payflow\Events\PaymentAttemptEvent;
+use Payflow\Models\Transaction;
+use Payflow\PaymentTypes\AbstractPayment;
+use Payflow\Paypal\Facades\Paypal;
 
 class PaypalPaymentType extends AbstractPayment
 {
@@ -25,7 +25,7 @@ class PaypalPaymentType extends AbstractPayment
      */
     public function __construct()
     {
-        $this->policy = config('lunar.paypal.policy', 'automatic');
+        $this->policy = config('payflow.paypal.policy', 'automatic');
     }
 
     /**

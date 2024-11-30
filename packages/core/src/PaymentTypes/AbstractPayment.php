@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\PaymentTypes;
+namespace Payflow\PaymentTypes;
 
-use Lunar\Base\DataTransferObjects\PaymentChecks;
-use Lunar\Base\PaymentTypeInterface;
-use Lunar\Models\Cart;
-use Lunar\Models\Order;
-use Lunar\Models\Transaction;
+use Payflow\Base\DataTransferObjects\PaymentChecks;
+use Payflow\Base\PaymentTypeInterface;
+use Payflow\Models\Cart;
+use Payflow\Models\Order;
+use Payflow\Models\Transaction;
 
 abstract class AbstractPayment implements PaymentTypeInterface
 {

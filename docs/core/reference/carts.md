@@ -12,7 +12,7 @@ Cart prices are dynamically calculated and are not stored (unlike Orders).
 ## Carts
 
 ```php
-Lunar\Models\Cart
+Payflow\Models\Cart
 ```
 
 | Field       | Description                                                                     |
@@ -31,7 +31,7 @@ Lunar\Models\Cart
 ### Creating a cart
 
 ```php
-$cart = \Lunar\Models\Cart::create([
+$cart = \Payflow\Models\Cart::create([
     'currency_id' => 1,
     'channel_id' => 2,
 ]);
@@ -40,7 +40,7 @@ $cart = \Lunar\Models\Cart::create([
 ## Cart Lines
 
 ```php
-Lunar\Models\CartLine
+Payflow\Models\CartLine
 ```
 
 | Field            | Description                                  |
@@ -55,8 +55,8 @@ Lunar\Models\CartLine
 | meta             | JSON data for saving any custom information. |
 
 ```php
-$purchasable = \Lunar\Models\ProductVariant::create([/** ... */]);
-$cartLine = new \Lunar\Models\CartLine([
+$purchasable = \Payflow\Models\ProductVariant::create([/** ... */]);
+$cartLine = new \Payflow\Models\CartLine([
     'cart_id' => 1,
     'purchasable_type' => $purchasable->getMorphClass(),
     'purchasable_id' => $purchasable->id,
@@ -72,14 +72,14 @@ $cart->lines()->create([/* .. */]);
 
 ### Validation
 
-When adding items to a cart there are a series of validation actions which are run, which are defined in the `config/lunar/cart.php` config file.
+When adding items to a cart there are a series of validation actions which are run, which are defined in the `config/payflow/cart.php` config file.
 
-These actions will throw a `Lunar\Exceptions\Carts\CartException`.
+These actions will throw a `Payflow\Exceptions\Carts\CartException`.
 
 ```php
 try {
     $cart->add($purchasable, 500);
-} catch (\Lunar\Exceptions\Carts\CartException $e) {
+} catch (\Payflow\Exceptions\Carts\CartException $e) {
     $error = $e->getMessage();
 }
 ```
@@ -100,7 +100,7 @@ $cart->calculate();
 This will create a "hydrated" version of your cart with the following:
 
 ::: tip
-All values will return a `Lunar\Datatypes\Price` object. So you have
+All values will return a `Payflow\Datatypes\Price` object. So you have
 access to the following: `value`, `formatted`, `decimal`
 :::
 
@@ -155,7 +155,7 @@ foreach ($cart->lines as $cartLine) {
 If you need to programmatically change the Cart values, e.g. custom discounts or
 prices, you will want to extend the Cart.
 
-You can find out more in the Extending Lunar section for
+You can find out more in the Extending Payflow section for
 [Cart Extending](/core/extending/carts).
 
 ## Calculating Tax
@@ -195,11 +195,11 @@ $cart->setShippingAddress($shippingAddress);
 $cart->setBillingAddress($billingAddress);
 ```
 
-You can also pass through a `\Lunar\Models\Address` model, or even another
-`\Lunar\Models\CartAddress`
+You can also pass through a `\Payflow\Models\Address` model, or even another
+`\Payflow\Models\CartAddress`
 
 ```php
-$shippingAddress = \Lunar\Models\Address::first();
+$shippingAddress = \Payflow\Models\Address::first();
 
 $cart->setShippingAddress($shippingAddress);
 
@@ -217,23 +217,23 @@ Laravel storefront which makes use of sessions.
 
 When building a store, you're going to want an easy way to fetch the cart for
 the current user (or guest user) by retrieving it from their current session.
-Lunar provides an easy to use class to make this easier for you, so you don't
+Payflow provides an easy to use class to make this easier for you, so you don't
 have to keep reinventing the wheel.
 
 ### Available config
 
-Configuration for your cart is handled in `lunar/cart.php`
+Configuration for your cart is handled in `payflow/cart.php`
 
 | Field         | Description                                                                            | Default      |
 |:--------------|:---------------------------------------------------------------------------------------|:-------------|
 | `auth_policy` | When a user logs in, how should we handle merging of the basket?                       | `merge`      |
 | `eager_load`  | Which relationships should be eager loaded by default when calculating the cart totals |
 
-There is additional, separate, config specifically for when using the `CartSession` located in `lunar/cart_session.php`.
+There is additional, separate, config specifically for when using the `CartSession` located in `payflow/cart_session.php`.
 
 | Field                            | Description                                                        | Default      |
 |:---------------------------------|:-------------------------------------------------------------------|:-------------|
-| `session_key`                    | What key to use when storing the cart id in the session            | `lunar_cart` |
+| `session_key`                    | What key to use when storing the cart id in the session            | `payflow_cart` |
 | `auto_create`                    | If no current basket exists, should we create one in the database? | `false`      |
 | `allow_multiple_orders_per_cart` | Whether carts can have multiple orders associated to them.         | `false`      |
 
@@ -242,10 +242,10 @@ There is additional, separate, config specifically for when using the `CartSessi
 You can either use the facade or inject the `CartSession` into your code.
 
 ```php
-$cart = \Lunar\Facades\CartSession::current();
+$cart = \Payflow\Facades\CartSession::current();
 
 public function __construct(
-    protected \Lunar\Base\CartSessionInterface $cartSession
+    protected \Payflow\Base\CartSessionInterface $cartSession
 ) {
     // ...
 }
@@ -254,14 +254,14 @@ public function __construct(
 ### Fetching the current cart
 
 ```php
-$cart = \Lunar\Facades\CartSession::current();
+$cart = \Payflow\Facades\CartSession::current();
 ```
 
 When you call current, you have two options, you either return `null` if they
 don't have a cart, or you want to create one straight away. By default, we do
 not create them initially as this could lead to a ton of cart models being
 created for no good reason. If you want to enable this functionality, you can
-adjust the config in `lunar/cart_session.php`
+adjust the config in `payflow/cart_session.php`
 
 ### Forgetting the cart
 Forgetting the cart will remove it from the user session and also soft-delete 
@@ -283,7 +283,7 @@ CartSession::forget(delete: false);
 You may want to manually specify which cart should be used for the session.
 
 ```php
-$cart = \Lunar\Models\Cart::first();
+$cart = \Payflow\Models\Cart::first();
 CartSessionManager::use($cart);
 ```
 
@@ -300,7 +300,7 @@ CartSession::add($purchasable, $quantity);
 ```php
 CartSession::addLines([
     [
-        'purchasable' => \Lunar\Models\ProductVariant::find(123),
+        'purchasable' => \Payflow\Models\ProductVariant::find(123),
         'quantity' => 25,
         'meta' => ['foo' => 'bar'],
     ],
@@ -434,7 +434,7 @@ CartSession::estimateShippingUsing([
 You can also manually set the shipping method override directly on the cart.
 
 ```php
-$cart->shippingOptionOverride = new \Lunar\DataTypes\ShippingOption(/* .. */);
+$cart->shippingOptionOverride = new \Payflow\DataTypes\ShippingOption(/* .. */);
 ```
 
 Calling `CartSession::current()` by itself won't trigger the shipping override, but you can pass the `estimateShipping` parameter to enable it:
@@ -451,7 +451,7 @@ CartSession::current(estimateShipping: true);
 
 When a user logs in, you will likely want to check if they have a cart
 associated to their account and use that, or if they have started a cart as a
-guest and logged in, you will likely want to be able to handle this. Lunar takes
+guest and logged in, you will likely want to be able to handle this. Payflow takes
 the pain out of this by listening to the authentication events and responding
 automatically by associating any previous guest cart they may have had and,
 depending on your `auth_policy` merge or override the basket on their account.
@@ -470,19 +470,19 @@ $cart->fingerprint();
 
 try {
     $cart->checkFingerprint('4dfAW33awd');
-} catch (\Lunar\Exceptions\FingerprintMismatchException $e) {
+} catch (\Payflow\Exceptions\FingerprintMismatchException $e) {
     //... Refresh the cart.
 }
 ```
 
 ### Changing the underlying class.
 
-The class which generates the fingerprint is referenced in `config/lunar/cart.php`.
+The class which generates the fingerprint is referenced in `config/payflow/cart.php`.
 
 ```php
 return [
     // ...
-    'fingerprint_generator' => Lunar\Actions\Carts\GenerateFingerprint::class,
+    'fingerprint_generator' => Payflow\Actions\Carts\GenerateFingerprint::class,
 ];
 ```
 
@@ -492,11 +492,11 @@ In most cases you won't need to change this.
 
 Over time you will experience a build up of carts in your database that you may want to regularly remove.
 
-You can enable automatic removal of these carts using the `lunar.carts.prune_tables.enabled` config. By setting this to `true` any carts without an order associated will be removed after 90 days.
+You can enable automatic removal of these carts using the `payflow.carts.prune_tables.enabled` config. By setting this to `true` any carts without an order associated will be removed after 90 days.
 
-You can change the number of days carts are retained for using the `lunar.carts.prune_tables. prune_interval` config.
+You can change the number of days carts are retained for using the `payflow.carts.prune_tables. prune_interval` config.
 
-If you have specific needs around pruning you can also change the `lunar.carts.prune_tables.pipelines` array to determine what carts should be removed.
+If you have specific needs around pruning you can also change the `payflow.carts.prune_tables.pipelines` array to determine what carts should be removed.
 
 
 
@@ -508,8 +508,8 @@ return [
         'enabled' => false,
 
         'pipelines' => [
-            Lunar\Pipelines\CartPrune\PruneAfter::class,
-            Lunar\Pipelines\CartPrune\WithoutOrders::class,
+            Payflow\Pipelines\CartPrune\PruneAfter::class,
+            Payflow\Pipelines\CartPrune\WithoutOrders::class,
         ],
 
         'prune_interval' => 90, // days

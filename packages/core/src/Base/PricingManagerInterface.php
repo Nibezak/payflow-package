@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Collection;
-use Lunar\Models\Currency;
-use Lunar\Models\CustomerGroup;
+use Payflow\Models\Currency;
+use Payflow\Models\CustomerGroup;
 
 interface PricingManagerInterface
 {
@@ -47,7 +47,7 @@ interface PricingManagerInterface
     /**
      * Get the price for a purchasable.
      *
-     * @return \Lunar\Base\DataTransferObjects\PricingResponse
+     * @return \Payflow\Base\DataTransferObjects\PricingResponse
      */
     public function for(Purchasable $purchasable);
 }

@@ -5,7 +5,7 @@
 The storefront session facade is a provided to help keep certain resources your storefront needs set, such as channel, customer group etc.
 
 ```php
-use Lunar\Facades\StorefrontSession;
+use Payflow\Facades\StorefrontSession;
 ```
 
 ## Channels

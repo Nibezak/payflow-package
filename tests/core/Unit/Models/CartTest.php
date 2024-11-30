@@ -1,33 +1,33 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class)->group('carts');
+uses(\Payflow\Tests\Core\TestCase::class)->group('carts');
 
 use Illuminate\Support\Facades\Config;
-use Lunar\DataTypes\Price as DataTypesPrice;
-use Lunar\DataTypes\ShippingOption;
-use Lunar\DiscountTypes\AmountOff;
-use Lunar\Exceptions\Carts\CartException;
-use Lunar\Exceptions\FingerprintMismatchException;
-use Lunar\Facades\Discounts;
-use Lunar\Facades\ShippingManifest;
-use Lunar\Models\Cart;
-use Lunar\Models\CartAddress;
-use Lunar\Models\CartLine;
-use Lunar\Models\Channel;
-use Lunar\Models\Country;
-use Lunar\Models\Currency;
-use Lunar\Models\Customer;
-use Lunar\Models\CustomerGroup;
-use Lunar\Models\Discount;
-use Lunar\Models\Order;
-use Lunar\Models\Price;
-use Lunar\Models\ProductVariant;
-use Lunar\Models\TaxClass;
-use Lunar\Models\TaxRate;
-use Lunar\Models\TaxRateAmount;
-use Lunar\Models\TaxZone;
-use Lunar\Models\TaxZonePostcode;
-use Lunar\Tests\Core\Stubs\User as StubUser;
+use Payflow\DataTypes\Price as DataTypesPrice;
+use Payflow\DataTypes\ShippingOption;
+use Payflow\DiscountTypes\AmountOff;
+use Payflow\Exceptions\Carts\CartException;
+use Payflow\Exceptions\FingerprintMismatchException;
+use Payflow\Facades\Discounts;
+use Payflow\Facades\ShippingManifest;
+use Payflow\Models\Cart;
+use Payflow\Models\CartAddress;
+use Payflow\Models\CartLine;
+use Payflow\Models\Channel;
+use Payflow\Models\Country;
+use Payflow\Models\Currency;
+use Payflow\Models\Customer;
+use Payflow\Models\CustomerGroup;
+use Payflow\Models\Discount;
+use Payflow\Models\Order;
+use Payflow\Models\Price;
+use Payflow\Models\ProductVariant;
+use Payflow\Models\TaxClass;
+use Payflow\Models\TaxRate;
+use Payflow\Models\TaxRateAmount;
+use Payflow\Models\TaxZone;
+use Payflow\Models\TaxZonePostcode;
+use Payflow\Tests\Core\Stubs\User as StubUser;
 
 use function Pest\Laravel\{assertDatabaseCount};
 
@@ -35,7 +35,7 @@ uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
 //function setAuthUserConfig()
 //{
-//    Config::set('auth.providers.users.model', 'Lunar\Tests\Stubs\User');
+//    Config::set('auth.providers.users.model', 'Payflow\Tests\Stubs\User');
 //}
 
 test('can make a cart', function () {
@@ -462,7 +462,7 @@ test('can calculate the cart', function () {
 });
 
 test('can calculate the cart inc vat', function () {
-    Config::set('lunar.pricing.stored_inclusive_of_tax', true);
+    Config::set('payflow.pricing.stored_inclusive_of_tax', true);
 
     $currency = Currency::factory()
         ->state([
@@ -741,7 +741,7 @@ test('can calculate shipping', function () {
     expect($cart->shippingTotal->value)->toEqual(600);
     expect($cart->total->value)->toEqual(720);
 
-    Config::set('lunar.pricing.stored_inclusive_of_tax', true);
+    Config::set('payflow.pricing.stored_inclusive_of_tax', true);
 
     $cart->recalculate();
 
@@ -1026,7 +1026,7 @@ test('can get new draft order when cart changes', function () {
         name: 'Basic Delivery',
         description: 'Basic Delivery',
         identifier: 'BASDEL',
-        price: new \Lunar\DataTypes\Price(500, $cart->currency, 1),
+        price: new \Payflow\DataTypes\Price(500, $cart->currency, 1),
         taxClass: $taxClass
     );
 
@@ -1112,7 +1112,7 @@ test('can get same draft order when cart does not change', function () {
         name: 'Basic Delivery',
         description: 'Basic Delivery',
         identifier: 'BASDEL',
-        price: new \Lunar\DataTypes\Price(500, $cart->currency, 1),
+        price: new \Payflow\DataTypes\Price(500, $cart->currency, 1),
         taxClass: $taxClass
     );
 

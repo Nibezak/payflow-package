@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
 use Closure;
-use Lunar\Models\CartLine;
+use Payflow\Models\CartLine;
 
 abstract class CartLineModifier
 {

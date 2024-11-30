@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Livewire\Components;
+namespace Payflow\Admin\Livewire\Components;
 
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;

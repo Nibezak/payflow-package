@@ -1,15 +1,15 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Traits\HasDefaultRecord;
-use Lunar\Base\Traits\HasMacros;
-use Lunar\Base\Traits\LogsActivity;
-use Lunar\Database\Factories\CurrencyFactory;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Traits\HasDefaultRecord;
+use Payflow\Base\Traits\HasMacros;
+use Payflow\Base\Traits\LogsActivity;
+use Payflow\Database\Factories\CurrencyFactory;
 
 /**
  * @property int $id

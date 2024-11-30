@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Traits\HasMacros;
-use Lunar\Database\Factories\UrlFactory;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Traits\HasMacros;
+use Payflow\Database\Factories\UrlFactory;
 
 /**
  * @property int $id

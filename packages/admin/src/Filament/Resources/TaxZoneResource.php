@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources;
+namespace Payflow\Admin\Filament\Resources;
 
 use Awcodes\FilamentBadgeableColumn\Components\Badge;
 use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
@@ -10,12 +10,12 @@ use Filament\Support\Facades\FilamentIcon;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Filament\Clusters\Taxes;
-use Lunar\Admin\Filament\Resources\TaxZoneResource\Pages;
-use Lunar\Admin\Support\Resources\BaseResource;
-use Lunar\Models\Contracts\TaxZone;
-use Lunar\Models\Country;
-use Lunar\Models\State;
+use Payflow\Admin\Filament\Clusters\Taxes;
+use Payflow\Admin\Filament\Resources\TaxZoneResource\Pages;
+use Payflow\Admin\Support\Resources\BaseResource;
+use Payflow\Models\Contracts\TaxZone;
+use Payflow\Models\Country;
+use Payflow\Models\State;
 
 class TaxZoneResource extends BaseResource
 {
@@ -29,17 +29,17 @@ class TaxZoneResource extends BaseResource
 
     public static function getLabel(): string
     {
-        return __('lunarpanel::taxzone.label');
+        return __('payflowpanel::taxzone.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('lunarpanel::taxzone.plural_label');
+        return __('payflowpanel::taxzone.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::tax');
+        return FilamentIcon::resolve('payflow::tax');
     }
 
     protected static function getMainFormComponents(): array
@@ -64,7 +64,7 @@ class TaxZoneResource extends BaseResource
     public static function getNameFormComponent(): Component
     {
         return Forms\Components\TextInput::make('name')
-            ->label(__('lunarpanel::taxzone.form.name.label'))
+            ->label(__('payflowpanel::taxzone.form.name.label'))
             ->required()
             ->maxLength(255)
             ->autofocus();
@@ -74,11 +74,11 @@ class TaxZoneResource extends BaseResource
     {
         return Forms\Components\Select::make('zone_type')
             ->options([
-                'country' => __('lunarpanel::taxzone.form.zone_type.options.country'),
-                'states' => __('lunarpanel::taxzone.form.zone_type.options.states'),
-                'postcodes' => __('lunarpanel::taxzone.form.zone_type.options.postcodes'),
+                'country' => __('payflowpanel::taxzone.form.zone_type.options.country'),
+                'states' => __('payflowpanel::taxzone.form.zone_type.options.states'),
+                'postcodes' => __('payflowpanel::taxzone.form.zone_type.options.postcodes'),
             ])
-            ->label(__('lunarpanel::taxzone.form.zone_type.label'))
+            ->label(__('payflowpanel::taxzone.form.zone_type.label'))
             ->live()
             ->required()
             ->selectablePlaceholder(false);
@@ -87,7 +87,7 @@ class TaxZoneResource extends BaseResource
     protected static function getZoneTypeCountriesFormComponent(): Component
     {
         return Forms\Components\Select::make('zone_countries')
-            ->label(__('lunarpanel::taxzone.form.zone_countries.label'))
+            ->label(__('payflowpanel::taxzone.form.zone_countries.label'))
             ->visible(fn ($get) => $get('zone_type') == 'country')
             ->dehydrated(false)
             ->options(Country::get()->pluck('name', 'iso3'))
@@ -125,7 +125,7 @@ class TaxZoneResource extends BaseResource
     protected static function getZoneTypeCountryFormComponent(): Component
     {
         return Forms\Components\Select::make('zone_country')
-            ->label(__('lunarpanel::taxzone.form.zone_country.label'))
+            ->label(__('payflowpanel::taxzone.form.zone_country.label'))
             ->visible(fn ($get) => $get('zone_type') !== 'country')
             ->dehydrated(false)
             ->required()
@@ -150,7 +150,7 @@ class TaxZoneResource extends BaseResource
     protected static function getZoneTypeStatesFormComponent(): Component
     {
         return Forms\Components\Select::make('zone_states')
-            ->label(__('lunarpanel::taxzone.form.zone_states.label'))
+            ->label(__('payflowpanel::taxzone.form.zone_states.label'))
             ->visible(fn ($get) => $get('zone_type') == 'states')
             ->dehydrated(false)
             ->options(fn ($get) => State::where('country_id', $get('zone_country'))->get()->pluck('name', 'code'))
@@ -188,11 +188,11 @@ class TaxZoneResource extends BaseResource
     protected static function getZoneTypePostcodesFormComponent(): Component
     {
         return Forms\Components\Textarea::make('zone_postcodes')
-            ->label(__('lunarpanel::taxzone.form.zone_postcodes.label'))
+            ->label(__('payflowpanel::taxzone.form.zone_postcodes.label'))
             ->visible(fn ($get) => $get('zone_type') == 'postcodes')
             ->dehydrated(false)
             ->rows(10)
-            ->helperText(__('lunarpanel::taxzone.form.zone_postcodes.helper'))
+            ->helperText(__('payflowpanel::taxzone.form.zone_postcodes.helper'))
             ->required()
             ->afterStateHydrated(static function (Forms\Components\Textarea $component, ?Model $record): void {
                 if ($record) {
@@ -279,23 +279,23 @@ class TaxZoneResource extends BaseResource
     {
         return Forms\Components\Select::make('price_display')
             ->options([
-                'tax_inclusive' => __('lunarpanel::taxzone.form.price_display.options.include_tax'),
-                'tax_exclusive' => __('lunarpanel::taxzone.form.price_display.options.exclude_tax'),
+                'tax_inclusive' => __('payflowpanel::taxzone.form.price_display.options.include_tax'),
+                'tax_exclusive' => __('payflowpanel::taxzone.form.price_display.options.exclude_tax'),
             ])
-            ->label(__('lunarpanel::taxzone.form.price_display.label'))
+            ->label(__('payflowpanel::taxzone.form.price_display.label'))
             ->required();
     }
 
     protected static function getActiveFormComponent(): Component
     {
         return Forms\Components\Toggle::make('active')
-            ->label(__('lunarpanel::taxzone.form.active.label'));
+            ->label(__('payflowpanel::taxzone.form.active.label'));
     }
 
     protected static function getDefaultFormComponent(): Component
     {
         return Forms\Components\Toggle::make('default')
-            ->label(__('lunarpanel::taxzone.form.default.label'));
+            ->label(__('payflowpanel::taxzone.form.default.label'));
     }
 
     public static function getDefaultTable(Table $table): Table
@@ -322,16 +322,16 @@ class TaxZoneResource extends BaseResource
                 ->separator('')
                 ->suffixBadges([
                     Badge::make('default')
-                        ->label(__('lunarpanel::taxzone.table.default.label'))
+                        ->label(__('payflowpanel::taxzone.table.default.label'))
                         ->color('gray')
                         ->visible(fn (Model $record) => $record->default),
                 ])
-                ->label(__('lunarpanel::taxzone.table.name.label')),
+                ->label(__('payflowpanel::taxzone.table.name.label')),
             Tables\Columns\TextColumn::make('zone_type')
-                ->label(__('lunarpanel::taxzone.table.zone_type.label')),
+                ->label(__('payflowpanel::taxzone.table.zone_type.label')),
             Tables\Columns\IconColumn::make('active')
                 ->boolean()
-                ->label(__('lunarpanel::taxzone.table.active.label')),
+                ->label(__('payflowpanel::taxzone.table.active.label')),
         ];
     }
 

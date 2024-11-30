@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\DiscountResource\Pages;
+namespace Payflow\Admin\Filament\Resources\DiscountResource\Pages;
 
 use Filament\Actions;
 use Filament\Forms;
-use Lunar\Admin\Filament\Resources\DiscountResource;
-use Lunar\Admin\Support\Pages\BaseListRecords;
+use Payflow\Admin\Filament\Resources\DiscountResource;
+use Payflow\Admin\Support\Pages\BaseListRecords;
 
 class ListDiscounts extends BaseListRecords
 {

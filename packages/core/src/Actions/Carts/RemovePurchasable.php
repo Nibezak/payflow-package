@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Actions\Carts;
+namespace Payflow\Actions\Carts;
 
-use Lunar\Actions\AbstractAction;
-use Lunar\Exceptions\CartLineIdMismatchException;
-use Lunar\Facades\DB;
-use Lunar\Models\Cart;
+use Payflow\Actions\AbstractAction;
+use Payflow\Exceptions\CartLineIdMismatchException;
+use Payflow\Facades\DB;
+use Payflow\Models\Cart;
 
 class RemovePurchasable extends AbstractAction
 {
@@ -27,7 +27,7 @@ class RemovePurchasable extends AbstractAction
                 // If we're trying to remove a line that does not
                 // belong to this cart, throw an exception.
                 throw new CartLineIdMismatchException(
-                    __('lunar::exceptions.cart_line_id_mismatch')
+                    __('payflow::exceptions.cart_line_id_mismatch')
                 );
             }
 

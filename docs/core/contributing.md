@@ -2,13 +2,13 @@
 
 ## Overview
 
-Lunar is an open source project, and so by its very nature, welcomes contributions.
+Payflow is an open source project, and so by its very nature, welcomes contributions.
 
 You can contribute to the project in many different ways. Reporting bugs, fixing bugs, helping with the documentation, making suggestions and submitting improvements to the software.
 
 ## Monorepo
 
-Lunar uses a monorepo [lunarphp/lunar](https://github.com/lunarphp/lunar) approach to maintaining its codebase. [Monorepos](https://en.wikipedia.org/wiki/Monorepo) are quite common, but may not be familiar to some. The monorepo helps us to organise the code for ease of development.
+Payflow uses a monorepo [payflowphp/payflow](https://github.com/payflowphp/payflow) approach to maintaining its codebase. [Monorepos](https://en.wikipedia.org/wiki/Monorepo) are quite common, but may not be familiar to some. The monorepo helps us to organise the code for ease of development.
 
 ## Repository Branching
 
@@ -18,7 +18,7 @@ Lunar uses a monorepo [lunarphp/lunar](https://github.com/lunarphp/lunar) approa
 
 ## Contributing Code
 
-The basic process for contributing to Lunar is as follows...
+The basic process for contributing to Payflow is as follows...
 
 1. Fork the monorepo
 2. Clone your fork locally
@@ -29,13 +29,13 @@ The basic process for contributing to Lunar is as follows...
 However, if you're not used to working with monorepo's and setting them up inside a test Laravel application, no problem!
 
 ::: tip
-Here's a guide on how to set-up your development environment ready for contributing to Lunar.
-[Setting Up Lunar For Local Development](/core/local-development)
+Here's a guide on how to set-up your development environment ready for contributing to Payflow.
+[Setting Up Payflow For Local Development](/core/local-development)
 :::
 
 ## Found a Bug?
 
-If you find a bug in the software please raise a GitHub Issue on the [lunarphp/lunar](https://github.com/lunarphp/lunar/issues) repository. Please ensure that your issue includes the following:
+If you find a bug in the software please raise a GitHub Issue on the [payflowphp/payflow](https://github.com/payflowphp/payflow/issues) repository. Please ensure that your issue includes the following:
 
 **Minimum**
 
@@ -46,7 +46,7 @@ If you find a bug in the software please raise a GitHub Issue on the [lunarphp/l
 
 - An accompanying Pull Request with a test to demonstrate the issue.
 
-Lunar is an open source project and as such we want contribution to be as accessible as possible and to enable contributors to actively collaborate on features and issues. By making sure you provide as much information as possible you are giving your issue the best chance to get the attention it needs.
+Payflow is an open source project and as such we want contribution to be as accessible as possible and to enable contributors to actively collaborate on features and issues. By making sure you provide as much information as possible you are giving your issue the best chance to get the attention it needs.
 
 Be aware that creating an issue does not mean it will get activity straight away, please be patient and understand we will do our best to look into it as soon as possible.
 
@@ -54,7 +54,7 @@ Open source code belongs to all of us, and it's all of our responsibility to pus
 
 ## Proposing a Feature
 
-Before you start coding away on the next awesome feature, we highly recommend starting a [discussion](https://github.com/lunarphp/lunar/discussions) to check that your contribution will be welcomed. We would hate for you to spend valuable time on something that won't be merged into Lunar.
+Before you start coding away on the next awesome feature, we highly recommend starting a [discussion](https://github.com/payflowphp/payflow/discussions) to check that your contribution will be welcomed. We would hate for you to spend valuable time on something that won't be merged into Payflow.
 
 However, you're more than welcome to code away on your idea if you think it will help the discussion.
 
@@ -74,11 +74,11 @@ A PR should be able to include the following:
 
 ## Code Styles
 
-Lunar currently uses [Laravel Pint](https://laravel.com/docs/pint) for code styling. This is not automatically triggered, so you will need to run `vendor/bin/pint` on your branch.
+Payflow currently uses [Laravel Pint](https://laravel.com/docs/pint) for code styling. This is not automatically triggered, so you will need to run `vendor/bin/pint` on your branch.
 
 ## Asset compiling
 
-The Lunar hub and some other add-ons/utils will provide their own assets. Please do not commit these files as they will be overwritten by the core team when the release is being finalised.
+The Payflow hub and some other add-ons/utils will provide their own assets. Please do not commit these files as they will be overwritten by the core team when the release is being finalised.
 
 ## Documentation Updates
 
@@ -86,7 +86,7 @@ When providing updates to the documentation, your pull request should target the
 
 If you would like to contribute to the documentation you can do easily by following these instructions...
 
-1. Fork the monorepo `lunarphp/lunar`
+1. Fork the monorepo `payflowphp/payflow`
 2. Clone your fork locally
 3. In your terminal change to the `/docs` directory
 4. Run `npm install`
@@ -94,4 +94,4 @@ If you would like to contribute to the documentation you can do easily by follow
 6. Make your changes
 7. Submit a pull request
 
-Lunar uses [VitePress](https://vitepress.dev/) for our documentation site which uses [Markdown](https://www.markdownguide.org/basic-syntax/) files to store the content. You'll find these Markdown files in the `/docs` directory.
+Payflow uses [VitePress](https://vitepress.dev/) for our documentation site which uses [Markdown](https://www.markdownguide.org/basic-syntax/) files to store the content. You'll find these Markdown files in the `/docs` directory.

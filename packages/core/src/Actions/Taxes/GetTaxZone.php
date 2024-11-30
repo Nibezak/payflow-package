@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Actions\Taxes;
+namespace Payflow\Actions\Taxes;
 
-use Lunar\Base\Addressable;
-use Lunar\Models\TaxZone;
+use Payflow\Base\Addressable;
+use Payflow\Models\TaxZone;
 
 class GetTaxZone
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources;
+namespace Payflow\Admin\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Forms\Components\Component;
@@ -10,13 +10,13 @@ use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Filament\Resources\CustomerResource\Pages;
-use Lunar\Admin\Filament\Resources\CustomerResource\RelationManagers\AddressRelationManager;
-use Lunar\Admin\Filament\Resources\CustomerResource\RelationManagers\OrdersRelationManager;
-use Lunar\Admin\Filament\Resources\CustomerResource\RelationManagers\UserRelationManager;
-use Lunar\Admin\Filament\Resources\CustomerResource\Widgets\CustomerStatsOverviewWidget;
-use Lunar\Admin\Support\Resources\BaseResource;
-use Lunar\Models\Contracts\Customer;
+use Payflow\Admin\Filament\Resources\CustomerResource\Pages;
+use Payflow\Admin\Filament\Resources\CustomerResource\RelationManagers\AddressRelationManager;
+use Payflow\Admin\Filament\Resources\CustomerResource\RelationManagers\OrdersRelationManager;
+use Payflow\Admin\Filament\Resources\CustomerResource\RelationManagers\UserRelationManager;
+use Payflow\Admin\Filament\Resources\CustomerResource\Widgets\CustomerStatsOverviewWidget;
+use Payflow\Admin\Support\Resources\BaseResource;
+use Payflow\Models\Contracts\Customer;
 
 class CustomerResource extends BaseResource
 {
@@ -57,22 +57,22 @@ class CustomerResource extends BaseResource
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::customers');
+        return FilamentIcon::resolve('payflow::customers');
     }
 
     public static function getNavigationGroup(): ?string
     {
-        return __('lunarpanel::global.sections.sales');
+        return __('payflowpanel::global.sections.sales');
     }
 
     public static function getLabel(): string
     {
-        return __('lunarpanel::customer.label');
+        return __('payflowpanel::customer.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('lunarpanel::customer.plural_label');
+        return __('payflowpanel::customer.plural_label');
     }
 
     protected static function getMainFormComponents(): array
@@ -101,7 +101,7 @@ class CustomerResource extends BaseResource
     protected static function getTitleFormComponent(): Component
     {
         return Forms\Components\TextInput::make('title')
-            ->label(__('lunarpanel::customer.form.title.label'))
+            ->label(__('payflowpanel::customer.form.title.label'))
             ->required()
             ->maxLength(255)
             ->autofocus();
@@ -109,13 +109,13 @@ class CustomerResource extends BaseResource
 
     protected static function getAttributeDataFormComponent(): Component
     {
-        return \Lunar\Admin\Support\Forms\Components\Attributes::make()->statePath('attribute_data');
+        return \Payflow\Admin\Support\Forms\Components\Attributes::make()->statePath('attribute_data');
     }
 
     protected static function getFirstNameFormComponent(): Component
     {
         return Forms\Components\TextInput::make('first_name')
-            ->label(__('lunarpanel::customer.form.first_name.label'))
+            ->label(__('payflowpanel::customer.form.first_name.label'))
             ->required()
             ->maxLength(255)
             ->autofocus();
@@ -124,7 +124,7 @@ class CustomerResource extends BaseResource
     protected static function getLastNameFormComponent(): Component
     {
         return Forms\Components\TextInput::make('last_name')
-            ->label(__('lunarpanel::customer.form.last_name.label'))
+            ->label(__('payflowpanel::customer.form.last_name.label'))
             ->required()
             ->maxLength(255)
             ->autofocus();
@@ -133,7 +133,7 @@ class CustomerResource extends BaseResource
     protected static function getCompanyNameFormComponent(): Component
     {
         return Forms\Components\TextInput::make('company_name')
-            ->label(__('lunarpanel::customer.form.company_name.label'))
+            ->label(__('payflowpanel::customer.form.company_name.label'))
             ->nullable()
             ->maxLength(255)
             ->autofocus();
@@ -142,7 +142,7 @@ class CustomerResource extends BaseResource
     protected static function getAccountRefFormComponent(): Component
     {
         return Forms\Components\TextInput::make('account_ref')
-            ->label(__('lunarpanel::customer.form.account_ref.label'))
+            ->label(__('payflowpanel::customer.form.account_ref.label'))
             ->nullable()
             ->maxLength(255);
     }
@@ -150,7 +150,7 @@ class CustomerResource extends BaseResource
     protected static function getVatNoFormComponent(): Component
     {
         return Forms\Components\TextInput::make('vat_no')
-            ->label(__('lunarpanel::customer.form.vat_no.label'))
+            ->label(__('payflowpanel::customer.form.vat_no.label'))
             ->nullable()
             ->maxLength(255);
     }
@@ -158,7 +158,7 @@ class CustomerResource extends BaseResource
     protected static function getCustomerGroupsFormComponent(): Component
     {
         return Forms\Components\CheckboxList::make('customerGroups')
-            ->label(__('lunarpanel::customer.form.customer_groups.label'))
+            ->label(__('payflowpanel::customer.form.customer_groups.label'))
             ->relationship(
                 name: 'customerGroups',
                 titleAttribute: 'name',
@@ -173,22 +173,22 @@ class CustomerResource extends BaseResource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('first_name')
-                    ->label(__('lunarpanel::customer.table.first_name.label'))
+                    ->label(__('payflowpanel::customer.table.first_name.label'))
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('last_name')
-                    ->label(__('lunarpanel::customer.table.last_name.label'))
+                    ->label(__('payflowpanel::customer.table.last_name.label'))
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('company_name')
-                    ->label(__('lunarpanel::customer.table.company_name.label'))
+                    ->label(__('payflowpanel::customer.table.company_name.label'))
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('vat_no')
-                    ->label(__('lunarpanel::customer.table.vat_no.label'))
+                    ->label(__('payflowpanel::customer.table.vat_no.label'))
                     ->sortable(),
                 Tables\Columns\TextColumn::make('account_ref')
-                    ->label(__('lunarpanel::customer.table.account_reference.label'))
+                    ->label(__('payflowpanel::customer.table.account_reference.label'))
                     ->sortable(),
             ])
             ->filters([
@@ -253,16 +253,16 @@ class CustomerResource extends BaseResource
     {
         /** @var Customer $record */
         $details = [
-            __('lunarpanel::customer.table.full_name.label') => $record->fullName,
-            __('lunarpanel::customer.table.title.label') => $record->title,
+            __('payflowpanel::customer.table.full_name.label') => $record->fullName,
+            __('payflowpanel::customer.table.title.label') => $record->title,
         ];
 
         if ($record->account_ref) {
-            $details[__('lunarpanel::customer.table.account_reference.label')] = $record->account_ref;
+            $details[__('payflowpanel::customer.table.account_reference.label')] = $record->account_ref;
         }
 
         if ($record->users() && $record->users()->count() >= 1) {
-            $details[__('lunarpanel::user.table.email.label')] = $record->users()->first()->email;
+            $details[__('payflowpanel::user.table.email.label')] = $record->users()->first()->email;
         }
 
         return $details;

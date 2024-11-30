@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Stripe\Actions;
+namespace Payflow\Stripe\Actions;
 
 use Illuminate\Support\Facades\DB;
-use Lunar\Models\Order;
-use Lunar\Stripe\Facades\Stripe;
+use Payflow\Models\Order;
+use Payflow\Stripe\Facades\Stripe;
 use Stripe\PaymentIntent;
 
 class UpdateOrderFromIntent
@@ -22,7 +22,7 @@ class UpdateOrderFromIntent
             $order = app(StoreCharges::class)->store($order, $charges);
             $requiresCapture = $paymentIntent->status === PaymentIntent::STATUS_REQUIRES_CAPTURE;
 
-            $statuses = config('lunar.stripe.status_mapping', []);
+            $statuses = config('payflow.stripe.status_mapping', []);
 
             $placedAt = null;
 
@@ -34,7 +34,7 @@ class UpdateOrderFromIntent
                 return $order;
             }
 
-            if (config('lunar.stripe.sync_addresses', true) && $paymentIntent->payment_method) {
+            if (config('payflow.stripe.sync_addresses', true) && $paymentIntent->payment_method) {
                 (new StoreAddressInformation)->store($order, $paymentIntent);
             }
 

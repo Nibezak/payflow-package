@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\ActivityLog;
+namespace Payflow\Admin\Support\ActivityLog;
 
 use Spatie\Activitylog\Models\Activity;
 

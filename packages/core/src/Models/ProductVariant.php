@@ -1,22 +1,22 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Casts\AsAttributeData;
-use Lunar\Base\Purchasable;
-use Lunar\Base\Traits\HasAttributes;
-use Lunar\Base\Traits\HasDimensions;
-use Lunar\Base\Traits\HasMacros;
-use Lunar\Base\Traits\HasPrices;
-use Lunar\Base\Traits\HasTranslations;
-use Lunar\Base\Traits\LogsActivity;
-use Lunar\Database\Factories\ProductVariantFactory;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Casts\AsAttributeData;
+use Payflow\Base\Purchasable;
+use Payflow\Base\Traits\HasAttributes;
+use Payflow\Base\Traits\HasDimensions;
+use Payflow\Base\Traits\HasMacros;
+use Payflow\Base\Traits\HasPrices;
+use Payflow\Base\Traits\HasTranslations;
+use Payflow\Base\Traits\LogsActivity;
+use Payflow\Database\Factories\ProductVariantFactory;
 use Spatie\LaravelBlink\BlinkFacade as Blink;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -97,7 +97,7 @@ class ProductVariant extends BaseModel implements Contracts\ProductVariant, Purc
 
     public function values(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(
             ProductOptionValue::modelClass(),
@@ -185,7 +185,7 @@ class ProductVariant extends BaseModel implements Contracts\ProductVariant, Purc
 
     public function images(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(Media::class, "{$prefix}media_product_variant")
             ->withPivot(['primary', 'position'])

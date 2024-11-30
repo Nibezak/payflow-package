@@ -1,6 +1,6 @@
 <?php
 
-uses(\Lunar\Tests\Admin\Unit\Livewire\TestCase::class)
+uses(\Payflow\Tests\Admin\Unit\Livewire\TestCase::class)
     ->group('livewire.support.forms');
 
 describe('toggle field converter', function () {
@@ -9,11 +9,11 @@ describe('toggle field converter', function () {
     });
 
     test('can convert attribute to form input component', function () {
-        $attribute = \Lunar\Models\Attribute::factory()->create([
-            'type' => \Lunar\FieldTypes\Toggle::class,
+        $attribute = \Payflow\Models\Attribute::factory()->create([
+            'type' => \Payflow\FieldTypes\Toggle::class,
         ]);
 
-        $inputComponent = \Lunar\Admin\Support\FieldTypes\Toggle::getFilamentComponent($attribute);
+        $inputComponent = \Payflow\Admin\Support\FieldTypes\Toggle::getFilamentComponent($attribute);
 
         expect($inputComponent)->toBeInstanceOf(\Filament\Forms\Components\Toggle::class);
     });

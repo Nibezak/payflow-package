@@ -1,13 +1,13 @@
 # Extending Attributes
 
-You can add your own attribute field types to Lunar and control how they are rendered in the panel.
+You can add your own attribute field types to Payflow and control how they are rendered in the panel.
 
 In order to render the form component from the attribute, it needs to be converted into a Filament form component and a suitable Livewire Synthesizer associated so it can be hydrated/dehydrated properly.
 
 ## Create the field
 
 ```php
-use Lunar\FieldTypes\Text;
+use Payflow\FieldTypes\Text;
 
 class CustomField extends Text
 {
@@ -18,7 +18,7 @@ class CustomField extends Text
 ## Create the field type
 
 ```php
-use Lunar\Admin\Support\FieldTypes\BaseFieldType;
+use Payflow\Admin\Support\FieldTypes\BaseFieldType;
 
 class CustomFieldType extends BaseFieldType
 {
@@ -57,7 +57,7 @@ These will when be stored in the `configuration` JSON column for the attribute. 
 render the field in the panel.
 
 ```php
-use Lunar\Admin\Support\FieldTypes\BaseFieldType;
+use Payflow\Admin\Support\FieldTypes\BaseFieldType;
 
 class CustomFieldType extends BaseFieldType
 {
@@ -82,12 +82,12 @@ here: [https://livewire.laravel.com/docs/synthesizers](https://livewire.laravel.
 ```php
 <?php
 
-use Lunar\Admin\Support\Synthesizers\AbstractFieldSynth;
-use Lunar\FieldTypes\Text;
+use Payflow\Admin\Support\Synthesizers\AbstractFieldSynth;
+use Payflow\FieldTypes\Text;
 
 class CustomFieldSynth extends AbstractFieldSynth
 {
-    public static $key = 'lunar_custom_field_field';
+    public static $key = 'payflow_custom_field_field';
 
     protected static $targetClass = CustomField::class;
 }
@@ -99,7 +99,7 @@ The last step is the register the converter with the `AttributeData` facade. Usu
 provider.
 
 ```php
-use Lunar\Admin\Support\Facades\AttributeData;
+use Payflow\Admin\Support\Facades\AttributeData;
 
 AttributeData::registerFieldType(\App\FieldTypes\CustomField::class, \App\Panel\FieldTypes\CustomFieldType::class);
 ```

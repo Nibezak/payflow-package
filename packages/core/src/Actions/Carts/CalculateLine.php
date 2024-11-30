@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Actions\Carts;
+namespace Payflow\Actions\Carts;
 
 use Illuminate\Support\Collection;
-use Lunar\Base\Addressable;
-use Lunar\DataTypes\Price;
-use Lunar\Facades\Taxes;
-use Lunar\Models\CartLine;
+use Payflow\Base\Addressable;
+use Payflow\DataTypes\Price;
+use Payflow\Facades\Taxes;
+use Payflow\Models\CartLine;
 
 class CalculateLine
 {
@@ -14,7 +14,7 @@ class CalculateLine
      * Execute the action.
      *
      * @param  \Illuminate\Database\Eloquent\Collection  $customerGroups
-     * @return \Lunar\Models\CartLine
+     * @return \Payflow\Models\CartLine
      */
     public function execute(
         CartLine $cartLine,

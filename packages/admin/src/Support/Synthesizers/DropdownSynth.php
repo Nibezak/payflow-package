@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Admin\Support\Synthesizers;
+namespace Payflow\Admin\Support\Synthesizers;
 
-use Lunar\FieldTypes\Dropdown;
+use Payflow\FieldTypes\Dropdown;
 
 class DropdownSynth extends AbstractFieldSynth
 {
-    public static $key = 'lunar_dropdown_field';
+    public static $key = 'payflow_dropdown_field';
 
     protected static $targetClass = Dropdown::class;
 }

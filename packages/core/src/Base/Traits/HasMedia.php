@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Base\Traits;
+namespace Payflow\Base\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-use Lunar\Base\StandardMediaDefinitions;
+use Payflow\Base\StandardMediaDefinitions;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -61,7 +61,7 @@ trait HasMedia
 
     protected function getDefinitionClass()
     {
-        $conversionClasses = config('lunar.media.definitions', []);
+        $conversionClasses = config('payflow.media.definitions', []);
 
         $alias = \Illuminate\Support\Str::snake(class_basename(static::class));
 

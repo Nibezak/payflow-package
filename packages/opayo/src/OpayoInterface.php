@@ -1,5 +1,5 @@
 <?php
 
-namespace Lunar\Opayo;
+namespace Payflow\Opayo;
 
 interface OpayoInterface {}

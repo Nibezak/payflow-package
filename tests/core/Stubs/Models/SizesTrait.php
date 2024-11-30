@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Tests\Core\Stubs\Models;
+namespace Payflow\Tests\Core\Stubs\Models;
 
 use Illuminate\Support\Collection;
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Stripe\Http\Middleware;
+namespace Payflow\Stripe\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Lunar\Stripe\Concerns\ConstructsWebhookEvent;
+use Payflow\Stripe\Concerns\ConstructsWebhookEvent;
 use Stripe\Exception\SignatureVerificationException;
 use Stripe\Exception\UnexpectedValueException;
 
@@ -12,7 +12,7 @@ class StripeWebhookMiddleware
 {
     public function handle(Request $request, ?Closure $next = null)
     {
-        $secret = config('services.stripe.webhooks.lunar');
+        $secret = config('services.stripe.webhooks.payflow');
         $stripeSig = $request->header('Stripe-Signature');
 
         try {

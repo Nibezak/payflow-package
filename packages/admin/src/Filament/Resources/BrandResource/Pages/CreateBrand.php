@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\BrandResource\Pages;
+namespace Payflow\Admin\Filament\Resources\BrandResource\Pages;
 
-use Lunar\Admin\Filament\Resources\BrandResource;
-use Lunar\Admin\Support\Pages\BaseCreateRecord;
+use Payflow\Admin\Filament\Resources\BrandResource;
+use Payflow\Admin\Support\Pages\BaseCreateRecord;
 
 class CreateBrand extends BaseCreateRecord
 {

@@ -1,16 +1,16 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductVariantResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ProductVariantResource\Pages;
 
 use Filament\Actions\Action;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Filament\Resources\ProductResource;
-use Lunar\Admin\Filament\Resources\ProductResource\RelationManagers\CustomerGroupPricingRelationManager;
-use Lunar\Admin\Filament\Resources\ProductVariantResource;
-use Lunar\Admin\Support\Concerns\Products\ManagesProductPricing;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
-use Lunar\Admin\Support\RelationManagers\PriceRelationManager;
+use Payflow\Admin\Filament\Resources\ProductResource;
+use Payflow\Admin\Filament\Resources\ProductResource\RelationManagers\CustomerGroupPricingRelationManager;
+use Payflow\Admin\Filament\Resources\ProductVariantResource;
+use Payflow\Admin\Support\Concerns\Products\ManagesProductPricing;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Admin\Support\RelationManagers\PriceRelationManager;
 
 class ManageVariantPricing extends BaseEditRecord
 {
@@ -25,7 +25,7 @@ class ManageVariantPricing extends BaseEditRecord
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::product-pricing');
+        return FilamentIcon::resolve('payflow::product-pricing');
     }
 
     protected function getHeaderActions(): array

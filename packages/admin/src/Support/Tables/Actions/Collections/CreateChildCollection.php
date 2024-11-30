@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Admin\Support\Tables\Actions\Collections;
+namespace Payflow\Admin\Support\Tables\Actions\Collections;
 
 use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Table;
-use Lunar\Admin\Support\Actions\Traits\CreatesChildCollections;
-use Lunar\Admin\Support\Forms\Components\TranslatedText;
+use Payflow\Admin\Support\Actions\Traits\CreatesChildCollections;
+use Payflow\Admin\Support\Forms\Components\TranslatedText;
 
 class CreateChildCollection extends CreateAction
 {
@@ -31,7 +31,7 @@ class CreateChildCollection extends CreateAction
         $this->createAnother(false);
 
         $this->label(
-            __('lunarpanel::collection.pages.children.actions.create_child.label')
+            __('payflowpanel::collection.pages.children.actions.create_child.label')
         );
     }
 }

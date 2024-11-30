@@ -14,7 +14,7 @@ For example, a television might have the following attributes assigned...
 ## Attributes
 
 ```php
-Lunar\Models\Attribute
+Payflow\Models\Attribute
 ```
 
 |Field| Description                                                                       |
@@ -25,7 +25,7 @@ Lunar\Models\Attribute
 |`name`| Laravel Collection of translations `{'en': 'Screen Size'}`                        |
 |`handle`| Kebab-cased reference, e.g. `screen-size`                                         |
 |`section`| An optional name to define where an attribute should be used.                     |
-|`type`| The field type to be used, e.g. `Lunar\FieldTypes\Number`                         |
+|`type`| The field type to be used, e.g. `Payflow\FieldTypes\Number`                         |
 |`required`| Boolean                                                                           |
 |`default_value`|                                                                                   |
 |`configuration`| Meta data stored as a Laravel Collection                                          |
@@ -36,10 +36,10 @@ Lunar\Models\Attribute
 
 |Type|Config|
 |:-|:-|
-|`Lunar\FieldTypes\Number`|Integer or Decimal|
-|`Lunar\FieldTypes\Text`|Single-line, Multi-line, Rich Text|
-|`Lunar\FieldTypes\TranslatedText`|Single-line, Multi-line, Rich Text|
-|`Lunar\FieldTypes\ListField`|An re-orderable list of text values|
+|`Payflow\FieldTypes\Number`|Integer or Decimal|
+|`Payflow\FieldTypes\Text`|Single-line, Multi-line, Rich Text|
+|`Payflow\FieldTypes\TranslatedText`|Single-line, Multi-line, Rich Text|
+|`Payflow\FieldTypes\ListField`|An re-orderable list of text values|
 
 ::: tip INFO
 More field types will be coming soon.
@@ -47,19 +47,19 @@ More field types will be coming soon.
 
 ### Models that use Attributes
 
-* Lunar\Models\Product
-* Lunar\Models\ProductVariant
-* Lunar\Models\Collection
+* Payflow\Models\Product
+* Payflow\Models\ProductVariant
+* Payflow\Models\Collection
 
 ### Saving Attribute Data
 
 ```php
 $product->attribute_data = collect([
-    'meta_title' => new \Lunar\FieldTypes\Text('The best screwdriver you will ever buy!'),
-    'pack_qty' => new \Lunar\FieldTypes\Number(2),
-    'description' => new \Lunar\FieldTypes\TranslatedText(collect([
-        'en' => new \Lunar\FieldTypes\Text('Blue'),
-        'fr' => new \Lunar\FieldTypes\Text('Bleu'),
+    'meta_title' => new \Payflow\FieldTypes\Text('The best screwdriver you will ever buy!'),
+    'pack_qty' => new \Payflow\FieldTypes\Number(2),
+    'description' => new \Payflow\FieldTypes\TranslatedText(collect([
+        'en' => new \Payflow\FieldTypes\Text('Blue'),
+        'fr' => new \Payflow\FieldTypes\Text('Bleu'),
     ])),
 ]);
 ```
@@ -68,8 +68,8 @@ $product->attribute_data = collect([
 ### Adding attributes to your own model
 
 ```php
-use Lunar\Base\Casts\AsAttributeData;
-use Lunar\Base\Traits\HasAttributes;
+use Payflow\Base\Casts\AsAttributeData;
+use Payflow\Base\Traits\HasAttributes;
 
 class Collection extends Model
 {
@@ -105,22 +105,22 @@ dump($product->attribute_data);
 
 Illuminate\Support\Collection {#1522 ▼
   #items: array:2 [▼
-    "name" => Lunar\FieldTypes\TranslatedText {#1533 ▼
+    "name" => Payflow\FieldTypes\TranslatedText {#1533 ▼
       #value: Illuminate\Support\Collection {#1505 ▼
         #items: array:3 [▼
-          "de" => Lunar\FieldTypes\Text {#1506 ▼
+          "de" => Payflow\FieldTypes\Text {#1506 ▼
             #value: "Leren laarzen"
           }
-          "en" => Lunar\FieldTypes\Text {#1514 ▼
+          "en" => Payflow\FieldTypes\Text {#1514 ▼
             #value: "Leather boots"
           }
-          "fr" => Lunar\FieldTypes\Text {#1502 ▼
+          "fr" => Payflow\FieldTypes\Text {#1502 ▼
             #value: "Bottes en cuires"
           }
         ]
       }
     }
-    "description" => Lunar\FieldTypes\Text {#1537 ▼
+    "description" => Payflow\FieldTypes\Text {#1537 ▼
       #value: "<p>I'm a description!</p>"
     }
   ]
@@ -144,7 +144,7 @@ $product->translateAttribute('name', 'FOO');
 ### Advanced usage
 
 ```php
-use Lunar\Base\Traits\HasAttributes;
+use Payflow\Base\Traits\HasAttributes;
 
 class ProductType extends Model
 {
@@ -157,7 +157,7 @@ class ProductType extends Model
 
 ```php
 
-use Lunar\Base\Casts\AsAttributeData;
+use Payflow\Base\Casts\AsAttributeData;
 
 class Product extends Model
 {
@@ -177,7 +177,7 @@ class Product extends Model
 
 ```php
 
-use Lunar\Base\Casts\AsAttributeData;
+use Payflow\Base\Casts\AsAttributeData;
 
 class ProductVariant extends Model
 {
@@ -203,7 +203,7 @@ Attribute Groups form a collection of attributes that are logically grouped toge
 A good example might be an "SEO" attribute group which has attributes for "Meta Title" and "Meta Description".
 
 ```php
-Lunar\Models\AttributeGroup
+Payflow\Models\AttributeGroup
 ```
 
 |Field|Description|

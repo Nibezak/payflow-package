@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Stripe\Pipelines;
+namespace Payflow\Stripe\Pipelines;
 
-use Lunar\Stripe\DataTransferObjects\OrderIntent;
+use Payflow\Stripe\DataTransferObjects\OrderIntent;
 
 class UpdateOrderFromCharges
 {

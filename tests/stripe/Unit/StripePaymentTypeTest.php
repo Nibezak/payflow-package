@@ -1,14 +1,14 @@
 <?php
 
-use Lunar\Base\DataTransferObjects\PaymentAuthorize;
-use Lunar\Models\Transaction;
-use Lunar\Stripe\Facades\Stripe;
-use Lunar\Stripe\StripePaymentType;
-use Lunar\Tests\Stripe\Utils\CartBuilder;
+use Payflow\Base\DataTransferObjects\PaymentAuthorize;
+use Payflow\Models\Transaction;
+use Payflow\Stripe\Facades\Stripe;
+use Payflow\Stripe\StripePaymentType;
+use Payflow\Tests\Stripe\Utils\CartBuilder;
 
 use function Pest\Laravel\assertDatabaseHas;
 
-uses(\Lunar\Tests\Stripe\Unit\TestCase::class);
+uses(\Payflow\Tests\Stripe\Unit\TestCase::class);
 
 it('can capture an order', function () {
     $cart = CartBuilder::build();
@@ -80,7 +80,7 @@ it('will fail if cart already has an order', function () {
         ->and($response->success)->toBeFalse()
         ->and($response->message)->toBeIn([
             'Carts can only have one order associated to them.',
-            __('lunar::exceptions.carts.order_exists'),
+            __('payflow::exceptions.carts.order_exists'),
         ]);
 });
 
@@ -115,13 +115,13 @@ it('create a pending transaction when status is requires_action', function () {
 });
 
 it('can return correct payment checks', function () {
-    \Lunar\Models\Currency::factory()->create();
+    \Payflow\Models\Currency::factory()->create();
 
     $cart = buildCart();
 
     $order = $cart->createOrder();
 
-    $transactionA = \Lunar\Models\Transaction::factory()->create([
+    $transactionA = \Payflow\Models\Transaction::factory()->create([
         'order_id' => $order->id,
         'driver' => 'stripe',
         'meta' => [
@@ -131,7 +131,7 @@ it('can return correct payment checks', function () {
         ],
     ]);
 
-    $transactionB = \Lunar\Models\Transaction::factory()->create([
+    $transactionB = \Payflow\Models\Transaction::factory()->create([
         'order_id' => $order->id,
         'driver' => 'stripe',
         'meta' => [
@@ -141,7 +141,7 @@ it('can return correct payment checks', function () {
         ],
     ]);
 
-    $transactionC = \Lunar\Models\Transaction::factory()->create([
+    $transactionC = \Payflow\Models\Transaction::factory()->create([
         'order_id' => $order->id,
         'driver' => 'stripe',
         'meta' => [
@@ -151,7 +151,7 @@ it('can return correct payment checks', function () {
         ],
     ]);
 
-    $transactionD = \Lunar\Models\Transaction::factory()->create([
+    $transactionD = \Payflow\Models\Transaction::factory()->create([
         'order_id' => $order->id,
         'driver' => 'stripe',
         'meta' => [

@@ -41,7 +41,7 @@
 >
     @foreach ($nodes as $node)
         <div wire:key="node_{{ $node['id'] }}"  x-sortable-item="{{ $node['id'] }}">
-            <x-lunarpanel::collections.nested-set-item
+            <x-payflowpanel::collections.nested-set-item
                     :id="$node['id']"
                     :name="$node['name']"
                     :edit-url="$node['edit_url']"
@@ -50,7 +50,7 @@
                     :thumbnail="$node['thumbnail']"
                     :parent="$node['parent_id']"
             >
-            </x-lunarpanel::collections.nested-set-item>
+            </x-payflowpanel::collections.nested-set-item>
         </div>
     @endforeach
 </div>

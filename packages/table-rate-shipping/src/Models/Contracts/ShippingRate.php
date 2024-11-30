@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Shipping\Models\Contracts;
+namespace Payflow\Shipping\Models\Contracts;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Lunar\DataTypes\ShippingOption;
-use Lunar\Models\Cart;
+use Payflow\DataTypes\ShippingOption;
+use Payflow\Models\Cart;
 
 interface ShippingRate
 {

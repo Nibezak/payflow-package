@@ -1,10 +1,10 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
-use Lunar\Base\OrderReferenceGenerator;
-use Lunar\Models\Currency;
-use Lunar\Models\Language;
-use Lunar\Models\Order;
+uses(\Payflow\Tests\Core\TestCase::class);
+use Payflow\Base\OrderReferenceGenerator;
+use Payflow\Models\Currency;
+use Payflow\Models\Language;
+use Payflow\Models\Order;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

@@ -81,16 +81,16 @@ return [
         ],
         'status' => [
             'label' => 'Estado',
-            \Lunar\Models\Discount::ACTIVE => [
+            \Payflow\Models\Discount::ACTIVE => [
                 'label' => 'Activo',
             ],
-            \Lunar\Models\Discount::PENDING => [
+            \Payflow\Models\Discount::PENDING => [
                 'label' => 'Pendiente',
             ],
-            \Lunar\Models\Discount::EXPIRED => [
+            \Payflow\Models\Discount::EXPIRED => [
                 'label' => 'Expirado',
             ],
-            \Lunar\Models\Discount::SCHEDULED => [
+            \Payflow\Models\Discount::SCHEDULED => [
                 'label' => 'Programado',
             ],
         ],

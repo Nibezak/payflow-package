@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Casts\Price as CastsPrice;
-use Lunar\Base\Traits\HasMacros;
-use Lunar\Database\Factories\PriceFactory;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Casts\Price as CastsPrice;
+use Payflow\Base\Traits\HasMacros;
+use Payflow\Database\Factories\PriceFactory;
 use Spatie\LaravelBlink\BlinkFacade as Blink;
 
 /**
@@ -17,7 +17,7 @@ use Spatie\LaravelBlink\BlinkFacade as Blink;
  * @property ?int $currency_id
  * @property string $priceable_type
  * @property int $priceable_id
- * @property \Lunar\DataTypes\Price $price
+ * @property \Payflow\DataTypes\Price $price
  * @property ?int $compare_price
  * @property int $min_quantity
  * @property ?\Illuminate\Support\Carbon $created_at
@@ -76,7 +76,7 @@ class Price extends BaseModel implements Contracts\Price
     /**
      * Return the price exclusive of tax.
      */
-    public function priceExTax(): \Lunar\DataTypes\Price
+    public function priceExTax(): \Payflow\DataTypes\Price
     {
         if (! prices_inc_tax()) {
             return $this->price;
@@ -92,7 +92,7 @@ class Price extends BaseModel implements Contracts\Price
     /**
      * Return the price inclusive of tax.
      */
-    public function priceIncTax(): int|\Lunar\DataTypes\Price
+    public function priceIncTax(): int|\Payflow\DataTypes\Price
     {
         if (prices_inc_tax()) {
             return $this->price;

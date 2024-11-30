@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Facades;
+namespace Payflow\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Lunar\Base\PaymentManagerInterface;
+use Payflow\Base\PaymentManagerInterface;
 
 class Payments extends Facade
 {

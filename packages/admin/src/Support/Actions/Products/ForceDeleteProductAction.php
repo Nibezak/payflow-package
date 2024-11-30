@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Admin\Support\Actions\Products;
+namespace Payflow\Admin\Support\Actions\Products;
 
 use Filament\Actions\ForceDeleteAction;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Facades\DB;
+use Payflow\Facades\DB;
 
 class ForceDeleteProductAction extends ForceDeleteAction
 {

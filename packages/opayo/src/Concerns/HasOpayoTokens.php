@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Opayo\Concerns;
+namespace Payflow\Opayo\Concerns;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Lunar\Opayo\Models\OpayoToken;
+use Payflow\Opayo\Models\OpayoToken;
 
 trait HasOpayoTokens
 {

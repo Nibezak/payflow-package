@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\OrderResource\Concerns;
+namespace Payflow\Admin\Filament\Resources\OrderResource\Concerns;
 
 use Filament\Infolists;
 use Filament\Support\Enums\IconPosition;
@@ -9,7 +9,7 @@ trait DisplaysShippingInfo
 {
     public static function getShippingInfolist(): Infolists\Components\Section
     {
-        return self::callStaticLunarHook('extendShippingInfolist', static::getDefaultShippingInfolist());
+        return self::callStaticPayflowHook('extendShippingInfolist', static::getDefaultShippingInfolist());
     }
 
     public static function getDefaultShippingInfolist(): Infolists\Components\Section
@@ -36,7 +36,7 @@ trait DisplaysShippingInfo
                                 fn ($state) => ! $state
                             )
                             ->placeholder(
-                                __('lunarpanel::order.infolist.notes.placeholder')
+                                __('payflowpanel::order.infolist.notes.placeholder')
                             ),
                     ]),
             ]);

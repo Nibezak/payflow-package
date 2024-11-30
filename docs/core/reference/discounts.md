@@ -7,7 +7,7 @@
 ## Discounts
 
 ```php
-Lunar\Models\Discount
+Payflow\Models\Discount
 ```
 
 | Field        | Description                                                  | Example                               |
@@ -15,7 +15,7 @@ Lunar\Models\Discount
 | `id`         |                                                              |                                       |
 | `name`       | The given name for the discount                              |                                       |
 | `handle`     | The unique handle for the discount                           |                                       |
-| `type`       | The type of discount                                         | `Lunar\DiscountTypes\BuyXGetY`          |
+| `type`       | The type of discount                                         | `Payflow\DiscountTypes\BuyXGetY`          |
 | `data`       | JSON                                                         | Any data to be used by the type class 
 | `starts_at`  | The datetime the discount starts (required)                  |
 | `ends_at`    | The datetime the discount expires, if `NULL` it won't expire |
@@ -29,10 +29,10 @@ Lunar\Models\Discount
 ### Creating a discount
 
 ```php
-Lunar\Models\Discount::create([
+Payflow\Models\Discount::create([
     'name' => '20% Coupon',
     'handle' => '20_coupon',
-    'type' => 'Lunar\DiscountTypes\Coupon',
+    'type' => 'Payflow\DiscountTypes\Coupon',
     'data' => [
         'coupon' => '20OFF',
         'min_prices' => [
@@ -82,7 +82,7 @@ You can relate a purchasable to a discount via this model. Each has a type for w
 - `reward` - Once the conditions are met, discount one of more of these purchasable models.
 
 ```php
-Lunar\Models\DiscountPurchasable
+Payflow\Models\DiscountPurchasable
 ```
 
 | Field              | Description             | Example                       |
@@ -106,8 +106,8 @@ Lunar\Models\DiscountPurchasable
 
 namespace App\DiscountTypes;
 
-use Lunar\Models\Cart;
-use Lunar\DiscountTypes\AbstractDiscountType;
+use Payflow\Models\Cart;
+use Payflow\DiscountTypes\AbstractDiscountType;
 
 class MyCustomDiscountType extends AbstractDiscountType
 {
@@ -135,7 +135,7 @@ class MyCustomDiscountType extends AbstractDiscountType
 ```
 
 ```php
-use Lunar\Facades\Discounts;
+use Payflow\Facades\Discounts;
 
 Discounts::addType(MyCustomDiscountType::class);
 ```

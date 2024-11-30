@@ -1,17 +1,17 @@
 <?php
 
-namespace Lunar\Managers;
+namespace Payflow\Managers;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
-use Lunar\Base\DataTransferObjects\PricingResponse;
-use Lunar\Base\PricingManagerInterface;
-use Lunar\Base\Purchasable;
-use Lunar\Exceptions\MissingCurrencyPriceException;
-use Lunar\Models\Currency;
-use Lunar\Models\CustomerGroup;
+use Payflow\Base\DataTransferObjects\PricingResponse;
+use Payflow\Base\PricingManagerInterface;
+use Payflow\Base\Purchasable;
+use Payflow\Exceptions\MissingCurrencyPriceException;
+use Payflow\Models\Currency;
+use Payflow\Models\CustomerGroup;
 
 class PricingManager implements PricingManagerInterface
 {
@@ -47,7 +47,7 @@ class PricingManager implements PricingManagerInterface
 
     public function __construct()
     {
-        if (Auth::check() && is_lunar_user(Auth::user())) {
+        if (Auth::check() && is_payflow_user(Auth::user())) {
             $this->user = Auth::user();
         }
     }
@@ -141,7 +141,7 @@ class PricingManager implements PricingManagerInterface
     /**
      * Get the price for the purchasable.
      *
-     * @return \Lunar\Base\DataTransferObjects\PricingResponse
+     * @return \Payflow\Base\DataTransferObjects\PricingResponse
      */
     public function get()
     {
@@ -219,7 +219,7 @@ class PricingManager implements PricingManagerInterface
         $response = app(Pipeline::class)
             ->send($this)
             ->through(
-                config('lunar.pricing.pipelines', [])
+                config('payflow.pricing.pipelines', [])
             )->then(fn ($pricingManager) => $pricingManager->pricing);
 
         $this->reset();

@@ -1,15 +1,15 @@
 <?php
 
-namespace Lunar\Observers;
+namespace Payflow\Observers;
 
-use Lunar\Models\Transaction;
+use Payflow\Models\Transaction;
 
 class TransactionObserver
 {
     /**
      * Handle the Transaction "created" event.
      *
-     * @param  \Lunar\Models\Transaction  $orderLine
+     * @param  \Payflow\Models\Transaction  $orderLine
      * @return void
      */
     public function created(Transaction $transaction)

@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Exceptions;
+namespace Payflow\Exceptions;
 
-class MissingCurrencyPriceException extends LunarException
+class MissingCurrencyPriceException extends PayflowException
 {
     //
 }

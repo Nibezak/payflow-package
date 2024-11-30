@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Shipping\Interfaces;
+namespace Payflow\Shipping\Interfaces;
 
-use Lunar\DataTypes\ShippingOption;
-use Lunar\Shipping\DataTransferObjects\ShippingOptionRequest;
-use Lunar\Shipping\Models\ShippingRate;
+use Payflow\DataTypes\ShippingOption;
+use Payflow\Shipping\DataTransferObjects\ShippingOptionRequest;
+use Payflow\Shipping\Models\ShippingRate;
 
 interface ShippingRateInterface
 {

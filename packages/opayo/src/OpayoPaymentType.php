@@ -1,21 +1,21 @@
 <?php
 
-namespace Lunar\Opayo;
+namespace Payflow\Opayo;
 
 use Illuminate\Support\Str;
-use Lunar\Base\DataTransferObjects\PaymentCapture;
-use Lunar\Base\DataTransferObjects\PaymentCheck;
-use Lunar\Base\DataTransferObjects\PaymentChecks;
-use Lunar\Base\DataTransferObjects\PaymentRefund;
-use Lunar\Events\PaymentAttemptEvent;
-use Lunar\Models\Order;
-use Lunar\Models\Transaction;
-use Lunar\Opayo\DataTransferObjects\AuthPayloadParameters;
-use Lunar\Opayo\Facades\Opayo;
-use Lunar\Opayo\Models\OpayoToken;
-use Lunar\Opayo\Responses\PaymentAuthorize;
-use Lunar\Opayo\Responses\ThreeDSecureResponse;
-use Lunar\PaymentTypes\AbstractPayment;
+use Payflow\Base\DataTransferObjects\PaymentCapture;
+use Payflow\Base\DataTransferObjects\PaymentCheck;
+use Payflow\Base\DataTransferObjects\PaymentChecks;
+use Payflow\Base\DataTransferObjects\PaymentRefund;
+use Payflow\Events\PaymentAttemptEvent;
+use Payflow\Models\Order;
+use Payflow\Models\Transaction;
+use Payflow\Opayo\DataTransferObjects\AuthPayloadParameters;
+use Payflow\Opayo\Facades\Opayo;
+use Payflow\Opayo\Models\OpayoToken;
+use Payflow\Opayo\Responses\PaymentAuthorize;
+use Payflow\Opayo\Responses\ThreeDSecureResponse;
+use Payflow\PaymentTypes\AbstractPayment;
 
 class OpayoPaymentType extends AbstractPayment
 {
@@ -31,13 +31,13 @@ class OpayoPaymentType extends AbstractPayment
      */
     public function __construct()
     {
-        $this->policy = config('lunar.opayo.policy', 'automatic');
+        $this->policy = config('payflow.opayo.policy', 'automatic');
     }
 
     /**
      * Authorize the payment for processing.
      *
-     * @return \Lunar\Base\DataTransferObjects\PaymentAuthorize
+     * @return \Payflow\Base\DataTransferObjects\PaymentAuthorize
      */
     public function authorize(): PaymentAuthorize|ThreeDSecureResponse
     {

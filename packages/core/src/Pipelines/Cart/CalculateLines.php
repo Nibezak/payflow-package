@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Pipelines\Cart;
+namespace Payflow\Pipelines\Cart;
 
 use Closure;
 use Illuminate\Pipeline\Pipeline;
-use Lunar\DataTypes\Price;
-use Lunar\Models\Cart;
+use Payflow\DataTypes\Price;
+use Payflow\Models\Cart;
 
 class CalculateLines
 {
@@ -20,7 +20,7 @@ class CalculateLines
             $cartLine = app(Pipeline::class)
                 ->send($line)
                 ->through(
-                    config('lunar.cart.pipelines.cart_lines', [])
+                    config('payflow.cart.pipelines.cart_lines', [])
                 )->thenReturn(function ($cartLine) {
                     $cartLine->cacheProperties();
 

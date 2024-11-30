@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Base\Traits;
+namespace Payflow\Base\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-use Lunar\Models\Url;
+use Payflow\Models\Url;
 
 trait HasUrls
 {
@@ -17,7 +17,7 @@ trait HasUrls
     public static function bootHasUrls()
     {
         static::created(function (Model $model) {
-            $generator = config('lunar.urls.generator', null);
+            $generator = config('payflow.urls.generator', null);
             if ($generator) {
                 app($generator)->handle($model);
             }

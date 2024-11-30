@@ -1,9 +1,9 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
-use Lunar\Models\TaxRate;
-use Lunar\Models\TaxRateAmount;
-use Lunar\Models\TaxZone;
+uses(\Payflow\Tests\Core\TestCase::class);
+use Payflow\Models\TaxRate;
+use Payflow\Models\TaxRateAmount;
+use Payflow\Models\TaxZone;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Admin\Support\ActivityLog\Concerns;
+namespace Payflow\Admin\Support\ActivityLog\Concerns;
 
-use Lunar\Admin\Livewire\Components\ActivityLogFeed;
+use Payflow\Admin\Livewire\Components\ActivityLogFeed;
 
 trait CanDispatchActivityUpdated
 {

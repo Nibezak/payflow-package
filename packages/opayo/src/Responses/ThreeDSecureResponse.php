@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Opayo\Responses;
+namespace Payflow\Opayo\Responses;
 
-use Lunar\Base\DataTransferObjects\PaymentAuthorize;
+use Payflow\Base\DataTransferObjects\PaymentAuthorize;
 
 class ThreeDSecureResponse extends PaymentAuthorize
 {

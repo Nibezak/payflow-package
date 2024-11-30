@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
-use Lunar\Models\Order;
-use Lunar\Models\Transaction;
+use Payflow\Models\Order;
+use Payflow\Models\Transaction;
 
 class TransactionFactory extends BaseFactory
 {
@@ -15,7 +15,7 @@ class TransactionFactory extends BaseFactory
             'order_id' => Order::factory(),
             'success' => true,
             'type' => $this->faker->boolean(85) ? 'capture' : 'refund',
-            'driver' => 'lunar',
+            'driver' => 'payflow',
             'amount' => 100,
             'reference' => $this->faker->unique()->regexify('[A-Z]{8}'),
             'status' => 'settled',

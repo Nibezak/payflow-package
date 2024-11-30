@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -12,20 +12,20 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Casts\AsAttributeData;
-use Lunar\Base\Traits\HasChannels;
-use Lunar\Base\Traits\HasCustomerGroups;
-use Lunar\Base\Traits\HasMacros;
-use Lunar\Base\Traits\HasMedia;
-use Lunar\Base\Traits\HasTags;
-use Lunar\Base\Traits\HasTranslations;
-use Lunar\Base\Traits\HasUrls;
-use Lunar\Base\Traits\LogsActivity;
-use Lunar\Base\Traits\Searchable;
-use Lunar\Database\Factories\ProductFactory;
-use Lunar\Jobs\Products\Associations\Associate;
-use Lunar\Jobs\Products\Associations\Dissociate;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Casts\AsAttributeData;
+use Payflow\Base\Traits\HasChannels;
+use Payflow\Base\Traits\HasCustomerGroups;
+use Payflow\Base\Traits\HasMacros;
+use Payflow\Base\Traits\HasMedia;
+use Payflow\Base\Traits\HasTags;
+use Payflow\Base\Traits\HasTranslations;
+use Payflow\Base\Traits\HasUrls;
+use Payflow\Base\Traits\LogsActivity;
+use Payflow\Base\Traits\Searchable;
+use Payflow\Database\Factories\ProductFactory;
+use Payflow\Jobs\Products\Associations\Associate;
+use Payflow\Jobs\Products\Associations\Dissociate;
 use Spatie\MediaLibrary\HasMedia as SpatieHasMedia;
 
 /**
@@ -104,7 +104,7 @@ class Product extends BaseModel implements Contracts\Product, SpatieHasMedia
 
     public function images(): MorphMany
     {
-        return $this->media()->where('collection_name', config('lunar.media.collection'));
+        return $this->media()->where('collection_name', config('payflow.media.collection'));
     }
 
     public function variants(): HasMany
@@ -115,8 +115,8 @@ class Product extends BaseModel implements Contracts\Product, SpatieHasMedia
     public function collections(): BelongsToMany
     {
         return $this->belongsToMany(
-            \Lunar\Models\Collection::modelClass(),
-            config('lunar.database.table_prefix').'collection_product'
+            \Payflow\Models\Collection::modelClass(),
+            config('payflow.database.table_prefix').'collection_product'
         )->withPivot(['position'])->withTimestamps();
     }
 
@@ -145,7 +145,7 @@ class Product extends BaseModel implements Contracts\Product, SpatieHasMedia
 
     public function customerGroups(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(
             CustomerGroup::modelClass(),
@@ -191,7 +191,7 @@ class Product extends BaseModel implements Contracts\Product, SpatieHasMedia
 
     public function productOptions(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(
             ProductOption::modelClass(),

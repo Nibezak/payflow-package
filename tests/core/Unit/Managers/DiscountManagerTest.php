@@ -1,23 +1,23 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
 use Illuminate\Support\Collection;
-use Lunar\Base\DataTransferObjects\CartDiscount;
-use Lunar\Base\DiscountManagerInterface;
-use Lunar\DiscountTypes\AmountOff;
-use Lunar\Facades\Discounts;
-use Lunar\Managers\DiscountManager;
-use Lunar\Models\Cart;
-use Lunar\Models\CartLine;
-use Lunar\Models\Channel;
-use Lunar\Models\Currency;
-use Lunar\Models\CustomerGroup;
-use Lunar\Models\Discount;
-use Lunar\Models\Price;
-use Lunar\Models\Product;
-use Lunar\Models\ProductVariant;
-use Lunar\Tests\Core\Stubs\TestDiscountType;
+use Payflow\Base\DataTransferObjects\CartDiscount;
+use Payflow\Base\DiscountManagerInterface;
+use Payflow\DiscountTypes\AmountOff;
+use Payflow\Facades\Discounts;
+use Payflow\Managers\DiscountManager;
+use Payflow\Models\Cart;
+use Payflow\Models\CartLine;
+use Payflow\Models\Channel;
+use Payflow\Models\Currency;
+use Payflow\Models\CustomerGroup;
+use Payflow\Models\Discount;
+use Payflow\Models\Price;
+use Payflow\Models\Product;
+use Payflow\Models\ProductVariant;
+use Payflow\Tests\Core\Stubs\TestDiscountType;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

@@ -1,14 +1,14 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\Actions\Carts\AddOrUpdatePurchasable;
-use Lunar\Exceptions\InvalidCartLineQuantityException;
-use Lunar\Models\Cart;
-use Lunar\Models\CartLine;
-use Lunar\Models\Currency;
-use Lunar\Models\Price;
-use Lunar\Models\ProductVariant;
+use Payflow\Actions\Carts\AddOrUpdatePurchasable;
+use Payflow\Exceptions\InvalidCartLineQuantityException;
+use Payflow\Models\Cart;
+use Payflow\Models\CartLine;
+use Payflow\Models\Currency;
+use Payflow\Models\Price;
+use Payflow\Models\ProductVariant;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Stripe\Concerns;
+namespace Payflow\Stripe\Concerns;
 
 interface ConstructsWebhookEvent
 {

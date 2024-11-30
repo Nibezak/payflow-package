@@ -1,17 +1,17 @@
 <?php
 
-namespace Lunar\Admin\Support\ActivityLog;
+namespace Payflow\Admin\Support\ActivityLog;
 
 use Illuminate\Support\Collection;
-use Lunar\Admin\Support\ActivityLog\Orders\Address;
-use Lunar\Admin\Support\ActivityLog\Orders\Capture;
-use Lunar\Admin\Support\ActivityLog\Orders\EmailNotification;
-use Lunar\Admin\Support\ActivityLog\Orders\Intent;
-use Lunar\Admin\Support\ActivityLog\Orders\Refund;
-use Lunar\Admin\Support\ActivityLog\Orders\StatusUpdate;
-use Lunar\Models\Order;
-use Lunar\Models\Product;
-use Lunar\Models\ProductVariant;
+use Payflow\Admin\Support\ActivityLog\Orders\Address;
+use Payflow\Admin\Support\ActivityLog\Orders\Capture;
+use Payflow\Admin\Support\ActivityLog\Orders\EmailNotification;
+use Payflow\Admin\Support\ActivityLog\Orders\Intent;
+use Payflow\Admin\Support\ActivityLog\Orders\Refund;
+use Payflow\Admin\Support\ActivityLog\Orders\StatusUpdate;
+use Payflow\Models\Order;
+use Payflow\Models\Product;
+use Payflow\Models\ProductVariant;
 
 class Manifest
 {

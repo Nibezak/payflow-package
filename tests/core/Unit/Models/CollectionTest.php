@@ -1,8 +1,8 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
-use Lunar\FieldTypes\Text;
-use Lunar\Models\Collection;
+uses(\Payflow\Tests\Core\TestCase::class);
+use Payflow\FieldTypes\Text;
+use Payflow\Models\Collection;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

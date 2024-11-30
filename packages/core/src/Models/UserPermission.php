@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Traits\HasMacros;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Traits\HasMacros;
 
 class UserPermission extends BaseModel implements Contracts\UserPermission
 {

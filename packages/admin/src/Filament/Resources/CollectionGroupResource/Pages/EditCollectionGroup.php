@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\CollectionGroupResource\Pages;
+namespace Payflow\Admin\Filament\Resources\CollectionGroupResource\Pages;
 
 use Filament\Actions;
 use Filament\Notifications\Notification;
-use Lunar\Admin\Filament\Resources\CollectionGroupResource;
-use Lunar\Admin\Filament\Resources\CollectionGroupResource\Widgets;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Admin\Filament\Resources\CollectionGroupResource;
+use Payflow\Admin\Filament\Resources\CollectionGroupResource\Widgets;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
 
 class EditCollectionGroup extends BaseEditRecord
 {
@@ -20,7 +20,7 @@ class EditCollectionGroup extends BaseEditRecord
                     if ($record->collections->count() > 0) {
                         Notification::make()
                             ->warning()
-                            ->body(__('lunarpanel::collectiongroup.action.delete.notification.error_protected'))
+                            ->body(__('payflowpanel::collectiongroup.action.delete.notification.error_protected'))
                             ->send();
                         $action->cancel();
                     }

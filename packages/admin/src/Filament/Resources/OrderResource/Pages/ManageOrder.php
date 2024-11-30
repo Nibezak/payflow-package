@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\OrderResource\Pages;
+namespace Payflow\Admin\Filament\Resources\OrderResource\Pages;
 
 use Awcodes\Shout\Components\Shout;
 use Awcodes\Shout\Components\ShoutEntry;
@@ -17,21 +17,21 @@ use Filament\Support\Enums\FontWeight;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Contracts\Support\Htmlable;
 use Livewire\Attributes\Computed;
-use Lunar\Admin\Filament\Resources\CustomerResource;
-use Lunar\Admin\Filament\Resources\OrderResource;
-use Lunar\Admin\Support\Actions\Orders\UpdateStatusAction;
-use Lunar\Admin\Support\Actions\PdfDownload;
-use Lunar\Admin\Support\ActivityLog\Concerns\CanDispatchActivityUpdated;
-use Lunar\Admin\Support\Concerns\CallsHooks;
-use Lunar\Admin\Support\Forms\Components\Tags as TagsComponent;
-use Lunar\Admin\Support\Infolists\Components\Livewire;
-use Lunar\Admin\Support\Infolists\Components\Tags;
-use Lunar\Admin\Support\Pages\BaseViewRecord;
-use Lunar\Models\Tag;
-use Lunar\Models\Transaction;
+use Payflow\Admin\Filament\Resources\CustomerResource;
+use Payflow\Admin\Filament\Resources\OrderResource;
+use Payflow\Admin\Support\Actions\Orders\UpdateStatusAction;
+use Payflow\Admin\Support\Actions\PdfDownload;
+use Payflow\Admin\Support\ActivityLog\Concerns\CanDispatchActivityUpdated;
+use Payflow\Admin\Support\Concerns\CallsHooks;
+use Payflow\Admin\Support\Forms\Components\Tags as TagsComponent;
+use Payflow\Admin\Support\Infolists\Components\Livewire;
+use Payflow\Admin\Support\Infolists\Components\Tags;
+use Payflow\Admin\Support\Pages\BaseViewRecord;
+use Payflow\Models\Tag;
+use Payflow\Models\Transaction;
 
 /**
- * @property \Lunar\Models\Order $record
+ * @property \Payflow\Models\Order $record
  * @property \Illuminate\Support\Collection $transactions
  * @property string $paymentStatus
  * @property bool $requiresCapture
@@ -57,13 +57,13 @@ class ManageOrder extends BaseViewRecord
 
     protected static string $resource = OrderResource::class;
 
-    protected static string $view = 'lunarpanel::resources.order-resource.pages.manage-order';
+    protected static string $view = 'payflowpanel::resources.order-resource.pages.manage-order';
 
     protected ?string $maxContentWidth = 'screen-2xl';
 
     public function getBreadcrumb(): string
     {
-        return __('lunarpanel::order.breadcrumb.manage');
+        return __('payflowpanel::order.breadcrumb.manage');
     }
 
     public function getTitle(): string|Htmlable
@@ -81,7 +81,7 @@ class ManageOrder extends BaseViewRecord
 
     public static function getInfolistSchema(): array
     {
-        return self::callStaticLunarHook('extendInfolistSchema', [
+        return self::callStaticPayflowHook('extendInfolistSchema', [
             static::getShippingInfolist(),
             static::getOrderLinesTable(),
             static::getOrderTotalsInfolist(),
@@ -92,7 +92,7 @@ class ManageOrder extends BaseViewRecord
 
     public static function getInfolistAsideSchema(): array
     {
-        return self::callStaticLunarHook('extendInfolistAsideSchema', [
+        return self::callStaticPayflowHook('extendInfolistAsideSchema', [
             static::getCustomerEntry(),
             static::getOrderSummaryInfolist(),
             static::getShippingAddressInfolist(),
@@ -119,13 +119,13 @@ class ManageOrder extends BaseViewRecord
 
     public static function getCustomerEntry(): Infolists\Components\Component
     {
-        return self::callStaticLunarHook('extendCustomerEntry', static::getDefaultCustomerEntry());
+        return self::callStaticPayflowHook('extendCustomerEntry', static::getDefaultCustomerEntry());
     }
 
     public static function getDefaultTagsSection(): Infolists\Components\Section
     {
         return Infolists\Components\Section::make('tags')
-            ->heading(__('lunarpanel::order.infolist.tags.label'))
+            ->heading(__('payflowpanel::order.infolist.tags.label'))
             ->headerActions([
                 fn ($record) => static::getEditTagsActions(),
             ])
@@ -137,19 +137,19 @@ class ManageOrder extends BaseViewRecord
 
     public static function getTagsSection(): Infolists\Components\Component
     {
-        return self::callStaticLunarHook('extendTagsSection', static::getDefaultTagsSection());
+        return self::callStaticPayflowHook('extendTagsSection', static::getDefaultTagsSection());
     }
 
     public static function getDefaultAdditionalInfoSection(): Infolists\Components\Section
     {
         return Infolists\Components\Section::make('additional_info')
-            ->heading(__('lunarpanel::order.infolist.additional_info.label'))
+            ->heading(__('payflowpanel::order.infolist.additional_info.label'))
             ->compact()
             ->statePath('meta')
             ->schema(fn ($state) => blank($state) ? [
                 Infolists\Components\TextEntry::make('no_additional_info')
                     ->hiddenLabel()
-                    ->getStateUsing(fn () => __('lunarpanel::order.infolist.no_additional_info.label')),
+                    ->getStateUsing(fn () => __('payflowpanel::order.infolist.no_additional_info.label')),
             ] : collect($state)
                 ->map(function ($value, $key) {
                     if (is_array($value)) {
@@ -174,7 +174,7 @@ class ManageOrder extends BaseViewRecord
 
     public static function getAdditionalInfoSection(): Infolists\Components\Component
     {
-        return self::callStaticLunarHook('extendAdditionalInfoSection', static::getDefaultAdditionalInfoSection());
+        return self::callStaticPayflowHook('extendAdditionalInfoSection', static::getDefaultAdditionalInfoSection());
     }
 
     public function getDefaultInfolist(Infolist $infolist): Infolist
@@ -185,12 +185,12 @@ class ManageOrder extends BaseViewRecord
                     ->schema([
                         ShoutEntry::make('requires_capture')
                             ->type('danger')
-                            ->content(__('lunarpanel::order.infolist.alert.requires_capture'))
+                            ->content(__('payflowpanel::order.infolist.alert.requires_capture'))
                             ->visible(fn () => $this->requiresCapture),
                         ShoutEntry::make('requires_capture')
                             ->state(fn () => $this->paymentStatus)
                             ->icon(fn ($state) => match ($state) {
-                                'refunded' => FilamentIcon::resolve('lunar::exclamation-circle'),
+                                'refunded' => FilamentIcon::resolve('payflow::exclamation-circle'),
                                 default => null
                             })
                             ->color(fn (ShoutEntry $component, $state) => match ($state) {
@@ -198,8 +198,8 @@ class ManageOrder extends BaseViewRecord
                                 'refunded' => 'danger',
                                 default => null
                             })->content(fn ($state) => match ($state) {
-                                'partial-refund' => __('lunarpanel::order.infolist.alert.partially_refunded'),
-                                'refunded' => __('lunarpanel::order.infolist.alert.refunded') ,
+                                'partial-refund' => __('payflowpanel::order.infolist.alert.partially_refunded'),
+                                'refunded' => __('payflowpanel::order.infolist.alert.refunded') ,
                                 default => null
                             })
                             ->visible(fn ($state) => in_array($state, ['partial-refund', 'refunded'])),
@@ -309,9 +309,9 @@ class ManageOrder extends BaseViewRecord
     public static function getEditTagsActions(): Action
     {
         return Action::make('edit_tags')
-            ->modalHeading(__('lunarpanel::order.infolist.tags.label'))
+            ->modalHeading(__('payflowpanel::order.infolist.tags.label'))
             ->modalWidth('2xl')
-            ->label(__('lunarpanel::order.action.edit_tags.label'))
+            ->label(__('payflowpanel::order.action.edit_tags.label'))
             ->button()
             ->fillForm(fn ($record): array => [
                 'tags' => $record->tags,
@@ -338,8 +338,8 @@ class ManageOrder extends BaseViewRecord
                     }
                 ),
             PdfDownload::make('download_pdf')
-                ->pdfView('lunarpanel::pdf.order')
-                ->label(__('lunarpanel::order.action.download_order_pdf.label'))
+                ->pdfView('payflowpanel::pdf.order')
+                ->label(__('payflowpanel::order.action.download_order_pdf.label'))
                 ->filename(function ($record) {
                     return "Order-{$record->reference}.pdf";
                 }),
@@ -349,13 +349,13 @@ class ManageOrder extends BaseViewRecord
     protected function getRefundAction(): Actions\Action
     {
         return Actions\Action::make('refund')
-            ->label(__('lunarpanel::order.action.refund_payment.label'))
-            ->modalSubmitActionLabel(__('lunarpanel::order.action.refund_payment.label'))
+            ->label(__('payflowpanel::order.action.refund_payment.label'))
+            ->modalSubmitActionLabel(__('payflowpanel::order.action.refund_payment.label'))
             ->icon('heroicon-o-backward')
             ->form(fn () => [
 
                 Forms\Components\Select::make('transaction')
-                    ->label(__('lunarpanel::order.form.transaction.label'))
+                    ->label(__('payflowpanel::order.form.transaction.label'))
                     ->required()
                     ->default(fn () => $this->charges->first()->id)
                     ->options(fn () => $this->charges
@@ -366,7 +366,7 @@ class ManageOrder extends BaseViewRecord
 
                 Forms\Components\TextInput::make('amount')
                     ->required()
-                    ->label(__('lunarpanel::order.form.amount.label'))
+                    ->label(__('payflowpanel::order.form.amount.label'))
                     ->suffix(fn ($record) => $record->currency->code)
                     ->default(fn ($record) => number_format($this->availableToRefund / $record->currency->factor, $record->currency->decimal_places, '.', ''))
                     ->live()
@@ -377,18 +377,18 @@ class ManageOrder extends BaseViewRecord
                     ->numeric(),
 
                 Forms\Components\Textarea::make('notes')
-                    ->label(__('lunarpanel::order.form.notes.label'))
+                    ->label(__('payflowpanel::order.form.notes.label'))
                     ->autocomplete(false)
                     ->maxLength(255),
 
                 Forms\Components\Toggle::make('confirm')
-                    ->label(__('lunarpanel::order.form.confirm.label'))
-                    ->helperText(__('lunarpanel::order.form.confirm.hint.refund'))
+                    ->label(__('payflowpanel::order.form.confirm.label'))
+                    ->helperText(__('payflowpanel::order.form.confirm.hint.refund'))
                     ->rules([
                         function () {
                             return function (string $attribute, $value, Closure $fail) {
                                 if ($value !== true) {
-                                    $fail(__('lunarpanel::order.form.confirm.alert'));
+                                    $fail(__('payflowpanel::order.form.confirm.alert'));
                                 }
                             };
                         },
@@ -413,8 +413,8 @@ class ManageOrder extends BaseViewRecord
 
                 $action->success();
             })
-            ->successNotificationTitle(__('lunarpanel::order.action.refund_payment.notification.success'))
-            ->failureNotificationTitle(__('lunarpanel::order.action.refund_payment.notification.error'))
+            ->successNotificationTitle(__('payflowpanel::order.action.refund_payment.notification.success'))
+            ->failureNotificationTitle(__('payflowpanel::order.action.refund_payment.notification.error'))
             ->color('warning')
             ->visible($this->charges->count() && $this->canBeRefunded);
     }
@@ -446,13 +446,13 @@ class ManageOrder extends BaseViewRecord
     protected function getCaptureAction(): Actions\Action
     {
         return Actions\Action::make('capture')
-            ->label(__('lunarpanel::order.action.capture_payment.label'))
-            ->modalSubmitActionLabel(__('lunarpanel::order.action.capture_payment.label'))
+            ->label(__('payflowpanel::order.action.capture_payment.label'))
+            ->modalSubmitActionLabel(__('payflowpanel::order.action.capture_payment.label'))
             ->icon('heroicon-o-credit-card')
             ->modalWidth('lg')
             ->form(fn () => [
                 Forms\Components\Select::make('transaction')
-                    ->label(__('lunarpanel::order.form.transaction.label'))
+                    ->label(__('payflowpanel::order.form.transaction.label'))
                     ->required()
                     ->default(fn () => $this->intents->first()->id)
                     ->options(fn () => $this->intents
@@ -462,7 +462,7 @@ class ManageOrder extends BaseViewRecord
                     ->live(),
                 Forms\Components\TextInput::make('amount')
                     ->required()
-                    ->label(__('lunarpanel::order.form.amount.label'))
+                    ->label(__('payflowpanel::order.form.amount.label'))
                     ->suffix(fn ($record) => $record->currency->code)
                     ->default(fn ($record) => number_format($record->total->decimal, $record->currency->decimal_places, '.', ''))
                     ->live()
@@ -473,7 +473,7 @@ class ManageOrder extends BaseViewRecord
                     ->helperText(function (Forms\Components\TextInput $component, $get, $state) {
                         $transaction = Transaction::findOrFail($get('transaction'));
 
-                        $message = $transaction->amount->decimal > $state ? __('lunarpanel::order.form.amount.hint.less_than_total') : null;
+                        $message = $transaction->amount->decimal > $state ? __('payflowpanel::order.form.amount.hint.less_than_total') : null;
 
                         if (blank($message)) {
                             return null;
@@ -482,18 +482,18 @@ class ManageOrder extends BaseViewRecord
                         return Shout::make('alert')
                             ->container($component->getContainer())
                             ->type('danger')
-                            ->icon(FilamentIcon::resolve('lunar::exclamation-circle'))
+                            ->icon(FilamentIcon::resolve('payflow::exclamation-circle'))
                             ->content($message);
                     })
                     ->numeric(),
                 Forms\Components\Toggle::make('confirm')
-                    ->label(__('lunarpanel::order.form.confirm.label'))
-                    ->helperText(__('lunarpanel::order.form.confirm.hint.capture'))
+                    ->label(__('payflowpanel::order.form.confirm.label'))
+                    ->helperText(__('payflowpanel::order.form.confirm.hint.capture'))
                     ->rules([
                         function () {
                             return function (string $attribute, $value, Closure $fail) {
                                 if ($value !== true) {
-                                    $fail(__('lunarpanel::order.form.confirm.alert'));
+                                    $fail(__('payflowpanel::order.form.confirm.alert'));
                                 }
                             };
                         },
@@ -516,8 +516,8 @@ class ManageOrder extends BaseViewRecord
 
                 $action->success();
             })
-            ->successNotificationTitle(__('lunarpanel::order.action.capture_payment.notification.success'))
-            ->failureNotificationTitle(__('lunarpanel::order.action.capture_payment.notification.error'))
+            ->successNotificationTitle(__('payflowpanel::order.action.capture_payment.notification.success'))
+            ->failureNotificationTitle(__('payflowpanel::order.action.capture_payment.notification.error'))
             ->visible($this->requiresCapture && $this->intents->count());
     }
 

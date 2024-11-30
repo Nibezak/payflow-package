@@ -1,15 +1,15 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\Actions\Carts\MergeCart;
-use Lunar\Models\Cart;
-use Lunar\Models\Currency;
-use Lunar\Models\CustomerGroup;
-use Lunar\Models\Price;
-use Lunar\Models\ProductVariant;
-use Lunar\Models\TaxClass;
-use Lunar\Models\TaxRateAmount;
+use Payflow\Actions\Carts\MergeCart;
+use Payflow\Models\Cart;
+use Payflow\Models\Currency;
+use Payflow\Models\CustomerGroup;
+use Payflow\Models\Price;
+use Payflow\Models\ProductVariant;
+use Payflow\Models\TaxClass;
+use Payflow\Models\TaxRateAmount;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

@@ -1,16 +1,16 @@
 <?php
 
 use Livewire\Livewire;
-use Lunar\Admin\Filament\Resources\AttributeGroupResource;
-use Lunar\Admin\Filament\Resources\AttributeGroupResource\Pages\EditAttributeGroup;
-use Lunar\Models\AttributeGroup;
+use Payflow\Admin\Filament\Resources\AttributeGroupResource;
+use Payflow\Admin\Filament\Resources\AttributeGroupResource\Pages\EditAttributeGroup;
+use Payflow\Models\AttributeGroup;
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('resource.attribute-group');
 
 it('can render attribute group edit page', function () {
 
-    \Lunar\Models\Language::factory()->create([
+    \Payflow\Models\Language::factory()->create([
         'default' => true,
     ]);
 
@@ -21,7 +21,7 @@ it('can render attribute group edit page', function () {
 
 it('can retrieve attribute group data', function () {
 
-    $lang = \Lunar\Models\Language::factory()->create([
+    $lang = \Payflow\Models\Language::factory()->create([
         'default' => true,
         'code' => 'en',
     ]);

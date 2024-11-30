@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\DataTypes;
+namespace Payflow\DataTypes;
 
 use Illuminate\Support\Collection;
-use Lunar\Base\Purchasable;
-use Lunar\Models\TaxClass;
+use Payflow\Base\Purchasable;
+use Payflow\Models\TaxClass;
 
 class ShippingOption implements Purchasable
 {
@@ -25,7 +25,7 @@ class ShippingOption implements Purchasable
     /**
      * Get the price for the purchasable item.
      *
-     * @return \Lunar\DataTypes\Price
+     * @return \Payflow\DataTypes\Price
      */
     public function getPrice()
     {

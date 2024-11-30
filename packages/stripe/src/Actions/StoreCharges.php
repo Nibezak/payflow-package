@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Stripe\Actions;
+namespace Payflow\Stripe\Actions;
 
 use Illuminate\Support\Collection;
-use Lunar\Models\Order;
-use Lunar\Models\Transaction;
+use Payflow\Models\Order;
+use Payflow\Models\Transaction;
 
 class StoreCharges
 {

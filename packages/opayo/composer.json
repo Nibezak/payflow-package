@@ -1,32 +1,42 @@
 {
-  "name": "lunarphp/opayo",
+  "name": "payflowphp/opayo",
   "type": "project",
-  "description": "Opayo payment driver for Lunar.",
-  "keywords": ["lunarphp", "laravel", "ecommerce", "e-commerce", "headless", "store", "shop", "cart", "opayo"],
+  "description": "Opayo payment driver for Payflow.",
+  "keywords": [
+    "payflowphp",
+    "laravel",
+    "ecommerce",
+    "e-commerce",
+    "headless",
+    "store",
+    "shop",
+    "cart",
+    "opayo"
+  ],
   "license": "MIT",
   "authors": [
     {
-      "name": "Lunar",
-      "homepage": "https://lunarphp.io/"
+      "name": "Payflow",
+      "homepage": "https://payflowphp.io/"
     }
   ],
   "require": {
-      "php": "^8.2",
-      "lunarphp/core": "self.version"
+    "php": "^8.2",
+    "payflowphp/core": "self.version"
   },
   "autoload": {
-      "psr-4": {
-          "Lunar\\Opayo\\": "src/"
-      }
+    "psr-4": {
+      "Payflow\\Opayo\\": "src/"
+    }
   },
   "extra": {
-    "lunar": {
-        "name": "Opayo Payments"
+    "payflow": {
+      "name": "Opayo Payments"
     },
     "laravel": {
-        "providers": [
-            "Lunar\\Opayo\\OpayoServiceProvider"
-        ]
+      "providers": [
+        "Payflow\\Opayo\\OpayoServiceProvider"
+      ]
     }
   },
   "minimum-stability": "dev",

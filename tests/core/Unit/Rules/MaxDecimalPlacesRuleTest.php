@@ -1,8 +1,8 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 use Illuminate\Support\Facades\Validator;
-use Lunar\Rules\MaxDecimalPlaces;
+use Payflow\Rules\MaxDecimalPlaces;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

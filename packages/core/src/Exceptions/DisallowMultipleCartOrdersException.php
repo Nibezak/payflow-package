@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Exceptions;
+namespace Payflow\Exceptions;
 
-class DisallowMultipleCartOrdersException extends LunarException
+class DisallowMultipleCartOrdersException extends PayflowException
 {
     public function __construct()
     {
-        $this->message = __('lunar::exceptions.disallow_multiple_cart_orders');
+        $this->message = __('payflow::exceptions.disallow_multiple_cart_orders');
     }
 }

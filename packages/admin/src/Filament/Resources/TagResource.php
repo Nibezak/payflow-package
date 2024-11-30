@@ -1,15 +1,15 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources;
+namespace Payflow\Admin\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Forms\Components\Component;
 use Filament\Support\Facades\FilamentIcon;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Lunar\Admin\Filament\Resources\TagResource\Pages;
-use Lunar\Admin\Support\Resources\BaseResource;
-use Lunar\Models\Contracts\Tag;
+use Payflow\Admin\Filament\Resources\TagResource\Pages;
+use Payflow\Admin\Support\Resources\BaseResource;
+use Payflow\Models\Contracts\Tag;
 
 class TagResource extends BaseResource
 {
@@ -21,22 +21,22 @@ class TagResource extends BaseResource
 
     public static function getLabel(): string
     {
-        return __('lunarpanel::tag.label');
+        return __('payflowpanel::tag.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('lunarpanel::tag.plural_label');
+        return __('payflowpanel::tag.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::tags');
+        return FilamentIcon::resolve('payflow::tags');
     }
 
     public static function getNavigationGroup(): ?string
     {
-        return __('lunarpanel::global.sections.settings');
+        return __('payflowpanel::global.sections.settings');
     }
 
     protected static function getMainFormComponents(): array
@@ -49,7 +49,7 @@ class TagResource extends BaseResource
     protected static function getValueFormComponent(): Component
     {
         return Forms\Components\TextInput::make('value')
-            ->label(__('lunarpanel::tag.form.value.label'))
+            ->label(__('payflowpanel::tag.form.value.label'))
             ->required()
             ->maxLength(255)
             ->autofocus();
@@ -76,7 +76,7 @@ class TagResource extends BaseResource
     {
         return [
             Tables\Columns\TextColumn::make('value')
-                ->label(__('lunarpanel::tag.table.value.label')),
+                ->label(__('payflowpanel::tag.table.value.label')),
         ];
     }
 

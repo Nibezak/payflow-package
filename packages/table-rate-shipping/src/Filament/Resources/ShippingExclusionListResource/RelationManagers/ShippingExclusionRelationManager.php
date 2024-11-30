@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Shipping\Filament\Resources\ShippingExclusionListResource\RelationManagers;
+namespace Payflow\Shipping\Filament\Resources\ShippingExclusionListResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -8,7 +8,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Models\Product;
+use Payflow\Models\Product;
 
 class ShippingExclusionRelationManager extends RelationManager
 {
@@ -16,7 +16,7 @@ class ShippingExclusionRelationManager extends RelationManager
 
     public static function getTitle(Model $ownerRecord, string $pageClass): string
     {
-        return __('lunarpanel.shipping::relationmanagers.exclusions.title_plural');
+        return __('payflowpanel.shipping::relationmanagers.exclusions.title_plural');
     }
 
     protected static ?string $recordTitleAttribute = 'name';
@@ -40,7 +40,7 @@ class ShippingExclusionRelationManager extends RelationManager
                             }),
                     ])
                     ->label(
-                        __('lunarpanel.shipping::relationmanagers.exclusions.form.purchasable.label')
+                        __('payflowpanel.shipping::relationmanagers.exclusions.form.purchasable.label')
                     )
                     ->required()
                     ->searchable(true),
@@ -52,7 +52,7 @@ class ShippingExclusionRelationManager extends RelationManager
         return $table
             ->columns([
                 Tables\Columns\SpatieMediaLibraryImageColumn::make('purchasable.thumbnail')
-                    ->collection(config('lunar.media.collection'))
+                    ->collection(config('payflow.media.collection'))
                     ->conversion('small')
                     ->limit(1)
                     ->square()
@@ -62,9 +62,9 @@ class ShippingExclusionRelationManager extends RelationManager
                         fn ($state) => $state->attr('name')
                     )
                     ->limit(50)
-                    ->label(__('lunarpanel::product.table.name.label')),
+                    ->label(__('payflowpanel::product.table.name.label')),
                 Tables\Columns\TextColumn::make('purchasable.variants.sku')
-                    ->label(__('lunarpanel::product.table.sku.label'))
+                    ->label(__('payflowpanel::product.table.sku.label'))
                     ->tooltip(function (Tables\Columns\TextColumn $column, $state): ?string {
 
                         $skus = collect($state);

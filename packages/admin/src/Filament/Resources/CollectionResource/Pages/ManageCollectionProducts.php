@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\CollectionResource\Pages;
+namespace Payflow\Admin\Filament\Resources\CollectionResource\Pages;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -9,12 +9,12 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Lunar\Admin\Events\CollectionProductAttached;
-use Lunar\Admin\Events\CollectionProductDetached;
-use Lunar\Admin\Filament\Resources\CollectionResource;
-use Lunar\Admin\Filament\Resources\ProductResource;
-use Lunar\Admin\Support\Pages\BaseManageRelatedRecords;
-use Lunar\Models\Product;
+use Payflow\Admin\Events\CollectionProductAttached;
+use Payflow\Admin\Events\CollectionProductDetached;
+use Payflow\Admin\Filament\Resources\CollectionResource;
+use Payflow\Admin\Filament\Resources\ProductResource;
+use Payflow\Admin\Support\Pages\BaseManageRelatedRecords;
+use Payflow\Models\Product;
 
 class ManageCollectionProducts extends BaseManageRelatedRecords
 {
@@ -26,7 +26,7 @@ class ManageCollectionProducts extends BaseManageRelatedRecords
 
     public function getTitle(): string
     {
-        return __('lunarpanel::collection.pages.products.label');
+        return __('payflowpanel::collection.pages.products.label');
     }
 
     public function getBreadcrumbs(): array
@@ -40,12 +40,12 @@ class ManageCollectionProducts extends BaseManageRelatedRecords
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::products');
+        return FilamentIcon::resolve('payflow::products');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::collection.pages.products.label');
+        return __('payflowpanel::collection.pages.products.label');
     }
 
     public function form(Form $form): Form
@@ -60,14 +60,14 @@ class ManageCollectionProducts extends BaseManageRelatedRecords
         return $table->columns([
 
             Tables\Columns\SpatieMediaLibraryImageColumn::make('thumbnail')
-                ->collection(config('lunar.media.collection'))
+                ->collection(config('payflow.media.collection'))
                 ->conversion('small')
                 ->limit(1)
                 ->square()
                 ->label(''),
             Tables\Columns\TextColumn::make('attribute_data.name')
                 ->formatStateUsing(fn (Model $record): string => $record->translateAttribute('name'))
-                ->label(__('lunarpanel::product.table.name.label')),
+                ->label(__('payflowpanel::product.table.name.label')),
         ])->actions([
             Tables\Actions\DetachAction::make()->after(
                 fn () => CollectionProductDetached::dispatch($this->getOwnerRecord())
@@ -80,7 +80,7 @@ class ManageCollectionProducts extends BaseManageRelatedRecords
         ])->headerActions([
             Tables\Actions\AttachAction::make()
                 ->label(
-                    __('lunarpanel::collection.pages.products.actions.attach.label')
+                    __('payflowpanel::collection.pages.products.actions.attach.label')
                 )->form([
                     Forms\Components\Select::make('recordId')
                         ->label('Product')

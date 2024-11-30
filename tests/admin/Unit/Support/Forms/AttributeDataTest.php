@@ -1,6 +1,6 @@
 <?php
 
-uses(\Lunar\Tests\Admin\Unit\Livewire\TestCase::class)
+uses(\Payflow\Tests\Admin\Unit\Livewire\TestCase::class)
     ->group('livewire.support');
 
 describe('attribute data test', function () {
@@ -9,41 +9,41 @@ describe('attribute data test', function () {
     });
 
     test('correct form components are returned', function ($fieldType, $expectedComponent, $configuration = []) {
-        $attribute = \Lunar\Models\Attribute::factory()->create([
+        $attribute = \Payflow\Models\Attribute::factory()->create([
             'type' => $fieldType,
             'configuration' => $configuration,
         ]);
 
-        $inputComponent = \Lunar\Admin\Support\Facades\AttributeData::getFilamentComponent($attribute);
+        $inputComponent = \Payflow\Admin\Support\Facades\AttributeData::getFilamentComponent($attribute);
 
         expect($inputComponent)->toBeInstanceOf($expectedComponent);
 
     })->with([
-        [\Lunar\FieldTypes\Text::class, \Filament\Forms\Components\TextInput::class],
-        [\Lunar\FieldTypes\Text::class, \Filament\Forms\Components\RichEditor::class, ['richtext' => true]],
-        [\Lunar\FieldTypes\Dropdown::class, \Filament\Forms\Components\Select::class],
-        [\Lunar\FieldTypes\ListField::class, \Filament\Forms\Components\KeyValue::class],
-        [\Lunar\FieldTypes\YouTube::class, \Lunar\Admin\Support\Forms\Components\YouTube::class],
-        [\Lunar\FieldTypes\Number::class, \Filament\Forms\Components\TextInput::class],
+        [\Payflow\FieldTypes\Text::class, \Filament\Forms\Components\TextInput::class],
+        [\Payflow\FieldTypes\Text::class, \Filament\Forms\Components\RichEditor::class, ['richtext' => true]],
+        [\Payflow\FieldTypes\Dropdown::class, \Filament\Forms\Components\Select::class],
+        [\Payflow\FieldTypes\ListField::class, \Filament\Forms\Components\KeyValue::class],
+        [\Payflow\FieldTypes\YouTube::class, \Payflow\Admin\Support\Forms\Components\YouTube::class],
+        [\Payflow\FieldTypes\Number::class, \Filament\Forms\Components\TextInput::class],
     ]);
 
     test('can extend converters', function () {
-        $attribute = \Lunar\Models\Attribute::factory()->create([
+        $attribute = \Payflow\Models\Attribute::factory()->create([
             'type' => TestFieldType::class,
         ]);
 
-        \Lunar\Admin\Support\Facades\AttributeData::registerFieldType(TestFieldType::class, TestFieldConverter::class);
+        \Payflow\Admin\Support\Facades\AttributeData::registerFieldType(TestFieldType::class, TestFieldConverter::class);
 
-        $inputComponent = \Lunar\Admin\Support\Facades\AttributeData::getFilamentComponent($attribute);
+        $inputComponent = \Payflow\Admin\Support\Facades\AttributeData::getFilamentComponent($attribute);
         expect($inputComponent)->toBeInstanceOf(\Filament\Forms\Components\RichEditor::class);
     });
 });
 
-class TestFieldType extends Lunar\FieldTypes\Text {}
+class TestFieldType extends Payflow\FieldTypes\Text {}
 
-class TestFieldConverter extends \Lunar\Admin\Support\FieldTypes\TextField
+class TestFieldConverter extends \Payflow\Admin\Support\FieldTypes\TextField
 {
-    public static function getFilamentComponent(Lunar\Models\Attribute $attribute): Filament\Forms\Components\Component
+    public static function getFilamentComponent(Payflow\Models\Attribute $attribute): Filament\Forms\Components\Component
     {
         return \Filament\Forms\Components\RichEditor::make($attribute->handle);
     }

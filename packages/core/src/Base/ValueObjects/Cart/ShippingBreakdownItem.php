@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Base\ValueObjects\Cart;
+namespace Payflow\Base\ValueObjects\Cart;
 
-use Lunar\DataTypes\Price;
+use Payflow\DataTypes\Price;
 
 class ShippingBreakdownItem
 {

@@ -25,7 +25,7 @@ A URL cannot share the same `slug` and `language_id` columns. You can also only 
 ## Creating a URL
 
 ```php
-\Lunar\Models\Url::create([
+\Payflow\Models\Url::create([
     'slug' => 'apple-iphone',
     'language_id' => $language->id,
     'default' => true,
@@ -37,7 +37,7 @@ If you add a new default URL for a language which already has one, the new URL w
 :::
 
 ```php
-$urlA = \Lunar\Models\Url::create([
+$urlA = \Payflow\Models\Url::create([
     'slug' => 'apple-iphone',
     'language_id' => 1,
     'default' => true,
@@ -45,7 +45,7 @@ $urlA = \Lunar\Models\Url::create([
 
 $urlA->default // true
 
-$urlB = \Lunar\Models\Url::create([
+$urlB = \Payflow\Models\Url::create([
     'slug' => 'apple-iphone-26',
     'language_id' => 1,
     'default' => true,
@@ -57,7 +57,7 @@ $urlB->default // true
 /**
  * Since this is a different language, no other URLs will be changed.
  **/
-$urlC = \Lunar\Models\Url::create([
+$urlC = \Payflow\Models\Url::create([
     'slug' => 'apple-iphone-french',
     'language_id' => 2,
     'default' => true,
@@ -71,17 +71,17 @@ $urlC->default // true
 
 ## Deleting a URL
 
-When you delete a URL, if it was the default then Lunar will look for a non default of the same language and assign that instead.
+When you delete a URL, if it was the default then Payflow will look for a non default of the same language and assign that instead.
 
 
 ```php
-$urlA = \Lunar\Models\Url::create([
+$urlA = \Payflow\Models\Url::create([
     'slug' => 'apple-iphone',
     'language_id' => 1,
     'default' => true,
 ]);
 
-$urlB = \Lunar\Models\Url::create([
+$urlB = \Payflow\Models\Url::create([
     'slug' => 'apple-iphone-26',
     'language_id' => 1,
     'default' => false,
@@ -97,7 +97,7 @@ $urlB->default // true
 
 ## Adding URL support to Models
 
-Out the box Lunar has a few pre-configured models which have URLs
+Out the box Payflow has a few pre-configured models which have URLs
 
 - Products
 - Collections
@@ -109,7 +109,7 @@ You are free to add URLs to your own models.
 
 namespace App\Models;
 
-use Lunar\Base\Traits\HasUrls;
+use Payflow\Base\Traits\HasUrls;
 
 // ...
 
@@ -128,9 +128,9 @@ $myModel->urls; // Collection
 
 ## Automatically generating URLs
 
-You can tell Lunar to generate URLs for models that use the `HasUrls` trait automatically by setting the `generator` config option in `config/lunar/urls.php`.
+You can tell Payflow to generate URLs for models that use the `HasUrls` trait automatically by setting the `generator` config option in `config/payflow/urls.php`.
 
-By default this is set to `Lunar\Generators\UrlGenerator::class` which means URLs will be generated. To disable this, set the config like below:
+By default this is set to `Payflow\Generators\UrlGenerator::class` which means URLs will be generated. To disable this, set the config like below:
 
 ```php
 return [

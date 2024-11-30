@@ -1,13 +1,13 @@
 <?php
 
-namespace Lunar\Admin\Support\Synthesizers;
+namespace Payflow\Admin\Support\Synthesizers;
 
 use Livewire\Mechanisms\HandleComponents\Synthesizers\Synth;
-use Lunar\Base\FieldType;
+use Payflow\Base\FieldType;
 
 abstract class AbstractFieldSynth extends Synth
 {
-    public static $key = 'lunar_field';
+    public static $key = 'payflow_field';
 
     protected static $targetClass = FieldType::class;
 

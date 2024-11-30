@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Pages;
+namespace Payflow\Admin\Support\Pages;
 
 use Filament\Facades\Filament;
 use Filament\Pages\Page;

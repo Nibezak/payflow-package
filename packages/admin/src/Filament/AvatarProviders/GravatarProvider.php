@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\AvatarProviders;
+namespace Payflow\Admin\Filament\AvatarProviders;
 
 use Filament\AvatarProviders\Contracts\AvatarProvider;
 use Illuminate\Contracts\Auth\Authenticatable;

@@ -1,10 +1,10 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
-use Lunar\Actions\Collections\SortProductsBySku;
-use Lunar\Models\Collection;
-use Lunar\Models\Product;
-use Lunar\Models\ProductVariant;
+uses(\Payflow\Tests\Core\TestCase::class);
+use Payflow\Actions\Collections\SortProductsBySku;
+use Payflow\Models\Collection;
+use Payflow\Models\Product;
+use Payflow\Models\ProductVariant;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

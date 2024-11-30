@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Observers;
+namespace Payflow\Observers;
 
-use Lunar\Jobs\Collections\UpdateProductPositions;
-use Lunar\Models\Collection;
+use Payflow\Jobs\Collections\UpdateProductPositions;
+use Payflow\Models\Collection;
 
 class CollectionObserver
 {

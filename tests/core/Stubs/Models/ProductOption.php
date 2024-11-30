@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Tests\Core\Stubs\Models;
+namespace Payflow\Tests\Core\Stubs\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 
-class ProductOption extends \Lunar\Models\ProductOption
+class ProductOption extends \Payflow\Models\ProductOption
 {
     use SizesTrait;
 

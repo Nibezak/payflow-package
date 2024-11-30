@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Opayo;
+namespace Payflow\Opayo;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
-use Lunar\Facades\Payments;
-use Lunar\Opayo\Components\PaymentForm;
+use Payflow\Facades\Payments;
+use Payflow\Opayo\Components\PaymentForm;
 
 class OpayoServiceProvider extends ServiceProvider
 {
@@ -26,7 +26,7 @@ class OpayoServiceProvider extends ServiceProvider
             return $app->make(Opayo::class);
         });
 
-        $this->mergeConfigFrom(__DIR__.'/../config/opayo.php', 'lunar.opayo');
+        $this->mergeConfigFrom(__DIR__.'/../config/opayo.php', 'payflow.opayo');
 
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
@@ -45,7 +45,7 @@ class OpayoServiceProvider extends ServiceProvider
 
             $manifest = json_decode(file_get_contents(__DIR__.'/../dist/mix-manifest.json'), true);
 
-            $jsUrl = asset('/vendor/lunar'.$manifest['/opayo.js']);
+            $jsUrl = asset('/vendor/payflow'.$manifest['/opayo.js']);
 
             if (! $incVendor) {
                 return <<<EOT
@@ -59,19 +59,19 @@ class OpayoServiceProvider extends ServiceProvider
             EOT;
         });
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'lunar');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'payflow');
 
         $this->publishes([
-            __DIR__.'/../config/opayo.php' => config_path('lunar/opayo.php'),
-        ], 'lunar.opayo.config');
+            __DIR__.'/../config/opayo.php' => config_path('payflow/opayo.php'),
+        ], 'payflow.opayo.config');
 
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/lunar'),
-        ], 'lunar.opayo.components');
+            __DIR__.'/../resources/views' => resource_path('views/vendor/payflow'),
+        ], 'payflow.opayo.components');
 
         $this->publishes([
-            __DIR__.'/../dist' => public_path('vendor/lunar'),
-        ], 'lunar.opayo.public');
+            __DIR__.'/../dist' => public_path('vendor/payflow'),
+        ], 'payflow.opayo.public');
 
         // Register the stripe payment component.
         Livewire::component('opayo.payment', PaymentForm::class);

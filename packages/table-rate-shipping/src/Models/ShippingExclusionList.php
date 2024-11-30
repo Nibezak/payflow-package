@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Shipping\Models;
+namespace Payflow\Shipping\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Lunar\Base\BaseModel;
-use Lunar\Shipping\Factories\ShippingExclusionListFactory;
+use Payflow\Base\BaseModel;
+use Payflow\Shipping\Factories\ShippingExclusionListFactory;
 
 class ShippingExclusionList extends BaseModel implements Contracts\ShippingExclusionList
 {
@@ -47,7 +47,7 @@ class ShippingExclusionList extends BaseModel implements Contracts\ShippingExclu
     {
         return $this->belongsToMany(
             ShippingZone::modelClass(),
-            config('lunar.database.table_prefix').'exclusion_list_shipping_zone',
+            config('payflow.database.table_prefix').'exclusion_list_shipping_zone',
             'exclusion_id',
             'shipping_zone_id',
         );

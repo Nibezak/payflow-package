@@ -16,7 +16,7 @@
                 'flex items-center text-gray-400 hover:text-gray-500',
                 'cursor-grab',
             ]) x-sortable-handle>
-                <x-filament::icon alias="lunar::reorder" class="w-5 h-5" />
+                <x-filament::icon alias="payflow::reorder" class="w-5 h-5" />
             </div>
 
             <div class="flex grow bg-white border-gray-600 dark:bg-gray-900 shadow-sm rounded">
@@ -28,7 +28,7 @@
                             @disabled(!$childrenCount)
                     >
                         <x-filament::icon
-                                alias="lunar::chevron-right"
+                                alias="payflow::chevron-right"
                                 @class([
                                     'w-3.5 h-3.5 transition ease-in-out duration-200 rtl:rotate-180',
                                     'ltr:rotate-90 rtl:!rotate-90' => !!count($children),
@@ -50,7 +50,7 @@
                             @if($thumbnail)
                                 <img src="{{ $thumbnail }}" class="w-10 border border-gray-100 dark:border-gray-600 rounded p-0.5">
                             @else
-                                <x-filament::icon alias="lunar::image-placeholder" class="p-1 text-gray-200 w-10 h-10" />
+                                <x-filament::icon alias="payflow::image-placeholder" class="p-1 text-gray-200 w-10 h-10" />
                             @endif
                         </div>
                         <x-filament::link :href="$editUrl" class="text-base pl-2">{{ $name }}</x-filament::link>
@@ -75,7 +75,7 @@
 
     @if (count($children))
         <div style="margin-left:40px;" class="my-2 space-y-2">
-            <x-lunarpanel::collections.nested-set-tree :nodes="$children" :group="'parent_id_'.$parent"/>
+            <x-payflowpanel::collections.nested-set-tree :nodes="$children" :group="'parent_id_'.$parent"/>
         </div>
     @endif
 </div>

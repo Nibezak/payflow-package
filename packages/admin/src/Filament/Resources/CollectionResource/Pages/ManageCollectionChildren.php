@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\CollectionResource\Pages;
+namespace Payflow\Admin\Filament\Resources\CollectionResource\Pages;
 
 use Filament\Forms\Form;
 use Filament\Support\Facades\FilamentIcon;
@@ -8,10 +8,10 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Events\ChildCollectionCreated;
-use Lunar\Admin\Filament\Resources\CollectionResource;
-use Lunar\Admin\Support\Pages\BaseManageRelatedRecords;
-use Lunar\Admin\Support\Tables\Actions\Collections\CreateChildCollection;
+use Payflow\Admin\Events\ChildCollectionCreated;
+use Payflow\Admin\Filament\Resources\CollectionResource;
+use Payflow\Admin\Support\Pages\BaseManageRelatedRecords;
+use Payflow\Admin\Support\Tables\Actions\Collections\CreateChildCollection;
 
 class ManageCollectionChildren extends BaseManageRelatedRecords
 {
@@ -21,17 +21,17 @@ class ManageCollectionChildren extends BaseManageRelatedRecords
 
     public function getTitle(): string|Htmlable
     {
-        return __('lunarpanel::collection.pages.children.label');
+        return __('payflowpanel::collection.pages.children.label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::collections');
+        return FilamentIcon::resolve('payflow::collections');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::collection.pages.children.label');
+        return __('payflowpanel::collection.pages.children.label');
     }
 
     public function getBreadcrumbs(): array
@@ -47,7 +47,7 @@ class ManageCollectionChildren extends BaseManageRelatedRecords
 
     public function getBreadcrumb(): string
     {
-        return __('lunarpanel::collection.pages.children.label');
+        return __('payflowpanel::collection.pages.children.label');
     }
 
     public function form(Form $form): Form
@@ -62,12 +62,12 @@ class ManageCollectionChildren extends BaseManageRelatedRecords
         return $table->columns([
             Tables\Columns\TextColumn::make('attribute_data.name')
                 ->label(
-                    __('lunarpanel::collection.pages.children.table.name.label')
+                    __('payflowpanel::collection.pages.children.table.name.label')
                 )
                 ->formatStateUsing(fn (Model $record): string => $record->attr('name')),
             Tables\Columns\TextColumn::make('children_count')->counts('children')
                 ->label(
-                    __('lunarpanel::collection.pages.children.table.children_count.label')
+                    __('payflowpanel::collection.pages.children.table.children_count.label')
                 ),
         ])->actions([
             Tables\Actions\ViewAction::make()->url(function (Model $record) {

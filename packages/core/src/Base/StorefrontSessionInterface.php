@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
 use Illuminate\Support\Collection;
-use Lunar\Models\Channel;
-use Lunar\Models\Currency;
-use Lunar\Models\Customer;
-use Lunar\Models\CustomerGroup;
+use Payflow\Models\Channel;
+use Payflow\Models\Currency;
+use Payflow\Models\Customer;
+use Payflow\Models\CustomerGroup;
 
 interface StorefrontSessionInterface
 {

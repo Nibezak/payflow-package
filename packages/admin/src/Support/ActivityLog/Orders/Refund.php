@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Admin\Support\ActivityLog\Orders;
+namespace Payflow\Admin\Support\ActivityLog\Orders;
 
-use Lunar\Admin\Support\ActivityLog\AbstractRender;
+use Payflow\Admin\Support\ActivityLog\AbstractRender;
 use Spatie\Activitylog\Models\Activity;
 
 class Refund extends AbstractRender
@@ -14,7 +14,7 @@ class Refund extends AbstractRender
 
     public function render(Activity $log)
     {
-        return view('lunarpanel::partials.orders.activity.refund', [
+        return view('payflowpanel::partials.orders.activity.refund', [
             'log' => $log,
         ]);
     }

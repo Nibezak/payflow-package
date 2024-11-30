@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
 use Illuminate\Support\Str;
-use Lunar\Models\CustomerGroup;
+use Payflow\Models\CustomerGroup;
 
 class CustomerGroupFactory extends BaseFactory
 {

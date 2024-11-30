@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Facades;
+namespace Payflow\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Lunar\Base\CartSessionInterface;
+use Payflow\Base\CartSessionInterface;
 
 class CartSession extends Facade
 {

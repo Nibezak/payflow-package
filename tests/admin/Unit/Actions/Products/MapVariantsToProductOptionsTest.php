@@ -1,8 +1,8 @@
 <?php
 
-use Lunar\Admin\Actions\Products\MapVariantsToProductOptions;
+use Payflow\Admin\Actions\Products\MapVariantsToProductOptions;
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('support.actions');
 
 it('can map variants given one set of option values', function () {

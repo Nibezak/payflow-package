@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Base\ValueObjects\Cart;
+namespace Payflow\Base\ValueObjects\Cart;
 
-use Lunar\Models\CartLine;
+use Payflow\Models\CartLine;
 
 class DiscountBreakdownLine
 {

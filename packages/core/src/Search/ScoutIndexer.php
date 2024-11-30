@@ -1,18 +1,18 @@
 <?php
 
-namespace Lunar\Search;
+namespace Payflow\Search;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Facades\AttributeManifest;
-use Lunar\FieldTypes\TranslatedText;
-use Lunar\Search\Interfaces\ScoutIndexerInterface;
+use Payflow\Facades\AttributeManifest;
+use Payflow\FieldTypes\TranslatedText;
+use Payflow\Search\Interfaces\ScoutIndexerInterface;
 
 class ScoutIndexer implements ScoutIndexerInterface
 {
     public function searchableAs(Model $model): string
     {
-        $tablePrefix = config('lunar.database.table_prefix');
+        $tablePrefix = config('payflow.database.table_prefix');
         $name = str_replace($tablePrefix, '', $model->getTable());
 
         return config('scout.prefix').$name;

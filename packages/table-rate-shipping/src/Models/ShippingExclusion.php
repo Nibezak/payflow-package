@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Shipping\Models;
+namespace Payflow\Shipping\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Lunar\Base\BaseModel;
-use Lunar\Shipping\Factories\ShippingExclusionFactory;
+use Payflow\Base\BaseModel;
+use Payflow\Shipping\Factories\ShippingExclusionFactory;
 
 class ShippingExclusion extends BaseModel implements Contracts\ShippingExclusion
 {

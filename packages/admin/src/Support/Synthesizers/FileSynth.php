@@ -1,13 +1,13 @@
 <?php
 
-namespace Lunar\Admin\Support\Synthesizers;
+namespace Payflow\Admin\Support\Synthesizers;
 
 use Illuminate\Support\Arr;
-use Lunar\FieldTypes\File;
+use Payflow\FieldTypes\File;
 
 class FileSynth extends AbstractFieldSynth
 {
-    public static $key = 'lunar_file_field';
+    public static $key = 'payflow_file_field';
 
     protected static $targetClass = File::class;
 

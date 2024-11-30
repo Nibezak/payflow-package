@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Extending;
+namespace Payflow\Admin\Support\Extending;
 
 abstract class BaseExtension
 {

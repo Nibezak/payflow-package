@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Actions\Collections;
+namespace Payflow\Actions\Collections;
 
 use Illuminate\Support\Collection;
 

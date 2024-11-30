@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
-use Lunar\FieldTypes\Text;
-use Lunar\Models\Brand;
-use Lunar\Models\Product;
-use Lunar\Models\ProductType;
+use Payflow\FieldTypes\Text;
+use Payflow\Models\Brand;
+use Payflow\Models\Product;
+use Payflow\Models\ProductType;
 
 class ProductFactory extends BaseFactory
 {

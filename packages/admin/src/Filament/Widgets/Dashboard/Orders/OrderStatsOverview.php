@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Admin\Filament\Widgets\Dashboard\Orders;
+namespace Payflow\Admin\Filament\Widgets\Dashboard\Orders;
 
 use Filament\Support\Facades\FilamentIcon;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
-use Lunar\Facades\DB;
-use Lunar\Models\Order;
+use Payflow\Facades\DB;
+use Payflow\Models\Order;
 
 class OrderStatsOverview extends BaseWidget
 {
@@ -86,16 +86,16 @@ class OrderStatsOverview extends BaseWidget
         $trend = $neutral ? 'neutral' : ($increase ? 'increase' : 'decrease');
 
         return Stat::make(
-            label: __('lunarpanel::widgets.dashboard.orders.order_stats_overview.'.$reference.'.label'),
+            label: __('payflowpanel::widgets.dashboard.orders.order_stats_overview.'.$reference.'.label'),
             value: $currentSubTotal->formatted,
         )->description(
-            __('lunarpanel::widgets.dashboard.orders.order_stats_overview.'.$reference.'.'.$trend, [
+            __('payflowpanel::widgets.dashboard.orders.order_stats_overview.'.$reference.'.'.$trend, [
                 'percentage' => abs($percentage),
                 'total' => $previousSubTotal->formatted,
             ])
         )->descriptionIcon(
             FilamentIcon::resolve(
-                $trend == 'neutral' ? 'lunar::trending-neutral' : ($increase ? 'lunar::trending-up' : 'lunar::trending-down')
+                $trend == 'neutral' ? 'payflow::trending-neutral' : ($increase ? 'payflow::trending-up' : 'payflow::trending-down')
             )
         )
             ->color($trend == 'neutral' ? 'gray' : ($increase ? 'success' : 'danger'));
@@ -117,16 +117,16 @@ class OrderStatsOverview extends BaseWidget
         $daysIncreased = $percentage > 0;
 
         return Stat::make(
-            label: __('lunarpanel::widgets.dashboard.orders.order_stats_overview.'.$reference.'.label'),
+            label: __('payflowpanel::widgets.dashboard.orders.order_stats_overview.'.$reference.'.label'),
             value: number_format($currentCount),
         )->description(
-            __('lunarpanel::widgets.dashboard.orders.order_stats_overview.'.$reference.'.'.$trend, [
+            __('payflowpanel::widgets.dashboard.orders.order_stats_overview.'.$reference.'.'.$trend, [
                 'percentage' => abs($percentage),
                 'count' => number_format($previousCount),
             ])
         )->descriptionIcon(
             FilamentIcon::resolve(
-                $trend == 'neutral' ? '' : ($increase ? 'lunar::trending-up' : 'lunar::trending-down')
+                $trend == 'neutral' ? '' : ($increase ? 'payflow::trending-up' : 'payflow::trending-down')
             )
         )
             ->color($trend == 'neutral' ? 'gray' : ($increase ? 'success' : 'danger'));

@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Shipping\Filament\Resources\ShippingZoneResource\Pages;
+namespace Payflow\Shipping\Filament\Resources\ShippingZoneResource\Pages;
 
 use Filament\Actions;
-use Lunar\Admin\Support\Pages\BaseListRecords;
-use Lunar\Shipping\Filament\Resources\ShippingZoneResource;
+use Payflow\Admin\Support\Pages\BaseListRecords;
+use Payflow\Shipping\Filament\Resources\ShippingZoneResource;
 
 class ListShippingZones extends BaseListRecords
 {

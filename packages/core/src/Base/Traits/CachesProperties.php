@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Base\Traits;
+namespace Payflow\Base\Traits;
 
 use ReflectionClass;
 use Spatie\LaravelBlink\BlinkFacade as Blink;

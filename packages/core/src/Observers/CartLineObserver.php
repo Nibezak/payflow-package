@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Observers;
+namespace Payflow\Observers;
 
-use Lunar\Base\Purchasable;
-use Lunar\Exceptions\NonPurchasableItemException;
-use Lunar\Models\CartLine;
+use Payflow\Base\Purchasable;
+use Payflow\Exceptions\NonPurchasableItemException;
+use Payflow\Models\CartLine;
 
 class CartLineObserver
 {

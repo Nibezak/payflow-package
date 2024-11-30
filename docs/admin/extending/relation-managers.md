@@ -5,7 +5,7 @@
 An example of extending the CustomerGroupPricingRelationManager
 
 ```php
-class MyCustomerGroupPricingRelationManagerExtension extends \Lunar\Admin\Support\Extending\RelationManagerExtension
+class MyCustomerGroupPricingRelationManagerExtension extends \Payflow\Admin\Support\Extending\RelationManagerExtension
 {
     public function extendForm(\Filament\Forms\Form $form): \Filament\Forms\Form
     {
@@ -26,7 +26,7 @@ class MyCustomerGroupPricingRelationManagerExtension extends \Lunar\Admin\Suppor
 }
 
 // Typically placed in your AppServiceProvider file...
-LunarPanel::extensions([
-    \Lunar\Admin\Filament\Resources\ProductResource\RelationManagers\CustomerGroupPricingRelationManager::class => MyCustomerGroupPricingRelationManagerExtension::class,
+PayflowPanel::extensions([
+    \Payflow\Admin\Filament\Resources\ProductResource\RelationManagers\CustomerGroupPricingRelationManager::class => MyCustomerGroupPricingRelationManagerExtension::class,
 ]);
 ```

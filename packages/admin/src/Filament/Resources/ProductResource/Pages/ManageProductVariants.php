@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ProductResource\Pages;
 
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Support\Facades\FilamentIcon;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Lunar\Admin\Filament\Resources\ProductResource;
-use Lunar\Admin\Support\Pages\BaseManageRelatedRecords;
+use Payflow\Admin\Filament\Resources\ProductResource;
+use Payflow\Admin\Support\Pages\BaseManageRelatedRecords;
 
 class ManageProductVariants extends BaseManageRelatedRecords
 {
@@ -25,17 +25,17 @@ class ManageProductVariants extends BaseManageRelatedRecords
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::product-variants');
+        return FilamentIcon::resolve('payflow::product-variants');
     }
 
     public static function shouldRegisterNavigation(array $parameters = []): bool
     {
-        return config('lunar.panel.enable_variants', true);
+        return config('payflow.panel.enable_variants', true);
     }
 
     public static function canAccess(array $parameters = []): bool
     {
-        if (! config('lunar.panel.enable_variants', true)) {
+        if (! config('payflow.panel.enable_variants', true)) {
             return false;
         }
 
@@ -44,12 +44,12 @@ class ManageProductVariants extends BaseManageRelatedRecords
 
     public function getTitle(): string
     {
-        return __('lunarpanel::product.pages.variants.label');
+        return __('payflowpanel::product.pages.variants.label');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::product.pages.variants.label');
+        return __('payflowpanel::product.pages.variants.label');
     }
 
     public function form(Form $form): Form

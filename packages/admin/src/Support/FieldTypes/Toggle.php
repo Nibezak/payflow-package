@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Admin\Support\FieldTypes;
+namespace Payflow\Admin\Support\FieldTypes;
 
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\Toggle as ToggleInput;
-use Lunar\Admin\Support\Synthesizers\ToggleSynth;
-use Lunar\Models\Attribute;
+use Payflow\Admin\Support\Synthesizers\ToggleSynth;
+use Payflow\Models\Attribute;
 
 class Toggle extends BaseFieldType
 {

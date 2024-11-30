@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Resources\Concerns;
+namespace Payflow\Admin\Support\Resources\Concerns;
 
 use Filament\Pages\Page;
 
@@ -8,7 +8,7 @@ trait ExtendsSubnavigation
 {
     public static function getRecordSubNavigation(Page $page): array
     {
-        $pages = self::callStaticLunarHook('extendSubNavigation', static::getDefaultSubnavigation());
+        $pages = self::callStaticPayflowHook('extendSubNavigation', static::getDefaultSubnavigation());
 
         return $page->generateNavigationItems($pages);
     }

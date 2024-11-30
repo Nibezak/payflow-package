@@ -1,16 +1,16 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class)->group('cart_session');
+uses(\Payflow\Tests\Core\TestCase::class)->group('cart_session');
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
-use Lunar\Facades\CartSession;
-use Lunar\Managers\CartSessionManager;
-use Lunar\Models\Cart;
-use Lunar\Models\CartAddress;
-use Lunar\Models\Channel;
-use Lunar\Models\Currency;
-use Lunar\Models\Order;
+use Payflow\Facades\CartSession;
+use Payflow\Managers\CartSessionManager;
+use Payflow\Models\Cart;
+use Payflow\Models\CartAddress;
+use Payflow\Models\Channel;
+use Payflow\Models\Currency;
+use Payflow\Models\Order;
 
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\assertDatabaseMissing;
@@ -33,19 +33,19 @@ test('can fetch current cart', function () {
         'default' => true,
     ]);
 
-    Config::set('lunar.cart_session.auto_create', false);
+    Config::set('payflow.cart_session.auto_create', false);
 
     $cart = $manager->current();
 
     expect($cart)->toBeNull();
 
-    Config::set('lunar.cart_session.auto_create', true);
+    Config::set('payflow.cart_session.auto_create', true);
 
     $cart = $manager->current();
 
     expect($cart)->toBeInstanceOf(Cart::class);
 
-    $sessionCart = Session::get(config('lunar.cart_session.session_key'));
+    $sessionCart = Session::get(config('payflow.cart_session.session_key'));
 
     expect($sessionCart)->not->toBeNull();
     expect($sessionCart)->toEqual($cart->id);
@@ -62,8 +62,8 @@ test('can fetch current cart if session exist', function () {
         'default' => true,
     ]);
 
-    Config::set('lunar.cart_session.auto_create', false);
-    Session::put(config('lunar.cart_session.session_key'), 1);
+    Config::set('payflow.cart_session.auto_create', false);
+    Session::put(config('payflow.cart_session.session_key'), 1);
 
     $cart = $manager->current();
 
@@ -79,7 +79,7 @@ test('can create order from session cart and cleanup', function () {
         'default' => true,
     ]);
 
-    Config::set('lunar.cart_session.auto_create', true);
+    Config::set('payflow.cart_session.auto_create', true);
 
     $cart = CartSession::current();
 
@@ -96,7 +96,7 @@ test('can create order from session cart and cleanup', function () {
     $cart->setShippingAddress($shipping);
     $cart->setBillingAddress($billing);
 
-    $sessionCart = Session::get(config('lunar.cart_session.session_key'));
+    $sessionCart = Session::get(config('payflow.cart_session.session_key'));
 
     expect($sessionCart)->not->toBeNull();
     expect($sessionCart)->toEqual($cart->id);
@@ -106,7 +106,7 @@ test('can create order from session cart and cleanup', function () {
     expect($order)->toBeInstanceOf(Order::class);
     expect($cart->id)->toEqual($order->cart_id);
 
-    expect(Session::get(config('lunar.cart_session.session_key')))->toBeNull();
+    expect(Session::get(config('payflow.cart_session.session_key')))->toBeNull();
 });
 
 test('can create order from session cart and retain cart', function () {
@@ -118,7 +118,7 @@ test('can create order from session cart and retain cart', function () {
         'default' => true,
     ]);
 
-    Config::set('lunar.cart_session.auto_create', true);
+    Config::set('payflow.cart_session.auto_create', true);
 
     $cart = CartSession::current();
 
@@ -135,7 +135,7 @@ test('can create order from session cart and retain cart', function () {
     $cart->setShippingAddress($shipping);
     $cart->setBillingAddress($billing);
 
-    $sessionCart = Session::get(config('lunar.cart_session.session_key'));
+    $sessionCart = Session::get(config('payflow.cart_session.session_key'));
 
     expect($sessionCart)->not->toBeNull();
     expect($sessionCart)->toEqual($cart->id);
@@ -147,7 +147,7 @@ test('can create order from session cart and retain cart', function () {
     expect($order)->toBeInstanceOf(Order::class);
     expect($cart->id)->toEqual($order->cart_id);
 
-    expect(Session::get(config('lunar.cart_session.session_key')))->toEqual($cart->id);
+    expect(Session::get(config('payflow.cart_session.session_key')))->toEqual($cart->id);
 });
 
 test('can fetch authenticated users cart and set in session', function () {
@@ -159,17 +159,17 @@ test('can fetch authenticated users cart and set in session', function () {
         'default' => true,
     ]);
 
-    Config::set('lunar.cart_session.auto_create', false);
+    Config::set('payflow.cart_session.auto_create', false);
 
     $cart = CartSession::current();
 
-    $sessionCart = Session::get(config('lunar.cart_session.session_key'));
+    $sessionCart = Session::get(config('payflow.cart_session.session_key'));
 
     expect($sessionCart)->toBeNull();
     expect($cart)->toBeNull();
 
     actingAs(
-        $user = \Lunar\Tests\Core\Stubs\User::factory()->create()
+        $user = \Payflow\Tests\Core\Stubs\User::factory()->create()
     );
 
     $userCart = Cart::factory()->create([
@@ -177,7 +177,7 @@ test('can fetch authenticated users cart and set in session', function () {
     ]);
 
     $cart = CartSession::current();
-    $sessionCart = Session::get(config('lunar.cart_session.session_key'));
+    $sessionCart = Session::get(config('payflow.cart_session.session_key'));
 
     expect($cart)->not->toBeNull();
     expect($cart->id)->toBe($userCart->id);
@@ -195,7 +195,7 @@ test('can forget a cart and soft delete it', function () {
         'default' => true,
     ]);
 
-    Config::set('lunar.cart_session.auto_create', true);
+    Config::set('payflow.cart_session.auto_create', true);
 
     $cart = CartSession::current();
 
@@ -212,7 +212,7 @@ test('can forget a cart and soft delete it', function () {
     $cart->setShippingAddress($shipping);
     $cart->setBillingAddress($billing);
 
-    $sessionCart = Session::get(config('lunar.cart_session.session_key'));
+    $sessionCart = Session::get(config('payflow.cart_session.session_key'));
 
     expect($sessionCart)
         ->not
@@ -223,7 +223,7 @@ test('can forget a cart and soft delete it', function () {
     CartSession::forget();
 
     expect(
-        Session::get(config('lunar.cart_session.session_key'))
+        Session::get(config('payflow.cart_session.session_key'))
     )
         ->toBeNull()
         ->and($cart->refresh()->deleted_at)
@@ -241,7 +241,7 @@ test('can forget a cart an optionally prevent soft deleting', function () {
         'default' => true,
     ]);
 
-    Config::set('lunar.cart_session.auto_create', true);
+    Config::set('payflow.cart_session.auto_create', true);
 
     $cart = CartSession::current();
 
@@ -258,7 +258,7 @@ test('can forget a cart an optionally prevent soft deleting', function () {
     $cart->setShippingAddress($shipping);
     $cart->setBillingAddress($billing);
 
-    $sessionCart = Session::get(config('lunar.cart_session.session_key'));
+    $sessionCart = Session::get(config('payflow.cart_session.session_key'));
 
     expect($sessionCart)
         ->not
@@ -269,7 +269,7 @@ test('can forget a cart an optionally prevent soft deleting', function () {
     CartSession::forget(delete: false);
 
     expect(
-        Session::get(config('lunar.cart_session.session_key'))
+        Session::get(config('payflow.cart_session.session_key'))
     )
         ->toBeNull()
         ->and($cart->refresh()->deleted_at)
@@ -296,8 +296,8 @@ test('can return new instance when current cart has completed order', function (
         'default' => true,
     ]);
 
-    Config::set('lunar.cart_session.auto_create', true);
-    Config::set('lunar.cart_session.allow_multiple_orders_per_cart', false);
+    Config::set('payflow.cart_session.auto_create', true);
+    Config::set('payflow.cart_session.allow_multiple_orders_per_cart', false);
 
     $cart = CartSession::current();
 
@@ -314,7 +314,7 @@ test('can return new instance when current cart has completed order', function (
     $cart->setShippingAddress($shipping);
     $cart->setBillingAddress($billing);
 
-    $sessionCart = Session::get(config('lunar.cart_session.session_key'));
+    $sessionCart = Session::get(config('payflow.cart_session.session_key'));
 
     expect($sessionCart)->not->toBeNull();
     expect($sessionCart)->toEqual($cart->id);
@@ -327,7 +327,7 @@ test('can return new instance when current cart has completed order', function (
         ->toBeInstanceOf(Order::class)
         ->and($cart->id)
         ->toEqual($order->cart_id)
-        ->and(Session::get(config('lunar.cart_session.session_key')))
+        ->and(Session::get(config('payflow.cart_session.session_key')))
         ->toEqual($cart->id);
 
     $order->update([
@@ -338,7 +338,7 @@ test('can return new instance when current cart has completed order', function (
 
     expect($order->cart_id)->not->toBe($cart->id)
         ->and($cart->subTotal->value)->toBe(0)
-        ->and(Session::get(config('lunar.cart_session.session_key')))
+        ->and(Session::get(config('payflow.cart_session.session_key')))
         ->toBe($cart->id);
 
     assertDatabaseMissing(Order::class, [

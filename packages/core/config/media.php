@@ -1,6 +1,6 @@
 <?php
 
-use Lunar\Base\StandardMediaDefinitions;
+use Payflow\Base\StandardMediaDefinitions;
 
 return [
 

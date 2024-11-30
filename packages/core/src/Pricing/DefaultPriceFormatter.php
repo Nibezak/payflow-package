@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Pricing;
+namespace Payflow\Pricing;
 
 use Illuminate\Support\Facades\App;
-use Lunar\Models\Currency;
+use Payflow\Models\Currency;
 use NumberFormatter;
 
 class DefaultPriceFormatter implements PriceFormatterInterface

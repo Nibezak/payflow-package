@@ -8,12 +8,12 @@ use Filament\Infolists\Infolist;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\Livewire;
-use Lunar\Admin\Livewire\Components\ActivityLogFeed;
-use Lunar\Admin\Support\Infolists\Components\Timeline;
-use Lunar\Models\Currency;
-use Lunar\Models\Order;
+use Payflow\Admin\Livewire\Components\ActivityLogFeed;
+use Payflow\Admin\Support\Infolists\Components\Timeline;
+use Payflow\Models\Currency;
+use Payflow\Models\Order;
 
-uses(\Lunar\Tests\Admin\Unit\Livewire\TestCase::class)
+uses(\Payflow\Tests\Admin\Unit\Livewire\TestCase::class)
     ->group('livewire.activity-feed');
 
 describe('activity feed component', function () {
@@ -36,7 +36,7 @@ describe('activity feed component', function () {
             ->assertFormExists()
             ->assertFormFieldExists('comment')
             ->assertActionExists('addComment')
-            ->assertSee(__('lunarpanel::components.activity-log.partials.create.created', [
+            ->assertSee(__('payflowpanel::components.activity-log.partials.create.created', [
                 'model' => str($this->subject::class)->classBasename()->snake(' ')->ucfirst(),
             ]));
     });

@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Observers;
+namespace Payflow\Observers;
 
-use Lunar\Models\Url;
+use Payflow\Models\Url;
 
 class UrlObserver
 {

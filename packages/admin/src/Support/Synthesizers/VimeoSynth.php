@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Admin\Support\Synthesizers;
+namespace Payflow\Admin\Support\Synthesizers;
 
-use Lunar\FieldTypes\Vimeo;
+use Payflow\FieldTypes\Vimeo;
 
 class VimeoSynth extends AbstractFieldSynth
 {
-    public static $key = 'lunar_vimeo_field';
+    public static $key = 'payflow_vimeo_field';
 
     protected static $targetClass = Vimeo::class;
 }

@@ -1,11 +1,11 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class)
+uses(\Payflow\Tests\Core\TestCase::class)
     ->group('validation.cart_line');
 
-use Lunar\Exceptions\Carts\CartException;
-use Lunar\Models\Cart;
-use Lunar\Models\Currency;
+use Payflow\Exceptions\Carts\CartException;
+use Payflow\Models\Cart;
+use Payflow\Models\Currency;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -16,13 +16,13 @@ test('can validate available stock', function (int $stock, int $backorder, int $
         'currency_id' => $currency->id,
     ]);
 
-    $purchasable = \Lunar\Models\ProductVariant::factory()->create([
+    $purchasable = \Payflow\Models\ProductVariant::factory()->create([
         'stock' => $stock,
         'backorder' => $backorder,
         'purchasable' => $purchasable,
     ]);
 
-    $validator = (new \Lunar\Validation\CartLine\CartLineStock)->using(
+    $validator = (new \Payflow\Validation\CartLine\CartLineStock)->using(
         cart: $cart,
         purchasable: $purchasable,
         quantity: $quantity,

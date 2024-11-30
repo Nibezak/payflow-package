@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Shipping\Filament\Resources\ShippingExclusionListResource\Pages;
+namespace Payflow\Shipping\Filament\Resources\ShippingExclusionListResource\Pages;
 
 use Filament\Actions;
-use Lunar\Admin\Support\Pages\BaseListRecords;
-use Lunar\Shipping\Filament\Resources\ShippingExclusionListResource;
+use Payflow\Admin\Support\Pages\BaseListRecords;
+use Payflow\Shipping\Filament\Resources\ShippingExclusionListResource;
 
 class ListShippingExclusionLists extends BaseListRecords
 {

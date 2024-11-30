@@ -1,11 +1,11 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\Models\Country;
-use Lunar\Models\CustomerGroup;
-use Lunar\Models\State;
-use Lunar\Models\TaxZone;
+use Payflow\Models\Country;
+use Payflow\Models\CustomerGroup;
+use Payflow\Models\State;
+use Payflow\Models\TaxZone;
 
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertDatabaseMissing;
@@ -157,21 +157,21 @@ test('can delete a tax zone', function () {
         'postcode' => 'ABC 123',
     ]);
 
-    \Lunar\Models\TaxRate::factory()->create([
+    \Payflow\Models\TaxRate::factory()->create([
         'tax_zone_id' => $zone->id,
     ]);
 
-    assertDatabaseHas(\Lunar\Models\TaxZoneCountry::class, ['tax_zone_id' => $zone->id]);
-    assertDatabaseHas(\Lunar\Models\TaxZoneCustomerGroup::class, ['tax_zone_id' => $zone->id]);
-    assertDatabaseHas(\Lunar\Models\TaxZoneState::class, ['tax_zone_id' => $zone->id]);
-    assertDatabaseHas(\Lunar\Models\TaxZonePostcode::class, ['tax_zone_id' => $zone->id]);
-    assertDatabaseHas(\Lunar\Models\TaxRate::class, ['tax_zone_id' => $zone->id]);
+    assertDatabaseHas(\Payflow\Models\TaxZoneCountry::class, ['tax_zone_id' => $zone->id]);
+    assertDatabaseHas(\Payflow\Models\TaxZoneCustomerGroup::class, ['tax_zone_id' => $zone->id]);
+    assertDatabaseHas(\Payflow\Models\TaxZoneState::class, ['tax_zone_id' => $zone->id]);
+    assertDatabaseHas(\Payflow\Models\TaxZonePostcode::class, ['tax_zone_id' => $zone->id]);
+    assertDatabaseHas(\Payflow\Models\TaxRate::class, ['tax_zone_id' => $zone->id]);
 
     $zone->delete();
 
-    assertDatabaseMissing(\Lunar\Models\TaxZoneCountry::class, ['tax_zone_id' => $zone->id]);
-    assertDatabaseMissing(\Lunar\Models\TaxZoneCustomerGroup::class, ['tax_zone_id' => $zone->id]);
-    assertDatabaseMissing(\Lunar\Models\TaxZoneState::class, ['tax_zone_id' => $zone->id]);
-    assertDatabaseMissing(\Lunar\Models\TaxZonePostcode::class, ['tax_zone_id' => $zone->id]);
-    assertDatabaseMissing(\Lunar\Models\TaxRate::class, ['tax_zone_id' => $zone->id]);
+    assertDatabaseMissing(\Payflow\Models\TaxZoneCountry::class, ['tax_zone_id' => $zone->id]);
+    assertDatabaseMissing(\Payflow\Models\TaxZoneCustomerGroup::class, ['tax_zone_id' => $zone->id]);
+    assertDatabaseMissing(\Payflow\Models\TaxZoneState::class, ['tax_zone_id' => $zone->id]);
+    assertDatabaseMissing(\Payflow\Models\TaxZonePostcode::class, ['tax_zone_id' => $zone->id]);
+    assertDatabaseMissing(\Payflow\Models\TaxRate::class, ['tax_zone_id' => $zone->id]);
 })->group('foo');

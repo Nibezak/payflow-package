@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Opayo\Models;
+namespace Payflow\Opayo\Models;
 
-use Lunar\Base\BaseModel;
+use Payflow\Base\BaseModel;
 
 /**
  * @property int $id

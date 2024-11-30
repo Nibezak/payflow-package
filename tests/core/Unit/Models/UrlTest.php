@@ -1,11 +1,11 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
 use Illuminate\Support\Str;
-use Lunar\Models\Language;
-use Lunar\Models\Product;
-use Lunar\Models\Url;
+use Payflow\Models\Language;
+use Payflow\Models\Product;
+use Payflow\Models\Url;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -23,7 +23,7 @@ test('can create a url', function () {
 
     Url::create($data);
 
-    $this->assertDatabaseHas('lunar_urls', $data);
+    $this->assertDatabaseHas('payflow_urls', $data);
 });
 
 test('can fetch element from url relationship', function () {

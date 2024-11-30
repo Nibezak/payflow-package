@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
-use Lunar\Models\Language;
-use Lunar\Models\Product;
-use Lunar\Models\Url;
+use Payflow\Models\Language;
+use Payflow\Models\Product;
+use Payflow\Models\Url;
 
 class UrlFactory extends BaseFactory
 {

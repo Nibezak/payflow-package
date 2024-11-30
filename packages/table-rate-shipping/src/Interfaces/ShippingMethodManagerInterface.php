@@ -1,5 +1,5 @@
 <?php
 
-namespace Lunar\Shipping\Interfaces;
+namespace Payflow\Shipping\Interfaces;
 
 interface ShippingMethodManagerInterface {}

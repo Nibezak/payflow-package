@@ -10,7 +10,7 @@ assignees: ''
 <!-- DO NOT THROW THIS AWAY -->
 <!-- Fill out the FULL versions with patch versions -->
 
-- Lunar version: #.#.#
+- Payflow version: #.#.#
 - Laravel Version: #.#.#
 - PHP Version: #.#.#
 - Database Driver & Version:

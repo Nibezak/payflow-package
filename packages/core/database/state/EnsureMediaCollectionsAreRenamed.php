@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Database\State;
+namespace Payflow\Database\State;
 
 use Illuminate\Support\Facades\Schema;
-use Lunar\Facades\DB;
-use Lunar\Models\Brand;
-use Lunar\Models\Collection;
-use Lunar\Models\Product;
+use Payflow\Facades\DB;
+use Payflow\Models\Brand;
+use Payflow\Models\Collection;
+use Payflow\Models\Product;
 
 class EnsureMediaCollectionsAreRenamed
 {
@@ -21,7 +21,7 @@ class EnsureMediaCollectionsAreRenamed
             return;
         }
 
-        $this->getOutdatedMediaQuery()->update(['collection_name' => config('lunar.media.collection')]);
+        $this->getOutdatedMediaQuery()->update(['collection_name' => config('payflow.media.collection')]);
     }
 
     protected function shouldRun()

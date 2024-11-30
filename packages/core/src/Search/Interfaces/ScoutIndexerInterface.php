@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Search\Interfaces;
+namespace Payflow\Search\Interfaces;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;

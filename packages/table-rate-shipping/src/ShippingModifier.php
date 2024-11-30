@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Shipping;
+namespace Payflow\Shipping;
 
-use Lunar\Facades\ShippingManifest;
-use Lunar\Models\Cart;
-use Lunar\Shipping\DataTransferObjects\ShippingOptionLookup;
-use Lunar\Shipping\Facades\Shipping;
+use Payflow\Facades\ShippingManifest;
+use Payflow\Models\Cart;
+use Payflow\Shipping\DataTransferObjects\ShippingOptionLookup;
+use Payflow\Shipping\Facades\Shipping;
 
 class ShippingModifier
 {

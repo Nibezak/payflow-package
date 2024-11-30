@@ -2,7 +2,7 @@
 
 use function Pest\Laravel\{get};
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('resource.discount');
 
 beforeEach(function () {
@@ -10,11 +10,11 @@ beforeEach(function () {
 });
 
 it('can render discount availability page', function () {
-    $record = \Lunar\Models\Discount::factory()->create();
+    $record = \Payflow\Models\Discount::factory()->create();
 
-    \Lunar\Models\Channel::factory()->create(['default' => true]);
+    \Payflow\Models\Channel::factory()->create(['default' => true]);
 
-    get(\Lunar\Admin\Filament\Resources\DiscountResource::getUrl('availability', [
+    get(\Payflow\Admin\Filament\Resources\DiscountResource::getUrl('availability', [
         'record' => $record,
     ]))->assertSuccessful();
 });

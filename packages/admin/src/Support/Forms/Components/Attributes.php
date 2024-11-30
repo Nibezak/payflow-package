@@ -1,16 +1,16 @@
 <?php
 
-namespace Lunar\Admin\Support\Forms\Components;
+namespace Payflow\Admin\Support\Forms\Components;
 
 use Filament\Forms;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component as Livewire;
-use Lunar\Admin\Support\Facades\AttributeData;
-use Lunar\Models\Attribute;
-use Lunar\Models\AttributeGroup;
-use Lunar\Models\Product;
-use Lunar\Models\ProductType;
-use Lunar\Models\ProductVariant;
+use Payflow\Admin\Support\Facades\AttributeData;
+use Payflow\Models\Attribute;
+use Payflow\Models\AttributeGroup;
+use Payflow\Models\Product;
+use Payflow\Models\ProductType;
+use Payflow\Models\ProductVariant;
 
 class Attributes extends Forms\Components\Group
 {
@@ -87,7 +87,7 @@ class Attributes extends Forms\Components\Group
             }
 
             foreach ($state as $key => $value) {
-                if (! $value instanceof \Lunar\Base\FieldType) {
+                if (! $value instanceof \Payflow\Base\FieldType) {
                     continue;
                 }
 

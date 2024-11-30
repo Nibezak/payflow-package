@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Shipping\Filament\Resources\ShippingMethodResource\Pages;
+namespace Payflow\Shipping\Filament\Resources\ShippingMethodResource\Pages;
 
 use Filament\Resources\RelationManagers\RelationGroup;
 use Filament\Support\Facades\FilamentIcon;
-use Lunar\Admin\Filament\Resources\ProductResource\RelationManagers\CustomerGroupRelationManager;
-use Lunar\Admin\Support\Pages\BaseManageRelatedRecords;
-use Lunar\Shipping\Filament\Resources\ShippingMethodResource;
+use Payflow\Admin\Filament\Resources\ProductResource\RelationManagers\CustomerGroupRelationManager;
+use Payflow\Admin\Support\Pages\BaseManageRelatedRecords;
+use Payflow\Shipping\Filament\Resources\ShippingMethodResource;
 
 class ManageShippingMethodAvailability extends BaseManageRelatedRecords
 {
@@ -17,17 +17,17 @@ class ManageShippingMethodAvailability extends BaseManageRelatedRecords
     public function getTitle(): string
     {
 
-        return __('lunarpanel.shipping::shippingmethod.pages.availability.label');
+        return __('payflowpanel.shipping::shippingmethod.pages.availability.label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::availability');
+        return FilamentIcon::resolve('payflow::availability');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel.shipping::shippingmethod.pages.availability.label');
+        return __('payflowpanel.shipping::shippingmethod.pages.availability.label');
     }
 
     public function getRelationManagers(): array
@@ -35,7 +35,7 @@ class ManageShippingMethodAvailability extends BaseManageRelatedRecords
         return [
             RelationGroup::make('Availability', [
                 CustomerGroupRelationManager::make([
-                    'description' => __('lunarpanel.shipping::relationmanagers.shipping_methods.customer_groups.description'),
+                    'description' => __('payflowpanel.shipping::relationmanagers.shipping_methods.customer_groups.description'),
                 ]),
             ]),
         ];

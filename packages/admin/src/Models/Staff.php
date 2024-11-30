@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Models;
+namespace Payflow\Admin\Models;
 
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasName;
@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Lunar\Admin\Database\Factories\StaffFactory;
+use Payflow\Admin\Database\Factories\StaffFactory;
 use Spatie\Permission\Traits\HasRoles;
 
 class Staff extends Authenticatable implements FilamentUser, HasName
@@ -76,9 +76,9 @@ class Staff extends Authenticatable implements FilamentUser, HasName
     {
         parent::__construct($attributes);
 
-        $this->setTable(config('lunar.database.table_prefix').$this->getTable());
+        $this->setTable(config('payflow.database.table_prefix').$this->getTable());
 
-        if ($connection = config('lunar.database.connection')) {
+        if ($connection = config('payflow.database.connection')) {
             $this->setConnection($connection);
         }
     }

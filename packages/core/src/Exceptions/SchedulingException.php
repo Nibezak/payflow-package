@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Exceptions;
+namespace Payflow\Exceptions;
 
-class SchedulingException extends LunarException
+class SchedulingException extends PayflowException
 {
     //
 }

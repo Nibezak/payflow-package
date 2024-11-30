@@ -1,13 +1,13 @@
 <?php
 
-namespace Lunar\Shipping\Filament\Resources\ShippingMethodResource\Pages;
+namespace Payflow\Shipping\Filament\Resources\ShippingMethodResource\Pages;
 
 use Filament\Actions;
 use Filament\Forms\Components\Group;
-use Lunar\Admin\Support\Pages\BaseListRecords;
-use Lunar\Models\CustomerGroup;
-use Lunar\Shipping\Filament\Resources\ShippingMethodResource;
-use Lunar\Shipping\Models\ShippingMethod;
+use Payflow\Admin\Support\Pages\BaseListRecords;
+use Payflow\Models\CustomerGroup;
+use Payflow\Shipping\Filament\Resources\ShippingMethodResource;
+use Payflow\Shipping\Models\ShippingMethod;
 
 class ListShippingMethod extends BaseListRecords
 {

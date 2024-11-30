@@ -1,8 +1,8 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
-use Lunar\Models\ProductOption;
-use Lunar\Models\ProductOptionValue;
+uses(\Payflow\Tests\Core\TestCase::class);
+use Payflow\Models\ProductOption;
+use Payflow\Models\ProductOptionValue;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

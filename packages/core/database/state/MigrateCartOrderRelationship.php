@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Database\State;
+namespace Payflow\Database\State;
 
 use Illuminate\Support\Facades\Schema;
-use Lunar\Facades\DB;
+use Payflow\Facades\DB;
 
 class MigrateCartOrderRelationship
 {
@@ -14,7 +14,7 @@ class MigrateCartOrderRelationship
 
     public function run()
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         if (! $this->canRun()) {
             return;
@@ -28,7 +28,7 @@ class MigrateCartOrderRelationship
 
     protected function canRun()
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return Schema::hasColumn("{$prefix}carts", 'order_id');
     }

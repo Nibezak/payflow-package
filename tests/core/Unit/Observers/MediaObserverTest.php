@@ -1,9 +1,9 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class)->group('media.observer');
+uses(\Payflow\Tests\Core\TestCase::class)->group('media.observer');
 
-use Lunar\Facades\DB;
-use Lunar\Models\Brand;
+use Payflow\Facades\DB;
+use Payflow\Models\Brand;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Jobs\Products\Associations;
+namespace Payflow\Jobs\Products\Associations;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -8,8 +8,8 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Collection;
-use Lunar\Facades\DB;
-use Lunar\Models\Product;
+use Payflow\Facades\DB;
+use Payflow\Models\Product;
 
 class Dissociate implements ShouldQueue
 {

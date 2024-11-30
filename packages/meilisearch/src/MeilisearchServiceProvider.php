@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Meilisearch;
+namespace Payflow\Meilisearch;
 
 use Illuminate\Support\ServiceProvider;
-use Lunar\Meilisearch\Console\MeilisearchSetup;
+use Payflow\Meilisearch\Console\MeilisearchSetup;
 
 class MeilisearchServiceProvider extends ServiceProvider
 {

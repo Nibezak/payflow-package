@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
-use Lunar\Base\ValueObjects\Cart\TaxBreakdown;
-use Lunar\Models\CartLine;
-use Lunar\Models\Currency;
+use Payflow\Base\ValueObjects\Cart\TaxBreakdown;
+use Payflow\Models\CartLine;
+use Payflow\Models\Currency;
 
 interface TaxDriver
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Admin\Support\Synthesizers;
+namespace Payflow\Admin\Support\Synthesizers;
 
-use Lunar\FieldTypes\YouTube;
+use Payflow\FieldTypes\YouTube;
 
 class YouTubeSynth extends AbstractFieldSynth
 {
-    public static $key = 'lunar_youtube_field';
+    public static $key = 'payflow_youtube_field';
 
     protected static $targetClass = YouTube::class;
 }

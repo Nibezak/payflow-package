@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Admin\Support\Synthesizers;
+namespace Payflow\Admin\Support\Synthesizers;
 
-use Lunar\FieldTypes\Toggle;
+use Payflow\FieldTypes\Toggle;
 
 class ToggleSynth extends AbstractFieldSynth
 {
-    public static $key = 'lunar_toggle_field';
+    public static $key = 'payflow_toggle_field';
 
     protected static $targetClass = Toggle::class;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Addons;
+namespace Payflow\Addons;
 
 use Illuminate\Foundation\PackageManifest;
 use Illuminate\Support\Arr;
@@ -31,7 +31,7 @@ class Manifest extends PackageManifest
         }
 
         $this->write(collect($packages)->filter(function ($package) {
-            return Arr::has($package, 'extra.lunar');
+            return Arr::has($package, 'extra.payflow');
         })->keyBy('name')->map(function ($package) {
             return $this->formatPackage($package);
         })->filter()->all());
@@ -59,23 +59,23 @@ class Manifest extends PackageManifest
         $directory = Str::remove(rtrim($autoload, '/'), dirname($reflector->getFileName()));
         $json = json_decode(File::get($directory.'composer.json'), true);
 
-        $lunar = $json['extra']['lunar'] ?? [];
+        $payflow = $json['extra']['payflow'] ?? [];
         $author = $json['authors'][0] ?? null;
 
-        $config = config('lunar.addons.'.$package['name'], [
+        $config = config('payflow.addons.'.$package['name'], [
             'license' => null,
         ]);
 
         return [
             'id' => base64_encode($package['name']),
-            'slug' => $lunar['slug'] ?? null,
-            'editions' => $lunar['editions'] ?? [],
+            'slug' => $payflow['slug'] ?? null,
+            'editions' => $payflow['editions'] ?? [],
             'github_url' => $package['source']['url'],
             'version' => $package['version'],
             'namespace' => $namespace,
             'autoload' => $autoload,
             'provider' => $provider,
-            'name' => $lunar['name'] ?? Arr::last($providerParts),
+            'name' => $payflow['name'] ?? Arr::last($providerParts),
             'author' => $author['name'] ?? null,
             'email' => $package['support']['email'] ?? null,
         ];

@@ -1,12 +1,12 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\Actions\Carts\AssociateUser;
-use Lunar\Models\Cart;
-use Lunar\Models\Currency;
-use Lunar\Models\Order;
-use Lunar\Tests\Core\Stubs\User;
+use Payflow\Actions\Carts\AssociateUser;
+use Payflow\Models\Cart;
+use Payflow\Models\Currency;
+use Payflow\Models\Order;
+use Payflow\Tests\Core\Stubs\User;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -51,7 +51,7 @@ test('can associate a user with a customer', function () {
     $action = new AssociateUser;
 
     $user = User::factory()->create();
-    $customer = \Lunar\Models\Customer::factory()->create();
+    $customer = \Payflow\Models\Customer::factory()->create();
     $user->customers()->attach($customer);
 
     $action->execute($cart, $user);

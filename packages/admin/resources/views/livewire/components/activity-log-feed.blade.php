@@ -1,4 +1,4 @@
-<div class="px-2 pb-4 scroll-mt-32" id="lunar-panel-timeline">
+<div class="px-2 pb-4 scroll-mt-32" id="payflow-panel-timeline">
     <div class="relative flex items-end gap-4 mt-4 z-20">
         <div class="shrink-0">
             <div>
@@ -70,7 +70,7 @@
                                         <div>
                                             <div class="text-xs font-medium text-gray-500 dark:text-gray-400">
                                                 @if (!$item['log']->causer)
-                                                    {{ __('lunarpanel::components.activity-log.system') }}
+                                                    {{ __('payflowpanel::components.activity-log.system') }}
                                                 @else
                                                     {{ $logUserName }}
                                                 @endif
@@ -99,6 +99,6 @@
     </div>
 
     <div class="pt-4">
-        {{ $this->activityLog->links('lunarpanel::components.activity-log.timeline-paginator.index', data: ['scrollTo' => '#lunar-panel-timeline']) }}
+        {{ $this->activityLog->links('payflowpanel::components.activity-log.timeline-paginator.index', data: ['scrollTo' => '#payflow-panel-timeline']) }}
     </div>
 </div>

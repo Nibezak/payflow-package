@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Console\Commands;
+namespace Payflow\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -11,7 +11,7 @@ class ScoutIndexerCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'lunar:search:index
+    protected $signature = 'payflow:search:index
                             {models?* : Model or space-separated list of Models for indexing.}
                             {--ignore : If informed, only uses the models listed in the command call for indexing, ignoring the Models present in the config file.}
                             {--refresh : If informed, the records will be delete before indexing. Can\'t be used with the [--flush] option.}
@@ -71,13 +71,13 @@ class ScoutIndexerCommand extends Command
 
         // Execute setup meilisearch
         if (config('scout.driver') == 'meilisearch') {
-            if (! $this->getApplication()->has('lunar:meilisearch:setup')) {
-                $this->components->warn('Laravel scout config to use meilisearch driver, you would like to install and setup lunarphp/meilisearch package.');
+            if (! $this->getApplication()->has('payflow:meilisearch:setup')) {
+                $this->components->warn('Laravel scout config to use meilisearch driver, you would like to install and setup payflowphp/meilisearch package.');
             }
         }
 
         // Return searchable models from config
-        $searchables = config('lunar.search.models', []);
+        $searchables = config('payflow.search.models', []);
 
         // Checks whether to ignore models pinned to the class
         if ($this->option('ignore')) {

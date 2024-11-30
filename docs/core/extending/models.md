@@ -2,20 +2,20 @@
 
 ## Overview
 
-Lunar provides a number of Eloquent Models and quite often in custom applications you will want to add your own relationships and functionality to these models.
+Payflow provides a number of Eloquent Models and quite often in custom applications you will want to add your own relationships and functionality to these models.
 
 ::: warning
-We highly suggest using your own Eloquent Models to add additional data, rather than trying to change fields on the core Lunar models.
+We highly suggest using your own Eloquent Models to add additional data, rather than trying to change fields on the core Payflow models.
 :::
 
 ## Replaceable Models
-All Lunar models are replaceable, this means you can instruct Lunar to use your own custom model, throughout the ecosystem, using dependency injection.
+All Payflow models are replaceable, this means you can instruct Payflow to use your own custom model, throughout the ecosystem, using dependency injection.
 
 
 ### Registration
 We recommend registering your own models for your application within the boot method of your Service Provider.
 
-When registering your models, you will need to set the Lunar model's contract as the first argument then your own model implementation for the second.
+When registering your models, you will need to set the Payflow model's contract as the first argument then your own model implementation for the second.
 
 
 ```php
@@ -26,17 +26,17 @@ When registering your models, you will need to set the Lunar model's contract as
  */
 public function boot()
 {
-    \Lunar\Facades\ModelManifest::replace(
-        \Lunar\Models\Contracts\Product::class,
+    \Payflow\Facades\ModelManifest::replace(
+        \Payflow\Models\Contracts\Product::class,
         \App\Model\Product::class,
     );
 }
 ```
 
-#### Registering multiple Lunar models.
+#### Registering multiple Payflow models.
 
-If you have multiple models you want to replace, instead of manually replacing them one by one, you can specify a directory for Lunar to look in for Lunar models to use.
-This assumes that each model extends its counterpart model i.e. `App\Models\Product` extends `Lunar\Models\Product`.
+If you have multiple models you want to replace, instead of manually replacing them one by one, you can specify a directory for Payflow to look in for Payflow models to use.
+This assumes that each model extends its counterpart model i.e. `App\Models\Product` extends `Payflow\Models\Product`.
 
 ```php
 /**
@@ -46,7 +46,7 @@ This assumes that each model extends its counterpart model i.e. `App\Models\Prod
  */
 public function boot()
 {
-    \Lunar\Facades\ModelManifest::addDirectory(
+    \Payflow\Facades\ModelManifest::addDirectory(
         __DIR__.'/../Models'
     );
 }
@@ -57,7 +57,7 @@ public function boot()
 Route binding is supported for your own routes and simply requires the relevant contract class to be injected.
 
 ```php
-Route::get('products/{id}', function (\Lunar\Models\Contracts\Product $product) {
+Route::get('products/{id}', function (\Payflow\Models\Contracts\Product $product) {
     $product; // App\Models\Product
 });
 ```
@@ -70,21 +70,21 @@ If you replace a model which is used in a relationship, you can easily get your 
 // In our service provider.
 public function boot()
 {
-    \Lunar\Facades\ModelManifest::replace(
-        \Lunar\Models\Contracts\ProductVariant::class,
+    \Payflow\Facades\ModelManifest::replace(
+        \Payflow\Models\Contracts\ProductVariant::class,
         \App\Model\ProductVariant::class,
     );
 }
 
 // Somewhere else in your code...
 
-$product = \Lunar\Models\Product::first();
+$product = \Payflow\Models\Product::first();
 $product->variants->first(); // App\Models\ProductVariant
 ```
 
 ### Static call forwarding
 
-If you have custom methods in your own model, you can call those functions directly from the Lunar model instance.
+If you have custom methods in your own model, you can call those functions directly from the Payflow model instance.
 
 Assuming we want to provide a new function to a product variant model.
 
@@ -93,7 +93,7 @@ Assuming we want to provide a new function to a product variant model.
 
 namespace App\Models;
 
-class ProductVariant extends \Lunar\Models\ProductVariant
+class ProductVariant extends \Payflow\Models\ProductVariant
 {
     public function someCustomMethod()
     {
@@ -106,8 +106,8 @@ class ProductVariant extends \Lunar\Models\ProductVariant
 // In your service provider.
 public function boot()
 {
-    \Lunar\Facades\ModelManifest::replace(
-        \Lunar\Models\Contracts\ProductVariant::class,
+    \Payflow\Facades\ModelManifest::replace(
+        \Payflow\Models\Contracts\ProductVariant::class,
         \App\Model\ProductVariant::class,
     );
 }
@@ -116,27 +116,27 @@ public function boot()
 Somewhere else in your app...
 
 ```php
-\Lunar\Models\ProductVariant::someCustomMethod(); // Hello!
+\Payflow\Models\ProductVariant::someCustomMethod(); // Hello!
 \App\Models\ProductVariant::someCustomMethod(); // Hello!
 ```
 
 ### Observers
 
-If you have observers in your app which call `observe` on the Lunar model, these will still work as intended when you replace any of the models, this means if you 
-want to add your own custom observers, you can just reference the Lunar model and everything will be forwarded to the appropriate class.
+If you have observers in your app which call `observe` on the Payflow model, these will still work as intended when you replace any of the models, this means if you 
+want to add your own custom observers, you can just reference the Payflow model and everything will be forwarded to the appropriate class.
 
 ```php
-\Lunar\Models\Product::observe(/** .. */);
+\Payflow\Models\Product::observe(/** .. */);
 ```
 
 ## Dynamic Eloquent Relationships
 
-If you don't need to completely override or extend the Lunar models using the techniques above, you are still free to resolve relationships dynamically as Laravel provides out the box.
+If you don't need to completely override or extend the Payflow models using the techniques above, you are still free to resolve relationships dynamically as Laravel provides out the box.
 
 e.g. 
 
 ```php
-use Lunar\Models\Order;
+use Payflow\Models\Order;
 use App\Models\Ticket;
  
 Order::resolveRelationUsing('ticket', function ($orderModel) {

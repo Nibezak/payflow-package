@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\AttributeGroupResource\RelationManagers;
+namespace Payflow\Admin\Filament\Resources\AttributeGroupResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -10,11 +10,11 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Unique;
-use Lunar\Admin\Support\Facades\AttributeData;
-use Lunar\Admin\Support\Forms\Components\TranslatedText;
-use Lunar\Admin\Support\RelationManagers\BaseRelationManager;
-use Lunar\Admin\Support\Tables\Columns\TranslatedTextColumn;
-use Lunar\Models\Language;
+use Payflow\Admin\Support\Facades\AttributeData;
+use Payflow\Admin\Support\Forms\Components\TranslatedText;
+use Payflow\Admin\Support\RelationManagers\BaseRelationManager;
+use Payflow\Admin\Support\Tables\Columns\TranslatedTextColumn;
+use Payflow\Models\Language;
 
 class AttributesRelationManager extends BaseRelationManager
 {
@@ -22,7 +22,7 @@ class AttributesRelationManager extends BaseRelationManager
 
     public static function getTitle(Model $ownerRecord, string $pageClass): string
     {
-        return __('lunarpanel::attribute.plural_label');
+        return __('payflowpanel::attribute.plural_label');
     }
 
     protected static ?string $recordTitleAttribute = 'name.en';  // TODO: localise somehow
@@ -33,7 +33,7 @@ class AttributesRelationManager extends BaseRelationManager
             ->schema([
                 TranslatedText::make('name')
                     ->label(
-                        __('lunarpanel::attribute.form.name.label')
+                        __('payflowpanel::attribute.form.name.label')
                     )
                     ->required()
                     ->maxLength(255)
@@ -46,16 +46,16 @@ class AttributesRelationManager extends BaseRelationManager
                     }),
                 TranslatedText::make('description')
                     ->label(
-                        __('lunarpanel::attribute.form.description.label')
+                        __('payflowpanel::attribute.form.description.label')
                     )
                     ->helperText(
-                        __('lunarpanel::attribute.form.description.helper')
+                        __('payflowpanel::attribute.form.description.helper')
                     )
                     ->afterStateHydrated(fn ($state, $component) => $state ?: $component->state([Language::getDefault()->code => null]))
                     ->maxLength(255),
                 Forms\Components\TextInput::make('handle')
                     ->label(
-                        __('lunarpanel::attribute.form.handle.label')
+                        __('payflowpanel::attribute.form.handle.label')
                     )->dehydrated()
                     ->unique(ignoreRecord: true, modifyRuleUsing: function (Unique $rule, RelationManager $livewire) {
                         return $rule->where('attribute_group_id', $livewire->ownerRecord->id);
@@ -66,19 +66,19 @@ class AttributesRelationManager extends BaseRelationManager
                 Forms\Components\Grid::make(3)->schema([
                     Forms\Components\Toggle::make('searchable')
                         ->label(
-                            __('lunarpanel::attribute.form.searchable.label')
+                            __('payflowpanel::attribute.form.searchable.label')
                         )->default(false),
                     Forms\Components\Toggle::make('filterable')
                         ->label(
-                            __('lunarpanel::attribute.form.filterable.label')
+                            __('payflowpanel::attribute.form.filterable.label')
                         )->default(false),
                     Forms\Components\Toggle::make('required')
                         ->label(
-                            __('lunarpanel::attribute.form.required.label')
+                            __('payflowpanel::attribute.form.required.label')
                         )->default(false),
                 ]),
                 Forms\Components\Select::make('type')->label(
-                    __('lunarpanel::attribute.form.type.label')
+                    __('payflowpanel::attribute.form.type.label')
                 )->disabled(
                     fn (?Model $record) => (bool) $record
                 )->options(
@@ -88,7 +88,7 @@ class AttributesRelationManager extends BaseRelationManager
                         );
 
                         return [
-                            $fieldType => __("lunarpanel::fieldtypes.{$langKey}.label"),
+                            $fieldType => __("payflowpanel::fieldtypes.{$langKey}.label"),
                         ];
                     })->toArray()
                 )->required()->live()->afterStateUpdated(fn (Forms\Components\Select $component) => $component
@@ -98,12 +98,12 @@ class AttributesRelationManager extends BaseRelationManager
 
                     ->fill()),
                 Forms\Components\TextInput::make('validation_rules')->label(
-                    __('lunarpanel::attribute.form.validation_rules.label')
+                    __('payflowpanel::attribute.form.validation_rules.label')
                 )
                     ->string()
                     ->nullable()
                     ->helperText(
-                        __('lunarpanel::attribute.form.validation_rules.helper')
+                        __('payflowpanel::attribute.form.validation_rules.helper')
                     ),
                 Forms\Components\Grid::make(1)
                     ->schema(function (Forms\Get $get) {
@@ -117,17 +117,17 @@ class AttributesRelationManager extends BaseRelationManager
         return $table
             ->columns([
                 TranslatedTextColumn::make('name')->label(
-                    __('lunarpanel::attribute.table.name.label')
+                    __('payflowpanel::attribute.table.name.label')
                 ),
                 Tables\Columns\TextColumn::make('description.en')->label(
-                    __('lunarpanel::attribute.table.description.label')
+                    __('payflowpanel::attribute.table.description.label')
                 ),
                 Tables\Columns\TextColumn::make('handle')
                     ->label(
-                        __('lunarpanel::attribute.table.handle.label')
+                        __('payflowpanel::attribute.table.handle.label')
                     ),
                 Tables\Columns\TextColumn::make('type')->label(
-                    __('lunarpanel::attribute.table.type.label')
+                    __('payflowpanel::attribute.table.type.label')
                 ),
             ])
             ->filters([

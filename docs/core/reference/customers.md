@@ -2,12 +2,12 @@
 
 ## Overview
 
-We use Customers in Lunar to store the customer details, rather than Users. We do this for a few reasons. One, so that we leave your User models well alone and two, because it provides flexibility.
+We use Customers in Payflow to store the customer details, rather than Users. We do this for a few reasons. One, so that we leave your User models well alone and two, because it provides flexibility.
 
 ## Customers
 
 ```php
-Lunar\Models\Customer
+Payflow\Models\Customer
 ```
 
 |Field|Description|
@@ -27,7 +27,7 @@ Lunar\Models\Customer
 ### Creating a customer
 
 ```php
-Lunar\Models\Customer::create([
+Payflow\Models\Customer::create([
     'title' => 'Mr.',
     'first_name' => 'Tony',
     'last_name' => 'Stark',
@@ -51,7 +51,7 @@ Customers will typically be associated with a user, so they can place orders. Bu
 ### Attaching users to a customer
 
 ```php
-$customer = \Lunar\Models\Customer::create([/* ... */]);
+$customer = \Payflow\Models\Customer::create([/* ... */]);
 
 $customer->users()->attach($user);
 
@@ -61,7 +61,7 @@ $customer->users()->sync([1,2,3]);
 ## Attaching a customer to a customer group
 
 ```php
-$customer = \Lunar\Models\Customer::create([/* ... */]);
+$customer = \Payflow\Models\Customer::create([/* ... */]);
 
 $customer->customerGroups()->attach($customerGroup);
 
@@ -71,7 +71,7 @@ $customer->customerGroups()->sync([4,5,6]);
 ## Impersonating users
 
 When a customer needs help with their account, it's useful to be able to log in as that user so you can help diagnose the issue they're having. 
-Lunar allows you to specify your own method of how you want to impersonate users, usually this is in the form of a signed URL an admin can go to in order to log in as the user.
+Payflow allows you to specify your own method of how you want to impersonate users, usually this is in the form of a signed URL an admin can go to in order to log in as the user.
 
 ### Creating the impersonate class
 
@@ -80,11 +80,11 @@ Lunar allows you to specify your own method of how you want to impersonate users
 
 namespace App\Auth;
 
-use Lunar\Hub\Auth\Impersonate as LunarImpersonate;
+use Payflow\Hub\Auth\Impersonate as PayflowImpersonate;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\URL;
 
-class Impersonate extends LunarImpersonate
+class Impersonate extends PayflowImpersonate
 {
     /**
      * Return the URL for impersonation.
@@ -100,7 +100,7 @@ class Impersonate extends LunarImpersonate
 }
 ```
 
-Then you need to register this in `config/lunar-hub/customers.php`.
+Then you need to register this in `config/payflow-hub/customers.php`.
 
 ```php
 return [
@@ -128,12 +128,12 @@ Specify different pricing per customer group, for example you may have certain p
 You can turn product visibility off depending on the customer group, this would mean only certain products would show depending on the group they belong to. This will also include scheduling availability so you can release products earlier or later to different groups.
 
 ---
-You must have at least one customer group in your store and when you install Lunar you will be given a default one to get you started named `retail`.
+You must have at least one customer group in your store and when you install Payflow you will be given a default one to get you started named `retail`.
 
 ## Creating a customer group
 
 ```php
-$customerGroup = Lunar\Models\CustomerGroup::create([
+$customerGroup = Payflow\Models\CustomerGroup::create([
     'name' => 'Retail',
     'handle' => 'retail', // Must be unique
     'default' => false,
@@ -151,7 +151,7 @@ If you would like to add customer group availability to your own models, you can
 ```php
 
 // ...
-use Lunar\Base\Traits\HasCustomerGroups;
+use Payflow\Base\Traits\HasCustomerGroups;
 
 class MyModel extends Model
 {
@@ -159,12 +159,12 @@ class MyModel extends Model
 }
 ```
 
-You will need to define the relationship for customer groups so that Lunar knows how to handle it.
+You will need to define the relationship for customer groups so that Payflow knows how to handle it.
 
 ```php
 public function customerGroup()
 {
-    return $this->hasMany(\Lunar\Models\CustomerGroup::class)->withTimestamps()->withPivot([/* .. */]);
+    return $this->hasMany(\Payflow\Models\CustomerGroup::class)->withTimestamps()->withPivot([/* .. */]);
 }
 ```
 You will then have access to the following methods:

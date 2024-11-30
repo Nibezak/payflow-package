@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Actions;
+namespace Payflow\Admin\Support\Actions;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Actions\Action;
@@ -31,10 +31,10 @@ class PdfDownload extends Action
     {
         parent::setUp();
 
-        if (config('lunar.panel.pdf_rendering', 'download') == 'stream') {
+        if (config('payflow.panel.pdf_rendering', 'download') == 'stream') {
             $this->url(function ($record) {
                 return URL::temporarySignedRoute(
-                    'lunar.pdf.download',
+                    'payflow.pdf.download',
                     now()->addMinutes(2),
                     [
                         'record' => $record->id,
@@ -46,7 +46,7 @@ class PdfDownload extends Action
         } else {
             $this->action(function ($record) {
                 Notification::make()->title(
-                    __('lunarpanel::order.action.download_order_pdf.notification')
+                    __('payflowpanel::order.action.download_order_pdf.notification')
                 )->success()->send();
 
                 return response()->streamDownload(function () use ($record) {

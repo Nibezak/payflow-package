@@ -1,11 +1,11 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\Base\ShippingModifier;
-use Lunar\Base\ShippingModifiers;
-use Lunar\Models\Cart;
-use Lunar\Models\Currency;
+use Payflow\Base\ShippingModifier;
+use Payflow\Base\ShippingModifiers;
+use Payflow\Models\Cart;
+use Payflow\Models\Currency;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Shipping\Factories;
+namespace Payflow\Shipping\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Lunar\Models\Product;
-use Lunar\Shipping\Models\ShippingExclusion;
+use Payflow\Models\Product;
+use Payflow\Shipping\Models\ShippingExclusion;
 
 class ShippingExclusionFactory extends Factory
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
-use Lunar\Models\Cart;
-use Lunar\Models\Channel;
-use Lunar\Models\Currency;
+use Payflow\Models\Cart;
+use Payflow\Models\Channel;
+use Payflow\Models\Currency;
 
 class CartFactory extends BaseFactory
 {

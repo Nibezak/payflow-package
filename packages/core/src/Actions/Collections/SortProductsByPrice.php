@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Actions\Collections;
+namespace Payflow\Actions\Collections;
 
 use Illuminate\Support\Collection;
-use Lunar\Models\Currency;
-use Lunar\Models\Product;
+use Payflow\Models\Currency;
+use Payflow\Models\Product;
 
 class SortProductsByPrice
 {

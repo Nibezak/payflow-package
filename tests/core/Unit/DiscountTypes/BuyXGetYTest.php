@@ -1,17 +1,17 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\DiscountTypes\AmountOff;
-use Lunar\DiscountTypes\BuyXGetY;
-use Lunar\Models\Cart;
-use Lunar\Models\Channel;
-use Lunar\Models\Currency;
-use Lunar\Models\CustomerGroup;
-use Lunar\Models\Discount;
-use Lunar\Models\Price;
-use Lunar\Models\Product;
-use Lunar\Models\ProductVariant;
+use Payflow\DiscountTypes\AmountOff;
+use Payflow\DiscountTypes\BuyXGetY;
+use Payflow\Models\Cart;
+use Payflow\Models\Channel;
+use Payflow\Models\Currency;
+use Payflow\Models\CustomerGroup;
+use Payflow\Models\Discount;
+use Payflow\Models\Price;
+use Payflow\Models\Product;
+use Payflow\Models\ProductVariant;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

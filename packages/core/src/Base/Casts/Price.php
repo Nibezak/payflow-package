@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Base\Casts;
+namespace Payflow\Base\Casts;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Support\Facades\Validator;
-use Lunar\DataTypes\Price as PriceDataType;
-use Lunar\Models\Currency;
+use Payflow\DataTypes\Price as PriceDataType;
+use Payflow\Models\Currency;
 
 class Price implements CastsAttributes
 {
@@ -16,7 +16,7 @@ class Price implements CastsAttributes
      * @param  string  $key
      * @param  mixed  $value
      * @param  array  $attributes
-     * @return \Lunar\DataTypes\Price
+     * @return \Payflow\DataTypes\Price
      */
     public function get($model, $key, $value, $attributes)
     {
@@ -47,7 +47,7 @@ class Price implements CastsAttributes
      *
      * @param  \Illuminate\Database\Eloquent\Model  $model
      * @param  string  $key
-     * @param  \Lunar\DataTypes\Price  $value
+     * @param  \Payflow\DataTypes\Price  $value
      * @param  array  $attributes
      * @return array
      */

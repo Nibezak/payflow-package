@@ -11,13 +11,13 @@ Create your own custom shipping provider:
 ```php
 namespace App\Modifiers;
 
-use Lunar\Base\ShippingModifier;
-use Lunar\DataTypes\Price;
-use Lunar\DataTypes\ShippingOption;
-use Lunar\Facades\ShippingManifest;
-use Lunar\Models\Cart;
-use Lunar\Models\Currency;
-use Lunar\Models\TaxClass;
+use Payflow\Base\ShippingModifier;
+use Payflow\DataTypes\Price;
+use Payflow\DataTypes\ShippingOption;
+use Payflow\Facades\ShippingManifest;
+use Payflow\Models\Cart;
+use Payflow\Models\Currency;
+use Payflow\Models\TaxClass;
 
 class CustomShippingModifier extends ShippingModifier
 {
@@ -75,7 +75,7 @@ class CustomShippingModifier extends ShippingModifier
 In your service provider:
 
 ```php
-public function boot(\Lunar\Base\ShippingModifiers $shippingModifiers)
+public function boot(\Payflow\Base\ShippingModifiers $shippingModifiers)
 {
     $shippingModifiers->add(
         CustomShippingModifier::class

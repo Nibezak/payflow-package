@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
-use Lunar\Base\ValueObjects\Cart\TaxBreakdown;
-use Lunar\Models\Channel;
-use Lunar\Models\Order;
+use Payflow\Base\ValueObjects\Cart\TaxBreakdown;
+use Payflow\Models\Channel;
+use Payflow\Models\Order;
 
 class OrderFactory extends BaseFactory
 {

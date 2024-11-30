@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Observers;
+namespace Payflow\Observers;
 
-use Lunar\Models\Address;
+use Payflow\Models\Address;
 
 class AddressObserver
 {

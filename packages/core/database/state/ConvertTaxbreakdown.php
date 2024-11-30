@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Database\State;
+namespace Payflow\Database\State;
 
 use Illuminate\Support\Facades\Schema;
-use Lunar\Facades\DB;
+use Payflow\Facades\DB;
 
 class ConvertTaxbreakdown
 {
@@ -14,8 +14,8 @@ class ConvertTaxbreakdown
 
     public function run()
     {
-        DB::usingConnection(config('lunar.database.connection') ?: DB::getDefaultConnection(), function () {
-            $prefix = config('lunar.database.table_prefix');
+        DB::usingConnection(config('payflow.database.connection') ?: DB::getDefaultConnection(), function () {
+            $prefix = config('payflow.database.table_prefix');
             $updateTime = now();
 
             if ($this->canRunOnOrders()) {
@@ -88,7 +88,7 @@ class ConvertTaxbreakdown
 
     protected function canRunOnTable(string $table)
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return Schema::hasTable("{$prefix}{$table}") && DB::table("{$prefix}{$table}")->count();
     }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
-use Lunar\Models\Language;
+use Payflow\Models\Language;
 
 class LanguageFactory extends BaseFactory
 {

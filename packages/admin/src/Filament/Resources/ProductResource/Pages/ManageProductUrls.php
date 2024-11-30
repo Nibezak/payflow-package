@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ProductResource\Pages;
 
-use Lunar\Admin\Filament\Resources\ProductResource;
-use Lunar\Admin\Support\Resources\Pages\ManageUrlsRelatedRecords;
-use Lunar\Models\Product;
+use Payflow\Admin\Filament\Resources\ProductResource;
+use Payflow\Admin\Support\Resources\Pages\ManageUrlsRelatedRecords;
+use Payflow\Models\Product;
 
 class ManageProductUrls extends ManageUrlsRelatedRecords
 {

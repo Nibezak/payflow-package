@@ -1,11 +1,11 @@
 <?php
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('resource.product');
 
 it('can create product', function () {
-    \Lunar\Models\Attribute::factory()->create([
-        'type' => \Lunar\FieldTypes\TranslatedText::class,
+    \Payflow\Models\Attribute::factory()->create([
+        'type' => \Payflow\FieldTypes\TranslatedText::class,
         'attribute_type' => 'product',
         'handle' => 'name',
         'name' => [
@@ -15,22 +15,22 @@ it('can create product', function () {
             'en' => 'Description',
         ],
     ]);
-    \Lunar\Models\TaxClass::factory()->create([
+    \Payflow\Models\TaxClass::factory()->create([
         'default' => true,
     ]);
-    \Lunar\Models\Currency::factory()->create([
+    \Payflow\Models\Currency::factory()->create([
         'default' => true,
         'decimal_places' => 2,
     ]);
-    $language = \Lunar\Models\Language::factory()->create([
+    $language = \Payflow\Models\Language::factory()->create([
         'default' => true,
     ]);
 
-    $productType = \Lunar\Models\ProductType::factory()->create();
+    $productType = \Payflow\Models\ProductType::factory()->create();
 
     $this->asStaff();
 
-    \Livewire\Livewire::test(\Lunar\Admin\Filament\Resources\ProductResource\Pages\ListProducts::class)
+    \Livewire\Livewire::test(\Payflow\Admin\Filament\Resources\ProductResource\Pages\ListProducts::class)
         ->callAction('create', data: [
             'name' => [$language->code => 'Foo Bar'],
             'base_price' => 10.99,
@@ -38,12 +38,12 @@ it('can create product', function () {
             'product_type_id' => $productType->id,
         ])->assertHasNoActionErrors();
 
-    \Pest\Laravel\assertDatabaseHas((new \Lunar\Models\Product)->getTable(), [
+    \Pest\Laravel\assertDatabaseHas((new \Payflow\Models\Product)->getTable(), [
         'product_type_id' => $productType->id,
         'status' => 'draft',
         'attribute_data' => json_encode([
             'name' => [
-                'field_type' => \Lunar\FieldTypes\TranslatedText::class,
+                'field_type' => \Payflow\FieldTypes\TranslatedText::class,
                 'value' => [
                     $language->code => 'Foo Bar',
                 ],
@@ -51,11 +51,11 @@ it('can create product', function () {
         ]),
     ]);
 
-    $this->assertDatabaseHas((new \Lunar\Models\ProductVariant)->getTable(), [
+    $this->assertDatabaseHas((new \Payflow\Models\ProductVariant)->getTable(), [
         'sku' => 'ABCABCAB',
     ]);
 
-    $this->assertDatabaseHas((new \Lunar\Models\Price)->getTable(), [
+    $this->assertDatabaseHas((new \Payflow\Models\Price)->getTable(), [
         'price' => '1099',
     ]);
 });

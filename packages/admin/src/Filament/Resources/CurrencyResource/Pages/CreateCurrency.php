@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\CurrencyResource\Pages;
+namespace Payflow\Admin\Filament\Resources\CurrencyResource\Pages;
 
-use Lunar\Admin\Filament\Resources\CurrencyResource;
-use Lunar\Admin\Support\Pages\BaseCreateRecord;
+use Payflow\Admin\Filament\Resources\CurrencyResource;
+use Payflow\Admin\Support\Pages\BaseCreateRecord;
 
 class CreateCurrency extends BaseCreateRecord
 {

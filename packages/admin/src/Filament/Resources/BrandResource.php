@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources;
+namespace Payflow\Admin\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Forms\Components\Component;
@@ -12,10 +12,10 @@ use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Filament\Resources\BrandResource\Pages;
-use Lunar\Admin\Support\Forms\Components\Attributes;
-use Lunar\Admin\Support\Resources\BaseResource;
-use Lunar\Models\Contracts\Brand;
+use Payflow\Admin\Filament\Resources\BrandResource\Pages;
+use Payflow\Admin\Support\Forms\Components\Attributes;
+use Payflow\Admin\Support\Resources\BaseResource;
+use Payflow\Models\Contracts\Brand;
 
 class BrandResource extends BaseResource
 {
@@ -31,22 +31,22 @@ class BrandResource extends BaseResource
 
     public static function getLabel(): string
     {
-        return __('lunarpanel::brand.label');
+        return __('payflowpanel::brand.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('lunarpanel::brand.plural_label');
+        return __('payflowpanel::brand.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::brands');
+        return FilamentIcon::resolve('payflow::brands');
     }
 
     public static function getNavigationGroup(): ?string
     {
-        return __('lunarpanel::global.sections.catalog');
+        return __('payflowpanel::global.sections.catalog');
     }
 
     public static function getDefaultSubNavigation(): array
@@ -83,7 +83,7 @@ class BrandResource extends BaseResource
     protected static function getNameFormComponent(): Component
     {
         return Forms\Components\TextInput::make('name')
-            ->label(__('lunarpanel::brand.form.name.label'))
+            ->label(__('payflowpanel::brand.form.name.label'))
             ->required()
             ->maxLength(255)
             ->autofocus();
@@ -115,19 +115,19 @@ class BrandResource extends BaseResource
     {
         return [
             SpatieMediaLibraryImageColumn::make('thumbnail')
-                ->collection(config('lunar.media.collection'))
+                ->collection(config('payflow.media.collection'))
                 ->conversion('small')
                 ->limit(1)
                 ->square()
                 ->label(''),
             Tables\Columns\TextColumn::make('name')
-                ->label(__('lunarpanel::brand.table.name.label')),
+                ->label(__('payflowpanel::brand.table.name.label')),
             Tables\Columns\TextColumn::make('products_count')
                 ->counts('products')
                 ->formatStateUsing(
                     fn ($state) => number_format($state, 0)
                 )
-                ->label(__('lunarpanel::brand.table.products_count.label')),
+                ->label(__('payflowpanel::brand.table.products_count.label')),
         ];
     }
 

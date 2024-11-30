@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Actions\Carts;
+namespace Payflow\Actions\Carts;
 
-use Lunar\Actions\AbstractAction;
-use Lunar\DataTypes\ShippingOption;
-use Lunar\Models\Cart;
-use Lunar\Models\CartLine;
+use Payflow\Actions\AbstractAction;
+use Payflow\DataTypes\ShippingOption;
+use Payflow\Models\Cart;
+use Payflow\Models\CartLine;
 
 class SetShippingOption extends AbstractAction
 {

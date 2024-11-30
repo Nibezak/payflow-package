@@ -1,13 +1,13 @@
 <?php
 
-namespace Lunar\DiscountTypes;
+namespace Payflow\DiscountTypes;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Collection;
-use Lunar\Base\DiscountTypeInterface;
-use Lunar\Base\ValueObjects\Cart\DiscountBreakdown;
-use Lunar\Models\Cart;
-use Lunar\Models\Discount;
+use Payflow\Base\DiscountTypeInterface;
+use Payflow\Base\ValueObjects\Cart\DiscountBreakdown;
+use Payflow\Models\Cart;
+use Payflow\Models\Discount;
 
 abstract class AbstractDiscountType implements DiscountTypeInterface
 {
@@ -82,7 +82,7 @@ abstract class AbstractDiscountType implements DiscountTypeInterface
     /**
      * Check if discount's conditions met.
      *
-     * @param  Lunar\Base\ValueObjects\Cart\DiscountBreakdown  $breakdown
+     * @param  Payflow\Base\ValueObjects\Cart\DiscountBreakdown  $breakdown
      * @return self
      */
     protected function addDiscountBreakdown(Cart $cart, DiscountBreakdown $breakdown)

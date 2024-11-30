@@ -1,15 +1,15 @@
 <?php
 
 use Livewire\Livewire;
-use Lunar\Admin\Filament\Resources\StaffResource;
-use Lunar\Admin\Filament\Resources\StaffResource\Pages\AccessControl;
-use Lunar\Admin\Filament\Resources\StaffResource\Pages\ListStaff;
-use Lunar\Admin\Support\DataTransferObjects\Permission;
-use Lunar\Admin\Support\Facades\LunarAccessControl;
-use Lunar\Admin\Support\Facades\LunarPanel;
+use Payflow\Admin\Filament\Resources\StaffResource;
+use Payflow\Admin\Filament\Resources\StaffResource\Pages\AccessControl;
+use Payflow\Admin\Filament\Resources\StaffResource\Pages\ListStaff;
+use Payflow\Admin\Support\DataTransferObjects\Permission;
+use Payflow\Admin\Support\Facades\PayflowAccessControl;
+use Payflow\Admin\Support\Facades\PayflowPanel;
 use Spatie\Permission\Models\Role;
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('resource.staff');
 
 beforeEach(fn () => $this->asStaff(admin: true));
@@ -23,9 +23,9 @@ it('can render acl page', function () {
 });
 
 it('can add role', function () {
-    $guard = LunarPanel::getPanel()->getAuthGuard();
+    $guard = PayflowPanel::getPanel()->getAuthGuard();
 
-    $roles = LunarAccessControl::getRolesWithoutAdmin();
+    $roles = PayflowAccessControl::getRolesWithoutAdmin();
 
     Livewire::test(AccessControl::class)
         ->assertSee($roles->first()->transLabel)
@@ -42,7 +42,7 @@ it('can add role', function () {
 });
 
 it('can delete role', function () {
-    $guard = LunarPanel::getPanel()->getAuthGuard();
+    $guard = PayflowPanel::getPanel()->getAuthGuard();
 
     $roleData = [
         'name' => 'role_one',
@@ -65,14 +65,14 @@ it('can delete role', function () {
 });
 
 it('can set permission to role', function () {
-    $guard = LunarPanel::getPanel()->getAuthGuard();
+    $guard = PayflowPanel::getPanel()->getAuthGuard();
 
-    $roles = LunarAccessControl::getRolesWithoutAdmin();
+    $roles = PayflowAccessControl::getRolesWithoutAdmin();
 
     $role = $roles->first();
     $roleModel = Role::findByName($role->handle);
 
-    $permissions = LunarAccessControl::getGroupedPermissions();
+    $permissions = PayflowAccessControl::getGroupedPermissions();
     /** @var Permission $perm */
     $perm = $permissions->first(fn (Permission $perm) => $perm->children->count());
 

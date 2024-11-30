@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -119,13 +119,13 @@ class ModelManifest implements ModelManifestInterface
         $shortName = $class->getShortName();
         $namespace = $class->getNamespaceName();
 
-        $lunarContract = collect(
+        $payflowContract = collect(
             $class->getInterfaceNames()
         )->first(
-            fn ($contract) => str_contains("Lunar\\Models\\Contracts\\{$shortName}", $contract)
+            fn ($contract) => str_contains("Payflow\\Models\\Contracts\\{$shortName}", $contract)
         );
 
-        return $lunarContract ?: "{$namespace}\\Contracts\\$shortName";
+        return $payflowContract ?: "{$namespace}\\Contracts\\$shortName";
     }
 
     public function guessModelClass(string $modelContract): string
@@ -140,14 +140,14 @@ class ModelManifest implements ModelManifestInterface
 
         $shortName = (new \ReflectionClass($modelContract))->getShortName();
 
-        return 'Lunar\\Models\\'.$shortName;
+        return 'Payflow\\Models\\'.$shortName;
     }
 
-    public function isLunarModel(string|BaseModel $model): bool
+    public function isPayflowModel(string|BaseModel $model): bool
     {
         $class = (new \ReflectionClass($model));
 
-        return $class->getNamespaceName() == 'Lunar\\Models';
+        return $class->getNamespaceName() == 'Payflow\\Models';
     }
 
     public function morphMap(): void
@@ -168,7 +168,7 @@ class ModelManifest implements ModelManifestInterface
 
     public function getMorphMapKey($className): string
     {
-        $prefix = config('lunar.database.morph_prefix', null);
+        $prefix = config('payflow.database.morph_prefix', null);
         $key = \Illuminate\Support\Str::snake(class_basename($className));
 
         return "{$prefix}{$key}";

@@ -1,17 +1,17 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources;
+namespace Payflow\Admin\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Forms\Components\Component;
 use Filament\Support\Facades\FilamentIcon;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Lunar\Admin\Filament\Clusters\Taxes;
-use Lunar\Admin\Filament\Resources\TaxRateResource\Pages;
-use Lunar\Admin\Filament\Resources\TaxRateResource\RelationManagers\TaxRateAmountRelationManager;
-use Lunar\Admin\Support\Resources\BaseResource;
-use Lunar\Models\TaxRate;
+use Payflow\Admin\Filament\Clusters\Taxes;
+use Payflow\Admin\Filament\Resources\TaxRateResource\Pages;
+use Payflow\Admin\Filament\Resources\TaxRateResource\RelationManagers\TaxRateAmountRelationManager;
+use Payflow\Admin\Support\Resources\BaseResource;
+use Payflow\Models\TaxRate;
 
 class TaxRateResource extends BaseResource
 {
@@ -25,17 +25,17 @@ class TaxRateResource extends BaseResource
 
     public static function getLabel(): string
     {
-        return __('lunarpanel::taxrate.label');
+        return __('payflowpanel::taxrate.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('lunarpanel::taxrate.plural_label');
+        return __('payflowpanel::taxrate.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::tax');
+        return FilamentIcon::resolve('payflow::tax');
     }
 
     protected static function getMainFormComponents(): array
@@ -52,7 +52,7 @@ class TaxRateResource extends BaseResource
     public static function getNameFormComponent(): Component
     {
         return Forms\Components\TextInput::make('name')
-            ->label(__('lunarpanel::taxrate.form.name.label'))
+            ->label(__('payflowpanel::taxrate.form.name.label'))
             ->unique(column: 'name', ignoreRecord: true)
             ->required()
             ->maxLength(255)
@@ -62,7 +62,7 @@ class TaxRateResource extends BaseResource
     public static function getPriorityFormComponent(): Component
     {
         return Forms\Components\TextInput::make('priority')
-            ->label(__('lunarpanel::taxrate.form.priority.label'))
+            ->label(__('payflowpanel::taxrate.form.priority.label'))
             ->required()
             ->numeric()
             ->maxLength(255)
@@ -73,7 +73,7 @@ class TaxRateResource extends BaseResource
     {
         return Forms\Components\Select::make('tax_zone_id')
             ->relationship(name: 'taxZone', titleAttribute: 'name')
-            ->label(__('lunarpanel::taxrate.form.tax_zone_id.label'))
+            ->label(__('payflowpanel::taxrate.form.tax_zone_id.label'))
             ->live()
             ->required();
     }
@@ -100,9 +100,9 @@ class TaxRateResource extends BaseResource
         return [
             Tables\Columns\TextColumn::make('name'),
             Tables\Columns\TextColumn::make('taxZone.name')
-                ->label(__('lunarpanel::taxrate.table.tax_zone.label')),
+                ->label(__('payflowpanel::taxrate.table.tax_zone.label')),
             Tables\Columns\TextColumn::make('priority')
-                ->label(__('lunarpanel::taxrate.table.priority.label')),
+                ->label(__('payflowpanel::taxrate.table.priority.label')),
         ];
     }
 

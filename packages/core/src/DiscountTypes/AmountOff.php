@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\DiscountTypes;
+namespace Payflow\DiscountTypes;
 
-use Lunar\Base\ValueObjects\Cart\DiscountBreakdown;
-use Lunar\Base\ValueObjects\Cart\DiscountBreakdownLine;
-use Lunar\DataTypes\Price;
-use Lunar\Models\Cart;
-use Lunar\Models\Collection;
+use Payflow\Base\ValueObjects\Cart\DiscountBreakdown;
+use Payflow\Base\ValueObjects\Cart\DiscountBreakdownLine;
+use Payflow\DataTypes\Price;
+use Payflow\Models\Cart;
+use Payflow\Models\Collection;
 
 class AmountOff extends AbstractDiscountType
 {

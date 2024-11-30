@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
 use Closure;
-use Lunar\Models\Cart;
+use Payflow\Models\Cart;
 
 abstract class ShippingModifier
 {

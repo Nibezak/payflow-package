@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Admin\Support\Synthesizers;
+namespace Payflow\Admin\Support\Synthesizers;
 
-use Lunar\FieldTypes\Text;
-use Lunar\FieldTypes\TranslatedText;
-use Lunar\Models\Language;
+use Payflow\FieldTypes\Text;
+use Payflow\FieldTypes\TranslatedText;
+use Payflow\Models\Language;
 
 class TranslatedTextSynth extends AbstractFieldSynth
 {
-    public static $key = 'lunar_translatedtext_field';
+    public static $key = 'payflow_translatedtext_field';
 
     protected static $targetClass = TranslatedText::class;
 

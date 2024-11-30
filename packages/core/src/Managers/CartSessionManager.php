@@ -1,17 +1,17 @@
 <?php
 
-namespace Lunar\Managers;
+namespace Payflow\Managers;
 
 use Illuminate\Auth\AuthManager;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Session\SessionManager;
 use Illuminate\Support\Collection;
-use Lunar\Base\CartSessionInterface;
-use Lunar\Facades\ShippingManifest;
-use Lunar\Models\Cart;
-use Lunar\Models\Channel;
-use Lunar\Models\Currency;
-use Lunar\Models\Order;
+use Payflow\Base\CartSessionInterface;
+use Payflow\Facades\ShippingManifest;
+use Payflow\Models\Cart;
+use Payflow\Models\Channel;
+use Payflow\Models\Currency;
+use Payflow\Models\Order;
 
 class CartSessionManager implements CartSessionInterface
 {
@@ -27,7 +27,7 @@ class CartSessionManager implements CartSessionInterface
 
     public function allowsMultipleOrdersPerCart(): bool
     {
-        return config('lunar.cart_session.allow_multiple_per_order', false);
+        return config('payflow.cart_session.allow_multiple_per_order', false);
     }
 
     /**
@@ -36,7 +36,7 @@ class CartSessionManager implements CartSessionInterface
     public function current(bool $estimateShipping = false, bool $calculate = true): ?Cart
     {
         return $this->fetchOrCreate(
-            config('lunar.cart_session.auto_create', false),
+            config('payflow.cart_session.auto_create', false),
             estimateShipping: $estimateShipping,
             calculate: $calculate,
         );
@@ -137,7 +137,7 @@ class CartSessionManager implements CartSessionInterface
         }
 
         $cart = $this->cart?->exists ? $this->cart : Cart::with(
-            config('lunar.cart.eager_load', [])
+            config('payflow.cart.eager_load', [])
         )->find($cartId);
 
         if (! $cart) {
@@ -182,7 +182,7 @@ class CartSessionManager implements CartSessionInterface
      */
     public function getSessionKey(): string
     {
-        return config('lunar.cart_session.session_key');
+        return config('payflow.cart_session.session_key');
     }
 
     /**

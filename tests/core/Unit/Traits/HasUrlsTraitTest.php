@@ -1,14 +1,14 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
-use Lunar\FieldTypes\Text;
-use Lunar\Generators\UrlGenerator;
-use Lunar\Models\Language;
-use Lunar\Models\Product;
-use Lunar\Models\Url;
+use Payflow\FieldTypes\Text;
+use Payflow\Generators\UrlGenerator;
+use Payflow\Models\Language;
+use Payflow\Models\Product;
+use Payflow\Models\Url;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -28,7 +28,7 @@ function can_generate_urls()
 {
     Language::factory()->create(['default' => true]);
 
-    Config::set('lunar.urls.generator', UrlGenerator::class);
+    Config::set('payflow.urls.generator', UrlGenerator::class);
 
     $product = Product::factory()->create();
 
@@ -44,7 +44,7 @@ function can_generate_urls()
 test('generates unique urls', function () {
     Language::factory()->create(['default' => true]);
 
-    Config::set('lunar.urls.generator', UrlGenerator::class);
+    Config::set('payflow.urls.generator', UrlGenerator::class);
 
     $product1 = Product::factory()->create([
         'attribute_data' => collect([

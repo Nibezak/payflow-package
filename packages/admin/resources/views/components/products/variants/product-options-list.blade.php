@@ -38,7 +38,7 @@
         <div>
             <div>
               <x-filament-forms::field-wrapper.label class="ml-7">
-                {{ __('lunarpanel::components.product-options-list.name.label') }}
+                {{ __('payflowpanel::components.product-options-list.name.label') }}
               </x-filament-forms::field-wrapper.label>
               <div class="flex w-full space-x-2 mt-1 items-start">
                 <div
@@ -49,7 +49,7 @@
                   ])
                   @if(!$item['readonly'] || $context == 'options') x-sortable-option-handle @endif
                 >
-                  <x-filament::icon alias="lunar::reorder" class="w-5 h-5" />
+                  <x-filament::icon alias="payflow::reorder" class="w-5 h-5" />
                 </div>
                 <div class="grow">
                   <x-filament::input.wrapper :valid="!$errors->has($statePath.'.'.$itemIndex.'.value')">
@@ -66,8 +66,8 @@
                   >
                     {{ __(
                         !$item['readonly'] ?
-                            'lunarpanel::components.product-options-list.delete-option.label' :
-                            'lunarpanel::components.product-options-list.remove-shared-option.label'
+                            'payflowpanel::components.product-options-list.delete-option.label' :
+                            'payflowpanel::components.product-options-list.remove-shared-option.label'
                     ) }}
                   </button>
                 </div>
@@ -76,10 +76,10 @@
         </div>
         <div class="space-y-1">
           <x-filament-forms::field-wrapper.label>
-            {{ __('lunarpanel::components.product-options-list.values.label') }}
+            {{ __('payflowpanel::components.product-options-list.values.label') }}
           </x-filament-forms::field-wrapper.label>
           <div wire:key="option_values_{{ $itemIndex }}">
-            <x-lunarpanel::products.variants.product-option-list-values
+            <x-payflowpanel::products.variants.product-option-list-values
               :items="$item['option_values']"
               :key="$itemIndex"
               state-path="configuredOptions.{{ $itemIndex }}.option_values"
@@ -93,6 +93,6 @@
   @endforeach
 
   <x-filament::button color="gray" size="sm" type="button" wire:click.prevent="addRestrictedOption">
-    {{ __('lunarpanel::components.product-options-list.add-option.label') }}
+    {{ __('payflowpanel::components.product-options-list.add-option.label') }}
   </x-filament::button>
 </div>

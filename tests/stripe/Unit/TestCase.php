@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Tests\Stripe\Unit;
+namespace Payflow\Tests\Stripe\Unit;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Lunar\Tests\Stripe\TestCase as BaseTestCase;
+use Payflow\Tests\Stripe\TestCase as BaseTestCase;
 
 class TestCase extends BaseTestCase
 {

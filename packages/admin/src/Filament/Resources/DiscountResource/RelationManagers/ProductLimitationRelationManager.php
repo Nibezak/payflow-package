@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\DiscountResource\RelationManagers;
+namespace Payflow\Admin\Filament\Resources\DiscountResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Support\RelationManagers\BaseRelationManager;
-use Lunar\Facades\ModelManifest;
-use Lunar\Models\Product;
+use Payflow\Admin\Support\RelationManagers\BaseRelationManager;
+use Payflow\Facades\ModelManifest;
+use Payflow\Models\Product;
 
 class ProductLimitationRelationManager extends BaseRelationManager
 {
@@ -25,10 +25,10 @@ class ProductLimitationRelationManager extends BaseRelationManager
     {
         return $table
             ->heading(
-                __('lunarpanel::discount.relationmanagers.products.title')
+                __('payflowpanel::discount.relationmanagers.products.title')
             )
             ->description(
-                __('lunarpanel::discount.relationmanagers.products.description')
+                __('payflowpanel::discount.relationmanagers.products.description')
             )
             ->paginated(false)
             ->modifyQueryUsing(
@@ -53,7 +53,7 @@ class ProductLimitationRelationManager extends BaseRelationManager
                                 }),
                         ]),
                 ])->label(
-                    __('lunarpanel::discount.relationmanagers.products.actions.attach.label')
+                    __('payflowpanel::discount.relationmanagers.products.actions.attach.label')
                 )->mutateFormDataUsing(function (array $data) {
                     $data['type'] = 'limitation';
 
@@ -61,14 +61,14 @@ class ProductLimitationRelationManager extends BaseRelationManager
                 }),
             ])->columns([
                 Tables\Columns\SpatieMediaLibraryImageColumn::make('purchasable.thumbnail')
-                    ->collection(config('lunar.media.collection'))
+                    ->collection(config('payflow.media.collection'))
                     ->conversion('small')
                     ->limit(1)
                     ->square()
                     ->label(''),
                 Tables\Columns\TextColumn::make('purchasable.attribute_data.name')
                     ->label(
-                        __('lunarpanel::discount.relationmanagers.products.table.name.label')
+                        __('payflowpanel::discount.relationmanagers.products.table.name.label')
                     )
                     ->formatStateUsing(
                         fn (Model $record) => $record->purchasable->attr('name')

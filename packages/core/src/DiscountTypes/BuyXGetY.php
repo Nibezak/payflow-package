@@ -1,15 +1,15 @@
 <?php
 
-namespace Lunar\DiscountTypes;
+namespace Payflow\DiscountTypes;
 
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Collection;
-use Lunar\Base\ValueObjects\Cart\DiscountBreakdown;
-use Lunar\Base\ValueObjects\Cart\DiscountBreakdownLine;
-use Lunar\DataTypes\Price;
-use Lunar\Models\Cart;
-use Lunar\Models\CartLine;
-use Lunar\Models\Product;
+use Payflow\Base\ValueObjects\Cart\DiscountBreakdown;
+use Payflow\Base\ValueObjects\Cart\DiscountBreakdownLine;
+use Payflow\DataTypes\Price;
+use Payflow\Models\Cart;
+use Payflow\Models\CartLine;
+use Payflow\Models\Product;
 
 class BuyXGetY extends AbstractDiscountType
 {
@@ -211,7 +211,7 @@ class BuyXGetY extends AbstractDiscountType
                     $rewardLine = app(Pipeline::class)
                         ->send($rewardLine)
                         ->through(
-                            config('lunar.cart.pipelines.cart_lines', [])
+                            config('payflow.cart.pipelines.cart_lines', [])
                         )->thenReturn(function ($cartLine) {
                             $cartLine->cacheProperties();
 

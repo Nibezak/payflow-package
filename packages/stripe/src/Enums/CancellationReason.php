@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Stripe\Enums;
+namespace Payflow\Stripe\Enums;
 
 enum CancellationReason: string
 {

@@ -3,7 +3,7 @@
 ## Overview
 
 Products are generally what you will be selling in your store. You define all your attributes against the product and
-products can also have variations. In Lunar a product will always have at least one variation. From a UX point of view,
+products can also have variations. In Payflow a product will always have at least one variation. From a UX point of view,
 it will just look like you're editing a single product, but behind the scenes you'll be editing one variant.
 
 Products also belong to a `ProductType` and aside from the attributes, which you are free to define yourself, will have
@@ -12,7 +12,7 @@ a base SKU and a brand name.
 ## Creating a product
 
 ```php
-Lunar\Models\Product::create([
+Payflow\Models\Product::create([
     'product_type_id' => $productTypeId,
     'status' => 'published',
     'brand_id' => $brandId,
@@ -51,9 +51,9 @@ either take a single customer group (or customer group id) or a collection/array
 
 ```php
 // Can be an array of ids
-$products = \Lunar\Models\Product::customerGroup(1)->paginate(50);
+$products = \Payflow\Models\Product::customerGroup(1)->paginate(50);
 
-$products = \Lunar\Models\Product::customerGroup([
+$products = \Payflow\Models\Product::customerGroup([
     $groupA,
     $groupB,
 ])->paginate(50);
@@ -68,7 +68,7 @@ Assigns the appropriate attributes for the product type.
 ### Creating a product type
 
 ```php
-Lunar\Models\ProductType::create([
+Payflow\Models\ProductType::create([
     'name' => 'Boots',
 ]);
 ```
@@ -137,7 +137,7 @@ products within your own inventory.
 Depending on your storefront needs, you might not need any of these fields to be required or unique. For this reason you
 can change this behaviour at a validation level.
 
-`config/lunar-hub/products.php`
+`config/payflow-hub/products.php`
 
 ```php
     'sku' => [
@@ -174,7 +174,7 @@ Product options and Product option values are defined at a system level and are 
 ### Creating a `ProductOption`
 
 ```php
-$option = Lunar\Models\ProductOption::create([
+$option = Payflow\Models\ProductOption::create([
     'name' => [
         'en' => 'Colour',
         'fr' => 'Couleur',
@@ -189,7 +189,7 @@ $option = Lunar\Models\ProductOption::create([
 We can then create values for this option:
 
 ```php
-// Lunar\Models\ProductOptionValue
+// Payflow\Models\ProductOptionValue
 $option->values()->createMany([
     [
         'name' => [
@@ -210,7 +210,7 @@ This Product option and it's values are now ready to be used to with Product Var
 
 # Product Shipping
 
-By default Lunar will mark all product variants as `shippable`. If you don't need to ship a certain variant then you can
+By default Payflow will mark all product variants as `shippable`. If you don't need to ship a certain variant then you can
 simply set this to false.
 
 ```php
@@ -243,7 +243,7 @@ width_unit
 
 ### Configuring measurements
 
-You can configure the available UOM's in the `lunar/shipping.php` config file. Here is an example of what Lunar provides
+You can configure the available UOM's in the `payflow/shipping.php` config file. Here is an example of what Payflow provides
 by default:
 
 **Length**
@@ -325,7 +325,7 @@ permutations.
 Variants are also responsible for storing data such as Pricing, Inventory/Stock information, Shipping information etc.
 For that reason a product will always have at least one variant.
 
-When you decide you want to offer more than one variant for a product, upon generation, Lunar will take the first
+When you decide you want to offer more than one variant for a product, upon generation, Payflow will take the first
 variant and use that as a base for all other variants in terms of pricing, inventory etc. So you won't lose any data you
 may have already saved against the existing product.
 
@@ -369,7 +369,7 @@ Product::status('published')->get();
 Then we need to create our base option and it's values.
 
 ```php
-$option = \Lunar\Models\ProductOption::create([
+$option = \Payflow\Models\ProductOption::create([
     'name' => [
         'en' => 'Colour',
     ];
@@ -445,8 +445,8 @@ front end.
 | `priceable_id`      | This is the id of the related model which owns the price                             | `null`  | yes      |
 
 ```php
-$priceable = \Lunar\Models\ProductVariant::create([/** ... */]);
-$price = \Lunar\Models\Price::create([
+$priceable = \Payflow\Models\ProductVariant::create([/** ... */]);
+$price = \Payflow\Models\Price::create([
     'price' => 199,
     'compare_price' => 299,
     'currency_id' => 1,
@@ -472,8 +472,8 @@ currency in the system. In order to add pricing to a variant, you can either cre
 relationship method.
 
 ```php
-$priceable = \Lunar\Models\ProductVariant::create([/** ... */]);
-\Lunar\Models\Price::create([
+$priceable = \Payflow\Models\ProductVariant::create([/** ... */]);
+\Payflow\Models\Price::create([
     'price' => 199,
     'compare_price' => 299,
     'currency_id' => 1,
@@ -497,7 +497,7 @@ groups and also different price quantity breaks per customer group.
 ### Price Break Pricing
 
 Price Break pricing is a concept in which when you buy in bulk, the cost per item will change (usually go down). With Pricing
-on Lunar, this is determined by the `min_quantity` column when creating prices. For example:
+on Payflow, this is determined by the `min_quantity` column when creating prices. For example:
 
 ```php
 Price::create([
@@ -530,25 +530,25 @@ To get the pricing for a product you can simply use the following helpers:
 A quantity of 1 is implied when not passed.
 
 ```php
-$pricing = \Lunar\Facades\Pricing::for($variant)->get();
+$pricing = \Payflow\Facades\Pricing::for($variant)->get();
 ```
 
 #### With Quantities
 
 ```php
-$pricing = \Lunar\Facades\Pricing::qty(5)->for($variant)->get();
+$pricing = \Payflow\Facades\Pricing::qty(5)->for($variant)->get();
 ```
 
 #### With Customer Groups
 
-If you don't pass in a customer group, Lunar will use the default, including any pricing that isn't specific to a
+If you don't pass in a customer group, Payflow will use the default, including any pricing that isn't specific to a
 customer group.
 
 ```php
-$pricing = \Lunar\Facades\Pricing::customerGroups($groups)->for($variant)->get();
+$pricing = \Payflow\Facades\Pricing::customerGroups($groups)->for($variant)->get();
 
 // Or a single customer group
-$pricing = \Lunar\Facades\Pricing::customerGroup($group)->for($variant)->get();
+$pricing = \Payflow\Facades\Pricing::customerGroup($group)->for($variant)->get();
 ```
 
 #### Specific to a user
@@ -558,13 +558,13 @@ The PricingManager assumes you want the price for the current authenticated user
 If you want to always return the guest price, you may use...
 
 ```php
-$pricing = \Lunar\Facades\Pricing::guest()->for($variant)->get();
+$pricing = \Payflow\Facades\Pricing::guest()->for($variant)->get();
 ```
 
 Or to specify a different user...
 
 ```php
-$pricing = \Lunar\Facades\Pricing::user($user)->for($variant)->get();
+$pricing = \Payflow\Facades\Pricing::user($user)->for($variant)->get();
 ```
 
 #### With a specific currency
@@ -572,7 +572,7 @@ $pricing = \Lunar\Facades\Pricing::user($user)->for($variant)->get();
 If you don't pass in a currency, the default is implied.
 
 ```php
-$pricing = \Lunar\Facades\Pricing::currency($currency)->for($variant)->get();
+$pricing = \Payflow\Facades\Pricing::currency($currency)->for($variant)->get();
 ```
 
 #### For a model
@@ -585,14 +585,14 @@ $pricing = $variant->pricing()->qty(5)->get();
 ```
 
 ::: danger Be aware
-If you try and fetch a price for a currency that doesn't exist, a ` Lunar\Exceptions\MissingCurrencyPriceException`
+If you try and fetch a price for a currency that doesn't exist, a ` Payflow\Exceptions\MissingCurrencyPriceException`
 exception will be thrown.
 :::
 
 ---
 
 This will return a `PricingResponse` object which you can interact with to display the correct prices. Unless it's a
-collection, each property will return a `Lunar\Models\Price` object.
+collection, each property will return a `Payflow\Models\Price` object.
 
 ```php
 /**
@@ -627,16 +627,16 @@ This will return a collection of `Price` models.
 
 ### Storing Prices Inclusive of Tax
 
-Lunar allows you to store pricing inclusive of tax if you need to. This is helpful if you need to show charm pricing, at
+Payflow allows you to store pricing inclusive of tax if you need to. This is helpful if you need to show charm pricing, at
 $9.99 for example, which may not be possible if pricing is stored exclusive of tax due to rounding.
 
-To start you will need to set the `stored_inclusive_of_tax` config value in `lunar/pricing` to `true`. Then you will
+To start you will need to set the `stored_inclusive_of_tax` config value in `payflow/pricing` to `true`. Then you will
 need to ensure your default Tax Zone is set up correctly with the correct tax rates.
 
 Once set, the cart will automatically calculate the tax for you.
 
 If you need to show both ex. and inc. tax pricing on your product pages, you can use the following methods which are
-available on the `Lunar\Models\Price` model.
+available on the `Payflow\Models\Price` model.
 
 ```php
 $price->priceIncTax();
@@ -645,7 +645,7 @@ $price->priceExTax();
 
 ### Customising Prices with Pipelines
 
-All pipelines are defined in `config/lunar/pricing.php`
+All pipelines are defined in `config/payflow/pricing.php`
 
 ```php
 'pipelines' => [
@@ -661,7 +661,7 @@ You can add your own pipelines to the configuration, they might look something l
 namespace App\Pipelines\Pricing;
 
 use Closure;
-use Lunar\Base\PricingManagerInterface;
+use Payflow\Base\PricingManagerInterface;
 
 class CustomPricingPipeline
 {
@@ -705,7 +705,7 @@ Here are the steps we're going to take:
 ### Set up the product type.
 
 ```php
-$productType = Lunar\Models\ProductType::create([
+$productType = Payflow\Models\ProductType::create([
     'name' => 'Boots',
 ]);
 ```
@@ -718,7 +718,7 @@ type.
 ### Create the initial product
 
 ```php
-Lunar\Models\Product::create([
+Payflow\Models\Product::create([
     'product_type_id' => $productType->id,
     'status' => 'published',
     'brand_id' => $brandId,
@@ -737,7 +737,7 @@ Lunar\Models\Product::create([
 Based on the example above we're going to need 2 options, Size and Colour.
 
 ```php
-$colour = Lunar\Models\ProductOption::create([
+$colour = Payflow\Models\ProductOption::create([
     'name' => [
         'en' => 'Colour',
     ],
@@ -746,7 +746,7 @@ $colour = Lunar\Models\ProductOption::create([
     ],
 ]);
 
-$size = Lunar\Models\ProductOption::create([
+$size = Payflow\Models\ProductOption::create([
     'name' => [
         'en' => 'Size',
     ],
@@ -807,7 +807,7 @@ everything, we just grab all of them.
 ```php
 $optionValueIds = $size->values->merge($colour->values)->pluck('id');
 
-\Lunar\Hub\Jobs\Products\GenerateVariants::dispatch($product, $optionValueIds);
+\Payflow\Hub\Jobs\Products\GenerateVariants::dispatch($product, $optionValueIds);
 ```
 
 ::: tip

@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\CurrencyResource\Pages;
+namespace Payflow\Admin\Filament\Resources\CurrencyResource\Pages;
 
 use Filament\Actions;
-use Lunar\Admin\Filament\Resources\CurrencyResource;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Admin\Filament\Resources\CurrencyResource;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
 
 class EditCurrency extends BaseEditRecord
 {

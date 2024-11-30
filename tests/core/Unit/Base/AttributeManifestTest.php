@@ -1,13 +1,13 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
 use Illuminate\Support\Collection;
-use Lunar\Base\AttributeManifest;
-use Lunar\Base\AttributeManifestInterface;
-use Lunar\FieldTypes\TranslatedText;
-use Lunar\Models\Attribute;
-use Lunar\Models\Channel;
+use Payflow\Base\AttributeManifest;
+use Payflow\Base\AttributeManifestInterface;
+use Payflow\FieldTypes\TranslatedText;
+use Payflow\Models\Attribute;
+use Payflow\Models\Channel;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

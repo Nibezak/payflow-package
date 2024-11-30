@@ -1,10 +1,10 @@
 <div class="grid gap-1">
-    <span>{{ __('lunarpanel::components.activity-log.partials.tags.updated') }}</span>
+    <span>{{ __('payflowpanel::components.activity-log.partials.tags.updated') }}</span>
 
     @if(filled($added))
         <div class="flex items-center gap-2">
             <span class="text-xs font-normal">
-                {{ __('lunarpanel::components.activity-log.partials.tags.added') }}
+                {{ __('payflowpanel::components.activity-log.partials.tags.added') }}
             </span>
             
             <div class="flex gap-1">
@@ -20,7 +20,7 @@
     @if(filled($removed))
         <div class="flex items-center gap-2">
             <span class="text-xs font-normal">
-                {{ __('lunarpanel::components.activity-log.partials.tags.removed') }}
+                {{ __('payflowpanel::components.activity-log.partials.tags.removed') }}
             </span>
             
             <div class="flex gap-1">

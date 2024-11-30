@@ -2,13 +2,13 @@
 
 ## Introduction
 
-If you want to get up and running quickly to review Lunar, this section is for you.
+If you want to get up and running quickly to review Payflow, this section is for you.
 
 ## Livewire Starter Kit
 
-Lunar provides a starter kit as a reference to help you build your own custom e-commerce app. The starter kit is built using Laravel Livewire (as is our admin hub). You can quickly see how to load products, collections, use the cart and checkout.
+Payflow provides a starter kit as a reference to help you build your own custom e-commerce app. The starter kit is built using Laravel Livewire (as is our admin hub). You can quickly see how to load products, collections, use the cart and checkout.
 
-If you would prefer to install Lunar into your own Laravel application, please follow the [installation instructions](/core/installation).
+If you would prefer to install Payflow into your own Laravel application, please follow the [installation instructions](/core/installation).
 
 ## Requirements
 
@@ -22,13 +22,13 @@ If you would prefer to install Lunar into your own Laravel application, please f
 ## Installation
 
 ::: tip
-We assume you have a suitable local development environment in which to run Lunar. We would highly suggest [Laravel Herd](https://herd.laravel.com) for this purpose.
+We assume you have a suitable local development environment in which to run Payflow. We would highly suggest [Laravel Herd](https://herd.laravel.com) for this purpose.
 :::
 
 ### Create a New Project
 
 ```bash
-composer create-project --stability dev lunarphp/livewire-starter-kit example-store
+composer create-project --stability dev payflowphp/livewire-starter-kit example-store
 
 cd example-store
 ```
@@ -45,10 +45,10 @@ All the relevant configuration files should be present in the repo.
 
 ### Migrate and Seed
 
-Install Lunar
+Install Payflow
 
 ```bash
-php artisan lunar:install
+php artisan payflow:install
 ```
 
 Seed the demo data.
@@ -68,6 +68,6 @@ php artisan storage:link
 You are now installed!
 
 - You can access the storefront at `http://<yoursite>`
-- You can access the admin hub at `http://<yoursite>/lunar`
+- You can access the admin hub at `http://<yoursite>/payflow`
 
-You can review the source code at the GitHub Repository: [https://github.com/lunarphp/livewire-starter-kit](https://github.com/lunarphp/livewire-starter-kit).
+You can review the source code at the GitHub Repository: [https://github.com/payflowphp/livewire-starter-kit](https://github.com/payflowphp/livewire-starter-kit).

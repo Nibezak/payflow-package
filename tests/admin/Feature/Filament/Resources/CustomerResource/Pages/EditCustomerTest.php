@@ -1,11 +1,11 @@
 <?php
 
 use Livewire\Livewire;
-use Lunar\Admin\Filament\Resources\CustomerResource;
-use Lunar\Admin\Filament\Resources\CustomerResource\Pages\EditCustomer;
-use Lunar\Models\Customer;
+use Payflow\Admin\Filament\Resources\CustomerResource;
+use Payflow\Admin\Filament\Resources\CustomerResource\Pages\EditCustomer;
+use Payflow\Models\Customer;
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('resource.customer');
 
 it('can render customer edit page', function () {

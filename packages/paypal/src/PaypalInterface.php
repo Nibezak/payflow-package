@@ -1,5 +1,5 @@
 <?php
 
-namespace Lunar\Paypal;
+namespace Payflow\Paypal;
 
 interface PaypalInterface {}

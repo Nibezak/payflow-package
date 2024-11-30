@@ -1,12 +1,12 @@
 # Staff Members
 
 Your staff members are essentially users who can log in to the admin panel and have permissions assigned to them. Staff 
-members are not to be confused with users in the `users` table, the Lunar uses a different table for authenticating 
+members are not to be confused with users in the `users` table, the Payflow uses a different table for authenticating 
 users in the admin panel. This is a design choice to ensure that your customers can never accidentally be given access.
 
 # Roles and permissions
 
-In Lunar panel, we are utilizing roles and permission for authorization. This give you the ability to assign multiple 
+In Payflow panel, we are utilizing roles and permission for authorization. This give you the ability to assign multiple 
 permissions to a role and assign it to the staff without assigning permission one by one to the staff. 
 
 ::: tip
@@ -14,7 +14,7 @@ The admin panel is using `spatie/laravel-permission` package
 :::
 
 ### Roles
-Out of the box Lunar provided `admin` and `staff` roles. You can create new role using our Access Control page in Staff 
+Out of the box Payflow provided `admin` and `staff` roles. You can create new role using our Access Control page in Staff 
 menu.
 After installation, the panel will have one admin. You can assign more but non admins cannot assign other admins.
 
@@ -29,11 +29,11 @@ to have.
 ##### Adding permissions
 While the panel provided a page to create role and assign permissions. It's deliberated that permission are not created 
 from the panel as the authorization are required to be implemented in code. It might change in the future but the 
-recommended way to create roles and permission would be Lunar migration state or Laravel's migration. So you can deploy 
+recommended way to create roles and permission would be Payflow migration state or Laravel's migration. So you can deploy 
 it to other environment easily.
 
 ## Authorisation
-First party permission provided by Lunar are used to authorise repective section of the panel. You should still 
+First party permission provided by Payflow are used to authorise repective section of the panel. You should still 
 implement authorisation checking respectively for your new permissions and custom pages.
 
 Example:

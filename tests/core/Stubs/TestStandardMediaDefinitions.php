@@ -1,7 +1,7 @@
 <?php
 
-namespace Lunar\Tests\Core\Stubs;
+namespace Payflow\Tests\Core\Stubs;
 
-use Lunar\Base\StandardMediaDefinitions;
+use Payflow\Base\StandardMediaDefinitions;
 
 class TestStandardMediaDefinitions extends StandardMediaDefinitions {}

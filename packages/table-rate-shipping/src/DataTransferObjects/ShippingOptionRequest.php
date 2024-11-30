@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Shipping\DataTransferObjects;
+namespace Payflow\Shipping\DataTransferObjects;
 
-use Lunar\Models\Cart;
-use Lunar\Shipping\Models\ShippingRate;
+use Payflow\Models\Cart;
+use Payflow\Shipping\Models\ShippingRate;
 
 class ShippingOptionRequest
 {

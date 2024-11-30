@@ -1,14 +1,14 @@
 ---
-title: "Lunar Documentation"
-description: "Learn to create your next online store in Laravel with Lunar E-Commerce."
+title: "Payflow Documentation"
+description: "Learn to create your next online store in Laravel with Payflow E-Commerce."
 
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
 hero:
   name: "Documentation"
-  text: "Lunar Headless E‑Commerce"
-  tagline: Explore our guides and examples to integrate Lunar into your Laravel application.
+  text: "Payflow Headless E‑Commerce"
+  tagline: Explore our guides and examples to integrate Payflow into your Laravel application.
   actions:
     - theme: brand
       text: Get Started

@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Traits\HasMedia as TraitsHasMedia;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Traits\HasMedia as TraitsHasMedia;
 use Spatie\MediaLibrary\HasMedia;
 
 /**

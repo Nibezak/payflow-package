@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Paypal\Http\Controllers;
+namespace Payflow\Paypal\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use Lunar\Facades\CartSession;
-use Lunar\Paypal\Facades\Paypal;
+use Payflow\Facades\CartSession;
+use Payflow\Paypal\Facades\Paypal;
 
 class GetPaypalOrderController extends Controller
 {

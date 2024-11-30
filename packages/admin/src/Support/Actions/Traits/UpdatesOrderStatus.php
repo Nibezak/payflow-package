@@ -1,20 +1,20 @@
 <?php
 
-namespace Lunar\Admin\Support\Actions\Traits;
+namespace Payflow\Admin\Support\Actions\Traits;
 
 use Filament\Forms;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Lunar\Models\Order;
+use Payflow\Models\Order;
 
 trait UpdatesOrderStatus
 {
     protected static function getAdditionalContentInput(): Forms\Components\Textarea
     {
         return Forms\Components\Textarea::make('additional_content')
-            ->label(__('lunarpanel::order.action.update_status.additional_content.label'))
+            ->label(__('payflowpanel::order.action.update_status.additional_content.label'))
             ->hidden(function (Forms\Get $get) {
                 return ! count(
                     static::getMailers($get('status'))
@@ -25,9 +25,9 @@ trait UpdatesOrderStatus
     protected static function getStatusSelectInput(): Forms\Components\Select
     {
         return Forms\Components\Select::make('status')
-            ->label(__('lunarpanel::order.action.update_status.new_status.label'))
+            ->label(__('payflowpanel::order.action.update_status.new_status.label'))
             ->default(fn ($record) => $record?->status)
-            ->options(fn () => collect(config('lunar.orders.statuses', []))
+            ->options(fn () => collect(config('payflow.orders.statuses', []))
                 ->mapWithKeys(fn ($data, $status) => [$status => $data['label']]))
             ->required()
             ->live();
@@ -66,8 +66,8 @@ trait UpdatesOrderStatus
     protected static function getAdditionalEmailInput(): Forms\Components\TextInput
     {
         return Forms\Components\TextInput::make('additional_email')
-            ->label(__('lunarpanel::order.action.update_status.additional_email_recipient.label'))
-            ->placeholder(__('lunarpanel::order.action.update_status.additional_email_recipient.placeholder'))
+            ->label(__('payflowpanel::order.action.update_status.additional_email_recipient.label'))
+            ->placeholder(__('payflowpanel::order.action.update_status.additional_email_recipient.placeholder'))
             ->hidden(function (Forms\Get $get) {
                 return ! count(
                     static::getMailers($get('status'))
@@ -78,7 +78,7 @@ trait UpdatesOrderStatus
     protected static function getMailersCheckboxInput(): Forms\Components\CheckboxList
     {
         return Forms\Components\CheckboxList::make('mailers')->options(function (Forms\Get $get) {
-            $mailers = config('lunar.orders.statuses.'.$get('status').'.mailers', []);
+            $mailers = config('payflow.orders.statuses.'.$get('status').'.mailers', []);
 
             return collect($mailers)->mapWithKeys(function ($mailer) {
                 return [
@@ -126,7 +126,7 @@ trait UpdatesOrderStatus
 
         if (isset($data['send_notifications']) && ! $data['send_notifications']) {
             Notification::make()->title(
-                __('lunarpanel::actions.orders.update_status.notification.label')
+                __('payflowpanel::actions.orders.update_status.notification.label')
             )->success()->send();
 
             return;
@@ -164,7 +164,7 @@ trait UpdatesOrderStatus
         }
 
         Notification::make()->title(
-            __('lunarpanel::actions.orders.update_status.notification.label')
+            __('payflowpanel::actions.orders.update_status.notification.label')
         )->success()->send();
     }
 
@@ -174,6 +174,6 @@ trait UpdatesOrderStatus
             return [];
         }
 
-        return config("lunar.orders.statuses.{$status}.mailers", []);
+        return config("payflow.orders.statuses.{$status}.mailers", []);
     }
 }

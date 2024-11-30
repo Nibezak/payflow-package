@@ -8,7 +8,7 @@ Carts are a central part of any E-Commerce storefront. We have designed Carts to
 
 ### Adding a Cart Pipeline
 
-All pipelines are defined in `config/lunar/cart.php`
+All pipelines are defined in `config/payflow/cart.php`
 
 ```php
 'pipelines' => [
@@ -18,9 +18,9 @@ All pipelines are defined in `config/lunar/cart.php`
      |--------------------------------------------------------------------------
      */
     'cart' => [
-        \Lunar\Pipelines\Cart\CalculateLines::class,
-        \Lunar\Pipelines\Cart\ApplyShipping::class,
-        \Lunar\Pipelines\Cart\Calculate::class,
+        \Payflow\Pipelines\Cart\CalculateLines::class,
+        \Payflow\Pipelines\Cart\ApplyShipping::class,
+        \Payflow\Pipelines\Cart\Calculate::class,
     ],
     /*
      |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ All pipelines are defined in `config/lunar/cart.php`
      |--------------------------------------------------------------------------
      */
     'cart_lines' => [
-        \Lunar\Pipelines\CartLine\GetUnitPrice::class,
+        \Payflow\Pipelines\CartLine\GetUnitPrice::class,
     ],
 ],
 ```
@@ -41,8 +41,8 @@ You can add your own pipelines to the configuration, they might look something l
 namespace App\Pipelines\Cart;
 
 use Closure;
-use Lunar\DataTypes\Price;
-use Lunar\Models\Cart;
+use Payflow\DataTypes\Price;
+use Payflow\Models\Cart;
 
 class CustomCartPipeline
 {
@@ -73,9 +73,9 @@ Pipelines will run from top to bottom
 
 ## Actions
 
-During the lifecycle of a Cart, various actions are taken. While generally what Lunar provides will be fine for most storefronts, there are times where you may want something done slightly differently. For this reason we have made all actions configurable, so you can swap them out as you see fit.
+During the lifecycle of a Cart, various actions are taken. While generally what Payflow provides will be fine for most storefronts, there are times where you may want something done slightly differently. For this reason we have made all actions configurable, so you can swap them out as you see fit.
 
-Actions are defined in `config/lunar/carts` and if you need to replace an action, check the class of the action you want to change to see what it is expecting.
+Actions are defined in `config/payflow/carts` and if you need to replace an action, check the class of the action you want to change to see what it is expecting.
 
 ## Action validation
 
@@ -87,7 +87,7 @@ You may wish to provide some validation against actions before they run. Your ow
 
 namespace App\Validation\CartLine;
 
-use Lunar\Validation\BaseValidator;
+use Payflow\Validation\BaseValidator;
 
 class CartLineQuantity extends BaseValidator
 {
@@ -111,7 +111,7 @@ class CartLineQuantity extends BaseValidator
 
 ```
 
-You can then register this class against the corresponding action in `config/lunar/cart.php`:
+You can then register this class against the corresponding action in `config/payflow/cart.php`:
 
 ```php
 'validators' => [
@@ -123,7 +123,7 @@ You can then register this class against the corresponding action in `config/lun
 ],
 ```
 
-If validation fails, a `Lunar\Exceptions\CartException` will be thrown. You will be able to access errors like you can on Laravel's own validation responses.
+If validation fails, a `Payflow\Exceptions\CartException` will be thrown. You will be able to access errors like you can on Laravel's own validation responses.
 
 ```php
 try {

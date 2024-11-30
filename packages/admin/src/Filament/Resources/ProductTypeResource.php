@@ -1,17 +1,17 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources;
+namespace Payflow\Admin\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Forms\Components\Component;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Lunar\Admin\Filament\Resources\ProductTypeResource\Pages;
-use Lunar\Admin\Support\Forms\Components\AttributeSelector;
-use Lunar\Admin\Support\Resources\BaseResource;
-use Lunar\Models\Contracts\ProductType;
-use Lunar\Models\Product;
-use Lunar\Models\ProductVariant;
+use Payflow\Admin\Filament\Resources\ProductTypeResource\Pages;
+use Payflow\Admin\Support\Forms\Components\AttributeSelector;
+use Payflow\Admin\Support\Resources\BaseResource;
+use Payflow\Models\Contracts\ProductType;
+use Payflow\Models\Product;
+use Payflow\Models\ProductVariant;
 
 class ProductTypeResource extends BaseResource
 {
@@ -25,22 +25,22 @@ class ProductTypeResource extends BaseResource
 
     public static function getLabel(): string
     {
-        return __('lunarpanel::producttype.label');
+        return __('payflowpanel::producttype.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('lunarpanel::producttype.plural_label');
+        return __('payflowpanel::producttype.plural_label');
     }
 
     public static function getNavigationParentItem(): ?string
     {
-        return __('lunarpanel::product.plural_label');
+        return __('payflowpanel::product.plural_label');
     }
 
     public static function getNavigationGroup(): ?string
     {
-        return __('lunarpanel::global.sections.catalog');
+        return __('payflowpanel::global.sections.catalog');
     }
 
     public static function getDefaultForm(Forms\Form $form): Forms\Form
@@ -51,7 +51,7 @@ class ProductTypeResource extends BaseResource
                     static::getMainFormComponents()
                 ),
                 Forms\Components\Tabs::make('Attributes')->tabs([
-                    Forms\Components\Tabs\Tab::make(__('lunarpanel::producttype.tabs.product_attributes.label'))
+                    Forms\Components\Tabs\Tab::make(__('payflowpanel::producttype.tabs.product_attributes.label'))
                         ->schema([
                             AttributeSelector::make('mappedAttributes')
                                 ->withType(Product::morphName())
@@ -59,7 +59,7 @@ class ProductTypeResource extends BaseResource
                                 ->label('')
                                 ->columnSpan(2),
                         ]),
-                    Forms\Components\Tabs\Tab::make(__('lunarpanel::producttype.tabs.variant_attributes.label'))
+                    Forms\Components\Tabs\Tab::make(__('payflowpanel::producttype.tabs.variant_attributes.label'))
                         ->schema([
                             AttributeSelector::make('mappedAttributes')
                                 ->withType(ProductVariant::morphName())
@@ -67,7 +67,7 @@ class ProductTypeResource extends BaseResource
                                 ->label('')
                                 ->columnSpan(2),
                         ])->visible(
-                            config('lunar.panel.enable_variants', true)
+                            config('payflow.panel.enable_variants', true)
                         ),
 
                 ])->columnSpan(2),
@@ -84,7 +84,7 @@ class ProductTypeResource extends BaseResource
     protected static function getNameFormComponent(): Component
     {
         return Forms\Components\TextInput::make('name')
-            ->label(__('lunarpanel::producttype.form.name.label'))
+            ->label(__('payflowpanel::producttype.form.name.label'))
             ->required()
             ->maxLength(255)
             ->autofocus();
@@ -111,27 +111,27 @@ class ProductTypeResource extends BaseResource
     {
         return [
             Tables\Columns\TextColumn::make('name')
-                ->label(__('lunarpanel::producttype.table.name.label')),
+                ->label(__('payflowpanel::producttype.table.name.label')),
             Tables\Columns\TextColumn::make('products_count')
                 ->counts('products')
                 ->formatStateUsing(
                     fn ($state) => number_format($state, 0)
                 )
-                ->label(__('lunarpanel::producttype.table.products_count.label')),
+                ->label(__('payflowpanel::producttype.table.products_count.label')),
             Tables\Columns\TextColumn::make('product_attributes_count')
                 ->counts('productAttributes')
                 ->formatStateUsing(
                     fn ($state) => number_format($state, 0)
                 )
-                ->label(__('lunarpanel::producttype.table.product_attributes_count.label')),
+                ->label(__('payflowpanel::producttype.table.product_attributes_count.label')),
             Tables\Columns\TextColumn::make('variant_attributes_count')
                 ->counts('variantAttributes')
                 ->formatStateUsing(
                     fn ($state) => number_format($state, 0)
                 )
-                ->label(__('lunarpanel::producttype.table.variant_attributes_count.label'))
+                ->label(__('payflowpanel::producttype.table.variant_attributes_count.label'))
                 ->visible(
-                    config('lunar.panel.enable_variants', true)
+                    config('payflow.panel.enable_variants', true)
                 ),
         ];
     }

@@ -1,8 +1,8 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 use Illuminate\Support\Facades\Http;
-use Lunar\Models\Country;
+use Payflow\Models\Country;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -63,9 +63,9 @@ test('can import address data', function () {
         ], 200);
     });
 
-    $this->artisan('lunar:import:address-data');
+    $this->artisan('payflow:import:address-data');
 
-    $this->assertDatabaseHas('lunar_countries', [
+    $this->assertDatabaseHas('payflow_countries', [
         'name' => 'United Kingdom',
         'iso3' => 'GBR',
         'iso2' => 'GB',

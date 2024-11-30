@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Paypal;
+namespace Payflow\Paypal;
 
 use Illuminate\Support\ServiceProvider;
-use Lunar\Facades\Payments;
+use Payflow\Facades\Payments;
 
 class PaypalServiceProvider extends ServiceProvider
 {

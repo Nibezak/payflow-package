@@ -1,16 +1,16 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Lunar\Base\Addressable;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Traits\HasMacros;
-use Lunar\Base\Traits\HasPersonalDetails;
-use Lunar\Base\Traits\LogsActivity;
-use Lunar\Database\Factories\OrderAddressFactory;
+use Payflow\Base\Addressable;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Traits\HasMacros;
+use Payflow\Base\Traits\HasPersonalDetails;
+use Payflow\Base\Traits\LogsActivity;
+use Payflow\Database\Factories\OrderAddressFactory;
 
 /**
  * @property int $id

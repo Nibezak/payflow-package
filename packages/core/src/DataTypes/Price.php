@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\DataTypes;
+namespace Payflow\DataTypes;
 
-use Lunar\Exceptions\InvalidDataTypeValueException;
-use Lunar\Models\Currency;
-use Lunar\Pricing\DefaultPriceFormatter;
+use Payflow\Exceptions\InvalidDataTypeValueException;
+use Payflow\Models\Currency;
+use Payflow\Pricing\DefaultPriceFormatter;
 
 class Price
 {
@@ -51,7 +51,7 @@ class Price
     private function formatter()
     {
         return app(
-            config('lunar.pricing.formatter', DefaultPriceFormatter::class),
+            config('payflow.pricing.formatter', DefaultPriceFormatter::class),
             [
                 'value' => $this->value,
                 'currency' => $this->currency,

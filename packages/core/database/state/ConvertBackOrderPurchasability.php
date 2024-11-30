@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Database\State;
+namespace Payflow\Database\State;
 
 use Illuminate\Support\Facades\Schema;
-use Lunar\Facades\DB;
+use Payflow\Facades\DB;
 
 class ConvertBackOrderPurchasability
 {
@@ -14,8 +14,8 @@ class ConvertBackOrderPurchasability
 
     public function run()
     {
-        DB::usingConnection(config('lunar.database.connection') ?: DB::getDefaultConnection(), function () {
-            $prefix = config('lunar.database.table_prefix');
+        DB::usingConnection(config('payflow.database.connection') ?: DB::getDefaultConnection(), function () {
+            $prefix = config('payflow.database.table_prefix');
             if ($this->canRun() && $this->shouldRun()) {
                 DB::table("{$prefix}product_variants")->where([
                     'purchasable' => 'backorder',
@@ -28,14 +28,14 @@ class ConvertBackOrderPurchasability
 
     protected function canRun(): bool
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return Schema::hasTable("{$prefix}product_variants");
     }
 
     protected function shouldRun(): bool
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return (bool) DB::table("{$prefix}product_variants")->where([
             'purchasable' => 'backorder',

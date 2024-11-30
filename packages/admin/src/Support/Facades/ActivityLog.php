@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Facades;
+namespace Payflow\Admin\Support\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -13,6 +13,6 @@ class ActivityLog extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'lunar-activity-log';
+        return 'payflow-activity-log';
     }
 }

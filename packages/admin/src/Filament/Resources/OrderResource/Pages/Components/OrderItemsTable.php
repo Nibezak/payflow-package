@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\OrderResource\Pages\Components;
+namespace Payflow\Admin\Filament\Resources\OrderResource\Pages\Components;
 
 use Closure;
 use Filament\Forms;
@@ -12,10 +12,10 @@ use Filament\Tables\Table;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\HtmlString;
 use Livewire\Attributes\Computed;
-use Lunar\Admin\Livewire\Components\TableComponent;
-use Lunar\Admin\Support\Concerns\CallsHooks;
-use Lunar\Admin\Support\Tables\Components\KeyValue;
-use Lunar\Models\Transaction;
+use Payflow\Admin\Livewire\Components\TableComponent;
+use Payflow\Admin\Support\Concerns\CallsHooks;
+use Payflow\Admin\Support\Tables\Components\KeyValue;
+use Payflow\Models\Transaction;
 
 /**
  * @property \Illuminate\Support\Collection $charges
@@ -29,7 +29,7 @@ class OrderItemsTable extends TableComponent
 
     public static function getOrderLinesTableColumns(): array
     {
-        return self::callStaticLunarHook('extendOrderLinesTableColumns', [
+        return self::callStaticPayflowHook('extendOrderLinesTableColumns', [
             Tables\Columns\Layout\Split::make([
                 Tables\Columns\ImageColumn::make('image')
                     ->defaultImageUrl(fn () => 'data:image/svg+xml;base64, '.base64_encode(
@@ -63,7 +63,7 @@ class OrderItemsTable extends TableComponent
                 Tables\Columns\Layout\Stack::make([
                     Tables\Columns\TextColumn::make('stock')
                         ->getStateUsing(fn ($record) => $record->purchasable?->stock)
-                        ->formatStateUsing(fn ($state) => __('lunarpanel::order.infolist.current_stock_level.message', [
+                        ->formatStateUsing(fn ($state) => __('payflowpanel::order.infolist.current_stock_level.message', [
                             'count' => $state,
                         ]))
                         ->colors(fn () => [
@@ -71,12 +71,12 @@ class OrderItemsTable extends TableComponent
                             'success' => fn ($state) => $state >= 50,
                         ]),
                     Tables\Columns\TextColumn::make('meta.stock_level')
-                        ->formatStateUsing(fn ($state) => __('lunarpanel::order.infolist.purchase_stock_level.message', [
+                        ->formatStateUsing(fn ($state) => __('payflowpanel::order.infolist.purchase_stock_level.message', [
                             'count' => $state,
                         ]))
                         ->color(Color::Gray),
                     Tables\Columns\TextColumn::make('notes')
-                        ->description(new HtmlString('<b>'.__('lunarpanel::order.infolist.notes.label').'</b>'), 'above'),
+                        ->description(new HtmlString('<b>'.__('payflowpanel::order.infolist.notes.label').'</b>'), 'above'),
 
                     KeyValue::make('price_breakdowns')
                         ->getStateUsing(function ($record) {
@@ -116,18 +116,18 @@ class OrderItemsTable extends TableComponent
 
     public function table(Table $table): Table
     {
-        return self::callStaticLunarHook('extendTable', $this->getDefaultTable($table));
+        return self::callStaticPayflowHook('extendTable', $this->getDefaultTable($table));
     }
 
     protected function getBulkRefundAction(): BulkAction
     {
         return BulkAction::make('bulk_refund')
-            ->label(__('lunarpanel::order.action.refund_payment.label'))
-            ->modalSubmitActionLabel(__('lunarpanel::order.action.refund_payment.label'))
+            ->label(__('payflowpanel::order.action.refund_payment.label'))
+            ->modalSubmitActionLabel(__('payflowpanel::order.action.refund_payment.label'))
             ->icon('heroicon-o-backward')
             ->form(fn () => [
                 Forms\Components\Select::make('transaction')
-                    ->label(__('lunarpanel::order.form.transaction.label'))
+                    ->label(__('payflowpanel::order.form.transaction.label'))
                     ->required()
                     ->default(fn () => $this->charges->first()->id)
                     ->options(fn () => $this->charges
@@ -138,7 +138,7 @@ class OrderItemsTable extends TableComponent
 
                 Forms\Components\TextInput::make('amount')
                     ->required()
-                    ->label(__('lunarpanel::order.form.amount.label'))
+                    ->label(__('payflowpanel::order.form.amount.label'))
                     ->suffix(fn () => $this->record->currency->code)
                     ->default(fn () => number_format($this->record->lines()->whereIn('id', $this->selectedTableRecords)->get()->sum('total.value') / $this->record->currency->factor, $this->record->currency->decimal_places, '.', ''))
                     ->live()
@@ -148,17 +148,17 @@ class OrderItemsTable extends TableComponent
                     ->numeric(),
 
                 Forms\Components\Textarea::make('notes')
-                    ->label(__('lunarpanel::order.form.notes.label'))
+                    ->label(__('payflowpanel::order.form.notes.label'))
                     ->maxLength(255),
 
                 Forms\Components\Toggle::make('confirm')
-                    ->label(__('lunarpanel::order.form.confirm.label'))
-                    ->helperText(__('lunarpanel::order.form.confirm.hint.refund'))
+                    ->label(__('payflowpanel::order.form.confirm.label'))
+                    ->helperText(__('payflowpanel::order.form.confirm.hint.refund'))
                     ->rules([
                         function () {
                             return function (string $attribute, $value, Closure $fail) {
                                 if ($value !== true) {
-                                    $fail(__('lunarpanel::order.form.confirm.alert'));
+                                    $fail(__('payflowpanel::order.form.confirm.alert'));
                                 }
                             };
                         },
@@ -182,8 +182,8 @@ class OrderItemsTable extends TableComponent
                 $action->success();
             })
             ->deselectRecordsAfterCompletion()
-            ->successNotificationTitle(__('lunarpanel::order.action.refund_payment.notification.success'))
-            ->failureNotificationTitle(__('lunarpanel::order.action.refund_payment.notification.error'))
+            ->successNotificationTitle(__('payflowpanel::order.action.refund_payment.notification.success'))
+            ->failureNotificationTitle(__('payflowpanel::order.action.refund_payment.notification.error'))
             ->color('warning')
             ->visible($this->charges->count() && $this->canBeRefunded);
     }

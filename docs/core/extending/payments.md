@@ -2,8 +2,8 @@
 
 ## Overview
 
-Lunar provides an easy way for you to add your own payment drivers, by default, there is a basic `OfflinePayment` driver
-that ships with Lunar, additional providers should be added to your Storefront via addons.
+Payflow provides an easy way for you to add your own payment drivers, by default, there is a basic `OfflinePayment` driver
+that ships with Payflow, additional providers should be added to your Storefront via addons.
 
 Below is a list of available payment drivers.
 
@@ -11,7 +11,7 @@ Below is a list of available payment drivers.
 
 ### First party
 
-- [Stripe](https://github.com/lunarphp/stripe)
+- [Stripe](https://github.com/payflowphp/stripe)
 
 ### Community
 
@@ -27,7 +27,7 @@ A payment driver should take into account 2 fundamentals:
 ### Registering your driver
 
 ```php
-use Lunar\Facades\Payments;
+use Payflow\Facades\Payments;
 
 Payments::extend('custom', function ($app) {
     return $app->make(CustomPayment::class);
@@ -43,11 +43,11 @@ First, we'll show you the complete class and then break it down to see what's go
 
 namespace App\PaymentTypes;
 
-use Lunar\Base\DataTransferObjects\PaymentCapture;
-use Lunar\Base\DataTransferObjects\PaymentRefund;
-use Lunar\Base\DataTransferObjects\PaymentAuthorize;
-use Lunar\Events\PaymentAttemptEvent;
-use Lunar\Models\Transaction;
+use Payflow\Base\DataTransferObjects\PaymentCapture;
+use Payflow\Base\DataTransferObjects\PaymentRefund;
+use Payflow\Base\DataTransferObjects\PaymentAuthorize;
+use Payflow\Events\PaymentAttemptEvent;
+use Payflow\Models\Transaction;
 
 class CustomPayment extends AbstractPayment
 {
@@ -97,7 +97,7 @@ class CustomPayment extends AbstractPayment
 ```
 
 This is the most basic implementation of a driver, you can see we are extending an `AbstractPayment`. This is a class
-which is provided by Lunar and contains some useful helpers you can utilise in your own driver.
+which is provided by Payflow and contains some useful helpers you can utilise in your own driver.
 
 [See available methods](#abstract-class-methods)
 
@@ -190,7 +190,7 @@ public function setConfig(array $config): self
 ```
 
 Here you can set up any additional config for this payment driver. By default, this will be called when you register
-your payment driver and will take any values which are set in `config/lunar/payments.php` for that type.
+your payment driver and will take any values which are set in `config/payflow/payments.php` for that type.
 
 ## Creating transactions
 
@@ -200,7 +200,7 @@ scenarios.
 ### Database Schema
 
 ```
-Lunar\Models\Transaction
+Payflow\Models\Transaction
 ```
 
 | Field                 | Description                                     | Example                                                                                     |
@@ -227,7 +227,7 @@ Lunar\Models\Transaction
 #### Releasing
 
 When releasing a payment, if you're not charging the card straight away, you should create a transaction with
-type `intent`. This tells Lunar you intend to charge the card at a later date.
+type `intent`. This tells Payflow you intend to charge the card at a later date.
 
 ```php
 Transaction::create([

@@ -1,32 +1,32 @@
 <?php
 
-use Lunar\Admin\Filament\Resources\CollectionResource\Pages\ManageCollectionChildren;
+use Payflow\Admin\Filament\Resources\CollectionResource\Pages\ManageCollectionChildren;
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('resource.collection');
 
 it('can render the collection children page', function () {
-    \Lunar\Models\Language::factory()->create([
+    \Payflow\Models\Language::factory()->create([
         'default' => true,
     ]);
 
-    $record = \Lunar\Models\Collection::factory()->create();
+    $record = \Payflow\Models\Collection::factory()->create();
 
     $this->asStaff(admin: true)
-        ->get(\Lunar\Admin\Filament\Resources\CollectionResource::getUrl('children', [
+        ->get(\Payflow\Admin\Filament\Resources\CollectionResource::getUrl('children', [
             'record' => $record,
         ]))
         ->assertSuccessful();
 });
 
 it('can create child categories', function () {
-    $language = \Lunar\Models\Language::factory()->create([
+    $language = \Payflow\Models\Language::factory()->create([
         'default' => true,
     ]);
 
-    $record = \Lunar\Models\Collection::factory()->create();
+    $record = \Payflow\Models\Collection::factory()->create();
 
-    \Lunar\Models\Attribute::factory()->create([
+    \Payflow\Models\Attribute::factory()->create([
         'name' => [
             'en' => 'Name',
         ],
@@ -34,7 +34,7 @@ it('can create child categories', function () {
             'en' => 'Description',
         ],
         'handle' => 'name',
-        'type' => \Lunar\FieldTypes\TranslatedText::class,
+        'type' => \Payflow\FieldTypes\TranslatedText::class,
         'attribute_type' => 'collection',
     ]);
 

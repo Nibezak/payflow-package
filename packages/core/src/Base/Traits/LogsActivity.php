@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Base\Traits;
+namespace Payflow\Base\Traits;
 
 use Illuminate\Support\Arr;
 use Spatie\Activitylog\LogOptions;
@@ -18,7 +18,7 @@ trait LogsActivity
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->useLogName('lunar')
+            ->useLogName('payflow')
             ->logAll()
             ->logExcept(array_merge(['updated_at'], static::getActivitylogExcept()))
             ->logOnlyDirty()

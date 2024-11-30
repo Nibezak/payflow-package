@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Admin\Support\Actions\Collections;
+namespace Payflow\Admin\Support\Actions\Collections;
 
 use Filament\Actions\CreateAction;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Support\Actions\Traits\CreatesChildCollections;
-use Lunar\Admin\Support\Forms\Components\TranslatedText;
-use Lunar\Models\Attribute;
-use Lunar\Models\Collection;
+use Payflow\Admin\Support\Actions\Traits\CreatesChildCollections;
+use Payflow\Admin\Support\Forms\Components\TranslatedText;
+use Payflow\Models\Attribute;
+use Payflow\Models\Collection;
 
 class CreateChildCollection extends CreateAction
 {
@@ -31,7 +31,7 @@ class CreateChildCollection extends CreateAction
 
         $formInput = TextInput::class;
 
-        if ($attribute?->type == \Lunar\FieldTypes\TranslatedText::class) {
+        if ($attribute?->type == \Payflow\FieldTypes\TranslatedText::class) {
             $formInput = TranslatedText::class;
         }
 
@@ -40,13 +40,13 @@ class CreateChildCollection extends CreateAction
         ]);
 
         $this->label(
-            __('lunarpanel::actions.collections.create_child.label')
+            __('payflowpanel::actions.collections.create_child.label')
         );
 
         $this->createAnother(false);
 
         $this->modalHeading(
-            __('lunarpanel::actions.collections.create_child.label')
+            __('payflowpanel::actions.collections.create_child.label')
         );
     }
 }

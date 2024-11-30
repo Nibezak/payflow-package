@@ -1,18 +1,18 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\DataTypes\Price;
-use Lunar\DataTypes\ShippingOption;
-use Lunar\Facades\ShippingManifest;
-use Lunar\Models\Cart;
-use Lunar\Models\CartAddress;
-use Lunar\Models\Country;
-use Lunar\Models\Currency;
-use Lunar\Models\Price as PriceModel;
-use Lunar\Models\ProductVariant;
-use Lunar\Models\TaxClass;
-use Lunar\Models\TaxRateAmount;
+use Payflow\DataTypes\Price;
+use Payflow\DataTypes\ShippingOption;
+use Payflow\Facades\ShippingManifest;
+use Payflow\Models\Cart;
+use Payflow\Models\CartAddress;
+use Payflow\Models\Country;
+use Payflow\Models\Currency;
+use Payflow\Models\Price as PriceModel;
+use Payflow\Models\ProductVariant;
+use Payflow\Models\TaxClass;
+use Payflow\Models\TaxRateAmount;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

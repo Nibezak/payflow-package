@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources;
+namespace Payflow\Admin\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Forms\Components\Component;
@@ -9,13 +9,13 @@ use Filament\Support\Facades\FilamentIcon;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
-use Lunar\Admin\Filament\Resources\AttributeGroupResource\Pages;
-use Lunar\Admin\Filament\Resources\AttributeGroupResource\RelationManagers;
-use Lunar\Admin\Support\Resources\BaseResource;
-use Lunar\Admin\Support\Tables\Columns\TranslatedTextColumn;
-use Lunar\Facades\AttributeManifest;
-use Lunar\Models\Contracts\AttributeGroup;
-use Lunar\Models\Language;
+use Payflow\Admin\Filament\Resources\AttributeGroupResource\Pages;
+use Payflow\Admin\Filament\Resources\AttributeGroupResource\RelationManagers;
+use Payflow\Admin\Support\Resources\BaseResource;
+use Payflow\Admin\Support\Tables\Columns\TranslatedTextColumn;
+use Payflow\Facades\AttributeManifest;
+use Payflow\Models\Contracts\AttributeGroup;
+use Payflow\Models\Language;
 
 class AttributeGroupResource extends BaseResource
 {
@@ -27,22 +27,22 @@ class AttributeGroupResource extends BaseResource
 
     public static function getLabel(): string
     {
-        return __('lunarpanel::attributegroup.label');
+        return __('payflowpanel::attributegroup.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('lunarpanel::attributegroup.plural_label');
+        return __('payflowpanel::attributegroup.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::attributes');
+        return FilamentIcon::resolve('payflow::attributes');
     }
 
     public static function getNavigationGroup(): ?string
     {
-        return __('lunarpanel::global.sections.settings');
+        return __('payflowpanel::global.sections.settings');
     }
 
     public static function getDefaultForm(Form $form): Form
@@ -68,11 +68,11 @@ class AttributeGroupResource extends BaseResource
     protected static function getAttributableTypeFormComponent(): Component
     {
         return Forms\Components\Select::make('attributable_type')
-            ->label(__('lunarpanel::attributegroup.form.attributable_type.label'))
+            ->label(__('payflowpanel::attributegroup.form.attributable_type.label'))
             ->options(function () {
                 return AttributeManifest::getTypes()->mapWithKeys(
                     fn ($type) => [
-                        \Lunar\Facades\ModelManifest::getMorphMapKey($type) => class_basename($type),
+                        \Payflow\Facades\ModelManifest::getMorphMapKey($type) => class_basename($type),
                     ]
                 );
             })
@@ -82,8 +82,8 @@ class AttributeGroupResource extends BaseResource
 
     protected static function getNameFormComponent(): Component
     {
-        return \Lunar\Admin\Support\Forms\Components\TranslatedText::make('name')
-            ->label(__('lunarpanel::attributegroup.form.name.label'))
+        return \Payflow\Admin\Support\Forms\Components\TranslatedText::make('name')
+            ->label(__('payflowpanel::attributegroup.form.name.label'))
             ->required()
             ->maxLength(255)
             ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
@@ -99,7 +99,7 @@ class AttributeGroupResource extends BaseResource
     protected static function getHandleFormComponent(): Component
     {
         return Forms\Components\TextInput::make('handle')
-            ->label(__('lunarpanel::attributegroup.form.handle.label'))
+            ->label(__('payflowpanel::attributegroup.form.handle.label'))
             ->required()
             ->maxLength(255);
     }
@@ -107,7 +107,7 @@ class AttributeGroupResource extends BaseResource
     protected static function getPositionFormComponent(): Component
     {
         return Forms\Components\TextInput::make('position')
-            ->label(__('lunarpanel::attributegroup.form.position.label'))
+            ->label(__('payflowpanel::attributegroup.form.position.label'))
             ->numeric()
             ->minValue(1)
             ->maxValue(100)
@@ -119,13 +119,13 @@ class AttributeGroupResource extends BaseResource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('attributable_type')
-                    ->label(__('lunarpanel::attributegroup.table.attributable_type.label')),
+                    ->label(__('payflowpanel::attributegroup.table.attributable_type.label')),
                 TranslatedTextColumn::make('name')
-                    ->label(__('lunarpanel::attributegroup.table.name.label')),
+                    ->label(__('payflowpanel::attributegroup.table.name.label')),
                 Tables\Columns\TextColumn::make('handle')
-                    ->label(__('lunarpanel::attributegroup.table.handle.label')),
+                    ->label(__('payflowpanel::attributegroup.table.handle.label')),
                 Tables\Columns\TextColumn::make('position')
-                    ->label(__('lunarpanel::attributegroup.table.position.label'))
+                    ->label(__('payflowpanel::attributegroup.table.position.label'))
                     ->sortable(),
             ])
             ->filters([

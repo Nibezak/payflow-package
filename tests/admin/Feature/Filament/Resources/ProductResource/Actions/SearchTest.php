@@ -1,24 +1,24 @@
 <?php
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('resource.product.search');
 
 it('can search product by name on list', function () {
 
     $this->asStaff(admin: true);
 
-    \Lunar\Models\Language::factory()->create([
+    \Payflow\Models\Language::factory()->create([
         'default' => true,
     ]);
 
-    \Lunar\Models\Currency::factory()->create([
+    \Payflow\Models\Currency::factory()->create([
         'default' => true,
     ]);
 
-    $products = \Lunar\Models\Product::factory()->count(2)->create();
+    $products = \Payflow\Models\Product::factory()->count(2)->create();
 
     $products->each(function ($product) {
-        \Lunar\Models\ProductVariant::factory()->create([
+        \Payflow\Models\ProductVariant::factory()->create([
             'product_id' => $product->id,
         ]);
     });
@@ -29,7 +29,7 @@ it('can search product by name on list', function () {
         return $name == $item->translateAttribute('name');
     });
 
-    \Livewire\Livewire::test(Lunar\Admin\Filament\Resources\ProductResource\Pages\ListProducts::class)
+    \Livewire\Livewire::test(Payflow\Admin\Filament\Resources\ProductResource\Pages\ListProducts::class)
         ->searchTable($name)
         ->assertCanNotSeeTableRecords($products);
 });

@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
-use Lunar\Models\CustomerGroup;
-use Lunar\Models\TaxZone;
-use Lunar\Models\TaxZoneCustomerGroup;
+use Payflow\Models\CustomerGroup;
+use Payflow\Models\TaxZone;
+use Payflow\Models\TaxZoneCustomerGroup;
 
 class TaxZoneCustomerGroupFactory extends BaseFactory
 {

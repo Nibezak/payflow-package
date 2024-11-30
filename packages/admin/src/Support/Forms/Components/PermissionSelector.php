@@ -1,20 +1,20 @@
 <?php
 
-namespace Lunar\Admin\Support\Forms\Components;
+namespace Payflow\Admin\Support\Forms\Components;
 
 use Closure;
 use Exception;
 use Filament\Forms\Components\Field;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Collection;
-use Lunar\Admin\Models\Staff;
-use Lunar\Admin\Support\Facades\LunarAccessControl;
-use Lunar\Admin\Support\Facades\LunarPanel;
+use Payflow\Admin\Models\Staff;
+use Payflow\Admin\Support\Facades\PayflowAccessControl;
+use Payflow\Admin\Support\Facades\PayflowPanel;
 use Spatie\Permission\Models\Role;
 
 class PermissionSelector extends Field
 {
-    protected string $view = 'lunarpanel::forms.components.permission-selector';
+    protected string $view = 'payflowpanel::forms.components.permission-selector';
 
     public Closure $authorize;
 
@@ -43,12 +43,12 @@ class PermissionSelector extends Field
 
             $selectedRoles = $component->getRolesState();
 
-            $admins = LunarAccessControl::getAdmin()->intersect($selectedRoles);
+            $admins = PayflowAccessControl::getAdmin()->intersect($selectedRoles);
 
             $filteredRoles = collect($selectedRoles)->reject(fn ($r) => $admins->contains($r));
 
             foreach ($filteredRoles as $role) {
-                $roleModel = Role::findByName($role, LunarPanel::getPanel()->getAuthGuard());
+                $roleModel = Role::findByName($role, PayflowPanel::getPanel()->getAuthGuard());
                 $rolePerms = $roleModel->getAllPermissions();
 
                 foreach ($rolePerms as $perm) {
@@ -56,7 +56,7 @@ class PermissionSelector extends Field
                 }
             }
 
-            $groupedPermissions = LunarAccessControl::getGroupedPermissions();
+            $groupedPermissions = PayflowAccessControl::getGroupedPermissions();
 
             if ($admins->count()) {
                 $filtered = [];
@@ -96,24 +96,24 @@ class PermissionSelector extends Field
         $isUpdated = filled($state);
 
         if (is_null($state)) {
-            $state = LunarAccessControl::getPermissions()
+            $state = PayflowAccessControl::getPermissions()
                 ->mapWithKeys(fn ($p) => [$p->handle => false])->toArray();
         }
 
         $directPermissions = $this->getAuthorizeRecord()?->getDirectPermissions()?->pluck('name') ?? collect();
-        $groupedPermissions = LunarAccessControl::getGroupedPermissions();
+        $groupedPermissions = PayflowAccessControl::getGroupedPermissions();
 
         $rolesPermissions = [];
 
         $selectedRoles = $this->getRolesState();
 
-        $admins = LunarAccessControl::getAdmin()->intersect($selectedRoles);
+        $admins = PayflowAccessControl::getAdmin()->intersect($selectedRoles);
 
         $filteredRoles = collect($selectedRoles)->reject(fn ($r) => $admins->contains($r));
 
         // permissions from roles
         foreach ($filteredRoles as $role) {
-            $roleModel = Role::findByName($role, LunarPanel::getPanel()->getAuthGuard());
+            $roleModel = Role::findByName($role, PayflowPanel::getPanel()->getAuthGuard());
             $rolePerms = $roleModel->getAllPermissions();
 
             foreach ($rolePerms as $perm) {
@@ -178,7 +178,7 @@ class PermissionSelector extends Field
 
     public function getGroupedPermissions(): Collection
     {
-        return LunarAccessControl::getGroupedPermissions();
+        return PayflowAccessControl::getGroupedPermissions();
     }
 
     public function authorize(Closure $authorize): static
@@ -228,13 +228,13 @@ class PermissionSelector extends Field
     {
         $exclude = $this->getRolesState();
 
-        $roles = LunarAccessControl::getRolesWithoutAdmin()
+        $roles = PayflowAccessControl::getRolesWithoutAdmin()
             ->filter(fn ($role) => in_array($role->handle, $exclude));
 
         $permissions = [];
 
         foreach ($roles as $role) {
-            $roleModel = Role::findByName($role->handle, LunarPanel::getPanel()->getAuthGuard());
+            $roleModel = Role::findByName($role->handle, PayflowPanel::getPanel()->getAuthGuard());
 
             $rolePerms = $roleModel->getAllPermissions();
 

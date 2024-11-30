@@ -2,7 +2,7 @@
 
 ## Overview
 
-No one likes taxes! But we have to deal with them... Lunar provides manual tax rules to implement the correct sales tax for each order. For complex taxation (e.g. US States) we suggest integrating with a service such as [TaxJar](https://www.taxjar.com/).
+No one likes taxes! But we have to deal with them... Payflow provides manual tax rules to implement the correct sales tax for each order. For complex taxation (e.g. US States) we suggest integrating with a service such as [TaxJar](https://www.taxjar.com/).
 
 
 ## Tax Classes
@@ -10,7 +10,7 @@ No one likes taxes! But we have to deal with them... Lunar provides manual tax r
 Tax Classes are assigned to Products and allow us to classify products to certain taxable groups that may have differing tax rates.
 
 ```php
-Lunar\Models\TaxClass
+Payflow\Models\TaxClass
 ```
 
 |Field|Description|
@@ -31,7 +31,7 @@ $taxClass = TaxClass::create([
 These specify a geographic zone for tax rates to be applied. Tax Zones can be based upon countries, states or zip/post codes.
 
 ```php
-Lunar\Models\TaxZone
+Payflow\Models\TaxZone
 ```
 
 |Field| Description                         |
@@ -56,7 +56,7 @@ $taxZone = TaxZone::create([
 ```
 
 ```php
-Lunar\Models\TaxZoneCountry
+Payflow\Models\TaxZoneCountry
 ```
 
 |Field|Description|
@@ -70,12 +70,12 @@ Lunar\Models\TaxZoneCountry
 
 ```php
 $taxZone->countries()->create([
-    'country_id' => \Lunar\Models\Country::first()->id,
+    'country_id' => \Payflow\Models\Country::first()->id,
 ]);
 ```
 
 ```php
-Lunar\Models\TaxZoneState
+Payflow\Models\TaxZoneState
 ```
 
 |Field|Description|
@@ -88,12 +88,12 @@ Lunar\Models\TaxZoneState
 
 ```php
 $taxZone->states()->create([
-    'state_id' => \Lunar\Models\State::first()->id,
+    'state_id' => \Payflow\Models\State::first()->id,
 ]);
 ```
 
 ```php
-Lunar\Models\TaxZonePostcode
+Payflow\Models\TaxZonePostcode
 ```
 
 |Field|Description|
@@ -106,7 +106,7 @@ Lunar\Models\TaxZonePostcode
 |updated_at||
 
 ```php
-Lunar\Models\TaxZoneCustomerGroup
+Payflow\Models\TaxZoneCustomerGroup
 ```
 
 |Field|Description|
@@ -123,7 +123,7 @@ Lunar\Models\TaxZoneCustomerGroup
 Tax Zones have one or many tax rates. E.g. you might have a tax rate for the State and also the City, which would collectively make up the total tax amount.
 
 ```php
-Lunar\Models\TaxRate
+Payflow\Models\TaxRate
 ```
 
 |Field|Description|
@@ -135,7 +135,7 @@ Lunar\Models\TaxRate
 |updated_at||
 
 ```php
-Lunar\Models\TaxRateAmount
+Payflow\Models\TaxRateAmount
 ```
 
 |Field|Description|
@@ -157,5 +157,5 @@ Lunar\Models\TaxRateAmount
 
 Sometimes the standard tax calculations aren't enough, and you may want to implement your own logic, perhaps connecting to a Tax service such as TaxJar.
 
-Lunar allows you to implement your own tax driver, check the [Extending Lunar](/core/extending/taxation) section for more information.
+Payflow allows you to implement your own tax driver, check the [Extending Payflow](/core/extending/taxation) section for more information.
 

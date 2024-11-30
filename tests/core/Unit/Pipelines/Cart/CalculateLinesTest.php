@@ -1,12 +1,12 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\Models\Cart;
-use Lunar\Models\Currency;
-use Lunar\Models\Price;
-use Lunar\Models\ProductVariant;
-use Lunar\Pipelines\Cart\CalculateLines;
+use Payflow\Models\Cart;
+use Payflow\Models\Currency;
+use Payflow\Models\Price;
+use Payflow\Models\ProductVariant;
+use Payflow\Pipelines\Cart\CalculateLines;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

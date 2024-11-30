@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
-use Lunar\Models\TaxZone;
+use Payflow\Models\TaxZone;
 
 class TaxZoneFactory extends BaseFactory
 {

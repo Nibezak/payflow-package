@@ -1,14 +1,14 @@
-<p align="center"><a href="https://lunarphp.io/" target="_blank"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lunarphp/art/main/lunar-logo-dark.svg"><img alt="Lunar" width="200" src="https://raw.githubusercontent.com/lunarphp/art/main/lunar-logo.svg"></picture></a></p>
+<p align="center"><a href="https://payflowphp.io/" target="_blank"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/payflowphp/art/main/payflow-logo-dark.svg"><img alt="Payflow" width="200" src="https://raw.githubusercontent.com/payflowphp/art/main/payflow-logo.svg"></picture></a></p>
 
 > [!CAUTION]
 > Version 1.x is currently in beta release. We recommend this version for new projects, however, it is not feature-complete and therefore may not be deemed production-ready.
 
 
-[Lunar](https://lunarphp.io) is a set of Laravel packages that bring functionality akin to Shopify and other e-commerce platforms to 
+[Payflow](https://payflowphp.io) is a set of Laravel packages that bring functionality akin to Shopify and other e-commerce platforms to 
 Laravel. You have complete freedom to create your own storefront(s), but we've already done the hard work for you in 
 the backend.
 
-This repository serves as a monorepo for the main packages that make up Lunar.
+This repository serves as a monorepo for the main packages that make up Payflow.
 
 ## Requirements
 
@@ -18,18 +18,18 @@ This repository serves as a monorepo for the main packages that make up Lunar.
 
 ## Documentation
 
-- [v1.0 documentation](https://docs-v1.lunarphp.io/)
+- [v1.0 documentation](https://docs-v1.payflowphp.io/)
 
 ## Contribution
 
 - Bug reports should be submitted as a new Github issue
-- Enhancements should [be in discussions](https://github.com/lunarphp/lunar/discussions/new?category=enhancements)
-- Feature requests should [be in discussions](https://github.com/lunarphp/lunar/discussions/new?category=feature-requests)
+- Enhancements should [be in discussions](https://github.com/payflowphp/payflow/discussions/new?category=enhancements)
+- Feature requests should [be in discussions](https://github.com/payflowphp/payflow/discussions/new?category=feature-requests)
 
 ## Community
 
-- [Join our discord server](https://discord.gg/v6qVWaf) and chat to the developers and people using Lunar.
-- [We have a roadmap](https://github.com/orgs/lunarphp/projects/8) where we will be detailing which features are next.
+- [Join our discord server](https://discord.gg/v6qVWaf) and chat to the developers and people using Payflow.
+- [We have a roadmap](https://github.com/orgs/payflowphp/projects/8) where we will be detailing which features are next.
 
 ## Packages in this monorepo
 
@@ -41,11 +41,11 @@ your stores requirements.
 
 ### Core
 
-The core Lunar package, this provides all the things needed for your store to function. This is where all the models, 
+The core Payflow package, this provides all the things needed for your store to function. This is where all the models, 
 actions and utilities live and is required by the admin hub.
 
 ---
 
 ## License
 
-Lunar is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Payflow is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

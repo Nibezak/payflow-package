@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Base\DataTransferObjects;
+namespace Payflow\Base\DataTransferObjects;
 
-use Lunar\Models\Cart;
-use Lunar\Models\CartLine;
-use Lunar\Models\Discount;
+use Payflow\Models\Cart;
+use Payflow\Models\CartLine;
+use Payflow\Models\Discount;
 
 class CartDiscount
 {

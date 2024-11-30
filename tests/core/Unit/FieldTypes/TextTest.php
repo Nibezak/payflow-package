@@ -1,8 +1,8 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
-use Lunar\Exceptions\FieldTypeException;
-use Lunar\FieldTypes\Text;
+uses(\Payflow\Tests\Core\TestCase::class);
+use Payflow\Exceptions\FieldTypeException;
+use Payflow\FieldTypes\Text;
 
 test('can set value', function () {
     $field = new Text;

@@ -1,13 +1,13 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\DiscountResource\Pages;
+namespace Payflow\Admin\Filament\Resources\DiscountResource\Pages;
 
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationGroup;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Contracts\Support\Htmlable;
-use Lunar\Admin\Filament\Resources\DiscountResource;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Admin\Filament\Resources\DiscountResource;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
 
 class ManageBuyXGetYDiscount extends BaseEditRecord
 {
@@ -15,17 +15,17 @@ class ManageBuyXGetYDiscount extends BaseEditRecord
 
     public function getTitle(): string|Htmlable
     {
-        return __('lunarpanel::discount.pages.limitations.label');
+        return __('payflowpanel::discount.pages.limitations.label');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::discount.pages.limitations.label');
+        return __('payflowpanel::discount.pages.limitations.label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::discount-limitations');
+        return FilamentIcon::resolve('payflow::discount-limitations');
     }
 
     public function form(Form $form): Form

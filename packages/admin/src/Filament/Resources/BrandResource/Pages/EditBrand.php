@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\BrandResource\Pages;
+namespace Payflow\Admin\Filament\Resources\BrandResource\Pages;
 
 use Filament\Actions;
 use Filament\Notifications\Notification;
-use Lunar\Admin\Filament\Resources\BrandResource;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Admin\Filament\Resources\BrandResource;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
 
 class EditBrand extends BaseEditRecord
 {
@@ -19,7 +19,7 @@ class EditBrand extends BaseEditRecord
                     if ($record->products->count() > 0) {
                         Notification::make()
                             ->warning()
-                            ->body(__('lunarpanel::brand.action.delete.notification.error_protected'))
+                            ->body(__('payflowpanel::brand.action.delete.notification.error_protected'))
                             ->send();
                         $action->cancel();
                     }

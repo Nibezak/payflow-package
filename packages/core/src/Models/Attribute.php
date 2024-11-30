@@ -1,17 +1,17 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Traits\HasMacros;
-use Lunar\Base\Traits\HasTranslations;
-use Lunar\Database\Factories\AttributeFactory;
-use Lunar\Facades\DB;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Traits\HasMacros;
+use Payflow\Base\Traits\HasTranslations;
+use Payflow\Database\Factories\AttributeFactory;
+use Payflow\Facades\DB;
 
 /**
  * @property int $id
@@ -43,7 +43,7 @@ class Attribute extends BaseModel implements Contracts\Attribute
         static::deleting(function (self $attribute) {
             DB::beginTransaction();
             DB::table(
-                config('lunar.database.table_prefix').'attributables'
+                config('payflow.database.table_prefix').'attributables'
             )->where('attribute_id', '=', $attribute->id)->delete();
             DB::commit();
         });

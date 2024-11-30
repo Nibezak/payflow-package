@@ -1,15 +1,15 @@
 <?php
 
-uses(\Lunar\Tests\Core\Unit\Base\Extendable\ExtendableTestCase::class);
+uses(\Payflow\Tests\Core\Unit\Base\Extendable\ExtendableTestCase::class);
 
-use Lunar\Models\Product;
+use Payflow\Models\Product;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
 beforeEach(
-    fn () => \Lunar\Facades\ModelManifest::replace(
-        \Lunar\Models\Contracts\Product::class,
-        \Lunar\Tests\Core\Stubs\Models\Product::class
+    fn () => \Payflow\Facades\ModelManifest::replace(
+        \Payflow\Models\Contracts\Product::class,
+        \Payflow\Tests\Core\Stubs\Models\Product::class
     )
 );
 

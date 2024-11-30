@@ -1,16 +1,16 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
 use Illuminate\Support\Collection;
-use Lunar\Models\TaxClass;
+use Payflow\Models\TaxClass;
 
 interface Purchasable
 {
     /**
      * Get the purchasable prices.
      *
-     * @return \Illuminate\Support\Collection<\Lunar\Models\Price>
+     * @return \Illuminate\Support\Collection<\Payflow\Models\Price>
      */
     public function getPrices(): Collection;
 

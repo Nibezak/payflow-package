@@ -1,13 +1,13 @@
 <?php
 
-namespace Lunar\Base\Traits;
+namespace Payflow\Base\Traits;
 
 use DateTime;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Collection;
-use Lunar\Models\CustomerGroup;
+use Payflow\Models\CustomerGroup;
 
 trait HasCustomerGroups
 {

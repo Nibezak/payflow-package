@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Tests\Admin\Stubs;
+namespace Payflow\Tests\Admin\Stubs;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;

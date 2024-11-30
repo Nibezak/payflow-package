@@ -4,4 +4,4 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability within Lunar, please send an email to Glenn Jacobs at glenn@lunarphp.io. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Payflow, please send an email to Glenn Jacobs at glenn@payflowphp.io. All security vulnerabilities will be promptly addressed.

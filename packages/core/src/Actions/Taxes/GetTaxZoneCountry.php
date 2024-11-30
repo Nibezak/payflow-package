@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Actions\Taxes;
+namespace Payflow\Actions\Taxes;
 
 use Illuminate\Database\Eloquent\Builder;
-use Lunar\Models\TaxZoneCountry;
+use Payflow\Models\TaxZoneCountry;
 
 class GetTaxZoneCountry
 {

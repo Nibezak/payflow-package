@@ -2,7 +2,7 @@
 
 ## Overview
 
-For handling media across Lunar we use the brilliant [Laravel-medialibrary](https://spatie.be/docs/laravel-medialibrary) package by Spatie. We are committed to 
+For handling media across Payflow we use the brilliant [Laravel-medialibrary](https://spatie.be/docs/laravel-medialibrary) package by Spatie. We are committed to 
 only bringing in additional dependencies when absolutely makes sense and we feel in this case, the medialibrary package 
 offers a lot of features we would just end up trying to replicate anyway. Don't reinvent the wheel right?
 
@@ -15,15 +15,15 @@ entirely optional. You can read more about the options available on the [mediali
 
 Below is a list of models which currently support media:
 
-- `Lunar\Models\Product`
-- `Lunar\Models\Collection`
+- `Payflow\Models\Product`
+- `Payflow\Models\Collection`
 
 ## Adding media to models
 
 If you've used the medialibrary package before you will feel right at home.
 
 ```php
-$product = \Lunar\Models\Product::find(123);
+$product = \Payflow\Models\Product::find(123);
 
 $product->addMedia($request->file('image'))->toMediaCollection('images');
 ```
@@ -33,7 +33,7 @@ For more information on what's available, see [Associating files](https://spatie
 ## Fetching images
 
 ```php
-$product = \Lunar\Models\Product::find(123);
+$product = \Payflow\Models\Product::find(123);
 
 $product->getMedia('images');
 ```
@@ -41,7 +41,7 @@ For more information on what's available, see [Retrieving media](https://spatie.
 
 ## Fallback images
 If your model does not contain any images, calling getFirstMediaUrl or getFirstMediaPath will return null. You can 
-provide a fallback path/url in the config `lunar/media` or `.env`.
+provide a fallback path/url in the config `payflow/media` or `.env`.
 ```php
 'fallback' => [
     'url' => env('FALLBACK_IMAGE_URL', null),
@@ -51,10 +51,10 @@ provide a fallback path/url in the config `lunar/media` or `.env`.
 
 ## Media Collections & Conversions
 
-Lunar provides a way to customise the media collections and conversions for each model that implements the `HasMedia` 
+Payflow provides a way to customise the media collections and conversions for each model that implements the `HasMedia` 
 trait. 
 
-You will find the default settings in the config `lunar/media`. Here you can switch out the class that handles the 
+You will find the default settings in the config `payflow/media`. Here you can switch out the class that handles the 
 registration of the media definitions. 
 
 ### Custom Media Definitions
@@ -65,7 +65,7 @@ When registering media definitions you can define not only the name but many oth
 See [Spatie Media Library](https://spatie.be/docs/laravel-medialibrary/v10/working-with-media-collections/defining-media-collections) for more information.
 
 ```php
-use Lunar\Base\MediaDefinitionsInterface;
+use Payflow\Base\MediaDefinitionsInterface;
 use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\MediaCollections\MediaCollection;
@@ -84,8 +84,8 @@ class CustomMediaDefinitions implements MediaDefinitionsInterface
 
     public function registerMediaCollections(HasMedia $model): void
     {
-        $fallbackUrl = config('lunar.media.fallback.url');
-        $fallbackPath = config('lunar.media.fallback.path');
+        $fallbackUrl = config('payflow.media.fallback.url');
+        $fallbackPath = config('payflow.media.fallback.path');
 
         // Reset to avoid duplication
         $model->mediaCollections = [];
@@ -153,7 +153,7 @@ Then register your new class against the model(s) you wish to use it.
 return [
 
     'definitions' => [
-        Lunar\Models\Product::class => CustomMediaDefinitions::class,
+        Payflow\Models\Product::class => CustomMediaDefinitions::class,
         //..
     ],
 
@@ -179,20 +179,20 @@ directly. It's totally up to you and your requirements. If you want to use media
 [just follow their guides](https://spatie.be/docs/laravel-medialibrary/v9/basic-usage/preparing-your-model) and you'll be all set.
 
 ::: warning
-If you decide to use medialibrary directly, you will not have access to our transformations or any other Lunar features 
+If you decide to use medialibrary directly, you will not have access to our transformations or any other Payflow features 
 we add.
 :::
 
-### Extending with Lunar
+### Extending with Payflow
 
-To enable image transformations on your models within Lunar, simply add the `HasMedia` trait.
+To enable image transformations on your models within Payflow, simply add the `HasMedia` trait.
 
 ```php
 <?php
 
 namespace App\Models;
 
-use Lunar\Base\Traits\HasMedia;
+use Payflow\Base\Traits\HasMedia;
 
 class YourCustomModel extends Model
 {

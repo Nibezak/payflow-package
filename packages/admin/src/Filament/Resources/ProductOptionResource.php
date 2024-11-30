@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources;
+namespace Payflow\Admin\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Forms\Components\Component;
@@ -9,13 +9,13 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
-use Lunar\Admin\Filament\Resources\ProductOptionResource\Pages;
-use Lunar\Admin\Filament\Resources\ProductOptionResource\RelationManagers;
-use Lunar\Admin\Support\Forms\Components\TranslatedText;
-use Lunar\Admin\Support\Resources\BaseResource;
-use Lunar\Admin\Support\Tables\Columns\TranslatedTextColumn;
-use Lunar\Models\Contracts\ProductOption;
-use Lunar\Models\Language;
+use Payflow\Admin\Filament\Resources\ProductOptionResource\Pages;
+use Payflow\Admin\Filament\Resources\ProductOptionResource\RelationManagers;
+use Payflow\Admin\Support\Forms\Components\TranslatedText;
+use Payflow\Admin\Support\Resources\BaseResource;
+use Payflow\Admin\Support\Tables\Columns\TranslatedTextColumn;
+use Payflow\Models\Contracts\ProductOption;
+use Payflow\Models\Language;
 
 class ProductOptionResource extends BaseResource
 {
@@ -27,22 +27,22 @@ class ProductOptionResource extends BaseResource
 
     public static function getLabel(): string
     {
-        return __('lunarpanel::productoption.label');
+        return __('payflowpanel::productoption.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('lunarpanel::productoption.plural_label');
+        return __('payflowpanel::productoption.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::product-options');
+        return FilamentIcon::resolve('payflow::product-options');
     }
 
     public static function getNavigationGroup(): ?string
     {
-        return __('lunarpanel::global.sections.settings');
+        return __('payflowpanel::global.sections.settings');
     }
 
     protected static function getMainFormComponents(): array
@@ -57,7 +57,7 @@ class ProductOptionResource extends BaseResource
     protected static function getNameFormComponent(): Component
     {
         return TranslatedText::make('name')
-            ->label(__('lunarpanel::productoption.form.name.label'))
+            ->label(__('payflowpanel::productoption.form.name.label'))
             ->required()
             ->maxLength(255)
             ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
@@ -73,7 +73,7 @@ class ProductOptionResource extends BaseResource
     protected static function getLabelFormComponent(): Component
     {
         return TranslatedText::make('label')
-            ->label(__('lunarpanel::productoption.form.label.label'))
+            ->label(__('payflowpanel::productoption.form.label.label'))
             ->required()
             ->maxLength(255)
             ->autofocus();
@@ -82,7 +82,7 @@ class ProductOptionResource extends BaseResource
     protected static function getHandleFormComponent(): Component
     {
         return Forms\Components\TextInput::make('handle')
-            ->label(__('lunarpanel::productoption.form.handle.label'))
+            ->label(__('payflowpanel::productoption.form.handle.label'))
             ->required()
             ->maxLength(255)
             ->disabled(fn ($operation, $record) => $operation == 'edit' && (! $record->shared));
@@ -93,13 +93,13 @@ class ProductOptionResource extends BaseResource
         return $table
             ->columns([
                 TranslatedTextColumn::make('name')
-                    ->label(__('lunarpanel::productoption.table.name.label')),
+                    ->label(__('payflowpanel::productoption.table.name.label')),
                 TranslatedTextColumn::make('label')
-                    ->label(__('lunarpanel::productoption.table.label.label')),
+                    ->label(__('payflowpanel::productoption.table.label.label')),
                 Tables\Columns\TextColumn::make('handle')
-                    ->label(__('lunarpanel::productoption.table.handle.label')),
+                    ->label(__('payflowpanel::productoption.table.handle.label')),
                 Tables\Columns\BooleanColumn::make('shared')
-                    ->label(__('lunarpanel::productoption.table.shared.label')),
+                    ->label(__('payflowpanel::productoption.table.shared.label')),
             ])
             ->filters([
                 Tables\Filters\Filter::make('shared')

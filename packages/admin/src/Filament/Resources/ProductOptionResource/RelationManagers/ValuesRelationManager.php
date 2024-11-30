@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductOptionResource\RelationManagers;
+namespace Payflow\Admin\Filament\Resources\ProductOptionResource\RelationManagers;
 
 use Filament\Forms\Form;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Support\Forms\Components\TranslatedText;
-use Lunar\Admin\Support\RelationManagers\BaseRelationManager;
-use Lunar\Admin\Support\Tables\Columns\TranslatedTextColumn;
+use Payflow\Admin\Support\Forms\Components\TranslatedText;
+use Payflow\Admin\Support\RelationManagers\BaseRelationManager;
+use Payflow\Admin\Support\Tables\Columns\TranslatedTextColumn;
 
 class ValuesRelationManager extends BaseRelationManager
 {

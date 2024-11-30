@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Pipelines\Cart;
+namespace Payflow\Pipelines\Cart;
 
 use Closure;
-use Lunar\DataTypes\Price;
-use Lunar\Models\Cart;
+use Payflow\DataTypes\Price;
+use Payflow\Models\Cart;
 
 class Calculate
 {

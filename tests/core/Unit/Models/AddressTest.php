@@ -1,10 +1,10 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class)->group('models');
+uses(\Payflow\Tests\Core\TestCase::class)->group('models');
 
-use Lunar\Models\Address;
-use Lunar\Models\Country;
-use Lunar\Models\Customer;
+use Payflow\Models\Address;
+use Payflow\Models\Country;
+use Payflow\Models\Customer;
 
 use function Pest\Laravel\{assertDatabaseMissing};
 
@@ -26,7 +26,7 @@ test('can make an address with minimal attributes', function () {
 
     Address::create($data);
 
-    $this->assertDatabaseHas('lunar_addresses', $data);
+    $this->assertDatabaseHas('payflow_addresses', $data);
 });
 
 test('can make a full address', function () {
@@ -58,7 +58,7 @@ test('can make a full address', function () {
 
     $data['meta'] = json_encode($data['meta']);
 
-    $this->assertDatabaseHas('lunar_addresses', $data);
+    $this->assertDatabaseHas('payflow_addresses', $data);
 
     expect($address->customer)->toBeInstanceOf(Customer::class);
     expect($address->country)->toBeInstanceOf(Country::class);

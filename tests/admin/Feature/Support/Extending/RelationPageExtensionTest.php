@@ -1,14 +1,14 @@
 <?php
 
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Filament\Resources\ProductResource\Pages\ManageProductMedia;
-use Lunar\Admin\Support\Facades\LunarPanel;
+use Payflow\Admin\Filament\Resources\ProductResource\Pages\ManageProductMedia;
+use Payflow\Admin\Support\Facades\PayflowPanel;
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('extending');
 
 it('can customise page headings', function () {
-    $class = new class extends \Lunar\Admin\Support\Extending\RelationPageExtension
+    $class = new class extends \Payflow\Admin\Support\Extending\RelationPageExtension
     {
         public function heading($title, Model $record): string
         {
@@ -21,10 +21,10 @@ it('can customise page headings', function () {
         }
     };
 
-    \Lunar\Models\Language::factory()->create();
-    $product = \Lunar\Models\Product::factory()->create();
+    \Payflow\Models\Language::factory()->create();
+    $product = \Payflow\Models\Product::factory()->create();
 
-    LunarPanel::extensions([
+    PayflowPanel::extensions([
         ManageProductMedia::class => $class::class,
     ]);
 

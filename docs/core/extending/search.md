@@ -2,7 +2,7 @@
 
 ## Overview
 
-Good search is the backbone of any storefront so Lunar aims to make this as extensible as possible so you can index what
+Good search is the backbone of any storefront so Payflow aims to make this as extensible as possible so you can index what
 you need for your front-end, without compromising on what we require our side in the hub.
 
 There are three things to consider when you want to extend the search:
@@ -13,8 +13,8 @@ There are three things to consider when you want to extend the search:
 
 ## Default index values
 
-Eloquent models which use the `Lunar\Base\Traits\Searchable` trait will use an indexer class to tell Scout how each it
-should be indexed, if an indexer isn't mapped in the config the default `EloquentIndexer` (provided by Lunar) will be
+Eloquent models which use the `Payflow\Base\Traits\Searchable` trait will use an indexer class to tell Scout how each it
+should be indexed, if an indexer isn't mapped in the config the default `EloquentIndexer` (provided by Payflow) will be
 used.
 
 This class will map a basic set of fields to the search index:
@@ -25,7 +25,7 @@ This class will map a basic set of fields to the search index:
 Some models require a bit more information to be indexed, such as SKU's, prices etc. For these scenarios, dedicated
 indexers have been created and are mapped in the config already.
 
-#### `Lunar\Search\ProductIndexer`
+#### `Payflow\Search\ProductIndexer`
 
 Fields which are indexed:
 
@@ -46,7 +46,7 @@ simply use the default `ELoquentIndexer`. To change how each model is indexed, s
 return [
     // ...
     'indexers' => [
-        Lunar\Models\Product::class => App\Search\CustomProductIndexer::class,
+        Payflow\Models\Product::class => App\Search\CustomProductIndexer::class,
     ],
 ],
 ```
@@ -60,7 +60,7 @@ To create your own indexer, simply create a custom class like so:
 
 namespace App\Search;
 
-use Lunar\Search\ScoutIndexer;
+use Payflow\Search\ScoutIndexer;
 
 class CustomProductIndexer extends ScoutIndexer
 {
@@ -124,7 +124,7 @@ class CustomProductIndexer extends ScoutIndexer
 }
 ```
 
-The `EloquentIndexer` class implements the `Lunar\Search\Interfaces\ModelIndexerInterface` so if your class doesn't
+The `EloquentIndexer` class implements the `Payflow\Search\Interfaces\ModelIndexerInterface` so if your class doesn't
 extend the Eloquent one, you must implement this interface.
 
 There are some methods which are available just on the `EloquentIndexer` but not defined on the interface are:

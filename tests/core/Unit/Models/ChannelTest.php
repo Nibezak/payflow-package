@@ -1,8 +1,8 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class)->group('models');
+uses(\Payflow\Tests\Core\TestCase::class)->group('models');
 
-use Lunar\Models\Channel;
+use Payflow\Models\Channel;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -43,7 +43,7 @@ test('can return associated discounts', function () {
     // Stop observers creating the channel association.
     \Illuminate\Support\Facades\Event::fake();
 
-    $discount = \Lunar\Models\Discount::factory()->create();
+    $discount = \Payflow\Models\Discount::factory()->create();
 
     expect($channel->discounts)->toHaveCount(0);
 

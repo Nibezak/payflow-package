@@ -1,11 +1,11 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Str;
-use Lunar\Models\ProductOption;
-use Lunar\Models\ProductOptionValue;
+use Payflow\Models\ProductOption;
+use Payflow\Models\ProductOptionValue;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

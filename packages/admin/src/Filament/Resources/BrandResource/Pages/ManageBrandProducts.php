@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\BrandResource\Pages;
+namespace Payflow\Admin\Filament\Resources\BrandResource\Pages;
 
 use Filament\Forms;
 use Filament\Notifications\Notification;
@@ -9,10 +9,10 @@ use Filament\Tables\Actions\AttachAction;
 use Filament\Tables\Actions\DetachAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Filament\Resources\BrandResource;
-use Lunar\Admin\Filament\Resources\ProductResource;
-use Lunar\Admin\Support\Pages\BaseManageRelatedRecords;
-use Lunar\Models\Product;
+use Payflow\Admin\Filament\Resources\BrandResource;
+use Payflow\Admin\Filament\Resources\ProductResource;
+use Payflow\Admin\Support\Pages\BaseManageRelatedRecords;
+use Payflow\Models\Product;
 
 class ManageBrandProducts extends BaseManageRelatedRecords
 {
@@ -23,17 +23,17 @@ class ManageBrandProducts extends BaseManageRelatedRecords
     public function getTitle(): string
     {
 
-        return __('lunarpanel::brand.pages.products.label');
+        return __('payflowpanel::brand.pages.products.label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::products');
+        return FilamentIcon::resolve('payflow::products');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::brand.pages.products.label');
+        return __('payflowpanel::brand.pages.products.label');
     }
 
     public function table(Table $table): Table
@@ -55,18 +55,18 @@ class ManageBrandProducts extends BaseManageRelatedRecords
 
                     Notification::make()
                         ->success()
-                        ->body(__('lunarpanel::brand.pages.products.actions.detach.notification.success'))
+                        ->body(__('payflowpanel::brand.pages.products.actions.detach.notification.success'))
                         ->send();
                 }),
         ])->headerActions([
             AttachAction::make()
                 ->label(
-                    __('lunarpanel::brand.pages.products.actions.attach.label')
+                    __('payflowpanel::brand.pages.products.actions.attach.label')
                 )
                 ->form([
                     Forms\Components\Select::make('recordId')
                         ->label(
-                            __('lunarpanel::brand.pages.products.actions.attach.form.record_id.label')
+                            __('payflowpanel::brand.pages.products.actions.attach.form.record_id.label')
                         )
                         ->required()
                         ->searchable()
@@ -85,7 +85,7 @@ class ManageBrandProducts extends BaseManageRelatedRecords
 
                     Notification::make()
                         ->success()
-                        ->body(__('lunarpanel::brand.pages.products.actions.attach.notification.success'))
+                        ->body(__('payflowpanel::brand.pages.products.actions.attach.notification.success'))
                         ->send();
                 }),
         ]);

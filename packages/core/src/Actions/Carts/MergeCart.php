@@ -1,16 +1,16 @@
 <?php
 
-namespace Lunar\Actions\Carts;
+namespace Payflow\Actions\Carts;
 
-use Lunar\Facades\DB;
-use Lunar\Models\Cart;
+use Payflow\Facades\DB;
+use Payflow\Models\Cart;
 
 class MergeCart
 {
     /**
      * Execute the action.
      *
-     * @return \Lunar\Models\Cart
+     * @return \Payflow\Models\Cart
      */
     public function execute(Cart $target, Cart $source)
     {

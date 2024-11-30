@@ -1,13 +1,13 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\Actions\Collections\SortProductsByPrice;
-use Lunar\Models\Collection;
-use Lunar\Models\Currency;
-use Lunar\Models\Price;
-use Lunar\Models\Product;
-use Lunar\Models\ProductVariant;
+use Payflow\Actions\Collections\SortProductsByPrice;
+use Payflow\Models\Collection;
+use Payflow\Models\Currency;
+use Payflow\Models\Price;
+use Payflow\Models\Product;
+use Payflow\Models\ProductVariant;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

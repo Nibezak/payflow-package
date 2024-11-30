@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\AttributeGroupResource\Pages;
+namespace Payflow\Admin\Filament\Resources\AttributeGroupResource\Pages;
 
-use Lunar\Admin\Filament\Resources\AttributeGroupResource;
-use Lunar\Admin\Support\Pages\BaseCreateRecord;
+use Payflow\Admin\Filament\Resources\AttributeGroupResource;
+use Payflow\Admin\Support\Pages\BaseCreateRecord;
 
 class CreateAttributeGroup extends BaseCreateRecord
 {

@@ -4,7 +4,7 @@
             {{ $this->createRootCollectionAction }}
         </div>
         <div>
-            <x-lunarpanel::collections.nested-set-tree :nodes="$nodes" group="parent" />
+            <x-payflowpanel::collections.nested-set-tree :nodes="$nodes" group="parent" />
         </div>
     </div>
     <x-filament-actions::modals />

@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Paypal\Facades;
+namespace Payflow\Paypal\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Lunar\Paypal\PaypalInterface;
+use Payflow\Paypal\PaypalInterface;
 
 class Paypal extends Facade
 {

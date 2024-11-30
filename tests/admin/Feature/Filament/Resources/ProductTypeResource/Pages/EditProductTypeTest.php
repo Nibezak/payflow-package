@@ -1,23 +1,23 @@
 <?php
 
 use Livewire\Livewire;
-use Lunar\Models\ProductType;
+use Payflow\Models\ProductType;
 
-uses(\Lunar\Tests\Admin\TestCase::class)
+uses(\Payflow\Tests\Admin\TestCase::class)
     ->group('resource.productType');
 
 it('can associate attributes', function () {
     $productType = ProductType::factory()->create();
 
-    $attributeA = \Lunar\Models\Attribute::factory()->create([
+    $attributeA = \Payflow\Models\Attribute::factory()->create([
         'attribute_type' => 'product',
     ]);
 
-    $attributeB = \Lunar\Models\Attribute::factory()->create([
+    $attributeB = \Payflow\Models\Attribute::factory()->create([
         'attribute_type' => 'product',
     ]);
 
-    $component = Livewire::actingAs($this->makeStaff(admin: true), 'staff')->test(\Lunar\Admin\Filament\Resources\ProductTypeResource\Pages\EditProductType::class, [
+    $component = Livewire::actingAs($this->makeStaff(admin: true), 'staff')->test(\Payflow\Admin\Filament\Resources\ProductTypeResource\Pages\EditProductType::class, [
         'record' => $productType->getRouteKey(),
     ])->fillForm([
         'mappedAttributes' => [$attributeA->id, $attributeB->id],
@@ -37,7 +37,7 @@ it('can associate attributes', function () {
         'attribute_id' => $attributeB->id,
     ]);
 
-    $component = Livewire::actingAs($this->makeStaff(admin: true), 'staff')->test(\Lunar\Admin\Filament\Resources\ProductTypeResource\Pages\EditProductType::class, [
+    $component = Livewire::actingAs($this->makeStaff(admin: true), 'staff')->test(\Payflow\Admin\Filament\Resources\ProductTypeResource\Pages\EditProductType::class, [
         'record' => $productType->getRouteKey(),
     ])->set('data.mappedAttributes', [$attributeA->id])->assertFormSet([
         'mappedAttributes' => [$attributeA->id],

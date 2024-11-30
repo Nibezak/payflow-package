@@ -1,6 +1,6 @@
 <?php
 
-uses(\Lunar\Tests\Admin\Unit\Livewire\TestCase::class)
+uses(\Payflow\Tests\Admin\Unit\Livewire\TestCase::class)
     ->group('livewire.support.forms');
 
 describe('dropdown converter', function () {
@@ -9,18 +9,18 @@ describe('dropdown converter', function () {
     });
 
     test('can convert attribute to form input component', function () {
-        $attribute = \Lunar\Models\Attribute::factory()->create([
-            'type' => \Lunar\FieldTypes\Dropdown::class,
+        $attribute = \Payflow\Models\Attribute::factory()->create([
+            'type' => \Payflow\FieldTypes\Dropdown::class,
         ]);
 
-        $inputComponent = \Lunar\Admin\Support\FieldTypes\Dropdown::getFilamentComponent($attribute);
+        $inputComponent = \Payflow\Admin\Support\FieldTypes\Dropdown::getFilamentComponent($attribute);
 
         expect($inputComponent)->toBeInstanceOf(\Filament\Forms\Components\Select::class);
     });
 
     test('can render dropdown options', function () {
-        $attribute = \Lunar\Models\Attribute::factory()->create([
-            'type' => \Lunar\FieldTypes\Dropdown::class,
+        $attribute = \Payflow\Models\Attribute::factory()->create([
+            'type' => \Payflow\FieldTypes\Dropdown::class,
             'configuration' => [
                 'lookups' => [
                     [
@@ -31,7 +31,7 @@ describe('dropdown converter', function () {
             ],
         ]);
 
-        $inputComponent = \Lunar\Admin\Support\FieldTypes\Dropdown::getFilamentComponent($attribute);
+        $inputComponent = \Payflow\Admin\Support\FieldTypes\Dropdown::getFilamentComponent($attribute);
 
         $options = $inputComponent->getOptions();
         expect($options)->toBeArray()

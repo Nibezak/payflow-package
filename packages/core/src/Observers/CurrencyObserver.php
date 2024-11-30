@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Observers;
+namespace Payflow\Observers;
 
-use Lunar\Models\Currency;
+use Payflow\Models\Currency;
 
 class CurrencyObserver
 {
@@ -49,7 +49,7 @@ class CurrencyObserver
     /**
      * Ensures that only one default currency exists.
      *
-     * @param  \Lunar\Models\Currency  $savedCurrency  The currency that was just saved.
+     * @param  \Payflow\Models\Currency  $savedCurrency  The currency that was just saved.
      */
     protected function ensureOnlyOneDefault(Currency $savedCurrency): void
     {

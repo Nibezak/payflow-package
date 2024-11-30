@@ -1,17 +1,17 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Traits\HasDefaultRecord;
-use Lunar\Base\Traits\HasMacros;
-use Lunar\Base\Traits\LogsActivity;
-use Lunar\Database\Factories\ChannelFactory;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Traits\HasDefaultRecord;
+use Payflow\Base\Traits\HasMacros;
+use Payflow\Base\Traits\LogsActivity;
+use Payflow\Database\Factories\ChannelFactory;
 
 /**
  * @property int $id
@@ -69,7 +69,7 @@ class Channel extends BaseModel implements Contracts\Channel
      */
     public function discounts(): MorphToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->morphedByMany(
             Discount::modelClass(),
@@ -83,7 +83,7 @@ class Channel extends BaseModel implements Contracts\Channel
      */
     public function products(): MorphToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->morphedByMany(
             Product::modelClass(),
@@ -97,7 +97,7 @@ class Channel extends BaseModel implements Contracts\Channel
      */
     public function collections(): MorphToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->morphedByMany(
             Collection::modelClass(),

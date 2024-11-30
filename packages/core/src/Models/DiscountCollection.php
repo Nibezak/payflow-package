@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Lunar\Base\BaseModel;
-use Lunar\Database\Factories\DiscountPurchasableFactory;
+use Payflow\Base\BaseModel;
+use Payflow\Database\Factories\DiscountPurchasableFactory;
 
 class DiscountCollection extends BaseModel implements Contracts\DiscountCollection
 {

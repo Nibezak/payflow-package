@@ -2,29 +2,29 @@
 
 ## Overview
 
-Configuration for Lunar is separated into individual files under `config/lunar`. 
+Configuration for Payflow is separated into individual files under `config/payflow`. 
 You can either override the different config options adhoc or you can publish all the configuration options and tweak 
 as you see fit.
 
 ```bash
-php artisan vendor:publish --tag=lunar
+php artisan vendor:publish --tag=payflow
 ```
 
 ### Database Table Prefix
 
-`lunar/database.php`
+`payflow/database.php`
 
-So that Lunar tables do not conflict with your existing application database tables, you can specify a prefix to use. If you change this after installation, you are on your own - happy renaming!
+So that Payflow tables do not conflict with your existing application database tables, you can specify a prefix to use. If you change this after installation, you are on your own - happy renaming!
 
 ```php
-    'table_prefix' => 'lunar_',
+    'table_prefix' => 'payflow_',
 ```
 
 ### Database Connection
 
-`lunar/database.php`
+`payflow/database.php`
 
- By default, the package uses the default database connection defined in Laravel. Here specify a custom database connection for Lunar.
+ By default, the package uses the default database connection defined in Laravel. Here specify a custom database connection for Payflow.
 
 ```php
 'connection' => 'some_custom_connection',
@@ -40,7 +40,7 @@ In our package, we utilize Spatie's [laravel-activitylog](https://spatie.be/docs
 
 ### Orders
 
-`lunar/orders.php`
+`payflow/orders.php`
 
 Here you can set up the statuses you wish to use for your orders.
 
@@ -60,7 +60,7 @@ Here you can set up the statuses you wish to use for your orders.
 
 ### Media
 
-`lunar/media.php`
+`payflow/media.php`
 
 Transformations for all uploaded images.
 
@@ -84,7 +84,7 @@ Transformations for all uploaded images.
 
 ### Products
 
-`lunar-hub/products.php`
+`payflow-hub/products.php`
 
 ```php
 'disable_variants' => false,
@@ -108,7 +108,7 @@ Transformations for all uploaded images.
 
 ### Pricing
 
-`lunar/pricing.php`
+`payflow/pricing.php`
 
 If you want to store pricing inclusive of tax then set this config value to `true`.
 

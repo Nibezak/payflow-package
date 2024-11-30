@@ -1,11 +1,11 @@
 {
-    "name": "lunarphp/lunar",
-    "description": "Lunar Monorepo",
+    "name": "payflow/dev",
+    "description": "Payflow Monorepo",
     "license": "MIT",
     "authors": [
         {
-            "name": "Lunar",
-            "homepage": "https://lunarphp.io/"
+            "name": "Payflow",
+            "homepage": "https://payflow.dev/"
         }
     ],
     "require": {
@@ -36,8 +36,16 @@
         "spatie/laravel-permission": "^6.4",
         "spatie/php-structure-discoverer": "^2.0",
         "stripe/stripe-php": "^14.4",
-        "technikermathe/blade-lucide-icons": "^v3.0"
+        "technikermathe/blade-lucide-icons": "^v3.0",
+        "inertiajs/inertia-laravel": "^1.3"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/*",
+            "symlink": true
+        }
+    ],
     "require-dev": {
         "larastan/larastan": "^2.9",
         "laravel/pint": "1.17.0",
@@ -53,34 +61,34 @@
             "packages/core/src/helpers.php"
         ],
         "psr-4": {
-            "Lunar\\": "packages/core/src",
-            "Lunar\\Admin\\": "packages/admin/src/",
-            "Lunar\\Admin\\Database\\Factories\\": "packages/admin/database/factories",
-            "Lunar\\Admin\\Database\\State\\": "packages/admin/database/state",
-            "Lunar\\Database\\Factories\\": "packages/core/database/factories",
-            "Lunar\\Database\\Seeders\\": "packages/core/database/seeders",
-            "Lunar\\Database\\State\\": "packages/core/database/state",
-            "Lunar\\Meilisearch\\": "packages/meilisearch/src/",
-            "Lunar\\Opayo\\": "packages/opayo/src/",
-            "Lunar\\Paypal\\": "packages/paypal/src/",
-            "Lunar\\Shipping\\": "packages/table-rate-shipping/src",
-            "Lunar\\Shipping\\Database\\Factories\\": "packages/table-rate-shipping/database/factories",
-            "Lunar\\Stripe\\": "packages/stripe/src/"
+            "Payflow\\": "packages/core/src",
+            "Payflow\\Admin\\": "packages/admin/src/",
+            "Payflow\\Admin\\Database\\Factories\\": "packages/admin/database/factories",
+            "Payflow\\Admin\\Database\\State\\": "packages/admin/database/state",
+            "Payflow\\Database\\Factories\\": "packages/core/database/factories",
+            "Payflow\\Database\\Seeders\\": "packages/core/database/seeders",
+            "Payflow\\Database\\State\\": "packages/core/database/state",
+            "Payflow\\Meilisearch\\": "packages/meilisearch/src/",
+            "Payflow\\Opayo\\": "packages/opayo/src/",
+            "Payflow\\Paypal\\": "packages/paypal/src/",
+            "Payflow\\Shipping\\": "packages/table-rate-shipping/src",
+            "Payflow\\Shipping\\Database\\Factories\\": "packages/table-rate-shipping/database/factories",
+            "Payflow\\Stripe\\": "packages/stripe/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Lunar\\Tests\\Admin\\": "tests/admin",
-            "Lunar\\Tests\\Core\\": "tests/core",
-            "Lunar\\Tests\\Opayo\\": "tests/opayo",
-            "Lunar\\Tests\\Paypal\\": "tests/paypal",
-            "Lunar\\Tests\\Shipping\\": "tests/shipping",
-            "Lunar\\Shipping\\Tests\\": "packages/table-rate-shipping/tests",
-            "Lunar\\Tests\\Stripe\\": "tests/stripe"
+            "Payflow\\Tests\\Admin\\": "tests/admin",
+            "Payflow\\Tests\\Core\\": "tests/core",
+            "Payflow\\Tests\\Opayo\\": "tests/opayo",
+            "Payflow\\Tests\\Paypal\\": "tests/paypal",
+            "Payflow\\Tests\\Shipping\\": "tests/shipping",
+            "Payflow\\Shipping\\Tests\\": "packages/table-rate-shipping/tests",
+            "Payflow\\Tests\\Stripe\\": "tests/stripe"
         }
     },
     "extra": {
-        "lunar": {
+        "payflow": {
             "name": [
                 "Meilisearch",
                 "Opayo Payments",
@@ -91,24 +99,24 @@
         },
         "laravel": {
             "providers": [
-                "Lunar\\Shipping\\ShippingServiceProvider",
-                "Lunar\\Stripe\\StripePaymentsServiceProvider",
-                "Lunar\\Paypal\\PaypalServiceProvider",
-                "Lunar\\Opayo\\OpayoServiceProvider",
-                "Lunar\\Meilisearch\\MeilisearchServiceProvider",
-                "Lunar\\LunarServiceProvider",
-                "Lunar\\Admin\\LunarPanelProvider"
+                "Payflow\\Shipping\\ShippingServiceProvider",
+                "Payflow\\Stripe\\StripePaymentsServiceProvider",
+                "Payflow\\Paypal\\PaypalServiceProvider",
+                "Payflow\\Opayo\\OpayoServiceProvider",
+                "Payflow\\Meilisearch\\MeilisearchServiceProvider",
+                "Payflow\\PayflowServiceProvider",
+                "Payflow\\Admin\\PayflowPanelProvider"
             ]
         }
     },
     "replace": {
-        "lunarphp/admin": "self.version",
-        "lunarphp/core": "self.version",
-        "lunarphp/meilisearch": "self.version",
-        "lunarphp/opayo": "self.version",
-        "lunarphp/paypal": "self.version",
-        "lunarphp/stripe": "self.version",
-        "lunarphp/table-rate-shipping": "self.version"
+        "payflowphp/admin": "self.version",
+        "payflowphp/core": "self.version",
+        "payflowphp/meilisearch": "self.version",
+        "payflowphp/opayo": "self.version",
+        "payflowphp/paypal": "self.version",
+        "payflowphp/stripe": "self.version",
+        "payflowphp/table-rate-shipping": "self.version"
     },
     "scripts": {
         "pint": "pint",

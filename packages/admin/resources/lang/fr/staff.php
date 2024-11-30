@@ -72,9 +72,9 @@ return [
         'notification' => [
             'updated' => 'Mis à jour',
             'error' => 'Erreur',
-            'no-role' => 'Rôle non enregistré dans Lunar',
-            'no-permission' => 'Autorisation non enregistrée dans Lunar',
-            'no-role-permission' => 'Rôle et autorisation non enregistrés dans Lunar',
+            'no-role' => 'Rôle non enregistré dans Payflow',
+            'no-permission' => 'Autorisation non enregistrée dans Payflow',
+            'no-role-permission' => 'Rôle et autorisation non enregistrés dans Payflow',
         ],
     ],
 

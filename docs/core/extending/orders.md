@@ -8,17 +8,17 @@ If you want to add additional functionality to the Order creation process, you c
 
 ### Adding an Order Pipeline
 
-All pipelines are defined in `config/lunar/orders.php`
+All pipelines are defined in `config/payflow/orders.php`
 
 ```php
 'pipelines' => [
     'creation' => [
-        Lunar\Pipelines\Order\Creation\FillOrderFromCart::class,
-        Lunar\Pipelines\Order\Creation\CreateOrderLines::class,
-        Lunar\Pipelines\Order\Creation\CreateOrderAddresses::class,
-        Lunar\Pipelines\Order\Creation\CreateShippingLine::class,
-        Lunar\Pipelines\Order\Creation\CleanUpOrderLines::class,
-        Lunar\Pipelines\Order\Creation\MapDiscountBreakdown::class,
+        Payflow\Pipelines\Order\Creation\FillOrderFromCart::class,
+        Payflow\Pipelines\Order\Creation\CreateOrderLines::class,
+        Payflow\Pipelines\Order\Creation\CreateOrderAddresses::class,
+        Payflow\Pipelines\Order\Creation\CreateShippingLine::class,
+        Payflow\Pipelines\Order\Creation\CleanUpOrderLines::class,
+        Payflow\Pipelines\Order\Creation\MapDiscountBreakdown::class,
         // ...
     ],
 ],
@@ -32,8 +32,8 @@ You can add your own pipelines to the configuration, they might look something l
 namespace App\Pipelines\Orders;
 
 use Closure;
-use Lunar\DataTypes\Price;
-use Lunar\Models\Order;
+use Payflow\DataTypes\Price;
+use Payflow\Models\Order;
 
 class CustomOrderPipeline
 {

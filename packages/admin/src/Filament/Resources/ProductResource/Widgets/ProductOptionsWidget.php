@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductResource\Widgets;
+namespace Payflow\Admin\Filament\Resources\ProductResource\Widgets;
 
 use Awcodes\Shout\Components\Shout;
 use Filament\Actions\Action;
@@ -13,21 +13,21 @@ use Filament\Notifications\Notification;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Lunar\Admin\Actions\Products\MapVariantsToProductOptions;
-use Lunar\Admin\Events\ProductVariantOptionsUpdated;
-use Lunar\Admin\Filament\Resources\ProductVariantResource;
-use Lunar\Facades\DB;
-use Lunar\Models\Language;
-use Lunar\Models\ProductOption;
-use Lunar\Models\ProductOptionValue;
-use Lunar\Models\ProductVariant;
+use Payflow\Admin\Actions\Products\MapVariantsToProductOptions;
+use Payflow\Admin\Events\ProductVariantOptionsUpdated;
+use Payflow\Admin\Filament\Resources\ProductVariantResource;
+use Payflow\Facades\DB;
+use Payflow\Models\Language;
+use Payflow\Models\ProductOption;
+use Payflow\Models\ProductOptionValue;
+use Payflow\Models\ProductVariant;
 
 class ProductOptionsWidget extends BaseWidget implements HasActions, HasForms
 {
     use InteractsWithActions;
     use InteractsWithForms;
 
-    protected static string $view = 'lunarpanel::resources.product-resource.widgets.product-options';
+    protected static string $view = 'payflowpanel::resources.product-resource.widgets.product-options';
 
     public ?Model $record;
 
@@ -58,7 +58,7 @@ class ProductOptionsWidget extends BaseWidget implements HasActions, HasForms
             ->form([
                 Shout::make('no_shared_components')
                     ->content(
-                        __('lunarpanel::productoption.widgets.product-options.actions.add-shared-option.form.no_shared_components.label')
+                        __('payflowpanel::productoption.widgets.product-options.actions.add-shared-option.form.no_shared_components.label')
                     )
                     ->visible(
                         $options->isEmpty()
@@ -69,7 +69,7 @@ class ProductOptionsWidget extends BaseWidget implements HasActions, HasForms
                             fn ($option) => [$option->id => $option->translate('name')]
                         )
                     )->label(
-                        __('lunarpanel::productoption.widgets.product-options.actions.add-shared-option.form.product_option.label')
+                        __('payflowpanel::productoption.widgets.product-options.actions.add-shared-option.form.product_option.label')
                     )->visible(
                         $options->isNotEmpty()
                     ),
@@ -349,7 +349,7 @@ class ProductOptionsWidget extends BaseWidget implements HasActions, HasForms
                 /**
                  * If there are no variants, then all the configured option
                  * have been removed. In this case we still want to keep a
-                 * variant at least one is needed for Lunar to function.
+                 * variant at least one is needed for Payflow to function.
                  */
                 if (! count($this->variants)) {
                     $variant = $this->record->variants()->first();
@@ -369,7 +369,7 @@ class ProductOptionsWidget extends BaseWidget implements HasActions, HasForms
                     DB::commit();
 
                     Notification::make()->title(
-                        __('lunarpanel::productoption.widgets.product-options.notifications.save-variants.success.title')
+                        __('payflowpanel::productoption.widgets.product-options.notifications.save-variants.success.title')
                     )->success()->send();
 
                     return;
@@ -433,7 +433,7 @@ class ProductOptionsWidget extends BaseWidget implements HasActions, HasForms
                 DB::commit();
 
                 Notification::make()->title(
-                    __('lunarpanel::productoption.widgets.product-options.notifications.save-variants.success.title')
+                    __('payflowpanel::productoption.widgets.product-options.notifications.save-variants.success.title')
                 )->success()->send();
             })->after(
                 fn () => ProductVariantOptionsUpdated::dispatch($this->record)

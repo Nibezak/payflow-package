@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources;
+namespace Payflow\Admin\Filament\Resources;
 
 use Awcodes\FilamentBadgeableColumn\Components\Badge;
 use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
@@ -10,10 +10,10 @@ use Filament\Support\Facades\FilamentIcon;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Filament\Clusters\Taxes;
-use Lunar\Admin\Filament\Resources\TaxClassResource\Pages;
-use Lunar\Admin\Support\Resources\BaseResource;
-use Lunar\Models\Contracts\TaxClass;
+use Payflow\Admin\Filament\Clusters\Taxes;
+use Payflow\Admin\Filament\Resources\TaxClassResource\Pages;
+use Payflow\Admin\Support\Resources\BaseResource;
+use Payflow\Models\Contracts\TaxClass;
 
 class TaxClassResource extends BaseResource
 {
@@ -27,17 +27,17 @@ class TaxClassResource extends BaseResource
 
     public static function getLabel(): string
     {
-        return __('lunarpanel::taxclass.label');
+        return __('payflowpanel::taxclass.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('lunarpanel::taxclass.plural_label');
+        return __('payflowpanel::taxclass.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::tax');
+        return FilamentIcon::resolve('payflow::tax');
     }
 
     protected static function getMainFormComponents(): array
@@ -53,7 +53,7 @@ class TaxClassResource extends BaseResource
     protected static function getNameFormComponent(): Component
     {
         return Forms\Components\TextInput::make('name')
-            ->label(__('lunarpanel::taxclass.form.name.label'))
+            ->label(__('payflowpanel::taxclass.form.name.label'))
             ->required()
             ->maxLength(255)
             ->autofocus();
@@ -62,7 +62,7 @@ class TaxClassResource extends BaseResource
     protected static function getDefaultFormComponent(): Component
     {
         return Forms\Components\Toggle::make('default')
-            ->label(__('lunarpanel::taxzone.form.default.label'));
+            ->label(__('payflowpanel::taxzone.form.default.label'));
     }
 
     public static function getDefaultTable(Table $table): Table
@@ -89,11 +89,11 @@ class TaxClassResource extends BaseResource
                 ->separator('')
                 ->suffixBadges([
                     Badge::make('default')
-                        ->label(__('lunarpanel::taxclass.table.default.label'))
+                        ->label(__('payflowpanel::taxclass.table.default.label'))
                         ->color('gray')
                         ->visible(fn (Model $record) => $record->default),
                 ])
-                ->label(__('lunarpanel::taxclass.table.name.label')),
+                ->label(__('payflowpanel::taxclass.table.name.label')),
         ];
     }
 

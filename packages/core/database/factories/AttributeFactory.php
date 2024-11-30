@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
 use Illuminate\Support\Str;
-use Lunar\Models\Attribute;
-use Lunar\Models\AttributeGroup;
+use Payflow\Models\Attribute;
+use Payflow\Models\AttributeGroup;
 
 class AttributeFactory extends BaseFactory
 {
@@ -26,7 +26,7 @@ class AttributeFactory extends BaseFactory
             ],
             'handle' => Str::slug($this->faker->name()),
             'section' => $this->faker->name(),
-            'type' => \Lunar\FieldTypes\Text::class,
+            'type' => \Payflow\FieldTypes\Text::class,
             'required' => false,
             'default_value' => '',
             'configuration' => [

@@ -1,15 +1,15 @@
 <?php
 
-namespace Lunar\Tests\Stripe;
+namespace Payflow\Tests\Stripe;
 
 use Cartalyst\Converter\Laravel\ConverterServiceProvider;
 use Illuminate\Support\Facades\Config;
 use Kalnoy\Nestedset\NestedSetServiceProvider;
 use Livewire\LivewireServiceProvider;
-use Lunar\LunarServiceProvider;
-use Lunar\Stripe\Facades\Stripe;
-use Lunar\Stripe\StripePaymentsServiceProvider;
-use Lunar\Tests\Stubs\User;
+use Payflow\PayflowServiceProvider;
+use Payflow\Stripe\Facades\Stripe;
+use Payflow\Stripe\StripePaymentsServiceProvider;
+use Payflow\Tests\Stubs\User;
 use Spatie\Activitylog\ActivitylogServiceProvider;
 use Spatie\LaravelBlink\BlinkServiceProvider;
 use Spatie\MediaLibrary\MediaLibraryServiceProvider;
@@ -22,7 +22,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
         // additional setup
         Config::set('providers.users.model', User::class);
         Config::set('services.stripe.key', 'SK_TESTER');
-        Config::set('services.stripe.webhooks.lunar', 'FOOBAR');
+        Config::set('services.stripe.webhooks.payflow', 'FOOBAR');
 
         activity()->disableLogging();
 
@@ -32,7 +32,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            LunarServiceProvider::class,
+            PayflowServiceProvider::class,
             BlinkServiceProvider::class,
             StripePaymentsServiceProvider::class,
             LivewireServiceProvider::class,

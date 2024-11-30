@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Pipelines\Cart;
+namespace Payflow\Pipelines\Cart;
 
 use Closure;
-use Lunar\Facades\Discounts;
-use Lunar\Models\Cart;
+use Payflow\Facades\Discounts;
+use Payflow\Models\Cart;
 
 final class ApplyDiscounts
 {

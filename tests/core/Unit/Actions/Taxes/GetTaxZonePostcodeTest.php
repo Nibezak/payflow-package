@@ -1,9 +1,9 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\Actions\Taxes\GetTaxZonePostcode;
-use Lunar\Models\TaxZonePostcode;
+use Payflow\Actions\Taxes\GetTaxZonePostcode;
+use Payflow\Models\TaxZonePostcode;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class)
     ->group('taxes');

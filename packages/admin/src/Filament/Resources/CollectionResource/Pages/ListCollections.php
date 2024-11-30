@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\CollectionResource\Pages;
+namespace Payflow\Admin\Filament\Resources\CollectionResource\Pages;
 
-use Lunar\Admin\Filament\Resources\CollectionResource;
-use Lunar\Admin\Support\Pages\BaseListRecords;
+use Payflow\Admin\Filament\Resources\CollectionResource;
+use Payflow\Admin\Support\Pages\BaseListRecords;
 
 class ListCollections extends BaseListRecords
 {

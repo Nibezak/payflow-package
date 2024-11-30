@@ -1,18 +1,18 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Arr;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Traits\HasChannels;
-use Lunar\Base\Traits\HasCustomerGroups;
-use Lunar\Base\Traits\HasTranslations;
-use Lunar\Database\Factories\DiscountFactory;
-use Lunar\DiscountTypes\AbstractDiscountType;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Traits\HasChannels;
+use Payflow\Base\Traits\HasCustomerGroups;
+use Payflow\Base\Traits\HasTranslations;
+use Payflow\Database\Factories\DiscountFactory;
+use Payflow\DiscountTypes\AbstractDiscountType;
 
 /**
  * @property int $id
@@ -84,7 +84,7 @@ class Discount extends BaseModel implements Contracts\Discount
 
     public function users(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(
             config('auth.providers.users.model'),
@@ -124,7 +124,7 @@ class Discount extends BaseModel implements Contracts\Discount
 
     public function collections(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(
             Collection::modelClass(),
@@ -134,7 +134,7 @@ class Discount extends BaseModel implements Contracts\Discount
 
     public function customerGroups(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(
             CustomerGroup::modelClass(),
@@ -149,7 +149,7 @@ class Discount extends BaseModel implements Contracts\Discount
 
     public function brands(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(
             Brand::modelClass(),

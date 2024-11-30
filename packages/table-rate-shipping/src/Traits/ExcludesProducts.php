@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Shipping\Traits;
+namespace Payflow\Shipping\Traits;
 
 use Illuminate\Database\Eloquent\Collection;
-use Lunar\Shipping\Models\ShippingExclusionList;
+use Payflow\Shipping\Models\ShippingExclusionList;
 
 /**
  * @property $shippingMethod

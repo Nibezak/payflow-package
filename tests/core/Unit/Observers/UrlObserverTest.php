@@ -1,8 +1,8 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
-use Lunar\Models\Language;
-use Lunar\Models\Url;
+uses(\Payflow\Tests\Core\TestCase::class);
+use Payflow\Models\Language;
+use Payflow\Models\Url;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

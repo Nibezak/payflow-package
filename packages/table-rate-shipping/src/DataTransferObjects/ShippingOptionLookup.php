@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Shipping\DataTransferObjects;
+namespace Payflow\Shipping\DataTransferObjects;
 
 use Doctrine\Common\Cache\Psr6\InvalidArgument;
 use Illuminate\Support\Collection;
-use Lunar\Shipping\Models\ShippingRate;
+use Payflow\Shipping\Models\ShippingRate;
 
 class ShippingOptionLookup
 {

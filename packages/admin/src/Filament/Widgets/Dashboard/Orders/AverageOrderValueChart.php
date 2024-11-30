@@ -1,13 +1,13 @@
 <?php
 
-namespace Lunar\Admin\Filament\Widgets\Dashboard\Orders;
+namespace Payflow\Admin\Filament\Widgets\Dashboard\Orders;
 
 use Carbon\CarbonPeriod;
 use Leandrocfe\FilamentApexCharts\Widgets\ApexChartWidget;
-use Lunar\Facades\DB;
-use Lunar\Models\Currency;
-use Lunar\Models\CustomerGroup;
-use Lunar\Models\Order;
+use Payflow\Facades\DB;
+use Payflow\Models\Currency;
+use Payflow\Models\CustomerGroup;
+use Payflow\Models\Order;
 
 class AverageOrderValueChart extends ApexChartWidget
 {
@@ -20,7 +20,7 @@ class AverageOrderValueChart extends ApexChartWidget
 
     protected function getHeading(): ?string
     {
-        return __('lunarpanel::widgets.dashboard.orders.average_order_value.heading');
+        return __('payflowpanel::widgets.dashboard.orders.average_order_value.heading');
     }
 
     protected function getOrderQuery(?\DateTime $from = null, ?\DateTime $to = null)
@@ -131,7 +131,7 @@ class AverageOrderValueChart extends ApexChartWidget
             ],
             'yaxis' => [
                 'title' => [
-                    'text' => __('lunarpanel::widgets.dashboard.orders.order_totals_chart.yaxis.label', [
+                    'text' => __('payflowpanel::widgets.dashboard.orders.order_totals_chart.yaxis.label', [
                         'currency' => $currency->code,
                     ]),
                 ],

@@ -2,9 +2,9 @@
 
 ## Writing Extensions
 
-There are three extension types Lunar provides, these are for Create, Edit and Listing pages.
+There are three extension types Payflow provides, these are for Create, Edit and Listing pages.
 
-You will want to place the extension class in your application. A sensible location might be `App\Lunar\MyCreateExtension`.
+You will want to place the extension class in your application. A sensible location might be `App\Payflow\MyCreateExtension`.
 
 Once created you will need to register the extension, typically in your app service provider.
 
@@ -15,8 +15,8 @@ An example of extending a create page.
 
 ```php
 use Filament\Actions;
-use Lunar\Admin\Support\Extending\CreatePageExtension;
-use Lunar\Admin\Filament\Widgets;
+use Payflow\Admin\Support\Extending\CreatePageExtension;
+use Payflow\Admin\Filament\Widgets;
 
 class MyCreateExtension extends CreatePageExtension
 {
@@ -98,8 +98,8 @@ class MyCreateExtension extends CreatePageExtension
 }
 
 // Typically placed in your AppServiceProvider file...
-LunarPanel::extensions([
-    \Lunar\Admin\Filament\Resources\CustomerGroupResource\Pages\CreateCustomerGroup::class => MyCreateExtension::class,
+PayflowPanel::extensions([
+    \Payflow\Admin\Filament\Resources\CustomerGroupResource\Pages\CreateCustomerGroup::class => MyCreateExtension::class,
 ]);
 ```
 
@@ -109,8 +109,8 @@ An example of extending an edit page.
 
 ```php
 use Filament\Actions;
-use Lunar\Admin\Support\Extending\EditPageExtension;
-use Lunar\Admin\Filament\Widgets;
+use Payflow\Admin\Support\Extending\EditPageExtension;
+use Payflow\Admin\Filament\Widgets;
 
 class MyEditExtension extends EditPageExtension
 {
@@ -197,8 +197,8 @@ class MyEditExtension extends EditPageExtension
 }
 
 // Typically placed in your AppServiceProvider file...
-LunarPanel::extensions([
-    \Lunar\Admin\Filament\Resources\ProductResource\Pages\EditProduct::class => MyEditExtension::class,
+PayflowPanel::extensions([
+    \Payflow\Admin\Filament\Resources\ProductResource\Pages\EditProduct::class => MyEditExtension::class,
 ]);
 ```
 
@@ -210,8 +210,8 @@ An example of extending a list page.
 use Filament\Actions;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\Pagination\Paginator;
-use Lunar\Admin\Support\Extending\ListPageExtension;
-use Lunar\Admin\Filament\Widgets;
+use Payflow\Admin\Support\Extending\ListPageExtension;
+use Payflow\Admin\Filament\Widgets;
 
 class MyListExtension extends ListPageExtension
 {
@@ -266,8 +266,8 @@ class MyListExtension extends ListPageExtension
 }
 
 // Typically placed in your AppServiceProvider file...
-LunarPanel::extensions([
-    \Lunar\Admin\Filament\Resources\ProductResource\Pages\ListProducts::class => MyListExtension::class,
+PayflowPanel::extensions([
+    \Payflow\Admin\Filament\Resources\ProductResource\Pages\ListProducts::class => MyListExtension::class,
 ]);
 ```
 
@@ -282,8 +282,8 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Infolists\Infolist;
 use Filament\Infolists\Components\TextEntry;
-use Lunar\Admin\Support\Extending\ViewPageExtension;
-use Lunar\Admin\Filament\Widgets;
+use Payflow\Admin\Support\Extending\ViewPageExtension;
+use Payflow\Admin\Filament\Widgets;
 
 class MyViewExtension extends ViewPageExtension
 {
@@ -339,8 +339,8 @@ class MyViewExtension extends ViewPageExtension
 }
 
 // Typically placed in your AppServiceProvider file...
-LunarPanel::extensions([
-    \Lunar\Admin\Filament\Resources\OrderResource\Pages\ManageOrder::class => MyViewExtension::class,
+PayflowPanel::extensions([
+    \Payflow\Admin\Filament\Resources\OrderResource\Pages\ManageOrder::class => MyViewExtension::class,
 ]);
 ```
 
@@ -350,7 +350,7 @@ An example of extending a relation page.
 
 ```php
 use Filament\Actions;
-use Lunar\Admin\Support\Extending\RelationPageExtension;
+use Payflow\Admin\Support\Extending\RelationPageExtension;
 
 class MyRelationExtension extends RelationPageExtension
 {
@@ -378,14 +378,14 @@ class MyRelationExtension extends RelationPageExtension
 }
 
 // Typically placed in your AppServiceProvider file...
-LunarPanel::extensions([
-    \Lunar\Admin\Filament\Resources\ProductResource\Pages\ManageProductMedia::class => MyRelationExtension::class,
+PayflowPanel::extensions([
+    \Payflow\Admin\Filament\Resources\ProductResource\Pages\ManageProductMedia::class => MyRelationExtension::class,
 ]);
 ```
 
 ## Extending Pages In Addons
 
-If you are building an addon for Lunar, you may need to take a slightly different approach when modifying forms, etc.
+If you are building an addon for Payflow, you may need to take a slightly different approach when modifying forms, etc.
 
 For example, you cannot assume the contents of a form, so you may need to take an approach such as this...
 

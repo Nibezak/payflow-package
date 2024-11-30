@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Admin\Support\RelationManagers;
+namespace Payflow\Admin\Support\RelationManagers;
 
 use Filament\Resources\RelationManagers\RelationManager;
 use Illuminate\Support\Facades\App;
 use Livewire\Attributes\On;
-use Lunar\Admin\Support\Concerns;
+use Payflow\Admin\Support\Concerns;
 
 #[On('refresh-relation-manager')]
 class BaseRelationManager extends RelationManager

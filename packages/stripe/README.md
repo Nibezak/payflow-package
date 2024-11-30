@@ -1,7 +1,7 @@
-<p align="center"><img src="https://github.com/lunarphp/addons/assets/1488016/59ab3f7a-3a3f-4519-a14d-254525dbcf78" width="300" ></p>
+<p align="center"><img src="https://github.com/payflowphp/addons/assets/1488016/59ab3f7a-3a3f-4519-a14d-254525dbcf78" width="300" ></p>
 
 
-<p align="center">This addon enables Stripe payments on your Lunar storefront.</p>
+<p align="center">This addon enables Stripe payments on your Payflow storefront.</p>
 
 ## Alpha Release
 
@@ -21,7 +21,7 @@ This addon is currently in Alpha, whilst every step is taken to ensure this is w
 
 ## Minimum Requirements
 
-- Lunar  `1.x`
+- Payflow  `1.x`
 - A [Stripe](http://stripe.com/) account with secret and public keys
 
 ## Optional Requirements
@@ -35,28 +35,28 @@ This addon is currently in Alpha, whilst every step is taken to ensure this is w
 ### Require the composer package
 
 ```sh
-composer require lunarphp/stripe
+composer require payflowphp/stripe
 ```
 
 ### Publish the configuration
 
-This will publish the configuration under `config/lunar/stripe.php`.
+This will publish the configuration under `config/payflow/stripe.php`.
 
 ```sh
-php artisan vendor:publish --tag=lunar.stripe.config
+php artisan vendor:publish --tag=payflow.stripe.config
 ```
 
 ### Publish the views (optional)
 
-Lunar Stripe comes with some helper components for you to use on your checkout, if you intend to edit the views they provide, you can publish them.
+Payflow Stripe comes with some helper components for you to use on your checkout, if you intend to edit the views they provide, you can publish them.
 
 ```sh
-php artisan vendor:publish --tag=lunar.stripe.components
+php artisan vendor:publish --tag=payflow.stripe.components
 ```
 
 ### Enable the driver
 
-Set the driver in `config/lunar/payments.php`
+Set the driver in `config/payflow/payments.php`
 
 ```php
 <?php
@@ -81,7 +81,7 @@ Make sure you have the Stripe credentials set in `config/services.php`
     'key' => env('STRIPE_SECRET'),
     'public_key' => env('STRIPE_PK'),
     'webhooks' => [
-        'lunar' => env('LUNAR_STRIPE_WEBHOOK_SECRET'),
+        'payflow' => env('LUNAR_STRIPE_WEBHOOK_SECRET'),
     ],
 ],
 ```
@@ -90,7 +90,7 @@ Make sure you have the Stripe credentials set in `config/services.php`
 
 ## Configuration
 
-Below is a list of the available configuration options this package uses in `config/lunar/stripe.php`
+Below is a list of the available configuration options this package uses in `config/payflow/stripe.php`
 
 | Key              | Default      | Description                                                                                                                                                                   |
 |------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -103,9 +103,9 @@ Below is a list of the available configuration options this package uses in `con
 ### Create a PaymentIntent
 
 ```php
-use \Lunar\Stripe\Facades\Stripe;
+use \Payflow\Stripe\Facades\Stripe;
 
-Stripe::createIntent(\Lunar\Models\Cart $cart, $options = []);
+Stripe::createIntent(\Payflow\Models\Cart $cart, $options = []);
 ```
 
 This method will create a Stripe PaymentIntent from a Cart and add the resulting ID to the meta for retrieval later. If a PaymentIntent already exists for a cart this will fetch it from Stripe and return that instead to avoid duplicate PaymentIntents being created.
@@ -117,7 +117,7 @@ You can pass any additional parameters you need, by default the following are se
     'amount' => 1099,
     'currency' => 'GBP',
     'automatic_payment_methods' => ['enabled' => true],
-    'capture_method' => config('lunar.stripe.policy', 'automatic'),
+    'capture_method' => config('payflow.stripe.policy', 'automatic'),
     // If a shipping address exists on a cart
     // $shipping = $cart->shippingAddress
     'shipping' => [
@@ -145,7 +145,7 @@ $cart->meta->payment_intent;
 ### Fetch an existing PaymentIntent
 
 ```php
-use \Lunar\Stripe\Facades\Stripe;
+use \Payflow\Stripe\Facades\Stripe;
 
 Stripe::fetchIntent($paymentIntentId);
 ```
@@ -155,9 +155,9 @@ Stripe::fetchIntent($paymentIntentId);
 If a payment intent has been created and there are changes to the cart, you will want to update the intent so it has the correct totals.
 
 ```php
-use \Lunar\Stripe\Facades\Stripe;
+use \Payflow\Stripe\Facades\Stripe;
 
-Stripe::syncIntent(\Lunar\Models\Cart $cart);
+Stripe::syncIntent(\Payflow\Models\Cart $cart);
 ```
 
 
@@ -168,9 +168,9 @@ For when you want to update certain properties on the PaymentIntent, without nee
 See https://docs.stripe.com/api/payment_intents/update
 
 ```php
-use \Lunar\Stripe\Facades\Stripe;
+use \Payflow\Stripe\Facades\Stripe;
 
-Stripe::updateIntent(\Lunar\Models\Cart $cart, [
+Stripe::updateIntent(\Payflow\Models\Cart $cart, [
     'shipping' => [/*..*/]
 ]);
 ```
@@ -179,10 +179,10 @@ Stripe::updateIntent(\Lunar\Models\Cart $cart, [
 
 If you need to cancel a PaymentIntent, you can do so. You will need to provide a valid reason, those of which can be found in the Stripe docs: https://docs.stripe.com/api/payment_intents/cancel.
 
-Lunar Stripe includes a PHP Enum to make this easier for you:
+Payflow Stripe includes a PHP Enum to make this easier for you:
 
 ```php
-use Lunar\Stripe\Enums\CancellationReason;
+use Payflow\Stripe\Enums\CancellationReason;
 
 CancellationReason::ABANDONED;
 CancellationReason::DUPLICATE;
@@ -191,10 +191,10 @@ CancellationReason::FRAUDULENT;
 ```
 
 ```php
-use Lunar\Stripe\Facades\Stripe;
-use Lunar\Stripe\Enums\CancellationReason;
+use Payflow\Stripe\Facades\Stripe;
+use Payflow\Stripe\Enums\CancellationReason;
 
-Stripe::cancelIntent(\Lunar\Models\Cart $cart, CancellationReason $reason);
+Stripe::cancelIntent(\Payflow\Models\Cart $cart, CancellationReason $reason);
 ```
 
 ### Update the address on Stripe
@@ -202,9 +202,9 @@ Stripe::cancelIntent(\Lunar\Models\Cart $cart, CancellationReason $reason);
 So you don't have to manually specify all the shipping address fields you can use the helper function to do it for you.
 
 ```php
-use \Lunar\Stripe\Facades\Stripe;
+use \Payflow\Stripe\Facades\Stripe;
 
-Stripe::updateShippingAddress(\Lunar\Models\Cart $cart);
+Stripe::updateShippingAddress(\Payflow\Models\Cart $cart);
 ```
 
 ## Charges
@@ -212,7 +212,7 @@ Stripe::updateShippingAddress(\Lunar\Models\Cart $cart);
 ### Retrieve a specific charge
 
 ```php
-use \Lunar\Stripe\Facades\Stripe;
+use \Payflow\Stripe\Facades\Stripe;
 
 Stripe::getCharge(string $chargeId);
 ```
@@ -220,7 +220,7 @@ Stripe::getCharge(string $chargeId);
 ### Get all charges for a payment intent
 
 ```php
-use \Lunar\Stripe\Facades\Stripe;
+use \Payflow\Stripe\Facades\Stripe;
 
 Stripe::getCharges(string $paymentIntentId);
 ```
@@ -233,7 +233,7 @@ The events you should listen to are `payment_intent.payment_failed`, `payment_in
 
 The path to the webhook will be `http:://yoursite.com/stripe/webhook`.
 
-You can customise the path for the webhook in `config/lunar/stripe.php`.
+You can customise the path for the webhook in `config/payflow/stripe.php`.
 
 You will also need to add the webhook signing secret to the `services.php` config file:
 
@@ -274,7 +274,7 @@ Payments::driver('stripe')->cart($cart)->withData([
 First we need to set up the backend API call to fetch or create the intent, this isn't Vue specific but will likely be different if you're using Livewire.
 
 ```php
-use \Lunar\Stripe\Facades\Stripe;
+use \Payflow\Stripe\Facades\Stripe;
 
 Route::post('api/payment-intent', function () {
     $cart = CartSession::current();
@@ -388,4 +388,4 @@ Contributions are welcome, if you are thinking of adding a feature, please submi
 
 ## Testing
 
-A [MockClient](https://github.com/lunar/stripe/blob/main/tests/Stripe/MockClient.php) class is used to mock responses the Stripe API will return.
+A [MockClient](https://github.com/payflow/stripe/blob/main/tests/Stripe/MockClient.php) class is used to mock responses the Stripe API will return.

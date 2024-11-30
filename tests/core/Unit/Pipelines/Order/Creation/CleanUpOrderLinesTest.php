@@ -1,18 +1,18 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\DataTypes\Price;
-use Lunar\DataTypes\ShippingOption;
-use Lunar\Facades\ShippingManifest;
-use Lunar\Models\Cart;
-use Lunar\Models\CartAddress;
-use Lunar\Models\Currency;
-use Lunar\Models\Order;
-use Lunar\Models\OrderLine;
-use Lunar\Models\ProductVariant;
-use Lunar\Models\TaxClass;
-use Lunar\Pipelines\Order\Creation\CleanUpOrderLines;
+use Payflow\DataTypes\Price;
+use Payflow\DataTypes\ShippingOption;
+use Payflow\Facades\ShippingManifest;
+use Payflow\Models\Cart;
+use Payflow\Models\CartAddress;
+use Payflow\Models\Currency;
+use Payflow\Models\Order;
+use Payflow\Models\OrderLine;
+use Payflow\Models\ProductVariant;
+use Payflow\Models\TaxClass;
+use Payflow\Pipelines\Order\Creation\CleanUpOrderLines;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -46,7 +46,7 @@ test('can run pipeline', function () {
     $purchasable = ProductVariant::factory()->create();
     $purchasableB = ProductVariant::factory()->create();
 
-    \Lunar\Models\Price::factory()->create([
+    \Payflow\Models\Price::factory()->create([
         'price' => 100,
         'min_quantity' => 1,
         'currency_id' => $currency->id,
@@ -54,7 +54,7 @@ test('can run pipeline', function () {
         'priceable_id' => $purchasable->id,
     ]);
 
-    \Lunar\Models\Price::factory()->create([
+    \Payflow\Models\Price::factory()->create([
         'price' => 100,
         'min_quantity' => 1,
         'currency_id' => $currency->id,

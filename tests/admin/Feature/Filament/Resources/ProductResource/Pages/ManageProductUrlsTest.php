@@ -1,17 +1,17 @@
 <?php
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('resource.product');
 
 it('can render product urls create page', function () {
-    \Lunar\Models\Language::factory()->create([
+    \Payflow\Models\Language::factory()->create([
         'default' => true,
     ]);
 
-    $record = \Lunar\Models\Product::factory()->create();
+    $record = \Payflow\Models\Product::factory()->create();
 
     $this->asStaff(admin: true)
-        ->get(\Lunar\Admin\Filament\Resources\ProductResource::getUrl('urls', [
+        ->get(\Payflow\Admin\Filament\Resources\ProductResource::getUrl('urls', [
             'record' => $record,
         ]))
         ->assertSuccessful();

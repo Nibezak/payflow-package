@@ -1,23 +1,23 @@
 <?php
 
-uses(\Lunar\Tests\Core\Unit\Base\Extendable\ExtendableTestCase::class)->group('model_extending');
+uses(\Payflow\Tests\Core\Unit\Base\Extendable\ExtendableTestCase::class)->group('model_extending');
 
 use Illuminate\Support\Collection;
-use Lunar\Models\Product;
-use Lunar\Models\ProductOption;
+use Payflow\Models\Product;
+use Payflow\Models\ProductOption;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
 beforeEach(
     function () {
-        \Lunar\Facades\ModelManifest::replace(
-            \Lunar\Models\Contracts\Product::class,
-            \Lunar\Tests\Core\Stubs\Models\Product::class
+        \Payflow\Facades\ModelManifest::replace(
+            \Payflow\Models\Contracts\Product::class,
+            \Payflow\Tests\Core\Stubs\Models\Product::class
         );
 
-        \Lunar\Facades\ModelManifest::replace(
-            \Lunar\Models\Contracts\ProductOption::class,
-            \Lunar\Tests\Core\Stubs\Models\ProductOption::class
+        \Payflow\Facades\ModelManifest::replace(
+            \Payflow\Models\Contracts\ProductOption::class,
+            \Payflow\Tests\Core\Stubs\Models\ProductOption::class
         );
     }
 );
@@ -25,28 +25,28 @@ beforeEach(
 test('can get new instance of the registered model', function () {
     $product = Product::find(1);
 
-    expect($product)->toBeInstanceOf(\Lunar\Tests\Core\Stubs\Models\Product::class);
+    expect($product)->toBeInstanceOf(\Payflow\Tests\Core\Stubs\Models\Product::class);
 });
 
 test('can forward calls to extended model', function () {
     // @phpstan-ignore-next-line
     $sizeOption = ProductOption::with('sizes')->find(1);
 
-    expect($sizeOption)->toBeInstanceOf(\Lunar\Tests\Core\Stubs\Models\ProductOption::class);
+    expect($sizeOption)->toBeInstanceOf(\Payflow\Tests\Core\Stubs\Models\ProductOption::class);
 
     expect($sizeOption->sizes)->toBeInstanceOf(Collection::class);
     expect($sizeOption->sizes)->toHaveCount(1);
 });
 
 test('extended model returns correct table name', function () {
-    expect((new \Lunar\Tests\Core\Stubs\Models\CustomOrder)->getTable())
+    expect((new \Payflow\Tests\Core\Stubs\Models\CustomOrder)->getTable())
         ->toBe(
-            (new \Lunar\Models\Order)->getTable()
+            (new \Payflow\Models\Order)->getTable()
         );
 });
 
 test('can forward static method calls to extended model', function () {
-    /** @see \Lunar\Tests\Core\Stubs\Models\ProductOption::getSizesStatic() */
+    /** @see \Payflow\Tests\Core\Stubs\Models\ProductOption::getSizesStatic() */
     $newStaticMethod = ProductOption::getSizesStatic();
 
     expect($newStaticMethod)->toBeInstanceOf(Collection::class);
@@ -54,14 +54,14 @@ test('can forward static method calls to extended model', function () {
 });
 
 test('morph map is correct when models are extended', function () {
-    \Lunar\Facades\ModelManifest::replace(
-        \Lunar\Models\Contracts\Product::class,
-        \Lunar\Tests\Core\Stubs\Models\CustomProduct::class
+    \Payflow\Facades\ModelManifest::replace(
+        \Payflow\Models\Contracts\Product::class,
+        \Payflow\Tests\Core\Stubs\Models\CustomProduct::class
     );
 
-    expect((new \Lunar\Tests\Core\Stubs\Models\CustomProduct)->getMorphClass())
+    expect((new \Payflow\Tests\Core\Stubs\Models\CustomProduct)->getMorphClass())
         ->toBe('product')
-        ->and(\Lunar\Tests\Core\Stubs\Models\CustomProduct::morphName())
+        ->and(\Payflow\Tests\Core\Stubs\Models\CustomProduct::morphName())
         ->toBe('product')
         ->and((new Product)->getMorphClass())
         ->toBe('product')

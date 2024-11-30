@@ -2,28 +2,28 @@
 
 use Filament\Infolists\Infolist;
 use Illuminate\Support\Str;
-use Lunar\Admin\Filament\Resources\OrderResource\Pages\ManageOrder;
-use Lunar\Admin\Support\Facades\LunarPanel;
+use Payflow\Admin\Filament\Resources\OrderResource\Pages\ManageOrder;
+use Payflow\Admin\Support\Facades\PayflowPanel;
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('extending.view');
 
 beforeEach(function () {
     $this->asStaff();
 
-    $currency = \Lunar\Models\Currency::factory()->create([
+    $currency = \Payflow\Models\Currency::factory()->create([
         'default' => true,
     ]);
 
-    $country = \Lunar\Models\Country::factory()->create();
+    $country = \Payflow\Models\Country::factory()->create();
 
-    $this->order = \Lunar\Models\Order::factory()
-        ->for(\Lunar\Models\Customer::factory())
-        ->has(\Lunar\Models\OrderAddress::factory()->state([
+    $this->order = \Payflow\Models\Order::factory()
+        ->for(\Payflow\Models\Customer::factory())
+        ->has(\Payflow\Models\OrderAddress::factory()->state([
             'type' => 'shipping',
             'country_id' => $country->id,
         ]), 'shippingAddress')
-        ->has(\Lunar\Models\OrderAddress::factory()->state([
+        ->has(\Payflow\Models\OrderAddress::factory()->state([
             'type' => 'billing',
             'country_id' => $country->id,
         ]), 'billingAddress')
@@ -37,7 +37,7 @@ beforeEach(function () {
 });
 
 it('can extend Infolist', function () {
-    $class = new class extends \Lunar\Admin\Support\Extending\ViewPageExtension
+    $class = new class extends \Payflow\Admin\Support\Extending\ViewPageExtension
     {
         public function extendsInfolist(Infolist $infolist): Infolist
         {
@@ -49,7 +49,7 @@ it('can extend Infolist', function () {
         }
     };
 
-    LunarPanel::registerExtension($class, ManageOrder::class);
+    PayflowPanel::registerExtension($class, ManageOrder::class);
 
     \Livewire\Livewire::test(ManageOrder::class, [
         'record' => $this->order->getRouteKey(),

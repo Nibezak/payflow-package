@@ -1,13 +1,13 @@
 <?php
 
-namespace Lunar\Actions\Carts;
+namespace Payflow\Actions\Carts;
 
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Collection;
-use Lunar\Base\CartLineModifiers;
-use Lunar\DataTypes\Price;
-use Lunar\Facades\Pricing;
-use Lunar\Models\CartLine;
+use Payflow\Base\CartLineModifiers;
+use Payflow\DataTypes\Price;
+use Payflow\Facades\Pricing;
+use Payflow\Models\CartLine;
 
 class CalculateLineSubtotal
 {
@@ -15,7 +15,7 @@ class CalculateLineSubtotal
      * Execute the action.
      *
      * @param  \Illuminate\Database\Eloquent\Collection  $customerGroups
-     * @return \Lunar\Models\CartLine
+     * @return \Payflow\Models\CartLine
      */
     public function execute(
         CartLine $cartLine,

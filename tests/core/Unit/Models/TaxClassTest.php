@@ -1,7 +1,7 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
-use Lunar\Models\TaxClass;
+uses(\Payflow\Tests\Core\TestCase::class);
+use Payflow\Models\TaxClass;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

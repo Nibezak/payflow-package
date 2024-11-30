@@ -1,16 +1,16 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ProductResource\Pages;
 
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Filament\Resources\ProductResource;
-use Lunar\Admin\Filament\Resources\ProductVariantResource;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
-use Lunar\Models\ProductVariant;
+use Payflow\Admin\Filament\Resources\ProductResource;
+use Payflow\Admin\Filament\Resources\ProductVariantResource;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Models\ProductVariant;
 
 class ManageProductIdentifiers extends BaseEditRecord
 {
@@ -26,12 +26,12 @@ class ManageProductIdentifiers extends BaseEditRecord
 
     public function getTitle(): string|Htmlable
     {
-        return __('lunarpanel::product.pages.identifiers.label');
+        return __('payflowpanel::product.pages.identifiers.label');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::product.pages.identifiers.label');
+        return __('payflowpanel::product.pages.identifiers.label');
     }
 
     public static function shouldRegisterNavigation(array $parameters = []): bool
@@ -41,12 +41,12 @@ class ManageProductIdentifiers extends BaseEditRecord
 
     public function getBreadcrumb(): string
     {
-        return __('lunarpanel::product.pages.identifiers.label');
+        return __('payflowpanel::product.pages.identifiers.label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::product-identifiers');
+        return FilamentIcon::resolve('payflow::product-identifiers');
     }
 
     protected function getDefaultHeaderActions(): array

@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
-use Lunar\Models\ProductType;
+use Payflow\Models\ProductType;
 
 class ProductTypeFactory extends BaseFactory
 {

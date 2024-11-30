@@ -2,8 +2,8 @@ blank_issues_enabled: false
 
 contact_links:
   - name: Feature request
-    url: https://github.com/lunarphp/lunar/discussions/new/choose
+    url: https://github.com/payflowphp/payflow/discussions/new/choose
     about: For ideas or feature requests
   - name: Support questions & other
-    url: https://github.com/lunarphp/lunar/discussions/new/choose
+    url: https://github.com/payflowphp/payflow/discussions/new/choose
     about: If you have a question, or need some support from the community

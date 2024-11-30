@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ChannelResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ChannelResource\Pages;
 
-use Lunar\Admin\Filament\Resources\ChannelResource;
-use Lunar\Admin\Support\Pages\BaseCreateRecord;
+use Payflow\Admin\Filament\Resources\ChannelResource;
+use Payflow\Admin\Support\Pages\BaseCreateRecord;
 
 class CreateChannel extends BaseCreateRecord
 {

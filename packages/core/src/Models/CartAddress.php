@@ -1,19 +1,19 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Lunar\Base\Addressable;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Traits\CachesProperties;
-use Lunar\Base\Traits\HasMacros;
-use Lunar\Base\Traits\LogsActivity;
-use Lunar\Base\ValueObjects\Cart\TaxBreakdown;
-use Lunar\Database\Factories\CartAddressFactory;
-use Lunar\DataTypes\Price;
-use Lunar\DataTypes\ShippingOption;
+use Payflow\Base\Addressable;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Traits\CachesProperties;
+use Payflow\Base\Traits\HasMacros;
+use Payflow\Base\Traits\LogsActivity;
+use Payflow\Base\ValueObjects\Cart\TaxBreakdown;
+use Payflow\Database\Factories\CartAddressFactory;
+use Payflow\DataTypes\Price;
+use Payflow\DataTypes\ShippingOption;
 
 /**
  * @property int $id

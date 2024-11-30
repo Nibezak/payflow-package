@@ -1,22 +1,22 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Casts\DiscountBreakdown;
-use Lunar\Base\Casts\Price;
-use Lunar\Base\Casts\ShippingBreakdown;
-use Lunar\Base\Casts\TaxBreakdown;
-use Lunar\Base\Traits\HasMacros;
-use Lunar\Base\Traits\HasTags;
-use Lunar\Base\Traits\LogsActivity;
-use Lunar\Base\Traits\Searchable;
-use Lunar\Database\Factories\OrderFactory;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Casts\DiscountBreakdown;
+use Payflow\Base\Casts\Price;
+use Payflow\Base\Casts\ShippingBreakdown;
+use Payflow\Base\Casts\TaxBreakdown;
+use Payflow\Base\Traits\HasMacros;
+use Payflow\Base\Traits\HasTags;
+use Payflow\Base\Traits\LogsActivity;
+use Payflow\Base\Traits\Searchable;
+use Payflow\Database\Factories\OrderFactory;
 
 /**
  * @property int $id
@@ -80,7 +80,7 @@ class Order extends BaseModel implements Contracts\Order
 
     public function getStatusLabelAttribute(): string
     {
-        $statuses = config('lunar.orders.statuses');
+        $statuses = config('payflow.orders.statuses');
 
         return $statuses[$this->status]['label'] ?? $this->status;
     }

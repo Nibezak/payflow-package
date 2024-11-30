@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
-use Lunar\Facades\DB;
-use Lunar\Models\Order;
+use Payflow\Facades\DB;
+use Payflow\Models\Order;
 
 class OrderReferenceGenerator implements OrderReferenceGeneratorInterface
 {

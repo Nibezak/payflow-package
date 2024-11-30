@@ -1,9 +1,9 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
-use Lunar\Base\Validation\CouponValidator;
-use Lunar\DiscountTypes\AmountOff;
-use Lunar\Models\Discount;
+uses(\Payflow\Tests\Core\TestCase::class);
+use Payflow\Base\Validation\CouponValidator;
+use Payflow\DiscountTypes\AmountOff;
+use Payflow\Models\Discount;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

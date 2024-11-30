@@ -1,25 +1,25 @@
 <?php
 
-namespace Lunar\Stripe\Facades;
+namespace Payflow\Stripe\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Lunar\Models\Cart;
-use Lunar\Stripe\Enums\CancellationReason;
-use Lunar\Stripe\MockClient;
+use Payflow\Models\Cart;
+use Payflow\Stripe\Enums\CancellationReason;
+use Payflow\Stripe\MockClient;
 use Stripe\ApiRequestor;
 
 /**
  * @method static getClient(): \Stripe\StripeClient
  * @method static getCartIntentId(Cart $cart): ?string
  * @method static fetchOrCreateIntent(Cart $cart, array $createOptions): ?string
- * @method static createIntent(\Lunar\Models\Cart $cart, array $createOptions): \Stripe\PaymentIntent
- * @method static syncIntent(\Lunar\Models\Cart $cart): void
- * @method static updateIntent(\Lunar\Models\Cart $cart, array $values): void
- * @method static cancelIntent(\Lunar\Models\Cart $cart, CancellationReason $reason): void
- * @method static updateShippingAddress(\Lunar\Models\Cart $cart): void
+ * @method static createIntent(\Payflow\Models\Cart $cart, array $createOptions): \Stripe\PaymentIntent
+ * @method static syncIntent(\Payflow\Models\Cart $cart): void
+ * @method static updateIntent(\Payflow\Models\Cart $cart, array $values): void
+ * @method static cancelIntent(\Payflow\Models\Cart $cart, CancellationReason $reason): void
+ * @method static updateShippingAddress(\Payflow\Models\Cart $cart): void
  * @method static getCharges(string $paymentIntentId): \Illuminate\Support\Collection
  * @method static getCharge(string $chargeId): \Stripe\Charge
- * @method static buildIntent(int $value, string $currencyCode, \Lunar\Models\CartAddress $shipping): \Stripe\PaymentIntent
+ * @method static buildIntent(int $value, string $currencyCode, \Payflow\Models\CartAddress $shipping): \Stripe\PaymentIntent
  */
 class Stripe extends Facade
 {
@@ -28,7 +28,7 @@ class Stripe extends Facade
      */
     protected static function getFacadeAccessor(): string
     {
-        return 'lunar:stripe';
+        return 'payflow:stripe';
     }
 
     public static function fake(): void

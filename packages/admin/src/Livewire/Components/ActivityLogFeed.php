@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Livewire\Components;
+namespace Payflow\Admin\Livewire\Components;
 
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
@@ -17,7 +17,7 @@ use Livewire\Attributes\Computed;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Lunar\Admin\Support\Facades\ActivityLog;
+use Payflow\Admin\Support\Facades\ActivityLog;
 
 class ActivityLogFeed extends Component implements HasActions, HasForms
 {
@@ -44,7 +44,7 @@ class ActivityLogFeed extends Component implements HasActions, HasForms
         return $form
             ->schema([
                 Textarea::make('comment')
-                    ->placeholder(__('lunarpanel::components.activity-log.input.placeholder'))
+                    ->placeholder(__('payflowpanel::components.activity-log.input.placeholder'))
                     ->required()
                     ->extraInputAttributes(['style' => 'min-height: 50px'])
                     ->hiddenLabel(),
@@ -54,12 +54,12 @@ class ActivityLogFeed extends Component implements HasActions, HasForms
     public function addCommentAction(): Action
     {
         return Action::make('addComment')
-            ->label(__('lunarpanel::components.activity-log.action.add-comment'))
+            ->label(__('payflowpanel::components.activity-log.action.add-comment'))
             ->action(fn () => $this->addComment())
             ->size(ActionSize::ExtraSmall)
             ->after(function () {
                 Notification::make()
-                    ->title(__('lunarpanel::components.activity-log.notification.comment_added'))
+                    ->title(__('payflowpanel::components.activity-log.notification.comment_added'))
                     ->success()
                     ->send();
 
@@ -79,7 +79,7 @@ class ActivityLogFeed extends Component implements HasActions, HasForms
         $data = $this->form->getState();
 
         activity()
-            ->useLog('lunarpanel')
+            ->useLog('payflowpanel')
             ->performedOn($this->subject)
             ->causedBy(Filament::auth()->user())
             ->event('comment')
@@ -142,6 +142,6 @@ class ActivityLogFeed extends Component implements HasActions, HasForms
 
     public function render()
     {
-        return view('lunarpanel::livewire.components.activity-log-feed');
+        return view('payflowpanel::livewire.components.activity-log-feed');
     }
 }

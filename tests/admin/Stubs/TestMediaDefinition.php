@@ -1,24 +1,24 @@
 <?php
 
-namespace Lunar\Tests\Admin\Stubs;
+namespace Payflow\Tests\Admin\Stubs;
 
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class TestMediaDefinition implements \Lunar\Base\MediaDefinitionsInterface
+class TestMediaDefinition implements \Payflow\Base\MediaDefinitionsInterface
 {
     public function registerMediaConversions(HasMedia $model, ?Media $media = null): void {}
 
     public function registerMediaCollections(HasMedia $model): void
     {
-        $model->addMediaCollection(config('lunar.media.collection'));
+        $model->addMediaCollection(config('payflow.media.collection'));
         $model->addMediaCollection('videos');
     }
 
     public function getMediaCollectionTitles(): array
     {
         return [
-            config('lunar.media.collection') => 'Images',
+            config('payflow.media.collection') => 'Images',
             'videos' => 'Videos',
         ];
     }
@@ -26,7 +26,7 @@ class TestMediaDefinition implements \Lunar\Base\MediaDefinitionsInterface
     public function getMediaCollectionDescriptions(): array
     {
         return [
-            config('lunar.media.collection') => 'Images',
+            config('payflow.media.collection') => 'Images',
             'videos' => 'Videos',
         ];
     }

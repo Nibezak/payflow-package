@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\TaxRateResource\RelationManagers;
+namespace Payflow\Admin\Filament\Resources\TaxRateResource\RelationManagers;
 
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -9,7 +9,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Validation\Rules\Unique;
-use Lunar\Models\TaxRateAmount;
+use Payflow\Models\TaxRateAmount;
 
 class TaxRateAmountRelationManager extends RelationManager
 {
@@ -45,17 +45,17 @@ class TaxRateAmountRelationManager extends RelationManager
     {
         return $table
             ->description(
-                __('lunarpanel::relationmanagers.tax_rate_amounts.table.description')
+                __('payflowpanel::relationmanagers.tax_rate_amounts.table.description')
             )
             ->paginated(false)
             ->headerActions([
                 Tables\Actions\CreateAction::make('create'),
             ])->columns([
                 Tables\Columns\TextColumn::make('taxClass.name')->label(
-                    __('lunarpanel::relationmanagers.tax_rate_amounts.table.tax_class.label')
+                    __('payflowpanel::relationmanagers.tax_rate_amounts.table.tax_class.label')
                 ),
                 Tables\Columns\TextColumn::make('percentage')->label(
-                    __('lunarpanel::relationmanagers.tax_rate_amounts.table.percentage.label')
+                    __('payflowpanel::relationmanagers.tax_rate_amounts.table.percentage.label')
                 ),
             ])->actions([
                 Tables\Actions\EditAction::make(),

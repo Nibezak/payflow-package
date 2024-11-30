@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Shipping\Filament\Resources\ShippingMethodResource\Pages;
+namespace Payflow\Shipping\Filament\Resources\ShippingMethodResource\Pages;
 
 use Filament\Actions;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
-use Lunar\Shipping\Filament\Resources\ShippingMethodResource;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Shipping\Filament\Resources\ShippingMethodResource;
 
 class EditShippingMethod extends BaseEditRecord
 {

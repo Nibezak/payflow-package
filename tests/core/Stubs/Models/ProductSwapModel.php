@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Tests\Core\Stubs\Models;
+namespace Payflow\Tests\Core\Stubs\Models;
 
-class ProductSwapModel extends \Lunar\Models\Product
+class ProductSwapModel extends \Payflow\Models\Product
 {
     public function shouldBeSearchable()
     {

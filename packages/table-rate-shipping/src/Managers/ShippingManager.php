@@ -1,17 +1,17 @@
 <?php
 
-namespace Lunar\Shipping\Managers;
+namespace Payflow\Shipping\Managers;
 
 use Illuminate\Support\Manager;
-use Lunar\Models\Cart;
-use Lunar\Shipping\Drivers\ShippingMethods\Collection;
-use Lunar\Shipping\Drivers\ShippingMethods\FlatRate;
-use Lunar\Shipping\Drivers\ShippingMethods\FreeShipping;
-use Lunar\Shipping\Drivers\ShippingMethods\ShipBy;
-use Lunar\Shipping\Interfaces\ShippingMethodManagerInterface;
-use Lunar\Shipping\Resolvers\ShippingOptionResolver;
-use Lunar\Shipping\Resolvers\ShippingRateResolver;
-use Lunar\Shipping\Resolvers\ShippingZoneResolver;
+use Payflow\Models\Cart;
+use Payflow\Shipping\Drivers\ShippingMethods\Collection;
+use Payflow\Shipping\Drivers\ShippingMethods\FlatRate;
+use Payflow\Shipping\Drivers\ShippingMethods\FreeShipping;
+use Payflow\Shipping\Drivers\ShippingMethods\ShipBy;
+use Payflow\Shipping\Interfaces\ShippingMethodManagerInterface;
+use Payflow\Shipping\Resolvers\ShippingOptionResolver;
+use Payflow\Shipping\Resolvers\ShippingRateResolver;
+use Payflow\Shipping\Resolvers\ShippingZoneResolver;
 
 class ShippingManager extends Manager implements ShippingMethodManagerInterface
 {

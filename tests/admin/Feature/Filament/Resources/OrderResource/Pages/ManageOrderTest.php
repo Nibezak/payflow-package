@@ -2,24 +2,24 @@
 
 use Illuminate\Support\Str;
 use Livewire\Livewire;
-use Lunar\Admin\Filament\Resources\CustomerResource;
-use Lunar\Admin\Filament\Resources\OrderResource\Pages\ManageOrder;
-use Lunar\Admin\Livewire\Components\ActivityLogFeed as ActivityLogFeedComponent;
-use Lunar\Base\ValueObjects\Cart\TaxBreakdown;
-use Lunar\Base\ValueObjects\Cart\TaxBreakdownAmount;
-use Lunar\DataTypes\Price;
-use Lunar\Facades\Pricing;
-use Lunar\Models\Country;
-use Lunar\Models\Currency;
-use Lunar\Models\Customer;
-use Lunar\Models\Language;
-use Lunar\Models\Order;
-use Lunar\Models\OrderAddress;
-use Lunar\Models\Price as ModelsPrice;
-use Lunar\Models\ProductVariant;
-use Lunar\Models\Transaction;
+use Payflow\Admin\Filament\Resources\CustomerResource;
+use Payflow\Admin\Filament\Resources\OrderResource\Pages\ManageOrder;
+use Payflow\Admin\Livewire\Components\ActivityLogFeed as ActivityLogFeedComponent;
+use Payflow\Base\ValueObjects\Cart\TaxBreakdown;
+use Payflow\Base\ValueObjects\Cart\TaxBreakdownAmount;
+use Payflow\DataTypes\Price;
+use Payflow\Facades\Pricing;
+use Payflow\Models\Country;
+use Payflow\Models\Currency;
+use Payflow\Models\Customer;
+use Payflow\Models\Language;
+use Payflow\Models\Order;
+use Payflow\Models\OrderAddress;
+use Payflow\Models\Price as ModelsPrice;
+use Payflow\Models\ProductVariant;
+use Payflow\Models\Transaction;
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('resource.order');
 
 beforeEach(function () {
@@ -125,7 +125,7 @@ it('can render order manage page', function () {
         ->assertSee($this->order->total->formatted)
         ->assertSee($this->order->customer->fullName)
         ->assertSee(CustomerResource::getUrl('edit', ['record' => $this->order->customer->id]))
-        ->assertSee(__('lunarpanel::order.transactions.capture'))
+        ->assertSee(__('payflowpanel::order.transactions.capture'))
         ->assertSee($this->order->captures->first()->amount->formatted)
         ->assertSee($this->order->meta['additional_info'])
         ->assertSee($firstItem->total->formatted)
@@ -144,7 +144,7 @@ it('can download order pdf', function () {
 });
 
 it('can update order status', function () {
-    $status = collect(config('lunar.orders.statuses', []))
+    $status = collect(config('payflow.orders.statuses', []))
         ->keys()
         ->reject(fn ($status) => $status == $this->order->status)
         ->random();

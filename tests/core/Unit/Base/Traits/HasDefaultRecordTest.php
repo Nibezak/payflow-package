@@ -1,7 +1,7 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
-use Lunar\Models\Channel;
+uses(\Payflow\Tests\Core\TestCase::class);
+use Payflow\Models\Channel;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

@@ -1,14 +1,14 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\FieldTypes\Dropdown;
-use Lunar\FieldTypes\ListField;
-use Lunar\FieldTypes\Text;
-use Lunar\FieldTypes\TranslatedText;
-use Lunar\Models\AttributeGroup;
-use Lunar\Models\Product;
-use Lunar\Models\ProductOption;
+use Payflow\FieldTypes\Dropdown;
+use Payflow\FieldTypes\ListField;
+use Payflow\FieldTypes\Text;
+use Payflow\FieldTypes\TranslatedText;
+use Payflow\Models\AttributeGroup;
+use Payflow\Models\Product;
+use Payflow\Models\ProductOption;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

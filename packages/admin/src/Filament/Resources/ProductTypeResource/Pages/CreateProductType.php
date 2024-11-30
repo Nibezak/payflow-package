@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductTypeResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ProductTypeResource\Pages;
 
-use Lunar\Admin\Filament\Resources\ProductTypeResource;
-use Lunar\Admin\Support\Pages\BaseCreateRecord;
+use Payflow\Admin\Filament\Resources\ProductTypeResource;
+use Payflow\Admin\Support\Pages\BaseCreateRecord;
 
 class CreateProductType extends BaseCreateRecord
 {

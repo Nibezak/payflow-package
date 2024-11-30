@@ -1,10 +1,10 @@
 <?php
 
-uses(\Lunar\Tests\Admin\Feature\Filament\TestCase::class)
+uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
     ->group('actions');
 
 beforeEach(function () {
-    Config::set('lunar.panel.scout_enabled', false);
+    Config::set('payflow.panel.scout_enabled', false);
 
     $this->asStaff(admin: true);
 });
@@ -16,11 +16,11 @@ it('can render', function () {
 
 it('can search customer', function () {
 
-    \Lunar\Models\Language::factory()->create([
+    \Payflow\Models\Language::factory()->create([
         'default' => true,
     ]);
 
-    $record = \Lunar\Models\Customer::factory()->create([
+    $record = \Payflow\Models\Customer::factory()->create([
         'account_ref' => 'X67HB',
     ]);
 
@@ -32,23 +32,23 @@ it('can search customer', function () {
 
 it('can search order', function () {
 
-    \Lunar\Models\Language::factory()->create([
+    \Payflow\Models\Language::factory()->create([
         'default' => true,
     ]);
 
-    $currency = \Lunar\Models\Currency::factory()->create([
+    $currency = \Payflow\Models\Currency::factory()->create([
         'default' => true,
     ]);
 
-    $country = \Lunar\Models\Country::factory()->create();
+    $country = \Payflow\Models\Country::factory()->create();
 
-    $record = \Lunar\Models\Order::factory()
-        ->for(\Lunar\Models\Customer::factory())
-        ->has(\Lunar\Models\OrderAddress::factory()->state([
+    $record = \Payflow\Models\Order::factory()
+        ->for(\Payflow\Models\Customer::factory())
+        ->has(\Payflow\Models\OrderAddress::factory()->state([
             'type' => 'shipping',
             'country_id' => $country->id,
         ]), 'shippingAddress')
-        ->has(\Lunar\Models\OrderAddress::factory()->state([
+        ->has(\Payflow\Models\OrderAddress::factory()->state([
             'type' => 'billing',
             'country_id' => $country->id,
         ]), 'billingAddress')
@@ -67,11 +67,11 @@ it('can search order', function () {
 
 it('can search collection', function () {
 
-    \Lunar\Models\Language::factory()->create([
+    \Payflow\Models\Language::factory()->create([
         'default' => true,
     ]);
 
-    $record = \Lunar\Models\Collection::factory()->create();
+    $record = \Payflow\Models\Collection::factory()->create();
 
     \Livewire\Livewire::test(Filament\Livewire\GlobalSearch::class)
         ->set('search', $record->group->name)
@@ -80,11 +80,11 @@ it('can search collection', function () {
 });
 
 it('can search brand', function () {
-    \Lunar\Models\Language::factory()->create([
+    \Payflow\Models\Language::factory()->create([
         'default' => true,
     ]);
 
-    $brand = \Lunar\Models\Brand::factory()->create();
+    $brand = \Payflow\Models\Brand::factory()->create();
 
     \Livewire\Livewire::test(Filament\Livewire\GlobalSearch::class)
         ->set('search', $brand->name)
@@ -94,17 +94,17 @@ it('can search brand', function () {
 
 it('can search product', function () {
 
-    \Lunar\Models\Language::factory()->create([
+    \Payflow\Models\Language::factory()->create([
         'default' => true,
     ]);
 
-    \Lunar\Models\Currency::factory()->create([
+    \Payflow\Models\Currency::factory()->create([
         'default' => true,
     ]);
 
-    $record = \Lunar\Models\Product::factory()->create();
+    $record = \Payflow\Models\Product::factory()->create();
 
-    \Lunar\Models\ProductVariant::factory()->create([
+    \Payflow\Models\ProductVariant::factory()->create([
         'product_id' => $record->id,
     ]);
 

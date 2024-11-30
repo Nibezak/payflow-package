@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Pages;
+namespace Payflow\Admin\Support\Pages;
 
 use Filament\Resources\Pages\ManageRelatedRecords;
 
@@ -10,5 +10,5 @@ abstract class BaseManageRelatedRecords extends ManageRelatedRecords
     use Concerns\ExtendsHeaderActions;
     use Concerns\ExtendsHeaderWidgets;
     use Concerns\ExtendsHeadings;
-    use \Lunar\Admin\Support\Concerns\CallsHooks;
+    use \Payflow\Admin\Support\Concerns\CallsHooks;
 }

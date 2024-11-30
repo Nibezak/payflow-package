@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Base\ValueObjects\Cart;
+namespace Payflow\Base\ValueObjects\Cart;
 
-use Lunar\Models\ProductVariant;
+use Payflow\Models\ProductVariant;
 
 class FreeItem
 {

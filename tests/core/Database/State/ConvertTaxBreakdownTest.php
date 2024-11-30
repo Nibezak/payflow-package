@@ -1,12 +1,12 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 use Illuminate\Support\Facades\Storage;
-use Lunar\Database\State\ConvertTaxbreakdown;
-use Lunar\Facades\DB;
-use Lunar\Models\Channel;
-use Lunar\Models\Currency;
-use Lunar\Models\Language;
+use Payflow\Database\State\ConvertTaxbreakdown;
+use Payflow\Facades\DB;
+use Payflow\Models\Channel;
+use Payflow\Models\Currency;
+use Payflow\Models\Language;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -25,7 +25,7 @@ test('can run', function () {
         'code' => 'GBP',
     ]);
 
-    DB::table('lunar_orders')->insert([
+    DB::table('payflow_orders')->insert([
         'channel_id' => $channel->id,
         'new_customer' => false,
         'user_id' => null,
@@ -46,7 +46,7 @@ test('can run', function () {
 
     (new ConvertTaxbreakdown)->run();
 
-    $this->assertDatabaseHas('lunar_orders', [
+    $this->assertDatabaseHas('payflow_orders', [
         'tax_breakdown' => '[{"description":"VAT","identifier":"tax_rate_1","percentage":20,"value":333,"currency_code":"GBP"}]',
     ]);
 });

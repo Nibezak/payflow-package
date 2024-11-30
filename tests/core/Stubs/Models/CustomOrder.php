@@ -1,5 +1,5 @@
 <?php
 
-namespace Lunar\Tests\Core\Stubs\Models;
+namespace Payflow\Tests\Core\Stubs\Models;
 
-class CustomOrder extends \Lunar\Models\Order {}
+class CustomOrder extends \Payflow\Models\Order {}

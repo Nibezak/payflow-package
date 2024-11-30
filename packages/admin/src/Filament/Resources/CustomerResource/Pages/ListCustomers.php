@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\CustomerResource\Pages;
+namespace Payflow\Admin\Filament\Resources\CustomerResource\Pages;
 
 use Filament\Actions;
-use Lunar\Admin\Filament\Resources\CustomerResource;
-use Lunar\Admin\Support\Pages\BaseListRecords;
+use Payflow\Admin\Filament\Resources\CustomerResource;
+use Payflow\Admin\Support\Pages\BaseListRecords;
 
 class ListCustomers extends BaseListRecords
 {

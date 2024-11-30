@@ -1,11 +1,11 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\Base\DataTransferObjects\PaymentAuthorize;
-use Lunar\Base\PaymentManagerInterface;
-use Lunar\Facades\Payments;
-use Lunar\Tests\Core\Stubs\TestPaymentDriver;
+use Payflow\Base\DataTransferObjects\PaymentAuthorize;
+use Payflow\Base\PaymentManagerInterface;
+use Payflow\Facades\Payments;
+use Payflow\Tests\Core\Stubs\TestPaymentDriver;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

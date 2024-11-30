@@ -1,69 +1,69 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class)->group('model_extending');
+uses(\Payflow\Tests\Core\TestCase::class)->group('model_extending');
 
-use Lunar\Base\ModelManifestInterface;
-use Lunar\Facades\ModelManifest;
-use Lunar\Models\Product;
+use Payflow\Base\ModelManifestInterface;
+use Payflow\Facades\ModelManifest;
+use Payflow\Models\Product;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
 test('can instantiate class', function () {
     $manifest = app(ModelManifestInterface::class);
 
-    expect($manifest)->toBeInstanceOf(\Lunar\Base\ModelManifest::class);
+    expect($manifest)->toBeInstanceOf(\Payflow\Base\ModelManifest::class);
 });
 
 test('can add model', function () {
     ModelManifest::add(
-        \Lunar\Models\Contracts\Product::class,
-        \Lunar\Tests\Core\Stubs\Models\Product::class,
+        \Payflow\Models\Contracts\Product::class,
+        \Payflow\Tests\Core\Stubs\Models\Product::class,
     );
 
-    expect(Product::modelClass())->toBe(\Lunar\Tests\Core\Stubs\Models\Product::class);
+    expect(Product::modelClass())->toBe(\Payflow\Tests\Core\Stubs\Models\Product::class);
 });
 
 test('can replace model', function () {
     ModelManifest::replace(
-        \Lunar\Models\Contracts\Product::class,
-        \Lunar\Tests\Core\Stubs\Models\Product::class,
+        \Payflow\Models\Contracts\Product::class,
+        \Payflow\Tests\Core\Stubs\Models\Product::class,
     );
 
-    expect(Product::modelClass())->toBe(\Lunar\Tests\Core\Stubs\Models\Product::class);
+    expect(Product::modelClass())->toBe(\Payflow\Tests\Core\Stubs\Models\Product::class);
 });
 
 test('can get registered model', function () {
     expect(
-        ModelManifest::get(\Lunar\Models\Contracts\Product::class)
+        ModelManifest::get(\Payflow\Models\Contracts\Product::class)
     )->toBe(Product::class);
 
     ModelManifest::replace(
-        \Lunar\Models\Contracts\Product::class,
-        \Lunar\Tests\Core\Stubs\Models\Product::class,
+        \Payflow\Models\Contracts\Product::class,
+        \Payflow\Tests\Core\Stubs\Models\Product::class,
     );
 
     expect(
-        ModelManifest::get(\Lunar\Models\Contracts\Product::class)
-    )->toBe(\Lunar\Tests\Core\Stubs\Models\Product::class);
+        ModelManifest::get(\Payflow\Models\Contracts\Product::class)
+    )->toBe(\Payflow\Tests\Core\Stubs\Models\Product::class);
 });
 
 test('can guess contract class', function () {
     expect(
         ModelManifest::guessContractClass(Product::class)
-    )->toBe(\Lunar\Models\Contracts\Product::class);
+    )->toBe(\Payflow\Models\Contracts\Product::class);
 });
 
 test('can guess model class', function () {
     expect(
-        ModelManifest::guessModelClass(\Lunar\Models\Contracts\Product::class)
+        ModelManifest::guessModelClass(\Payflow\Models\Contracts\Product::class)
     )->toBe(Product::class);
 });
 
-test('can detect lunar model', function () {
+test('can detect payflow model', function () {
     expect(
-        ModelManifest::isLunarModel((new Product))
+        ModelManifest::isPayflowModel((new Product))
     )->toBeTrue()
         ->and(
-            ModelManifest::isLunarModel((new \Lunar\Tests\Core\Stubs\Models\Product))
+            ModelManifest::isPayflowModel((new \Payflow\Tests\Core\Stubs\Models\Product))
         )->toBeFalse();
 });

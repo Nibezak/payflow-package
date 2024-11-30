@@ -1,8 +1,8 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
-use Lunar\Models\Address;
-use Lunar\Models\Customer;
+uses(\Payflow\Tests\Core\TestCase::class);
+use Payflow\Models\Address;
+use Payflow\Models\Customer;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

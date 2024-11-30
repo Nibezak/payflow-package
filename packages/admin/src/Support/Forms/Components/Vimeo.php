@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Admin\Support\Forms\Components;
+namespace Payflow\Admin\Support\Forms\Components;
 
 use Filament\Forms\Components\TextInput;
 
 class Vimeo extends TextInput
 {
-    protected string $view = 'lunarpanel::forms.components.vimeo';
+    protected string $view = 'payflowpanel::forms.components.vimeo';
 }

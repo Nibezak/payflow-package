@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support;
+namespace Payflow\Admin\Support;
 
 class CustomerStatus
 {
@@ -12,7 +12,7 @@ class CustomerStatus
 
     public static function getLabel($status): string
     {
-        return static::$cachedStatusLabel[$status] ??= $status ? __('lunarpanel::customer.table.new.label') : __('lunarpanel::customer.table.returning.label');
+        return static::$cachedStatusLabel[$status] ??= $status ? __('payflowpanel::customer.table.new.label') : __('payflowpanel::customer.table.returning.label');
     }
 
     public static function getColor($status): string

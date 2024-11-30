@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Clusters;
+namespace Payflow\Admin\Filament\Clusters;
 
 use Filament\Clusters\Cluster;
 use Filament\Support\Facades\FilamentIcon;
@@ -11,11 +11,11 @@ class Taxes extends Cluster
 
     public static function getNavigationGroup(): ?string
     {
-        return __('lunarpanel::global.sections.settings');
+        return __('payflowpanel::global.sections.settings');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::tax');
+        return FilamentIcon::resolve('payflow::tax');
     }
 }

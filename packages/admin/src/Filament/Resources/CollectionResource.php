@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources;
+namespace Payflow\Admin\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Forms\Components\Component;
@@ -8,10 +8,10 @@ use Filament\Pages\SubNavigationPosition;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Filament\Resources\CollectionResource\Pages;
-use Lunar\Admin\Support\Forms\Components\Attributes;
-use Lunar\Admin\Support\Resources\BaseResource;
-use Lunar\Models\Contracts\Collection;
+use Payflow\Admin\Filament\Resources\CollectionResource\Pages;
+use Payflow\Admin\Support\Forms\Components\Attributes;
+use Payflow\Admin\Support\Resources\BaseResource;
+use Payflow\Models\Contracts\Collection;
 
 class CollectionResource extends BaseResource
 {
@@ -25,12 +25,12 @@ class CollectionResource extends BaseResource
 
     public static function getLabel(): string
     {
-        return __('lunarpanel::collection.label');
+        return __('payflowpanel::collection.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('lunarpanel::collection.plural_label');
+        return __('payflowpanel::collection.plural_label');
     }
 
     public static function getNavigationItems(): array

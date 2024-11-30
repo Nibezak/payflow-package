@@ -1,12 +1,12 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
-use Lunar\Models\Cart;
-use Lunar\Models\CartAddress;
-use Lunar\Models\Currency;
-use Lunar\Models\Order;
-use Lunar\Models\OrderAddress;
-use Lunar\Pipelines\Order\Creation\CreateOrderAddresses;
+uses(\Payflow\Tests\Core\TestCase::class);
+use Payflow\Models\Cart;
+use Payflow\Models\CartAddress;
+use Payflow\Models\Currency;
+use Payflow\Models\Order;
+use Payflow\Models\OrderAddress;
+use Payflow\Pipelines\Order\Creation\CreateOrderAddresses;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

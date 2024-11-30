@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Facades;
+namespace Payflow\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Lunar\Base\ShippingManifestInterface;
+use Payflow\Base\ShippingManifestInterface;
 
 class ShippingManifest extends Facade
 {

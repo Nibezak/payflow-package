@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Observers;
+namespace Payflow\Observers;
 
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -23,7 +23,7 @@ class MediaObserver
 
     protected function ensureOnlyOnePrimary(Media $media, bool $isDelete = false): void
     {
-        if (config('lunar.media.collection') !== $media->collection_name) {
+        if (config('payflow.media.collection') !== $media->collection_name) {
             return;
         }
 

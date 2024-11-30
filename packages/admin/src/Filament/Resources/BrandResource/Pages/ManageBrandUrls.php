@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\BrandResource\Pages;
+namespace Payflow\Admin\Filament\Resources\BrandResource\Pages;
 
-use Lunar\Admin\Filament\Resources\BrandResource;
-use Lunar\Admin\Support\Resources\Pages\ManageUrlsRelatedRecords;
-use Lunar\Models\Brand;
+use Payflow\Admin\Filament\Resources\BrandResource;
+use Payflow\Admin\Support\Resources\Pages\ManageUrlsRelatedRecords;
+use Payflow\Models\Brand;
 
 class ManageBrandUrls extends ManageUrlsRelatedRecords
 {

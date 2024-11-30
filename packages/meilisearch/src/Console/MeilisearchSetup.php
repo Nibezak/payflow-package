@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Meilisearch\Console;
+namespace Payflow\Meilisearch\Console;
 
 use Exception;
 use Illuminate\Console\Command;
@@ -14,7 +14,7 @@ class MeilisearchSetup extends Command
      *
      * @var string
      */
-    protected $signature = 'lunar:meilisearch:setup';
+    protected $signature = 'payflow:meilisearch:setup';
 
     /**
      * The console command description.
@@ -34,7 +34,7 @@ class MeilisearchSetup extends Command
     public function handle(EngineManager $engine): void
     {
         // Return the models we want to search on.
-        $searchables = config('lunar.search.models', []);
+        $searchables = config('payflow.search.models', []);
 
         $this->engine = $engine->createMeilisearchDriver();
 

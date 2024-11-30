@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
-use Lunar\Models\Brand;
+use Payflow\Models\Brand;
 
 class BrandFactory extends BaseFactory
 {

@@ -1,18 +1,18 @@
 <?php
 
-namespace Lunar\Shipping\Models;
+namespace Payflow\Shipping\Models;
 
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\DB;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Traits\HasCustomerGroups;
-use Lunar\Models\CustomerGroup;
-use Lunar\Shipping\Database\Factories\ShippingMethodFactory;
-use Lunar\Shipping\Facades\Shipping;
-use Lunar\Shipping\Interfaces\ShippingRateInterface;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Traits\HasCustomerGroups;
+use Payflow\Models\CustomerGroup;
+use Payflow\Shipping\Database\Factories\ShippingMethodFactory;
+use Payflow\Shipping\Facades\Shipping;
+use Payflow\Shipping\Interfaces\ShippingRateInterface;
 
 class ShippingMethod extends BaseModel implements Contracts\ShippingMethod
 {
@@ -64,7 +64,7 @@ class ShippingMethod extends BaseModel implements Contracts\ShippingMethod
      */
     public function customerGroups(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(
             CustomerGroup::class,

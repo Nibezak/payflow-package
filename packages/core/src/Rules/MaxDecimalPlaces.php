@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Rules;
+namespace Payflow\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 

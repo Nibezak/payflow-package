@@ -2,7 +2,7 @@
 
 ## Overview
 
-Associations allow you to relate products to each other. There are a few different ways you can associate two products and this type of relationship would define how they are presented on your storefront and also how Lunar sees them.
+Associations allow you to relate products to each other. There are a few different ways you can associate two products and this type of relationship would define how they are presented on your storefront and also how Payflow sees them.
 
 ## Loading associations
 
@@ -10,10 +10,10 @@ Associations allow you to relate products to each other. There are a few differe
 $product->associations
 ```
 
-This will return a Laravel collection of `Lunar\Models\ProductAssociation` models. On each model you will have access to the following:
+This will return a Laravel collection of `Payflow\Models\ProductAssociation` models. On each model you will have access to the following:
 
 ```php
-// Lunar\Models\ProductAssociation
+// Payflow\Models\ProductAssociation
 $association->parent; // The owning product who has the associations
 $association->target // The associated (cross-sell, up-sell, alternate) product.
 $association->type // Whether it's cross-sell, up-sell or alternate.
@@ -31,13 +31,13 @@ For example, if you're selling a Phone on your store, you may want to present so
 
 ```php
 $product->associate(
-    \Lunar\Models\Product $crossSellProduct,
-    \Lunar\Models\ProductAssociation::CROSS_SELL
+    \Payflow\Models\Product $crossSellProduct,
+    \Payflow\Models\ProductAssociation::CROSS_SELL
 );
 
 $product->associate(
     [$productA, $productB],
-    \Lunar\Models\ProductAssociation::CROSS_SELL
+    \Payflow\Models\ProductAssociation::CROSS_SELL
 );
 ```
 
@@ -64,13 +64,13 @@ When editing the 16gb Phone we would add the 32gb version as an up-sell associat
 
 ```php
 $product->associate(
-    \Lunar\Models\Product $upSellProduct,
-    \Lunar\Models\ProductAssociation::UP_SELL
+    \Payflow\Models\Product $upSellProduct,
+    \Payflow\Models\ProductAssociation::UP_SELL
 );
 
 $product->associate(
     [$productA, $productB],
-    \Lunar\Models\ProductAssociation::UP_SELL
+    \Payflow\Models\ProductAssociation::UP_SELL
 );
 ```
 
@@ -90,13 +90,13 @@ Alternate products are what you could present the user as an alternative to the 
 
 ```php
 $product->associate(
-    \Lunar\Models\Product $alternateProduct,
-    \Lunar\Models\ProductAssociation::ALTERNATE
+    \Payflow\Models\Product $alternateProduct,
+    \Payflow\Models\ProductAssociation::ALTERNATE
 );
 
 $product->associate(
     [$productA, $productB],
-    \Lunar\Models\ProductAssociation::ALTERNATE
+    \Payflow\Models\ProductAssociation::ALTERNATE
 );
 ```
 
@@ -112,11 +112,11 @@ $product->associations()->type(ProductAssociation::ALTERNATE);
 
 ### Custom types
 
-Although Lunar comes preloaded with the associations above, you are free to add your own custom association types.
+Although Payflow comes preloaded with the associations above, you are free to add your own custom association types.
 
 ```php
 $product->associate(
-    \Lunar\Models\Product $alternateProduct,
+    \Payflow\Models\Product $alternateProduct,
     'my-custom-type'
 );
 ```

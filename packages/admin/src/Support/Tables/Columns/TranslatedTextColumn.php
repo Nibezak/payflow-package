@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Tables\Columns;
+namespace Payflow\Admin\Support\Tables\Columns;
 
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;

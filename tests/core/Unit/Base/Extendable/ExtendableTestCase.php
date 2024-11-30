@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Tests\Core\Unit\Base\Extendable;
+namespace Payflow\Tests\Core\Unit\Base\Extendable;
 
-use Lunar\Facades\ModelManifest;
-use Lunar\Models\Product;
-use Lunar\Models\ProductOption;
-use Lunar\Models\ProductOptionValue;
-use Lunar\Tests\Core\TestCase;
+use Payflow\Facades\ModelManifest;
+use Payflow\Models\Product;
+use Payflow\Models\ProductOption;
+use Payflow\Models\ProductOptionValue;
+use Payflow\Tests\Core\TestCase;
 
 class ExtendableTestCase extends TestCase
 {
@@ -15,8 +15,8 @@ class ExtendableTestCase extends TestCase
         parent::setUp();
 
         ModelManifest::register(collect([
-            Product::class => \Lunar\Tests\Core\Stubs\Models\Product::class,
-            ProductOption::class => \Lunar\Tests\Core\Stubs\Models\ProductOption::class,
+            Product::class => \Payflow\Tests\Core\Stubs\Models\Product::class,
+            ProductOption::class => \Payflow\Tests\Core\Stubs\Models\ProductOption::class,
         ]));
 
         Product::factory()->count(20)->create();

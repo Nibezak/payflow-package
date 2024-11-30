@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Base\Traits;
+namespace Payflow\Base\Traits;
 
 use Illuminate\Support\Str;
 use Spatie\LaravelBlink\BlinkFacade as Blink;
@@ -25,7 +25,7 @@ trait HasDefaultRecord
      */
     public static function getDefault()
     {
-        $key = 'lunar_default_'.Str::snake(self::class);
+        $key = 'payflow_default_'.Str::snake(self::class);
 
         return Blink::once($key, function () {
             return self::query()->default(true)->first();

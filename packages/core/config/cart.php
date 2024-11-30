@@ -1,6 +1,6 @@
 <?php
 
-use Lunar\Actions\Carts\GenerateFingerprint;
+use Payflow\Actions\Carts\GenerateFingerprint;
 
 return [
     /*
@@ -18,7 +18,7 @@ return [
     | Authentication policy
     |--------------------------------------------------------------------------
     |
-    | When a user logs in, by default, Lunar will merge the current (guest) cart
+    | When a user logs in, by default, Payflow will merge the current (guest) cart
     | with the users current cart, if they have one.
     | Available options: 'merge', 'override'
     |
@@ -42,18 +42,18 @@ return [
          * Run these pipelines when the cart is calculating.
         */
         'cart' => [
-            Lunar\Pipelines\Cart\CalculateLines::class,
-            Lunar\Pipelines\Cart\ApplyShipping::class,
-            Lunar\Pipelines\Cart\ApplyDiscounts::class,
-            Lunar\Pipelines\Cart\CalculateTax::class,
-            Lunar\Pipelines\Cart\Calculate::class,
+            Payflow\Pipelines\Cart\CalculateLines::class,
+            Payflow\Pipelines\Cart\ApplyShipping::class,
+            Payflow\Pipelines\Cart\ApplyDiscounts::class,
+            Payflow\Pipelines\Cart\CalculateTax::class,
+            Payflow\Pipelines\Cart\Calculate::class,
         ],
 
         /*
          * Run these pipelines when the cart lines are being calculated.
         */
         'cart_lines' => [
-            Lunar\Pipelines\CartLine\GetUnitPrice::class,
+            Payflow\Pipelines\CartLine\GetUnitPrice::class,
         ],
     ],
 
@@ -67,13 +67,13 @@ return [
     |
     */
     'actions' => [
-        'add_to_cart' => Lunar\Actions\Carts\AddOrUpdatePurchasable::class,
-        'get_existing_cart_line' => Lunar\Actions\Carts\GetExistingCartLine::class,
-        'update_cart_line' => Lunar\Actions\Carts\UpdateCartLine::class,
-        'remove_from_cart' => Lunar\Actions\Carts\RemovePurchasable::class,
-        'add_address' => Lunar\Actions\Carts\AddAddress::class,
-        'set_shipping_option' => Lunar\Actions\Carts\SetShippingOption::class,
-        'order_create' => Lunar\Actions\Carts\CreateOrder::class,
+        'add_to_cart' => Payflow\Actions\Carts\AddOrUpdatePurchasable::class,
+        'get_existing_cart_line' => Payflow\Actions\Carts\GetExistingCartLine::class,
+        'update_cart_line' => Payflow\Actions\Carts\UpdateCartLine::class,
+        'remove_from_cart' => Payflow\Actions\Carts\RemovePurchasable::class,
+        'add_address' => Payflow\Actions\Carts\AddAddress::class,
+        'set_shipping_option' => Payflow\Actions\Carts\SetShippingOption::class,
+        'order_create' => Payflow\Actions\Carts\CreateOrder::class,
     ],
 
     /*
@@ -88,23 +88,23 @@ return [
     'validators' => [
 
         'add_to_cart' => [
-            Lunar\Validation\CartLine\CartLineQuantity::class,
-            Lunar\Validation\CartLine\CartLineStock::class,
+            Payflow\Validation\CartLine\CartLineQuantity::class,
+            Payflow\Validation\CartLine\CartLineStock::class,
         ],
 
         'update_cart_line' => [
-            Lunar\Validation\CartLine\CartLineQuantity::class,
-            Lunar\Validation\CartLine\CartLineStock::class,
+            Payflow\Validation\CartLine\CartLineQuantity::class,
+            Payflow\Validation\CartLine\CartLineStock::class,
         ],
 
         'remove_from_cart' => [],
 
         'set_shipping_option' => [
-            Lunar\Validation\Cart\ShippingOptionValidator::class,
+            Payflow\Validation\Cart\ShippingOptionValidator::class,
         ],
 
         'order_create' => [
-            Lunar\Validation\Cart\ValidateCartForOrderCreation::class,
+            Payflow\Validation\Cart\ValidateCartForOrderCreation::class,
         ],
 
     ],
@@ -144,9 +144,9 @@ return [
         'enabled' => false,
 
         'pipelines' => [
-            Lunar\Pipelines\CartPrune\PruneAfter::class,
-            Lunar\Pipelines\CartPrune\WithoutOrders::class,
-            Lunar\Pipelines\CartPrune\WhereNotMerged::class,
+            Payflow\Pipelines\CartPrune\PruneAfter::class,
+            Payflow\Pipelines\CartPrune\WithoutOrders::class,
+            Payflow\Pipelines\CartPrune\WhereNotMerged::class,
         ],
 
         'prune_interval' => 90, // days

@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Stripe\Managers;
+namespace Payflow\Stripe\Managers;
 
 use Illuminate\Support\Collection;
-use Lunar\Models\Cart;
-use Lunar\Stripe\Enums\CancellationReason;
+use Payflow\Models\Cart;
+use Payflow\Stripe\Enums\CancellationReason;
 use Stripe\Charge;
 use Stripe\Exception\ApiErrorException;
 use Stripe\Exception\InvalidRequestException;
@@ -213,7 +213,7 @@ class StripeManager
             'amount' => $value,
             'currency' => $currencyCode,
             'automatic_payment_methods' => ['enabled' => true],
-            'capture_method' => config('lunar.stripe.policy', 'automatic'),
+            'capture_method' => config('payflow.stripe.policy', 'automatic'),
         ];
 
         return PaymentIntent::create([

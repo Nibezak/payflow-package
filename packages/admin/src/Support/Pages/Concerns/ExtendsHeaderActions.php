@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Pages\Concerns;
+namespace Payflow\Admin\Support\Pages\Concerns;
 
 trait ExtendsHeaderActions
 {
@@ -11,6 +11,6 @@ trait ExtendsHeaderActions
 
     protected function getHeaderActions(): array
     {
-        return $this->callLunarHook('headerActions', $this->getDefaultHeaderActions());
+        return $this->callPayflowHook('headerActions', $this->getDefaultHeaderActions());
     }
 }

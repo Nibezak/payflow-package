@@ -1,16 +1,16 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Lunar\Models\Attribute;
-use Lunar\Models\Brand;
-use Lunar\Models\Collection as ModelsCollection;
-use Lunar\Models\Customer;
-use Lunar\Models\CustomerGroup;
-use Lunar\Models\Product;
-use Lunar\Models\ProductVariant;
+use Payflow\Models\Attribute;
+use Payflow\Models\Brand;
+use Payflow\Models\Collection as ModelsCollection;
+use Payflow\Models\Customer;
+use Payflow\Models\CustomerGroup;
+use Payflow\Models\Product;
+use Payflow\Models\ProductVariant;
 
 class AttributeManifest
 {

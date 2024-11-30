@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Shipping\Resolvers;
+namespace Payflow\Shipping\Resolvers;
 
 use Illuminate\Support\Collection;
-use Lunar\Models\Cart;
-use Lunar\Models\Country;
-use Lunar\Models\CustomerGroup;
-use Lunar\Models\State;
-use Lunar\Shipping\DataTransferObjects\PostcodeLookup;
-use Lunar\Shipping\Facades\Shipping;
+use Payflow\Models\Cart;
+use Payflow\Models\Country;
+use Payflow\Models\CustomerGroup;
+use Payflow\Models\State;
+use Payflow\Shipping\DataTransferObjects\PostcodeLookup;
+use Payflow\Shipping\Facades\Shipping;
 
 class ShippingRateResolver
 {

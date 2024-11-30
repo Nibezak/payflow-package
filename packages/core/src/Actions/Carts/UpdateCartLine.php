@@ -1,19 +1,19 @@
 <?php
 
-namespace Lunar\Actions\Carts;
+namespace Payflow\Actions\Carts;
 
-use Lunar\Actions\AbstractAction;
-use Lunar\Facades\DB;
-use Lunar\Models\CartLine;
+use Payflow\Actions\AbstractAction;
+use Payflow\Facades\DB;
+use Payflow\Models\CartLine;
 
 class UpdateCartLine extends AbstractAction
 {
     /**
      * Execute the action.
      *
-     * @param  \Lunar\Models\CartLine  $cartLine
+     * @param  \Payflow\Models\CartLine  $cartLine
      * @param  \Illuminate\Database\Eloquent\Collection  $customerGroups
-     * @return \Lunar\Models\CartLine
+     * @return \Payflow\Models\CartLine
      */
     public function execute(
         int $cartLineId,

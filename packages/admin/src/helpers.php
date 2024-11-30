@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Builder;
-use Lunar\Base\Traits\Searchable;
-use Lunar\DataTypes\Price;
-use Lunar\FieldTypes\TranslatedText;
-use Lunar\Models\Attribute;
+use Payflow\Base\Traits\Searchable;
+use Payflow\DataTypes\Price;
+use Payflow\FieldTypes\TranslatedText;
+use Payflow\Models\Attribute;
 
 use function Filament\Support\generate_search_term_expression;
 
@@ -31,15 +31,15 @@ if (! function_exists('sync_with_search')) {
             return;
         }
 
-        if ($model instanceof \Lunar\Models\ProductVariant) {
+        if ($model instanceof \Payflow\Models\ProductVariant) {
             $model->product()->first()->searchable();
         }
 
-        if ($model instanceof \Lunar\Models\Address) {
+        if ($model instanceof \Payflow\Models\Address) {
             $model->customer()->first()->searchable();
         }
 
-        if (is_lunar_user($model)) {
+        if (is_payflow_user($model)) {
             foreach ($model->customers()->get() as $customer) {
                 $customer->searchable();
             }
@@ -77,7 +77,7 @@ if (! function_exists('get_search_builder')) {
 
     function get_search_builder($model, $search): Laravel\Scout\Builder|Builder
     {
-        $scoutEnabled = config('lunar.panel.scout_enabled', false);
+        $scoutEnabled = config('payflow.panel.scout_enabled', false);
         $isScoutSearchable = in_array(Searchable::class, class_uses_recursive($model));
 
         if (

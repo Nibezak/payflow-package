@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Actions\Carts;
+namespace Payflow\Actions\Carts;
 
 use Illuminate\Pipeline\Pipeline;
-use Lunar\Actions\AbstractAction;
-use Lunar\Exceptions\DisallowMultipleCartOrdersException;
-use Lunar\Facades\DB;
-use Lunar\Jobs\Orders\MarkAsNewCustomer;
-use Lunar\Models\Cart;
-use Lunar\Models\Order;
+use Payflow\Actions\AbstractAction;
+use Payflow\Exceptions\DisallowMultipleCartOrdersException;
+use Payflow\Facades\DB;
+use Payflow\Jobs\Orders\MarkAsNewCustomer;
+use Payflow\Models\Cart;
+use Payflow\Models\Order;
 
 final class CreateOrder extends AbstractAction
 {
@@ -35,7 +35,7 @@ final class CreateOrder extends AbstractAction
             $order = app(Pipeline::class)
                 ->send($order)
                 ->through(
-                    config('lunar.orders.pipelines.creation', [])
+                    config('payflow.orders.pipelines.creation', [])
                 )->thenReturn(function ($order) {
                     return $order;
                 });

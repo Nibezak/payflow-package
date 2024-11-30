@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
 use Illuminate\Support\Collection;
-use Lunar\Base\DataTransferObjects\CartDiscount;
-use Lunar\Models\Cart;
+use Payflow\Base\DataTransferObjects\CartDiscount;
+use Payflow\Models\Cart;
 
 interface DiscountManagerInterface
 {

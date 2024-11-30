@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\StaffResource\Pages;
+namespace Payflow\Admin\Filament\Resources\StaffResource\Pages;
 
 use Filament\Actions;
 use Filament\Support\Colors\Color;
-use Lunar\Admin\Filament\Resources\StaffResource;
-use Lunar\Admin\Support\Pages\BaseListRecords;
+use Payflow\Admin\Filament\Resources\StaffResource;
+use Payflow\Admin\Support\Pages\BaseListRecords;
 
 class ListStaff extends BaseListRecords
 {
@@ -15,7 +15,7 @@ class ListStaff extends BaseListRecords
     {
         return [
             Actions\Action::make('access-control')
-                ->label(__('lunarpanel::staff.action.acl.label'))
+                ->label(__('payflowpanel::staff.action.acl.label'))
                 ->color(Color::Lime)
                 ->url(fn () => StaffResource::getUrl('acl')),
             Actions\CreateAction::make(),

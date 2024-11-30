@@ -1,12 +1,12 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
 use Illuminate\Support\Facades\Config;
-use Lunar\Models\Address;
-use Lunar\Models\Customer;
-use Lunar\Models\CustomerGroup;
-use Lunar\Tests\Core\Stubs\User;
+use Payflow\Models\Address;
+use Payflow\Models\Customer;
+use Payflow\Models\CustomerGroup;
+use Payflow\Tests\Core\Stubs\User;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -25,7 +25,7 @@ test('can make a customer with minimum attributes', function () {
     $customer['meta'] = json_encode($customer['meta']);
 
     $this->assertDatabaseHas(
-        'lunar_customers',
+        'payflow_customers',
         $customer
     );
 });
@@ -45,7 +45,7 @@ test('can make a customer', function () {
     $customer['meta'] = json_encode($customer['meta']);
 
     $this->assertDatabaseHas(
-        'lunar_customers',
+        'payflow_customers',
         $customer
     );
 });
@@ -129,7 +129,7 @@ test('can fetch customer addresses', function () {
 });
 
 test('can retrieve latest customer', function () {
-    Config::set('auth.providers.users.model', 'Lunar\Tests\Core\Stubs\User');
+    Config::set('auth.providers.users.model', 'Payflow\Tests\Core\Stubs\User');
 
     $user = User::factory()->create();
 

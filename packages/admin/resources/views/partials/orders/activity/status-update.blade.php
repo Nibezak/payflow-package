@@ -1,5 +1,5 @@
 <div class="flex items-center">
-    {{ __('lunarpanel::components.activity-log.partials.orders.status_change') }}
+    {{ __('payflowpanel::components.activity-log.partials.orders.status_change') }}
     <div class="flex items-center ml-2">
       <x-filament::badge :color="$previousStatusColor">
         {{ $previousStatusLabel }}

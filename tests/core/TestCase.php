@@ -1,15 +1,15 @@
 <?php
 
-namespace Lunar\Tests\Core;
+namespace Payflow\Tests\Core;
 
 use Cartalyst\Converter\Laravel\ConverterServiceProvider;
 use Illuminate\Support\Facades\Config;
 use Kalnoy\Nestedset\NestedSetServiceProvider;
-use Lunar\Facades\Taxes;
-use Lunar\LunarServiceProvider;
-use Lunar\Tests\Core\Stubs\TestTaxDriver;
-use Lunar\Tests\Core\Stubs\TestUrlGenerator;
-use Lunar\Tests\Core\Stubs\User;
+use Payflow\Facades\Taxes;
+use Payflow\PayflowServiceProvider;
+use Payflow\Tests\Core\Stubs\TestTaxDriver;
+use Payflow\Tests\Core\Stubs\TestUrlGenerator;
+use Payflow\Tests\Core\Stubs\User;
 use Spatie\Activitylog\ActivitylogServiceProvider;
 use Spatie\LaravelBlink\BlinkServiceProvider;
 use Spatie\MediaLibrary\MediaLibraryServiceProvider;
@@ -24,9 +24,9 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
         // additional setup
         Config::set('providers.users.model', User::class);
-        Config::set('lunar.urls.generator', TestUrlGenerator::class);
-        Config::set('lunar.taxes.driver', 'test');
-        Config::set('lunar.media.collection', 'images');
+        Config::set('payflow.urls.generator', TestUrlGenerator::class);
+        Config::set('payflow.taxes.driver', 'test');
+        Config::set('payflow.media.collection', 'images');
 
         Taxes::extend('test', function ($app) {
             return $app->make(TestTaxDriver::class);
@@ -41,7 +41,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            LunarServiceProvider::class,
+            PayflowServiceProvider::class,
             MediaLibraryServiceProvider::class,
             ActivitylogServiceProvider::class,
             ConverterServiceProvider::class,

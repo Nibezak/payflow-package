@@ -1,13 +1,13 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 use Illuminate\Support\Facades\Config;
 use Laravel\Scout\Engines\DatabaseEngine;
 use Laravel\Scout\Engines\NullEngine;
-use Lunar\Models\Collection;
-use Lunar\Models\Product;
-use Lunar\Search\ProductIndexer;
-use Lunar\Search\ScoutIndexer;
+use Payflow\Models\Collection;
+use Payflow\Models\Product;
+use Payflow\Search\ProductIndexer;
+use Payflow\Search\ScoutIndexer;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -16,7 +16,7 @@ test('can get correct engine mapping', function () {
 
     expect($product->searchableUsing())->toBeInstanceOf(NullEngine::class);
 
-    Config::set('lunar.search.engine_map', [
+    Config::set('payflow.search.engine_map', [
         Product::class => 'database',
     ]);
 
@@ -30,7 +30,7 @@ test('can get correct indexer', function () {
     expect($product->indexer())->toBeInstanceOf(ProductIndexer::class);
     expect($collection->indexer())->toBeInstanceOf(ScoutIndexer::class);
 
-    Config::set('lunar.search.indexers', [
+    Config::set('payflow.search.indexers', [
         Product::class => ScoutIndexer::class,
     ]);
 

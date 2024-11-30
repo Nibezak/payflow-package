@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Database\State;
+namespace Payflow\Database\State;
 
 use Illuminate\Support\Facades\Schema;
-use Lunar\Facades\DB;
-use Lunar\Models\Order;
+use Payflow\Facades\DB;
+use Payflow\Models\Order;
 
 class EnsureUserOrdersHaveACustomer
 {
@@ -37,7 +37,7 @@ class EnsureUserOrdersHaveACustomer
 
     protected function canRun()
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return Schema::hasTable("{$prefix}orders");
     }

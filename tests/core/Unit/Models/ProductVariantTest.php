@@ -1,19 +1,19 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
 use Illuminate\Support\Facades\Config;
-use Lunar\Exceptions\MissingCurrencyPriceException;
-use Lunar\Facades\Pricing;
-use Lunar\Models\Currency;
-use Lunar\Models\CustomerGroup;
-use Lunar\Models\Price;
-use Lunar\Models\Product;
-use Lunar\Models\ProductVariant;
-use Lunar\Models\TaxClass;
-use Lunar\Models\TaxRate;
-use Lunar\Models\TaxRateAmount;
-use Lunar\Models\TaxZone;
+use Payflow\Exceptions\MissingCurrencyPriceException;
+use Payflow\Facades\Pricing;
+use Payflow\Models\Currency;
+use Payflow\Models\CustomerGroup;
+use Payflow\Models\Price;
+use Payflow\Models\Product;
+use Payflow\Models\ProductVariant;
+use Payflow\Models\TaxClass;
+use Payflow\Models\TaxRate;
+use Payflow\Models\TaxRateAmount;
+use Payflow\Models\TaxZone;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -138,7 +138,7 @@ test('can get correct price based on currency', function () {
 });
 
 test('can get correct price inc tax based on tax class', function () {
-    Config::set('lunar.pricing.stored_inclusive_of_tax', false);
+    Config::set('payflow.pricing.stored_inclusive_of_tax', false);
 
     $taxClassGeneric = TaxClass::factory()->create([
         'name' => 'Clothing',

@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\LanguageResource\Pages;
+namespace Payflow\Admin\Filament\Resources\LanguageResource\Pages;
 
-use Lunar\Admin\Filament\Resources\LanguageResource;
-use Lunar\Admin\Support\Pages\BaseCreateRecord;
+use Payflow\Admin\Filament\Resources\LanguageResource;
+use Payflow\Admin\Support\Pages\BaseCreateRecord;
 
 class CreateLanguage extends BaseCreateRecord
 {

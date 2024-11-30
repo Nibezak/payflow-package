@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Http\Controllers;
+namespace Payflow\Admin\Http\Controllers;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;

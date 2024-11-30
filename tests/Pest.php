@@ -24,16 +24,16 @@
 |
 */
 
-use Lunar\DataTypes\Price;
-use Lunar\DataTypes\ShippingOption;
-use Lunar\Facades\ShippingManifest;
-use Lunar\Models\Cart;
-use Lunar\Models\CartAddress;
-use Lunar\Models\CartLine;
-use Lunar\Models\Currency;
-use Lunar\Models\Language;
-use Lunar\Models\ProductVariant;
-use Lunar\Models\TaxClass;
+use Payflow\DataTypes\Price;
+use Payflow\DataTypes\ShippingOption;
+use Payflow\Facades\ShippingManifest;
+use Payflow\Models\Cart;
+use Payflow\Models\CartAddress;
+use Payflow\Models\CartLine;
+use Payflow\Models\Currency;
+use Payflow\Models\Language;
+use Payflow\Models\ProductVariant;
+use Payflow\Models\TaxClass;
 
 expect()->extend('toBeOne', function () {
     return $this->toBe(1);
@@ -52,7 +52,7 @@ expect()->extend('toBeOne', function () {
 
 function setAuthUserConfig()
 {
-    Config::set('auth.providers.users.model', 'Lunar\Tests\Core\Stubs\User');
+    Config::set('auth.providers.users.model', 'Payflow\Tests\Core\Stubs\User');
 }
 
 function buildCart(array $cartParams = []): Cart

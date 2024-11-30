@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\FieldTypes;
+namespace Payflow\FieldTypes;
 
 use JsonSerializable;
-use Lunar\Base\FieldType;
-use Lunar\Exceptions\FieldTypeException;
+use Payflow\Base\FieldType;
+use Payflow\Exceptions\FieldTypeException;
 
 class Dropdown implements FieldType, JsonSerializable
 {

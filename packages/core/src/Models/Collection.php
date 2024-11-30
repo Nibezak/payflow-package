@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Kalnoy\Nestedset\NodeTrait;
 use Kalnoy\Nestedset\QueryBuilder;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Casts\AsAttributeData;
-use Lunar\Base\Traits\HasChannels;
-use Lunar\Base\Traits\HasCustomerGroups;
-use Lunar\Base\Traits\HasMacros;
-use Lunar\Base\Traits\HasMedia;
-use Lunar\Base\Traits\HasTranslations;
-use Lunar\Base\Traits\HasUrls;
-use Lunar\Base\Traits\Searchable;
-use Lunar\Database\Factories\CollectionFactory;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Casts\AsAttributeData;
+use Payflow\Base\Traits\HasChannels;
+use Payflow\Base\Traits\HasCustomerGroups;
+use Payflow\Base\Traits\HasMacros;
+use Payflow\Base\Traits\HasMedia;
+use Payflow\Base\Traits\HasTranslations;
+use Payflow\Base\Traits\HasUrls;
+use Payflow\Base\Traits\Searchable;
+use Payflow\Database\Factories\CollectionFactory;
 use Spatie\MediaLibrary\HasMedia as SpatieHasMedia;
 
 /**
@@ -89,7 +89,7 @@ class Collection extends BaseModel implements Contracts\Collection, SpatieHasMed
      */
     public function products(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(
             Product::modelClass(),
@@ -111,7 +111,7 @@ class Collection extends BaseModel implements Contracts\Collection, SpatieHasMed
 
     public function customerGroups(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(
             CustomerGroup::modelClass(),
@@ -126,7 +126,7 @@ class Collection extends BaseModel implements Contracts\Collection, SpatieHasMed
 
     public function discounts(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(
             Discount::modelClass(),
@@ -136,7 +136,7 @@ class Collection extends BaseModel implements Contracts\Collection, SpatieHasMed
 
     public function brands(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(
             Brand::modelClass(),

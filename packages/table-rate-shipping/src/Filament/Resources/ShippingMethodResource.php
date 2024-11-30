@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Shipping\Filament\Resources;
+namespace Payflow\Shipping\Filament\Resources;
 
 use Awcodes\Shout\Components\Shout;
 use Filament\Forms;
@@ -11,9 +11,9 @@ use Filament\Support\Facades\FilamentIcon;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Support\Resources\BaseResource;
-use Lunar\Shipping\Filament\Resources\ShippingMethodResource\Pages;
-use Lunar\Shipping\Models\Contracts\ShippingMethod;
+use Payflow\Admin\Support\Resources\BaseResource;
+use Payflow\Shipping\Filament\Resources\ShippingMethodResource\Pages;
+use Payflow\Shipping\Models\Contracts\ShippingMethod;
 
 class ShippingMethodResource extends BaseResource
 {
@@ -25,22 +25,22 @@ class ShippingMethodResource extends BaseResource
 
     public static function getLabel(): string
     {
-        return __('lunarpanel.shipping::shippingmethod.label');
+        return __('payflowpanel.shipping::shippingmethod.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('lunarpanel.shipping::shippingmethod.label_plural');
+        return __('payflowpanel.shipping::shippingmethod.label_plural');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::shipping-methods');
+        return FilamentIcon::resolve('payflow::shipping-methods');
     }
 
     public static function getNavigationGroup(): ?string
     {
-        return __('lunarpanel.shipping::plugin.navigation.group');
+        return __('payflowpanel.shipping::plugin.navigation.group');
     }
 
     public static function getDefaultSubNavigation(): array
@@ -56,7 +56,7 @@ class ShippingMethodResource extends BaseResource
         return $form->schema([
             Shout::make('product-customer-groups')
                 ->content(
-                    __('lunarpanel.shipping::shippingmethod.pages.availability.customer_groups')
+                    __('payflowpanel.shipping::shippingmethod.pages.availability.customer_groups')
                 )->type('warning')->hidden(function (Model $record) {
                     return $record->customerGroups()->where('enabled', true)->count();
                 }),
@@ -86,7 +86,7 @@ class ShippingMethodResource extends BaseResource
     public static function getNameFormComponent(): Component
     {
         return Forms\Components\TextInput::make('name')
-            ->label(__('lunarpanel.shipping::shippingmethod.form.name.label'))
+            ->label(__('payflowpanel.shipping::shippingmethod.form.name.label'))
             ->required()
             ->maxLength(255)
             ->autofocus();
@@ -95,13 +95,13 @@ class ShippingMethodResource extends BaseResource
     public static function getDescriptionFormComponent(): Component
     {
         return Forms\Components\RichEditor::make('description')
-            ->label(__('lunarpanel.shipping::shippingmethod.form.description.label'));
+            ->label(__('payflowpanel.shipping::shippingmethod.form.description.label'));
     }
 
     public static function getCodeFormComponent(): Component
     {
         return Forms\Components\TextInput::make('code')
-            ->label(__('lunarpanel.shipping::shippingmethod.form.code.label'))
+            ->label(__('payflowpanel.shipping::shippingmethod.form.code.label'))
             ->required()
             ->unique(ignoreRecord: true);
     }
@@ -109,13 +109,13 @@ class ShippingMethodResource extends BaseResource
     public static function getCutoffFormComponent(): Component
     {
         return Forms\Components\TimePicker::make('cutoff')
-            ->label(__('lunarpanel.shipping::shippingmethod.form.cutoff.label'));
+            ->label(__('payflowpanel.shipping::shippingmethod.form.cutoff.label'));
     }
 
     public static function getStockAvailableFormComponent(): Component
     {
         return Forms\Components\Toggle::make('stock_available')
-            ->label(__('lunarpanel.shipping::shippingmethod.form.stock_available.label'));
+            ->label(__('payflowpanel.shipping::shippingmethod.form.stock_available.label'));
     }
 
     public static function getChargeByFormComponent(): Component
@@ -123,11 +123,11 @@ class ShippingMethodResource extends BaseResource
         return Forms\Components\Group::make([
             Forms\Components\Select::make('charge_by')
                 ->label(
-                    __('lunarpanel.shipping::shippingmethod.form.charge_by.label')
+                    __('payflowpanel.shipping::shippingmethod.form.charge_by.label')
                 )
                 ->options([
-                    'cart_total' => __('lunarpanel.shipping::shippingmethod.form.charge_by.options.cart_total'),
-                    'weight' => __('lunarpanel.shipping::shippingmethod.form.charge_by.options.weight'),
+                    'cart_total' => __('payflowpanel.shipping::shippingmethod.form.charge_by.options.cart_total'),
+                    'weight' => __('payflowpanel.shipping::shippingmethod.form.charge_by.options.weight'),
                 ]),
 
         ])->columns(1)->statePath('data');
@@ -136,10 +136,10 @@ class ShippingMethodResource extends BaseResource
     public static function getDriverFormComponent(): Component
     {
         return Forms\Components\Select::make('driver')
-            ->label(__('lunarpanel.shipping::shippingmethod.form.driver.label'))
+            ->label(__('payflowpanel.shipping::shippingmethod.form.driver.label'))
             ->options([
-                'ship-by' => __('lunarpanel.shipping::shippingmethod.form.driver.options.ship-by'),
-                'collection' => __('lunarpanel.shipping::shippingmethod.form.driver.options.collection'),
+                'ship-by' => __('payflowpanel.shipping::shippingmethod.form.driver.options.ship-by'),
+                'collection' => __('payflowpanel.shipping::shippingmethod.form.driver.options.collection'),
             ])->label('Type')
             ->default('ship-by');
     }
@@ -166,17 +166,17 @@ class ShippingMethodResource extends BaseResource
         return [
             Tables\Columns\TextColumn::make('name')
                 ->label(
-                    __('lunarpanel.shipping::shippingmethod.table.name.label')
+                    __('payflowpanel.shipping::shippingmethod.table.name.label')
                 ),
             Tables\Columns\TextColumn::make('code')
                 ->label(
-                    __('lunarpanel.shipping::shippingmethod.table.code.label')
+                    __('payflowpanel.shipping::shippingmethod.table.code.label')
                 ),
             Tables\Columns\TextColumn::make('driver')
                 ->label(
-                    __('lunarpanel.shipping::shippingmethod.table.driver.label')
+                    __('payflowpanel.shipping::shippingmethod.table.driver.label')
                 )->formatStateUsing(
-                    fn ($state) => __("lunarpanel.shipping::shippingmethod.table.driver.options.{$state}")
+                    fn ($state) => __("payflowpanel.shipping::shippingmethod.table.driver.options.{$state}")
                 ),
         ];
     }

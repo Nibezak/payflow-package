@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Admin\Support\RelationManagers;
+namespace Payflow\Admin\Support\RelationManagers;
 
 use Filament;
 use Filament\Forms\Form;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Lunar\Admin\Events\ModelChannelsUpdated;
+use Payflow\Admin\Events\ModelChannelsUpdated;
 
 class ChannelRelationManager extends BaseRelationManager
 {
@@ -30,21 +30,21 @@ class ChannelRelationManager extends BaseRelationManager
     {
         return [
             Filament\Forms\Components\Toggle::make('enabled')->label(
-                __('lunarpanel::relationmanagers.channels.form.enabled.label')
+                __('payflowpanel::relationmanagers.channels.form.enabled.label')
             )->hint(fn (bool $state): string => match ($state) {
-                false => __('lunarpanel::relationmanagers.channels.form.enabled.helper_text_false'),
+                false => __('payflowpanel::relationmanagers.channels.form.enabled.helper_text_false'),
                 true => '',
             })->hintColor('danger')->live()->columnSpan(2),
             Filament\Forms\Components\Grid::make(2)->schema([
                 Filament\Forms\Components\DateTimePicker::make('starts_at')->label(
-                    __('lunarpanel::relationmanagers.channels.form.starts_at.label')
+                    __('payflowpanel::relationmanagers.channels.form.starts_at.label')
                 )->helperText(
-                    __('lunarpanel::relationmanagers.channels.form.starts_at.helper_text')
+                    __('payflowpanel::relationmanagers.channels.form.starts_at.helper_text')
                 ),
                 Filament\Forms\Components\DateTimePicker::make('ends_at')->label(
-                    __('lunarpanel::relationmanagers.channels.form.ends_at.label')
+                    __('payflowpanel::relationmanagers.channels.form.ends_at.label')
                 )->helperText(
-                    __('lunarpanel::relationmanagers.channels.form.ends_at.helper_text')
+                    __('payflowpanel::relationmanagers.channels.form.ends_at.helper_text')
                 ),
             ]),
         ];
@@ -54,7 +54,7 @@ class ChannelRelationManager extends BaseRelationManager
     {
         return $table
             ->description(
-                __('lunarpanel::relationmanagers.channels.table.description')
+                __('payflowpanel::relationmanagers.channels.table.description')
             )->paginated(false)
             ->headerActions([
                 Tables\Actions\AttachAction::make()->form(fn (Tables\Actions\AttachAction $action): array => [
@@ -68,15 +68,15 @@ class ChannelRelationManager extends BaseRelationManager
                     )
                 )->preloadRecordSelect()
                     ->label(
-                        __('lunarpanel::relationmanagers.channels.actions.attach.label')
+                        __('payflowpanel::relationmanagers.channels.actions.attach.label')
                     ),
             ])
             ->columns([
                 Tables\Columns\TextColumn::make('name')->label(
-                    __('lunarpanel::relationmanagers.channels.table.name.label')
+                    __('payflowpanel::relationmanagers.channels.table.name.label')
                 ),
                 Tables\Columns\IconColumn::make('enabled')->label(
-                    __('lunarpanel::relationmanagers.channels.table.enabled.label')
+                    __('payflowpanel::relationmanagers.channels.table.enabled.label')
                 )
                     ->color(fn (bool $state): string => match ($state) {
                         true => 'success',
@@ -86,10 +86,10 @@ class ChannelRelationManager extends BaseRelationManager
                         true => 'heroicon-o-check-circle',
                     }),
                 Tables\Columns\TextColumn::make('starts_at')->label(
-                    __('lunarpanel::relationmanagers.channels.table.starts_at.label')
+                    __('payflowpanel::relationmanagers.channels.table.starts_at.label')
                 )->dateTime(),
                 Tables\Columns\TextColumn::make('ends_at')->label(
-                    __('lunarpanel::relationmanagers.channels.table.ends_at.label')
+                    __('payflowpanel::relationmanagers.channels.table.ends_at.label')
                 )->dateTime(),
             ])->actions([
                 Tables\Actions\EditAction::make()->after(

@@ -1,12 +1,12 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 use Illuminate\Support\Collection;
-use Lunar\Base\FieldTypeManifest;
-use Lunar\Base\FieldTypeManifestInterface;
-use Lunar\Exceptions\FieldTypes\FieldTypeMissingException;
-use Lunar\Exceptions\FieldTypes\InvalidFieldTypeException;
-use Lunar\Models\Channel;
+use Payflow\Base\FieldTypeManifest;
+use Payflow\Base\FieldTypeManifestInterface;
+use Payflow\Exceptions\FieldTypes\FieldTypeMissingException;
+use Payflow\Exceptions\FieldTypes\InvalidFieldTypeException;
+use Payflow\Models\Channel;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -43,5 +43,5 @@ test('cannot add non fieldtype', function () {
         FieldTypeMissingException::class
     );
 
-    $manifest->add(\Lunar\Models\Cart::class);
+    $manifest->add(\Payflow\Models\Cart::class);
 });

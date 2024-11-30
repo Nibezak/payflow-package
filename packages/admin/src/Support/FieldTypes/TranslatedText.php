@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Admin\Support\FieldTypes;
+namespace Payflow\Admin\Support\FieldTypes;
 
 use Filament\Forms\Components\Component;
-use Lunar\Admin\Support\Forms\Components\TranslatedText as TranslatedTextComponent;
-use Lunar\Admin\Support\Synthesizers\TranslatedTextSynth;
-use Lunar\Models\Attribute;
+use Payflow\Admin\Support\Forms\Components\TranslatedText as TranslatedTextComponent;
+use Payflow\Admin\Support\Synthesizers\TranslatedTextSynth;
+use Payflow\Models\Attribute;
 
 class TranslatedText extends BaseFieldType
 {

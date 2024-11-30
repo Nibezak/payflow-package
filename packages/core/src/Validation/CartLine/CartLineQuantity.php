@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Validation\CartLine;
+namespace Payflow\Validation\CartLine;
 
-use Lunar\Validation\BaseValidator;
+use Payflow\Validation\BaseValidator;
 
 class CartLineQuantity extends BaseValidator
 {
@@ -25,7 +25,7 @@ class CartLineQuantity extends BaseValidator
         if ($quantity < 1) {
             $this->fail(
                 'cart',
-                __('lunar::exceptions.invalid_cart_line_quantity', [
+                __('payflow::exceptions.invalid_cart_line_quantity', [
                     'quantity' => $quantity,
                 ])
             );
@@ -34,7 +34,7 @@ class CartLineQuantity extends BaseValidator
         if ($quantity > 1000000) {
             $this->fail(
                 'cart',
-                __('lunar::exceptions.maximum_cart_line_quantity', [
+                __('payflow::exceptions.maximum_cart_line_quantity', [
                     'quantity' => 1000000,
                 ])
             );
@@ -43,7 +43,7 @@ class CartLineQuantity extends BaseValidator
         if ($purchasable && $quantity < $purchasable->min_quantity) {
             $this->fail(
                 'cart',
-                __('lunar::exceptions.minimum_quantity', [
+                __('payflow::exceptions.minimum_quantity', [
                     'quantity' => $purchasable->min_quantity,
                 ])
             );
@@ -52,7 +52,7 @@ class CartLineQuantity extends BaseValidator
         if ($purchasable && ($quantity % ($purchasable->quantity_increment ?? 1)) !== 0) {
             $this->fail(
                 'cart',
-                __('lunar::exceptions.quantity_increment', [
+                __('payflow::exceptions.quantity_increment', [
                     'quantity' => $quantity,
                     'increment' => $purchasable->quantity_increment,
                 ])

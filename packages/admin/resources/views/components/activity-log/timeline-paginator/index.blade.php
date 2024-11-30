@@ -18,14 +18,14 @@ $isRtl = __('filament-panels::layout.direction') === 'rtl';
 <nav
     aria-label="{{ __('filament::components/pagination.label') }}"
     role="navigation"
-    class="lunar-panel-timeline-pagination flex justify-end items-center gap-x-3"
+    class="payflow-panel-timeline-pagination flex justify-end items-center gap-x-3"
 >
     @if ($paginator->hasPages())
         <ol
-            class="lunar-panel-timeline-pagination-items flex justify-self-end rounded-lg bg-white shadow-sm ring-1 ring-gray-950/10 dark:bg-white/5 dark:ring-white/20"
+            class="payflow-panel-timeline-pagination-items flex justify-self-end rounded-lg bg-white shadow-sm ring-1 ring-gray-950/10 dark:bg-white/5 dark:ring-white/20"
         >
             @if (! $paginator->onFirstPage())
-                <x-lunarpanel::activity-log.timeline-paginator.item
+                <x-payflowpanel::activity-log.timeline-paginator.item
                     :aria-label="__('filament::components/pagination.actions.previous.label')"
                     :icon="$isRtl ? 'heroicon-m-chevron-right' : 'heroicon-m-chevron-left'"
                     icon-alias="pagination.previous-button"
@@ -39,12 +39,12 @@ $isRtl = __('filament-panels::layout.direction') === 'rtl';
 
             @foreach ($paginator->render()->offsetGet('elements') as $element)
                 @if (is_string($element))
-                    <x-lunarpanel::activity-log.timeline-paginator.item disabled :label="$element" />
+                    <x-payflowpanel::activity-log.timeline-paginator.item disabled :label="$element" />
                 @endif
 
                 @if (is_array($element))
                     @foreach ($element as $page => $url)
-                        <x-lunarpanel::activity-log.timeline-paginator.item
+                        <x-payflowpanel::activity-log.timeline-paginator.item
                             :active="$page === $paginator->currentPage()"
                             :aria-label="trans_choice('filament::components/pagination.actions.go_to_page.label', $page, ['page' => $page])"
                             :label="$page"
@@ -57,7 +57,7 @@ $isRtl = __('filament-panels::layout.direction') === 'rtl';
             @endforeach
 
             @if ($paginator->hasMorePages())
-                <x-lunarpanel::activity-log.timeline-paginator.item
+                <x-payflowpanel::activity-log.timeline-paginator.item
                     :aria-label="__('filament::components/pagination.actions.next.label')"
                     :icon="$isRtl ? 'heroicon-m-chevron-left' : 'heroicon-m-chevron-right'"
                     icon-alias="pagination.next-button"

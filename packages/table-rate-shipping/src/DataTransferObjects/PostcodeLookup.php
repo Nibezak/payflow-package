@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Shipping\DataTransferObjects;
+namespace Payflow\Shipping\DataTransferObjects;
 
-use Lunar\Models\Country;
+use Payflow\Models\Country;
 
 class PostcodeLookup
 {

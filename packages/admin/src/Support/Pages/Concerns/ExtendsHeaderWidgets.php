@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Pages\Concerns;
+namespace Payflow\Admin\Support\Pages\Concerns;
 
 trait ExtendsHeaderWidgets
 {
@@ -11,6 +11,6 @@ trait ExtendsHeaderWidgets
 
     protected function getHeaderWidgets(): array
     {
-        return $this->callLunarHook('headerWidgets', $this->getDefaultHeaderWidgets());
+        return $this->callPayflowHook('headerWidgets', $this->getDefaultHeaderWidgets());
     }
 }

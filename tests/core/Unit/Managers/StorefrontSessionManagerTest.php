@@ -1,16 +1,16 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
 use Illuminate\Support\Facades\Session;
-use Lunar\Base\StorefrontSessionInterface;
-use Lunar\Exceptions\CustomerNotBelongsToUserException;
-use Lunar\Managers\StorefrontSessionManager;
-use Lunar\Models\Channel;
-use Lunar\Models\Currency;
-use Lunar\Models\Customer;
-use Lunar\Models\CustomerGroup;
-use Lunar\Tests\Core\Stubs\User as StubUser;
+use Payflow\Base\StorefrontSessionInterface;
+use Payflow\Exceptions\CustomerNotBelongsToUserException;
+use Payflow\Managers\StorefrontSessionManager;
+use Payflow\Models\Channel;
+use Payflow\Models\Currency;
+use Payflow\Models\Customer;
+use Payflow\Models\CustomerGroup;
+use Payflow\Tests\Core\Stubs\User as StubUser;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

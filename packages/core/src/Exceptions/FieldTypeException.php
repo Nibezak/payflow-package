@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Exceptions;
+namespace Payflow\Exceptions;
 
-class FieldTypeException extends LunarException
+class FieldTypeException extends PayflowException
 {
     //
 }

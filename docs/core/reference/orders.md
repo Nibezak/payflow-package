@@ -6,7 +6,7 @@ As you'd expect, orders on an online system show what users have purchased. Orde
 would generally only have one Order per cart, the system will support multiple if your store requires it.
 
 ```php
-Lunar\Models\Order
+Payflow\Models\Order
 ```
 
 | Field                 | Description                                                                                                        |
@@ -41,7 +41,7 @@ Lunar\Models\Order
 You can either create an order directly, or the recommended way is via a `Cart` model.
 
 ```php
-$order = \Lunar\Models\Order::create([/** .. */]);
+$order = \Payflow\Models\Order::create([/** .. */]);
 
 // Recommended way
 $order = Cart::first()->createOrder(
@@ -54,7 +54,7 @@ $order = Cart::first()->createOrder(
   have multiple, you can pass `true` here.
 - `orderIdToUpdate` - You can optionally pass the ID of an order to update instead of attempting to create a new order, this must be a draft order i.e. a null `placed_at` and related to the cart.
 
-The underlying class for creating an order is `Lunar\Actions\Carts\CreateOrder`, you are free to override this in the
+The underlying class for creating an order is `Payflow\Actions\Carts\CreateOrder`, you are free to override this in the
 config file `config/cart.php`
 
 ```php
@@ -70,7 +70,7 @@ return [
 At minimum your class should look like the following:
 
 ```php
-final class CreateOrder extends Lunar\Actions\AbstractAction
+final class CreateOrder extends Payflow\Actions\AbstractAction
 {
     /**
      * Execute the action.
@@ -94,7 +94,7 @@ method:
 $cart->canCreateOrder();
 ```
 
-Under the hood this will use the `ValidateCartForOrderCreation` class which lunar provides and throw any validation
+Under the hood this will use the `ValidateCartForOrderCreation` class which payflow provides and throw any validation
 exceptions with helpful messages if the cart isn't ready to create an order.
 
 You can specify you're own class to handle this in `config/cart.php`.
@@ -115,7 +115,7 @@ Which may look something like:
 
 //...
 
-class MyCustomValidator extends \Lunar\Validation\BaseValidator
+class MyCustomValidator extends \Payflow\Validation\BaseValidator
 {
     public function validate(): bool
     {
@@ -132,7 +132,7 @@ class MyCustomValidator extends \Lunar\Validation\BaseValidator
 
 ## Order Reference Generating
 
-By default Lunar will generate a new order reference for you when you create an order from a cart. The format for this
+By default Payflow will generate a new order reference for you when you create an order from a cart. The format for this
 is:
 
 ```
@@ -150,10 +150,10 @@ is:
 
 ### Custom Generators
 
-If your store has a specific requirement for how references are generated, you can easily swap out the Lunar one for
+If your store has a specific requirement for how references are generated, you can easily swap out the Payflow one for
 your own:
 
-`config/lunar/orders.php`
+`config/payflow/orders.php`
 
 ```php
 return [
@@ -168,7 +168,7 @@ Here's the underlying class for the custom generator:
 ```php
 namespace App\Generators;
 
-use Lunar\Models\Order;
+use Payflow\Models\Order;
 
 class MyCustomGenerator implements OrderReferenceGeneratorInterface
 {
@@ -188,12 +188,12 @@ class MyCustomGenerator implements OrderReferenceGeneratorInterface
 If you need to programmatically change the Order values or add in new behaviour, you will want to extend the Order
 system.
 
-You can find out more in the Extending Lunar section for [Order Modifiers](/core/extending/orders).
+You can find out more in the Extending Payflow section for [Order Modifiers](/core/extending/orders).
 
 ## Order Lines
 
 ```php
-Lunar\Models\OrderLine
+Payflow\Models\OrderLine
 ```
 
 | Field            | Description                                                                                                                                      |
@@ -227,7 +227,7 @@ If you are using the `createOrder` method on a cart, this is all handled for you
 :::
 
 ```php
-\Lunar\Models\OrderLine::create([
+\Payflow\Models\OrderLine::create([
     // ...
 ]);
 ```
@@ -249,7 +249,7 @@ If you are using the `createOrder` method on a cart, this is all handled for you
 :::
 
 ```php
-\Lunar\Models\OrderAddress::create([
+\Payflow\Models\OrderAddress::create([
     'order_id' => 1,
     'country_id' => 1,
     'title' => null,
@@ -288,15 +288,15 @@ $order->billingAddress;
 A Shipping Tables addon is planned to make setting up shipping in the admin hub easy for most scenarios.
 :::
 
-To add Shipping Options you will need to [extend Lunar](/core/extending/shipping) to add in your own logic.
+To add Shipping Options you will need to [extend Payflow](/core/extending/shipping) to add in your own logic.
 
 Then in your checkout, or where ever you want, you can fetch these options:
 
 ```php
-\Lunar\Facades\ShippingManifest::getOptions(\Lunar\Models\Cart $cart);
+\Payflow\Facades\ShippingManifest::getOptions(\Payflow\Models\Cart $cart);
 ```
 
-This will return a collection of `Lunar\DataTypes\ShippingOption` objects.
+This will return a collection of `Payflow\DataTypes\ShippingOption` objects.
 
 ### Adding the shipping option to the cart
 
@@ -304,13 +304,13 @@ Once the user has selected the shipping option they want, you will need to add t
 new totals.
 
 ```php
-$cart->setShippingOption(\Lunar\DataTypes\ShippingOption $option);
+$cart->setShippingOption(\Payflow\DataTypes\ShippingOption $option);
 ```
 
 ## Transactions
 
 ```php
-Lunar\Models\Transaction
+Payflow\Models\Transaction
 ```
 
 | Field      | Description                                                                                   |
@@ -321,7 +321,7 @@ Lunar\Models\Transaction
 | driver     | The payment driver used e.g. `stripe`                                                         |
 | amount     | An integer amount                                                                             |
 | reference  | The reference returned from the payment Provider. Used to identify the transaction with them. 
-| status     | A string representation of the status, unlinked to Lunar e.g. `settled`                       |
+| status     | A string representation of the status, unlinked to Payflow e.g. `settled`                       |
 | notes      | Any relevant notes for the transaction                                                        
 | card_type  | e.g. `visa`                                                                                   
 | last_four  | Last 4 digits of the card                                                                     
@@ -332,7 +332,7 @@ Lunar\Models\Transaction
 ### Create a transaction
 
 ::: tip
-Just because an order has a transaction does not mean it has been placed. Lunar determines whether an order is
+Just because an order has a transaction does not mean it has been placed. Payflow determines whether an order is
 considered placed when the `placed_at` column has a datetime, regardless if any transactions exist or not.
 :::
 
@@ -340,7 +340,7 @@ Most stores will likely want to store a transaction against the order, this help
 how it was paid and give a clue on the best way to issue a refund if needed.
 
 ```php
-\Lunar\Models\Transaction::create([
+\Payflow\Models\Transaction::create([
     //...
 ]);
 
@@ -365,7 +365,7 @@ $order->refunds; // Get all transactions that are refunds.
 We will be looking to add support for the most popular payment providers, so keep an eye out here as we will list them
 all out.
 
-In the meantime, you can absolutely still get a storefront working, at the end of the day Lunar doesn't really mind what payment provider you use or plan to use.
+In the meantime, you can absolutely still get a storefront working, at the end of the day Payflow doesn't really mind what payment provider you use or plan to use.
 
 In terms of an order, all it's worried about is whether or not the `placed_at` column is populated on the orders table,
 the rest is completely up to you how you want to handle that. We have some helper utilities to make such things easier
@@ -385,8 +385,8 @@ $order->isPlaced();
 
 ## Order Notifications
 
-Lunar allows you to specify what Laravel mailers/notifications should be available for sending when you update an
-order's status. These are configured in the `lunar/orders` config file and are defined like so:
+Payflow allows you to specify what Laravel mailers/notifications should be available for sending when you update an
+order's status. These are configured in the `payflow/orders` config file and are defined like so:
 
 ```php
 'statuses'     => [
@@ -407,7 +407,7 @@ Now when you update an order's status in the hub, you will have these mailers av
 is `awaiting-payment`. You can then choose the email addresses which the email should be sent to and also add an
 additional email address if required.
 
-Once updated, Lunar will keep a render of the email sent out in the activity log so you have a clear history of what's
+Once updated, Payflow will keep a render of the email sent out in the activity log so you have a clear history of what's
 been sent out.
 
 :::tip
@@ -445,8 +445,8 @@ By default when you click "Download PDF" in the hub when viewing an order, you w
 download. You can publish the view that powers this to create your own PDF template.
 
 ```bash
-php artisan vendor:publish --tag=lunar.hub.views
+php artisan vendor:publish --tag=payflow.hub.views
 ```
 
-This will create a view called `resources/vendor/lunarpanel/pdf/order.blade.php`, where you will be able to freely
+This will create a view called `resources/vendor/payflowpanel/pdf/order.blade.php`, where you will be able to freely
 customise the PDF you want displayed on download.

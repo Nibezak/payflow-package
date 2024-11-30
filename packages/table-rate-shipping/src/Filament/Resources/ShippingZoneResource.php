@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Shipping\Filament\Resources;
+namespace Payflow\Shipping\Filament\Resources;
 
 use Awcodes\Shout\Components\Shout;
 use Filament\Forms;
@@ -13,11 +13,11 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
-use Lunar\Admin\Support\Resources\BaseResource;
-use Lunar\Models\Country;
-use Lunar\Models\State;
-use Lunar\Shipping\Filament\Resources\ShippingZoneResource\Pages;
-use Lunar\Shipping\Models\Contracts\ShippingZone;
+use Payflow\Admin\Support\Resources\BaseResource;
+use Payflow\Models\Country;
+use Payflow\Models\State;
+use Payflow\Shipping\Filament\Resources\ShippingZoneResource\Pages;
+use Payflow\Shipping\Models\Contracts\ShippingZone;
 
 class ShippingZoneResource extends BaseResource
 {
@@ -29,22 +29,22 @@ class ShippingZoneResource extends BaseResource
 
     public static function getLabel(): string
     {
-        return __('lunarpanel.shipping::shippingzone.label');
+        return __('payflowpanel.shipping::shippingzone.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('lunarpanel.shipping::shippingzone.label_plural');
+        return __('payflowpanel.shipping::shippingzone.label_plural');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::shipping-zones');
+        return FilamentIcon::resolve('payflow::shipping-zones');
     }
 
     public static function getNavigationGroup(): ?string
     {
-        return __('lunarpanel.shipping::plugin.navigation.group');
+        return __('payflowpanel.shipping::plugin.navigation.group');
     }
 
     public static function getRecordSubNavigation(Page $page): array
@@ -75,7 +75,7 @@ class ShippingZoneResource extends BaseResource
             static::getStatesFormComponent(),
             static::getCountriesFormComponent(),
             Shout::make('unrestricted')->content(
-                __('lunarpanel.shipping::shippingzone.form.unrestricted.content')
+                __('payflowpanel.shipping::shippingzone.form.unrestricted.content')
             )->hidden(
                 fn (Forms\Get $get) => $get('type') != 'unrestricted'
             ),
@@ -85,7 +85,7 @@ class ShippingZoneResource extends BaseResource
     public static function getNameFormComponent(): Component
     {
         return Forms\Components\TextInput::make('name')
-            ->label(__('lunarpanel.shipping::shippingzone.form.name.label'))
+            ->label(__('payflowpanel.shipping::shippingzone.form.name.label'))
             ->required()
             ->maxLength(255)
             ->autofocus();
@@ -94,20 +94,20 @@ class ShippingZoneResource extends BaseResource
     public static function getTypeFormComponent(): Component
     {
         return Forms\Components\Select::make('type')
-            ->label(__('lunarpanel.shipping::shippingzone.form.type.label'))
+            ->label(__('payflowpanel.shipping::shippingzone.form.type.label'))
             ->required()
             ->options([
-                'unrestricted' => __('lunarpanel.shipping::shippingzone.form.type.options.unrestricted'),
-                'countries' => __('lunarpanel.shipping::shippingzone.form.type.options.countries'),
-                'states' => __('lunarpanel.shipping::shippingzone.form.type.options.states'),
-                'postcodes' => __('lunarpanel.shipping::shippingzone.form.type.options.postcodes'),
+                'unrestricted' => __('payflowpanel.shipping::shippingzone.form.type.options.unrestricted'),
+                'countries' => __('payflowpanel.shipping::shippingzone.form.type.options.countries'),
+                'states' => __('payflowpanel.shipping::shippingzone.form.type.options.states'),
+                'postcodes' => __('payflowpanel.shipping::shippingzone.form.type.options.postcodes'),
             ])->live();
     }
 
     protected static function getCountryFormComponent(): Component
     {
         return Forms\Components\Select::make('country')
-            ->label(__('lunarpanel.shipping::shippingzone.form.country.label'))
+            ->label(__('payflowpanel.shipping::shippingzone.form.country.label'))
             ->dehydrated(false)
             ->visible(
                 fn (Forms\Get $get) => ! in_array($get('type'), ['countries', 'unrestricted'])
@@ -142,7 +142,7 @@ class ShippingZoneResource extends BaseResource
     protected static function getCountriesFormComponent(): Component
     {
         return Forms\Components\Select::make('countries')
-            ->label(__('lunarpanel.shipping::shippingzone.form.countries.label'))
+            ->label(__('payflowpanel.shipping::shippingzone.form.countries.label'))
             ->visible(fn ($get) => $get('type') == 'countries')
             ->dehydrated(false)
             ->options(Country::get()->pluck('name', 'id'))
@@ -174,7 +174,7 @@ class ShippingZoneResource extends BaseResource
     protected static function getStatesFormComponent(): Component
     {
         return Forms\Components\Select::make('states')
-            ->label(__('lunarpanel.shipping::shippingzone.form.states.label'))
+            ->label(__('payflowpanel.shipping::shippingzone.form.states.label'))
             ->visible(fn ($get) => $get('type') == 'states')
             ->dehydrated(false)
             ->options(fn ($get) => State::where('country_id', $get('country'))->get()->pluck('name', 'id'))
@@ -207,11 +207,11 @@ class ShippingZoneResource extends BaseResource
     protected static function getPostcodesFormComponent(): Component
     {
         return Forms\Components\Textarea::make('postcodes')
-            ->label(__('lunarpanel.shipping::shippingzone.form.postcodes.label'))
+            ->label(__('payflowpanel.shipping::shippingzone.form.postcodes.label'))
             ->visible(fn ($get) => $get('type') == 'postcodes')
             ->dehydrated(false)
             ->rows(10)
-            ->helperText(__('lunarpanel.shipping::shippingzone.form.postcodes.helper'))
+            ->helperText(__('payflowpanel.shipping::shippingzone.form.postcodes.helper'))
             ->required()
             ->afterStateHydrated(static function (Forms\Components\Textarea $component, Model $record): void {
                 /** @var Collection $relatedModels */
@@ -272,14 +272,14 @@ class ShippingZoneResource extends BaseResource
         return [
             Tables\Columns\TextColumn::make('name')
                 ->label(
-                    __('lunarpanel.shipping::shippingzone.table.name.label')
+                    __('payflowpanel.shipping::shippingzone.table.name.label')
                 ),
             Tables\Columns\TextColumn::make('type')
                 ->label(
-                    __('lunarpanel.shipping::shippingzone.table.type.label')
+                    __('payflowpanel.shipping::shippingzone.table.type.label')
                 )
                 ->formatStateUsing(
-                    fn ($state) => __("lunarpanel.shipping::shippingzone.table.type.options.{$state}")
+                    fn ($state) => __("payflowpanel.shipping::shippingzone.table.type.options.{$state}")
                 ),
         ];
     }

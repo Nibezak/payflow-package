@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Facades;
+namespace Payflow\Admin\Support\Facades;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Facade;
@@ -21,6 +21,6 @@ class AttributeData extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'lunar-attribute-data';
+        return 'payflow-attribute-data';
     }
 }

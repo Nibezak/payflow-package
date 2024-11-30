@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\RelationManagers;
+namespace Payflow\Admin\Support\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -10,7 +10,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Lunar\Admin\Events\ModelMediaUpdated;
+use Payflow\Admin\Events\ModelMediaUpdated;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class MediaRelationManager extends BaseRelationManager
@@ -31,13 +31,13 @@ class MediaRelationManager extends BaseRelationManager
         return $form
             ->schema([
                 Forms\Components\TextInput::make('custom_properties.name')
-                    ->label(__('lunarpanel::relationmanagers.medias.form.name.label'))
+                    ->label(__('payflowpanel::relationmanagers.medias.form.name.label'))
                     ->maxLength(255),
                 Forms\Components\Toggle::make('custom_properties.primary')
-                    ->label(__('lunarpanel::relationmanagers.medias.form.primary.label'))
+                    ->label(__('payflowpanel::relationmanagers.medias.form.primary.label'))
                     ->inline(false),
                 Forms\Components\FileUpload::make('media')
-                    ->label(__('lunarpanel::relationmanagers.medias.form.media.label'))
+                    ->label(__('payflowpanel::relationmanagers.medias.form.media.label'))
                     ->columnSpan(2)
                     ->hiddenOn('edit')
                     ->storeFiles(false)
@@ -68,14 +68,14 @@ class MediaRelationManager extends BaseRelationManager
                     ->state(function (Media $record): string {
                         return $record->hasGeneratedConversion('small') ? $record->getUrl('small') : '';
                     })
-                    ->label(__('lunarpanel::relationmanagers.medias.table.image.label')),
+                    ->label(__('payflowpanel::relationmanagers.medias.table.image.label')),
                 Tables\Columns\TextColumn::make('file_name')
                     ->limit(30)
-                    ->label(__('lunarpanel::relationmanagers.medias.table.file.label')),
+                    ->label(__('payflowpanel::relationmanagers.medias.table.file.label')),
                 Tables\Columns\TextColumn::make('custom_properties.name')
-                    ->label(__('lunarpanel::relationmanagers.medias.table.name.label')),
+                    ->label(__('payflowpanel::relationmanagers.medias.table.name.label')),
                 Tables\Columns\IconColumn::make('custom_properties.primary')
-                    ->label(__('lunarpanel::relationmanagers.medias.table.primary.label'))
+                    ->label(__('payflowpanel::relationmanagers.medias.table.primary.label'))
                     ->boolean(),
             ])
             ->filters([
@@ -83,7 +83,7 @@ class MediaRelationManager extends BaseRelationManager
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make()
-                    ->label(__('lunarpanel::relationmanagers.medias.actions.create.label'))
+                    ->label(__('payflowpanel::relationmanagers.medias.actions.create.label'))
                     ->using(function (array $data, string $model): Model {
 
                         return $this->getOwnerRecord()->addMediaFromString($data['media']->get())
@@ -110,7 +110,7 @@ class MediaRelationManager extends BaseRelationManager
                 ),
                 Tables\Actions\DeleteAction::make(),
                 Action::make('view_open')
-                    ->label(__('lunarpanel::relationmanagers.medias.actions.view.label'))
+                    ->label(__('payflowpanel::relationmanagers.medias.actions.view.label'))
                     ->icon('lucide-eye')
                     ->url(fn (Media $record): string => $record->getUrl())
                     ->openUrlInNewTab(),

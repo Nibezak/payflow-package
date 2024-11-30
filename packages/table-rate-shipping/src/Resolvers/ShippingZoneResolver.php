@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Shipping\Resolvers;
+namespace Payflow\Shipping\Resolvers;
 
 use Illuminate\Support\Collection;
-use Lunar\Models\Country;
-use Lunar\Models\State;
-use Lunar\Shipping\DataTransferObjects\PostcodeLookup;
-use Lunar\Shipping\Models\ShippingZone;
+use Payflow\Models\Country;
+use Payflow\Models\State;
+use Payflow\Shipping\DataTransferObjects\PostcodeLookup;
+use Payflow\Shipping\Models\ShippingZone;
 
 class ShippingZoneResolver
 {

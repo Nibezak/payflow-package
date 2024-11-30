@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Schema;
-use Lunar\Base\Migration;
-use Lunar\Facades\DB;
+use Payflow\Base\Migration;
+use Payflow\Facades\DB;
 
 return new class extends Migration
 {

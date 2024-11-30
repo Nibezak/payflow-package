@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Admin\Actions\Products;
+namespace Payflow\Admin\Actions\Products;
 
 use Illuminate\Support\Str;
-use Lunar\Utils\Arr;
+use Payflow\Utils\Arr;
 
 class MapVariantsToProductOptions
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Exceptions\Carts;
+namespace Payflow\Exceptions\Carts;
 
 class ShippingAddressIncompleteException extends CartException
 {

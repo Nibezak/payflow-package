@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Observers;
+namespace Payflow\Observers;
 
-use Lunar\Models\Channel;
+use Payflow\Models\Channel;
 
 class ChannelObserver
 {

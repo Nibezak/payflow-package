@@ -1,9 +1,9 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\Models\ProductOption;
-use Lunar\Search\ProductOptionIndexer;
+use Payflow\Models\ProductOption;
+use Payflow\Search\ProductOptionIndexer;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

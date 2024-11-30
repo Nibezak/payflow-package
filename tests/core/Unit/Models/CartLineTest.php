@@ -1,13 +1,13 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\Exceptions\NonPurchasableItemException;
-use Lunar\Models\Cart;
-use Lunar\Models\CartLine;
-use Lunar\Models\Channel;
-use Lunar\Models\ProductVariant;
-use Lunar\Tests\Core\Stubs\User;
+use Payflow\Exceptions\NonPurchasableItemException;
+use Payflow\Models\Cart;
+use Payflow\Models\CartLine;
+use Payflow\Models\Channel;
+use Payflow\Models\ProductVariant;
+use Payflow\Tests\Core\Stubs\User;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

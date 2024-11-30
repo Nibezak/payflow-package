@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\CollectionGroupResource\Pages;
+namespace Payflow\Admin\Filament\Resources\CollectionGroupResource\Pages;
 
 use Filament\Resources\Pages\CreateRecord;
-use Lunar\Admin\Filament\Resources\CollectionGroupResource;
+use Payflow\Admin\Filament\Resources\CollectionGroupResource;
 
 class CreateCollectionGroup extends CreateRecord
 {

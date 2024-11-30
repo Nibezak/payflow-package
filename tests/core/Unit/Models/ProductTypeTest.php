@@ -1,9 +1,9 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
-use Lunar\Models\Attribute;
-use Lunar\Models\AttributeGroup;
-use Lunar\Models\ProductType;
+uses(\Payflow\Tests\Core\TestCase::class);
+use Payflow\Models\Attribute;
+use Payflow\Models\AttributeGroup;
+use Payflow\Models\ProductType;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 

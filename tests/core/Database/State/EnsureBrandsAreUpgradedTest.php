@@ -1,15 +1,15 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
-use Lunar\Facades\DB;
-use Lunar\FieldTypes\Text;
-use Lunar\Models\Brand;
-use Lunar\Models\Language;
-use Lunar\Models\Product;
-use Lunar\Models\ProductType;
+use Payflow\Facades\DB;
+use Payflow\FieldTypes\Text;
+use Payflow\Models\Brand;
+use Payflow\Models\Language;
+use Payflow\Models\Product;
+use Payflow\Models\ProductType;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -20,7 +20,7 @@ test('can run', function () {
         'default' => true,
     ]);
 
-    $prefix = config('lunar.database.table_prefix');
+    $prefix = config('payflow.database.table_prefix');
     Schema::dropIfExists("{$prefix}brands");
 
     Schema::table("{$prefix}products", function ($table) {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\PaymentTypes;
+namespace Payflow\PaymentTypes;
 
-use Lunar\Base\DataTransferObjects\PaymentAuthorize;
-use Lunar\Base\DataTransferObjects\PaymentCapture;
-use Lunar\Base\DataTransferObjects\PaymentRefund;
-use Lunar\Events\PaymentAttemptEvent;
-use Lunar\Models\Transaction;
+use Payflow\Base\DataTransferObjects\PaymentAuthorize;
+use Payflow\Base\DataTransferObjects\PaymentCapture;
+use Payflow\Base\DataTransferObjects\PaymentRefund;
+use Payflow\Events\PaymentAttemptEvent;
+use Payflow\Models\Transaction;
 
 class OfflinePayment extends AbstractPayment
 {

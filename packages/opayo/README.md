@@ -1,8 +1,8 @@
-<p align="center"><img src="https://github.com/lunarphp/lunar/assets/1488016/a21f1cfb-9259-4d21-9bb0-eca876957729" width="300" ></p>
+<p align="center"><img src="https://github.com/payflowphp/payflow/assets/1488016/a21f1cfb-9259-4d21-9bb0-eca876957729" width="300" ></p>
 
 
 
-<p align="center">This addon enables Opayo payments on your Lunar storefront.</p>
+<p align="center">This addon enables Opayo payments on your Payflow storefront.</p>
 
 ## Alpha Release
 
@@ -10,7 +10,7 @@ This addon is currently in Alpha, whilst every step is taken to ensure this is w
 
 ## Minimum Requirements
 
-- Lunar  `1.x`
+- Payflow  `1.x`
 - An [Elavon](https://www.elavon.com/) merchant account
 
 ## Installation
@@ -18,7 +18,7 @@ This addon is currently in Alpha, whilst every step is taken to ensure this is w
 ### Require the composer package
 
 ```sh
-composer require lunarphp/opayo
+composer require payflowphp/opayo
 ```
 
 ### Configure the service
@@ -39,7 +39,7 @@ Add the opayo config to the `config/services.php` file.
 
 ### Enable the driver
 
-Set the driver in `config/lunar/payments.php`
+Set the driver in `config/payflow/payments.php`
 
 ```php
 <?php
@@ -59,7 +59,7 @@ return [
 
 ## Configuration
 
-Below is a list of the available configuration options this package uses in `config/lunar/opayo.php`
+Below is a list of the available configuration options this package uses in `config/payflow/opayo.php`
 
 | Key | Default | Description |
 | --- | --- | --- |
@@ -72,13 +72,13 @@ Below is a list of the available configuration options this package uses in `con
 ### Get a merchant key
 
 ```php
-Lunar\Opayo\Facades\Opayo::getMerchantKey();
+Payflow\Opayo\Facades\Opayo::getMerchantKey();
 ```
 
 ### Authorize a charge
 
 ```php
-$response = \Lunar\Facades\Payments::driver('opayo')->cart(
+$response = \Payflow\Facades\Payments::driver('opayo')->cart(
     $cart = CartSession::current()->calculate()
 )->withData([
     'merchant_key' => $request->get('merchantSessionKey'),
@@ -100,7 +100,7 @@ $response = \Lunar\Facades\Payments::driver('opayo')->cart(
 When authorizing a charge, you may be required to submit extra authentication in the form of 3DSV2, you can handle this in your payment endpoint.
 
 ```php
-if (is_a($response, \Lunar\Opayo\Responses\ThreeDSecureResponse::class)) {
+if (is_a($response, \Payflow\Opayo\Responses\ThreeDSecureResponse::class)) {
   return response()->json([
       'requires_auth' => true,
       'data' => $response,
@@ -142,7 +142,7 @@ When authenticated users make an order on your store, it can be good to offer th
 To save a card, pass in the `saveCard` data key when authorizing a payment.
 
 ```php
-$response = \Lunar\Facades\Payments::driver('opayo')->cart(
+$response = \Payflow\Facades\Payments::driver('opayo')->cart(
     $cart = CartSession::current()->calculate()
 )->withData([
     // ...
@@ -153,7 +153,7 @@ $response = \Lunar\Facades\Payments::driver('opayo')->cart(
 Assuming everything went well, there will be a new entry in the `opayo_tokens` table, associated to the authenticated user. You can then display these card representations at checkout for the user to select. The `token` is what replaces the `card_identifier` data key.
 
 ```php
-$response = \Lunar\Facades\Payments::driver('opayo')->cart(
+$response = \Payflow\Facades\Payments::driver('opayo')->cart(
     $cart = CartSession::current()->calculate()
 )->withData([
     // ...

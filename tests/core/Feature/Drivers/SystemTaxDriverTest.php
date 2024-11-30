@@ -1,19 +1,19 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Support\Facades\Config;
-use Lunar\Base\ValueObjects\Cart\TaxBreakdown;
-use Lunar\Drivers\SystemTaxDriver;
-use Lunar\Models\Address;
-use Lunar\Models\CartLine;
-use Lunar\Models\Currency;
-use Lunar\Models\ProductVariant;
-use Lunar\Models\TaxClass;
-use Lunar\Models\TaxRate;
-use Lunar\Models\TaxRateAmount;
-use Lunar\Models\TaxZone;
+use Payflow\Base\ValueObjects\Cart\TaxBreakdown;
+use Payflow\Drivers\SystemTaxDriver;
+use Payflow\Models\Address;
+use Payflow\Models\CartLine;
+use Payflow\Models\Currency;
+use Payflow\Models\ProductVariant;
+use Payflow\Models\TaxClass;
+use Payflow\Models\TaxRate;
+use Payflow\Models\TaxRateAmount;
+use Payflow\Models\TaxZone;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class)->group('taxes');
 
@@ -104,7 +104,7 @@ test('can get breakdown', function () {
 });
 
 test('can get breakdown price inc', function () {
-    Config::set('lunar.pricing.stored_inclusive_of_tax', true);
+    Config::set('payflow.pricing.stored_inclusive_of_tax', true);
 
     $address = Address::factory()->create();
     $currency = Currency::factory()->create();

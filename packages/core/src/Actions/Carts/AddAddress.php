@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Actions\Carts;
+namespace Payflow\Actions\Carts;
 
-use Lunar\Actions\AbstractAction;
-use Lunar\Base\Addressable;
-use Lunar\Models\Cart;
-use Lunar\Models\CartAddress;
+use Payflow\Actions\AbstractAction;
+use Payflow\Base\Addressable;
+use Payflow\Models\Cart;
+use Payflow\Models\CartAddress;
 
 class AddAddress extends AbstractAction
 {
@@ -30,9 +30,9 @@ class AddAddress extends AbstractAction
     /**
      * Execute the action.
      *
-     * @param  \Lunar\Models\CartLine  $cartLine
+     * @param  \Payflow\Models\CartLine  $cartLine
      * @param  \Illuminate\Database\Eloquent\Collection  $customerGroups
-     * @return \Lunar\Models\CartLine
+     * @return \Payflow\Models\CartLine
      */
     public function execute(
         Cart $cart,

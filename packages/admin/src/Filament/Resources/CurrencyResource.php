@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources;
+namespace Payflow\Admin\Filament\Resources;
 
 use Awcodes\FilamentBadgeableColumn\Components\Badge;
 use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
@@ -9,9 +9,9 @@ use Filament\Forms\Components\Component;
 use Filament\Support\Facades\FilamentIcon;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Filament\Resources\CurrencyResource\Pages;
-use Lunar\Admin\Support\Resources\BaseResource;
-use Lunar\Models\Contracts\Currency;
+use Payflow\Admin\Filament\Resources\CurrencyResource\Pages;
+use Payflow\Admin\Support\Resources\BaseResource;
+use Payflow\Models\Contracts\Currency;
 
 class CurrencyResource extends BaseResource
 {
@@ -23,22 +23,22 @@ class CurrencyResource extends BaseResource
 
     public static function getLabel(): string
     {
-        return __('lunarpanel::currency.label');
+        return __('payflowpanel::currency.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('lunarpanel::currency.plural_label');
+        return __('payflowpanel::currency.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::currencies');
+        return FilamentIcon::resolve('payflow::currencies');
     }
 
     public static function getNavigationGroup(): ?string
     {
-        return __('lunarpanel::global.sections.settings');
+        return __('payflowpanel::global.sections.settings');
     }
 
     protected static function getMainFormComponents(): array
@@ -56,7 +56,7 @@ class CurrencyResource extends BaseResource
     protected static function getNameFormComponent(): Component
     {
         return Forms\Components\TextInput::make('name')
-            ->label(__('lunarpanel::currency.form.name.label'))
+            ->label(__('payflowpanel::currency.form.name.label'))
             ->required()
             ->maxLength(255)
             ->autofocus();
@@ -65,7 +65,7 @@ class CurrencyResource extends BaseResource
     protected static function getCodeFormComponent(): Component
     {
         return Forms\Components\TextInput::make('code')
-            ->label(__('lunarpanel::currency.form.code.label'))
+            ->label(__('payflowpanel::currency.form.code.label'))
             ->required()
             ->unique(ignoreRecord: true)
             ->minLength(3)
@@ -75,7 +75,7 @@ class CurrencyResource extends BaseResource
     protected static function getExchangeRateFormComponent(): Component
     {
         return Forms\Components\TextInput::make('exchange_rate')
-            ->label(__('lunarpanel::currency.form.exchange_rate.label'))
+            ->label(__('payflowpanel::currency.form.exchange_rate.label'))
             ->numeric()
             ->required();
     }
@@ -83,7 +83,7 @@ class CurrencyResource extends BaseResource
     protected static function getDecimalPlacesFormComponent(): Component
     {
         return Forms\Components\TextInput::make('decimal_places')
-            ->label(__('lunarpanel::currency.form.decimal_places.label'))
+            ->label(__('payflowpanel::currency.form.decimal_places.label'))
             ->numeric()
             ->required();
     }
@@ -91,13 +91,13 @@ class CurrencyResource extends BaseResource
     protected static function getEnabledFormComponent(): Component
     {
         return Forms\Components\Toggle::make('enabled')
-            ->label(__('lunarpanel::currency.form.enabled.label'));
+            ->label(__('payflowpanel::currency.form.enabled.label'));
     }
 
     protected static function getDefaultFormComponent(): Component
     {
         return Forms\Components\Toggle::make('default')
-            ->label(__('lunarpanel::currency.form.default.label'));
+            ->label(__('payflowpanel::currency.form.default.label'));
     }
 
     protected static function getDefaultTable(Tables\Table $table): Tables\Table
@@ -107,20 +107,20 @@ class CurrencyResource extends BaseResource
                 ->separator('')
                 ->suffixBadges([
                     Badge::make('default')
-                        ->label(__('lunarpanel::currency.table.default.label'))
+                        ->label(__('payflowpanel::currency.table.default.label'))
                         ->color('gray')
                         ->visible(fn (Model $record) => $record->default),
                 ])
-                ->label(__('lunarpanel::currency.table.name.label')),
+                ->label(__('payflowpanel::currency.table.name.label')),
             Tables\Columns\TextColumn::make('code')
-                ->label(__('lunarpanel::currency.table.code.label')),
+                ->label(__('payflowpanel::currency.table.code.label')),
             Tables\Columns\TextColumn::make('exchange_rate')
-                ->label(__('lunarpanel::currency.table.exchange_rate.label')),
+                ->label(__('payflowpanel::currency.table.exchange_rate.label')),
             Tables\Columns\TextColumn::make('decimal_places')
-                ->label(__('lunarpanel::currency.table.decimal_places.label')),
+                ->label(__('payflowpanel::currency.table.decimal_places.label')),
             Tables\Columns\IconColumn::make('enabled')
                 ->boolean()
-                ->label(__('lunarpanel::currency.table.enabled.label')),
+                ->label(__('payflowpanel::currency.table.enabled.label')),
         ]);
     }
 

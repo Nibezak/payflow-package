@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Tests\Core\Stubs;
+namespace Payflow\Tests\Core\Stubs;
 
 use Illuminate\Database\Eloquent\Model;
 

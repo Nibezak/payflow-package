@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Pipelines\Cart;
+namespace Payflow\Pipelines\Cart;
 
 use Closure;
-use Lunar\Base\ValueObjects\Cart\TaxBreakdown;
-use Lunar\Base\ValueObjects\Cart\TaxBreakdownAmount;
-use Lunar\DataTypes\Price;
-use Lunar\Facades\ShippingManifest;
-use Lunar\Facades\Taxes;
-use Lunar\Models\Cart;
+use Payflow\Base\ValueObjects\Cart\TaxBreakdown;
+use Payflow\Base\ValueObjects\Cart\TaxBreakdownAmount;
+use Payflow\DataTypes\Price;
+use Payflow\Facades\ShippingManifest;
+use Payflow\Facades\Taxes;
+use Payflow\Models\Cart;
 
 class CalculateTax
 {

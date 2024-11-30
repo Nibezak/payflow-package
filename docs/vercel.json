@@ -1,7 +1,7 @@
 {
   "redirects": [
     {
-      "source": "/lunar/:path(.*)",
+      "source": "/payflow/:path(.*)",
       "destination": "/core/reference/:path",
       "statusCode": 301
     },

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Base\ValueObjects\Cart;
+namespace Payflow\Base\ValueObjects\Cart;
 
 use Illuminate\Support\Collection;
 

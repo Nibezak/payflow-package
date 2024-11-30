@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Tests\Core\Stubs;
+namespace Payflow\Tests\Core\Stubs;
 
-use Lunar\Base\OrderReferenceGeneratorInterface;
-use Lunar\Models\Order;
+use Payflow\Base\OrderReferenceGeneratorInterface;
+use Payflow\Models\Order;
 
 class TestOrderReferenceGenerator implements OrderReferenceGeneratorInterface
 {

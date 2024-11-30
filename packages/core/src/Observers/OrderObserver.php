@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Observers;
+namespace Payflow\Observers;
 
-use Lunar\Models\Order;
+use Payflow\Models\Order;
 
 class OrderObserver
 {

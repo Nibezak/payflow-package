@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Pipelines\CartPrune;
+namespace Payflow\Pipelines\CartPrune;
 
 use Closure;
 use Illuminate\Database\Eloquent\Builder;

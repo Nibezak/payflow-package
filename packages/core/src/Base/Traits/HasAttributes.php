@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Base\Traits;
+namespace Payflow\Base\Traits;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Lunar\Models\Attribute;
+use Payflow\Models\Attribute;
 
 trait HasAttributes
 {

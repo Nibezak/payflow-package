@@ -13,7 +13,7 @@ In order to add this kind of functionality to your model, you need to add the `H
 ```php
 <?php
 
-namespace Lunar\Traits\HasChannels;
+namespace Payflow\Traits\HasChannels;
 // ...
 
 class Product extends Model

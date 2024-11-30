@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
-use Lunar\Models\OrderAddress;
+use Payflow\Models\OrderAddress;
 
 class OrderAddressFactory extends BaseFactory
 {

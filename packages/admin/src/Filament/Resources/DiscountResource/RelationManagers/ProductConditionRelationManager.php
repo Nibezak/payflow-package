@@ -1,13 +1,13 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\DiscountResource\RelationManagers;
+namespace Payflow\Admin\Filament\Resources\DiscountResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Support\RelationManagers\BaseRelationManager;
-use Lunar\Models\Product;
+use Payflow\Admin\Support\RelationManagers\BaseRelationManager;
+use Payflow\Models\Product;
 
 class ProductConditionRelationManager extends BaseRelationManager
 {
@@ -17,7 +17,7 @@ class ProductConditionRelationManager extends BaseRelationManager
 
     public static function getTitle(Model $ownerRecord, string $pageClass): string
     {
-        return __('lunarpanel::discount.relationmanagers.conditions.title');
+        return __('payflowpanel::discount.relationmanagers.conditions.title');
     }
 
     public function isReadOnly(): bool
@@ -30,10 +30,10 @@ class ProductConditionRelationManager extends BaseRelationManager
 
         return $table
             ->heading(
-                __('lunarpanel::discount.relationmanagers.conditions.title')
+                __('payflowpanel::discount.relationmanagers.conditions.title')
             )
             ->description(
-                __('lunarpanel::discount.relationmanagers.conditions.description')
+                __('payflowpanel::discount.relationmanagers.conditions.description')
             )
             ->paginated(false)
             ->modifyQueryUsing(
@@ -56,7 +56,7 @@ class ProductConditionRelationManager extends BaseRelationManager
                                 }),
                         ]),
                 ])->label(
-                    __('lunarpanel::discount.relationmanagers.conditions.actions.attach.label')
+                    __('payflowpanel::discount.relationmanagers.conditions.actions.attach.label')
                 )->mutateFormDataUsing(function (array $data) {
                     $data['type'] = 'condition';
 
@@ -64,14 +64,14 @@ class ProductConditionRelationManager extends BaseRelationManager
                 }),
             ])->columns([
                 Tables\Columns\SpatieMediaLibraryImageColumn::make('purchasable.thumbnail')
-                    ->collection(config('lunar.media.collection'))
+                    ->collection(config('payflow.media.collection'))
                     ->conversion('small')
                     ->limit(1)
                     ->square()
                     ->label(''),
                 Tables\Columns\TextColumn::make('purchasable.attribute_data.name')
                     ->label(
-                        __('lunarpanel::discount.relationmanagers.conditions.table.name.label')
+                        __('payflowpanel::discount.relationmanagers.conditions.table.name.label')
                     )
                     ->formatStateUsing(
                         fn (Model $record) => $record->purchasable->attr('name')

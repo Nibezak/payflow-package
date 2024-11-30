@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Admin\Database\Factories;
+namespace Payflow\Admin\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use Lunar\Admin\Models\Staff;
+use Payflow\Admin\Models\Staff;
 
 class StaffFactory extends Factory
 {

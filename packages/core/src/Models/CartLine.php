@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Traits\CachesProperties;
-use Lunar\Base\Traits\HasMacros;
-use Lunar\Base\Traits\LogsActivity;
-use Lunar\Base\ValueObjects\Cart\TaxBreakdown;
-use Lunar\Database\Factories\CartLineFactory;
-use Lunar\DataTypes\Price;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Traits\CachesProperties;
+use Payflow\Base\Traits\HasMacros;
+use Payflow\Base\Traits\LogsActivity;
+use Payflow\Base\ValueObjects\Cart\TaxBreakdown;
+use Payflow\Database\Factories\CartLineFactory;
+use Payflow\DataTypes\Price;
 
 /**
  * @property int $id
@@ -131,7 +131,7 @@ class CartLine extends BaseModel implements Contracts\CartLine
 
     public function discounts(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(
             Discount::modelClass(),

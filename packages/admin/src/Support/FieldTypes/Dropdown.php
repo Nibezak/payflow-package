@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Admin\Support\FieldTypes;
+namespace Payflow\Admin\Support\FieldTypes;
 
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Select;
-use Lunar\Admin\Support\Synthesizers\DropdownSynth;
-use Lunar\Models\Attribute;
+use Payflow\Admin\Support\Synthesizers\DropdownSynth;
+use Payflow\Models\Attribute;
 
 class Dropdown extends BaseFieldType
 {
@@ -29,10 +29,10 @@ class Dropdown extends BaseFieldType
     {
         return [
             KeyValue::make('lookups')->label(
-                __('lunarpanel::fieldtypes.dropdown.form.lookups.label')
+                __('payflowpanel::fieldtypes.dropdown.form.lookups.label')
             )
-                ->keyLabel(__('lunarpanel::fieldtypes.dropdown.form.lookups.key_label'))
-                ->valueLabel(__('lunarpanel::fieldtypes.dropdown.form.lookups.value_label'))
+                ->keyLabel(__('payflowpanel::fieldtypes.dropdown.form.lookups.key_label'))
+                ->valueLabel(__('payflowpanel::fieldtypes.dropdown.form.lookups.value_label'))
                 ->formatStateUsing(function ($state) {
                     return collect($state)->mapWithKeys(
                         fn ($lookup) => [$lookup['label'] => $lookup['value'] ?? $lookup['label']]

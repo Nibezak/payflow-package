@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Base\Casts;
+namespace Payflow\Base\Casts;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
-use Lunar\DataTypes\Price;
-use Lunar\Models\Currency;
-use Lunar\Models\OrderLine;
+use Payflow\DataTypes\Price;
+use Payflow\Models\Currency;
+use Payflow\Models\OrderLine;
 
 class DiscountBreakdown implements CastsAttributes
 {

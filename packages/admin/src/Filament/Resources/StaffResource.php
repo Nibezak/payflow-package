@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources;
+namespace Payflow\Admin\Filament\Resources;
 
 use Filament\Facades\Filament;
 use Filament\Forms;
@@ -10,11 +10,11 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
-use Lunar\Admin\Filament\Resources\StaffResource\Pages;
-use Lunar\Admin\Models\Staff;
-use Lunar\Admin\Support\Facades\LunarAccessControl;
-use Lunar\Admin\Support\Forms\Components\PermissionSelector;
-use Lunar\Admin\Support\Resources\BaseResource;
+use Payflow\Admin\Filament\Resources\StaffResource\Pages;
+use Payflow\Admin\Models\Staff;
+use Payflow\Admin\Support\Facades\PayflowAccessControl;
+use Payflow\Admin\Support\Forms\Components\PermissionSelector;
+use Payflow\Admin\Support\Resources\BaseResource;
 
 class StaffResource extends BaseResource
 {
@@ -26,22 +26,22 @@ class StaffResource extends BaseResource
 
     public static function getLabel(): string
     {
-        return __('lunarpanel::staff.label');
+        return __('payflowpanel::staff.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('lunarpanel::staff.plural_label');
+        return __('payflowpanel::staff.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::staff');
+        return FilamentIcon::resolve('payflow::staff');
     }
 
     public static function getNavigationGroup(): ?string
     {
-        return __('lunarpanel::global.sections.settings');
+        return __('payflowpanel::global.sections.settings');
     }
 
     public static function getNavigationBadge(): ?string
@@ -64,7 +64,7 @@ class StaffResource extends BaseResource
     protected static function getFirstNameFormComponent(): Component
     {
         return Forms\Components\TextInput::make('firstname')
-            ->label(__('lunarpanel::staff.form.firstname.label'))
+            ->label(__('payflowpanel::staff.form.firstname.label'))
             ->required()
             ->maxLength(255)
             ->autofocus();
@@ -73,7 +73,7 @@ class StaffResource extends BaseResource
     protected static function getLastNameFormComponent(): Component
     {
         return Forms\Components\TextInput::make('lastname')
-            ->label(__('lunarpanel::staff.form.lastname.label'))
+            ->label(__('payflowpanel::staff.form.lastname.label'))
             ->required()
             ->maxLength(255)
             ->autofocus();
@@ -82,7 +82,7 @@ class StaffResource extends BaseResource
     protected static function getEmailFormComponent(): Component
     {
         return Forms\Components\TextInput::make('email')
-            ->label(__('lunarpanel::staff.form.email.label'))
+            ->label(__('payflowpanel::staff.form.email.label'))
             ->email()
             ->required()
             ->unique(ignoreRecord: true)
@@ -92,37 +92,37 @@ class StaffResource extends BaseResource
     protected static function getPasswordFormComponent(): Component
     {
         return Forms\Components\TextInput::make('password')
-            ->label(__('lunarpanel::staff.form.password.label'))
+            ->label(__('payflowpanel::staff.form.password.label'))
             ->password()
             ->required(fn ($record) => blank($record))
             ->dehydrateStateUsing(fn ($state) => Hash::make($state))
             ->dehydrated(fn (?string $state): bool => filled($state))
-            ->hint(fn ($record) => filled($record) ? __('lunarpanel::staff.form.password.hint') : null)
+            ->hint(fn ($record) => filled($record) ? __('payflowpanel::staff.form.password.hint') : null)
             ->maxLength(255);
     }
 
     protected static function getRoleFormComponent(): Component
     {
         return Forms\Components\Select::make('roles')
-            ->label(__('lunarpanel::staff.form.roles.label'))
+            ->label(__('payflowpanel::staff.form.roles.label'))
             ->multiple(true)
-            ->options(fn () => LunarAccessControl::getRoles()
+            ->options(fn () => PayflowAccessControl::getRoles()
                 ->when(
-                    ! Filament::auth()->user()->hasRole(LunarAccessControl::getAdmin()->toArray()),
-                    fn ($roles) => $roles->reject(fn ($r) => LunarAccessControl::getAdmin()->contains($r->handle))
+                    ! Filament::auth()->user()->hasRole(PayflowAccessControl::getAdmin()->toArray()),
+                    fn ($roles) => $roles->reject(fn ($r) => PayflowAccessControl::getAdmin()->contains($r->handle))
                 )
                 ->map(fn ($r) => ['handle' => $r->handle, 'label' => $r->transLabel])
                 ->pluck('label', 'handle')
                 ->toArray())
             ->helperText(function ($state) {
-                $inter = LunarAccessControl::getAdmin()->intersect($state);
+                $inter = PayflowAccessControl::getAdmin()->intersect($state);
 
                 if ($count = $inter->count()) {
-                    $roles = LunarAccessControl::getRoles()
+                    $roles = PayflowAccessControl::getRoles()
                         ->map(fn ($r) => ['handle' => $r->handle, 'label' => $r->transLabel])
                         ->pluck('label', 'handle');
 
-                    return trans_choice('lunarpanel::staff.form.roles.helper', $count, ['roles' => $inter->map(fn ($r) => $roles[$r] ?? $r)->join(', ')]);
+                    return trans_choice('payflowpanel::staff.form.roles.helper', $count, ['roles' => $inter->map(fn ($r) => $roles[$r] ?? $r)->join(', ')]);
                 }
             })
             ->afterStateHydrated(fn (Forms\Components\Select $component, $record) => $component->state($record?->getRoleNames()->toArray() ?? []))
@@ -143,7 +143,7 @@ class StaffResource extends BaseResource
     protected static function getPermissionFormComponent(): Component
     {
         return PermissionSelector::make('permissions')
-            ->label(__('lunarpanel::staff.form.permissions.label'));
+            ->label(__('payflowpanel::staff.form.permissions.label'));
     }
 
     protected static function getRolePermissionContainerFormComponent(): Component
@@ -159,8 +159,8 @@ class StaffResource extends BaseResource
     protected static function getSuperAdminNotice(): Component
     {
         return Forms\Components\Toggle::make('admin')
-            ->label(__('lunarpanel::staff.form.admin.label'))
-            ->helperText(__('lunarpanel::staff.form.admin.helper'))
+            ->label(__('payflowpanel::staff.form.admin.label'))
+            ->helperText(__('payflowpanel::staff.form.admin.helper'))
             ->visible(fn ($record) => $record ? $record->admin : false)
             ->disabled();
     }
@@ -170,16 +170,16 @@ class StaffResource extends BaseResource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('firstname')
-                    ->label(__('lunarpanel::staff.table.firstname.label')),
+                    ->label(__('payflowpanel::staff.table.firstname.label')),
                 Tables\Columns\TextColumn::make('lastname')
-                    ->label(__('lunarpanel::staff.table.lastname.label')),
+                    ->label(__('payflowpanel::staff.table.lastname.label')),
                 Tables\Columns\TextColumn::make('email')
-                    ->label(__('lunarpanel::staff.table.email.label')),
+                    ->label(__('payflowpanel::staff.table.email.label')),
                 Tables\Columns\TextColumn::make('admin')
                     ->label('')
                     ->badge()
                     ->state(function (Model $record): string {
-                        return $record->admin ? __('lunarpanel::staff.table.admin.badge') : '';
+                        return $record->admin ? __('payflowpanel::staff.table.admin.badge') : '';
                     }),
             ])
             ->filters([

@@ -27,7 +27,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
           package_directory: "packages/${{ matrix.package }}"
-          repository_organization: "lunarphp"
+          repository_organization: "payflowphp"
           repository_name: "${{ matrix.package }}"
           user_name: "GitHub Action"
           user_email: "action@github.com"
@@ -44,7 +44,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
           package_directory: "packages/${{ matrix.package }}"
-          repository_organization: "lunarphp"
+          repository_organization: "payflowphp"
           repository_name: "${{ matrix.package }}"
           user_name: "GitHub Action"
           user_email: "action@github.com"
@@ -58,7 +58,7 @@ jobs:
         with:
           tag: ${GITHUB_REF#refs/tags/}
           package_directory: "packages/${{ matrix.package }}"
-          repository_organization: "lunarphp"
+          repository_organization: "payflowphp"
           repository_name: "${{ matrix.package }}"
           user_name: "GitHub Action"
           user_email: "action@github.com"

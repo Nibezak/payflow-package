@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Resources\Concerns;
+namespace Payflow\Admin\Support\Resources\Concerns;
 
 use Filament\Resources\RelationManagers\RelationGroup;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -13,7 +13,7 @@ trait ExtendsRelationManagers
      */
     public static function getRelations(): array
     {
-        return static::callStaticLunarHook('getRelations', static::getDefaultRelations());
+        return static::callStaticPayflowHook('getRelations', static::getDefaultRelations());
     }
 
     protected static function getDefaultRelations(): array

@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Base\Traits;
+namespace Payflow\Base\Traits;
 
 use Illuminate\Support\Arr;
-use Lunar\Base\FieldType;
+use Payflow\Base\FieldType;
 
 trait HasTranslations
 {

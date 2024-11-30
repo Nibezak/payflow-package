@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Tests\Core\Stubs;
+namespace Payflow\Tests\Core\Stubs;
 
 use Closure;
-use Lunar\Base\CartModifier;
-use Lunar\Models\Cart;
+use Payflow\Base\CartModifier;
+use Payflow\Models\Cart;
 
 class TestCartModifier extends CartModifier
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\TaxRateResource\Pages;
+namespace Payflow\Admin\Filament\Resources\TaxRateResource\Pages;
 
-use Lunar\Admin\Filament\Resources\TaxRateResource;
-use Lunar\Admin\Support\Pages\BaseCreateRecord;
+use Payflow\Admin\Filament\Resources\TaxRateResource;
+use Payflow\Admin\Support\Pages\BaseCreateRecord;
 
 class CreateTaxRate extends BaseCreateRecord
 {

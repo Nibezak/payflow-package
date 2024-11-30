@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductTypeResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ProductTypeResource\Pages;
 
 use Filament\Actions;
-use Lunar\Admin\Filament\Resources\ProductTypeResource;
-use Lunar\Admin\Support\Pages\BaseListRecords;
+use Payflow\Admin\Filament\Resources\ProductTypeResource;
+use Payflow\Admin\Support\Pages\BaseListRecords;
 
 class ListProductTypes extends BaseListRecords
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Database\Seeders;
+namespace Payflow\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 

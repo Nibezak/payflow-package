@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ActivityResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ActivityResource\Pages;
 
-use Lunar\Admin\Filament\Resources\ActivityResource;
-use Lunar\Admin\Support\Pages\BaseViewRecord;
+use Payflow\Admin\Filament\Resources\ActivityResource;
+use Payflow\Admin\Support\Pages\BaseViewRecord;
 
 class ViewActivity extends BaseViewRecord
 {

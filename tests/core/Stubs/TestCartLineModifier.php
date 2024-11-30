@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Tests\Core\Stubs;
+namespace Payflow\Tests\Core\Stubs;
 
 use Closure;
-use Lunar\Base\CartLineModifier;
-use Lunar\DataTypes\Price;
-use Lunar\Models\CartLine;
+use Payflow\Base\CartLineModifier;
+use Payflow\DataTypes\Price;
+use Payflow\Models\CartLine;
 
 class TestCartLineModifier extends CartLineModifier
 {

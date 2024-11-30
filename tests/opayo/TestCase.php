@@ -1,15 +1,15 @@
 <?php
 
-namespace Lunar\Tests\Opayo;
+namespace Payflow\Tests\Opayo;
 
 use Cartalyst\Converter\Laravel\ConverterServiceProvider;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
 use Kalnoy\Nestedset\NestedSetServiceProvider;
 use Livewire\LivewireServiceProvider;
-use Lunar\LunarServiceProvider;
-use Lunar\Opayo\OpayoServiceProvider;
-use Lunar\Shipping\ShippingServiceProvider;
+use Payflow\PayflowServiceProvider;
+use Payflow\Opayo\OpayoServiceProvider;
+use Payflow\Shipping\ShippingServiceProvider;
 use Spatie\Activitylog\ActivitylogServiceProvider;
 use Spatie\LaravelBlink\BlinkServiceProvider;
 use Spatie\MediaLibrary\MediaLibraryServiceProvider;
@@ -47,7 +47,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            LunarServiceProvider::class,
+            PayflowServiceProvider::class,
             LivewireServiceProvider::class,
             MediaLibraryServiceProvider::class,
             ActivitylogServiceProvider::class,

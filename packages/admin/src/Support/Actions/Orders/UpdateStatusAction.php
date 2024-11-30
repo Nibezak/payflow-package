@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Admin\Support\Actions\Orders;
+namespace Payflow\Admin\Support\Actions\Orders;
 
 use Filament\Actions\Action;
 use Filament\Support\Enums\MaxWidth;
-use Lunar\Admin\Support\Actions\Traits\UpdatesOrderStatus;
-use Lunar\Models\Order;
+use Payflow\Admin\Support\Actions\Traits\UpdatesOrderStatus;
+use Payflow\Models\Order;
 
 class UpdateStatusAction extends Action
 {
@@ -16,7 +16,7 @@ class UpdateStatusAction extends Action
         parent::setUp();
 
         $this->label(
-            __('lunarpanel::actions.orders.update_status.label')
+            __('payflowpanel::actions.orders.update_status.label')
         );
 
         $this->modalWidth(MaxWidth::TwoExtraLarge);

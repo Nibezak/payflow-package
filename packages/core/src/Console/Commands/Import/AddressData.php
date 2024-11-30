@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Console\Commands\Import;
+namespace Payflow\Console\Commands\Import;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use Laravel\Prompts\Progress;
-use Lunar\Models\Country;
+use Payflow\Models\Country;
 
 use function Laravel\Prompts\progress;
 
@@ -16,7 +16,7 @@ class AddressData extends Command
      *
      * @var string
      */
-    protected $signature = 'lunar:import:address-data';
+    protected $signature = 'payflow:import:address-data';
 
     /**
      * The console command description.
@@ -38,7 +38,7 @@ class AddressData extends Command
          * Here we are using Http over Https due to some environments not having
          * the latest CA Authorities installed, causing an SSL exception to be thrown.
          */
-        $countries = Http::get('http://data.lunarphp.io/countries+states.json')
+        $countries = Http::get('http://data.payflowphp.io/countries+states.json')
             ->object();
 
         $newCountries = collect($countries)->filter(function ($country) use ($existing) {

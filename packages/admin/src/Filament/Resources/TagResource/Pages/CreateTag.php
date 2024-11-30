@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\TagResource\Pages;
+namespace Payflow\Admin\Filament\Resources\TagResource\Pages;
 
-use Lunar\Admin\Filament\Resources\TagResource;
-use Lunar\Admin\Support\Pages\BaseCreateRecord;
+use Payflow\Admin\Filament\Resources\TagResource;
+use Payflow\Admin\Support\Pages\BaseCreateRecord;
 
 class CreateTag extends BaseCreateRecord
 {

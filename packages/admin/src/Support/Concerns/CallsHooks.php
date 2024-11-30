@@ -1,18 +1,18 @@
 <?php
 
-namespace Lunar\Admin\Support\Concerns;
+namespace Payflow\Admin\Support\Concerns;
 
-use Lunar\Admin\Support\Facades\LunarPanel;
+use Payflow\Admin\Support\Facades\PayflowPanel;
 
 trait CallsHooks
 {
-    protected function callLunarHook(...$args)
+    protected function callPayflowHook(...$args)
     {
-        return LunarPanel::callHook(static::class, $this, ...$args);
+        return PayflowPanel::callHook(static::class, $this, ...$args);
     }
 
-    protected static function callStaticLunarHook(...$args)
+    protected static function callStaticPayflowHook(...$args)
     {
-        return LunarPanel::callHook(static::class, null, ...$args);
+        return PayflowPanel::callHook(static::class, null, ...$args);
     }
 }

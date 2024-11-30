@@ -1,16 +1,16 @@
 <?php
 
-namespace Lunar\Models;
+namespace Payflow\Models;
 
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Lunar\Base\BaseModel;
-use Lunar\Base\Traits\HasMacros;
-use Lunar\Base\Traits\HasMedia;
-use Lunar\Base\Traits\HasTranslations;
-use Lunar\Database\Factories\ProductOptionValueFactory;
+use Payflow\Base\BaseModel;
+use Payflow\Base\Traits\HasMacros;
+use Payflow\Base\Traits\HasMedia;
+use Payflow\Base\Traits\HasTranslations;
+use Payflow\Database\Factories\ProductOptionValueFactory;
 use Spatie\MediaLibrary\HasMedia as SpatieHasMedia;
 
 /**
@@ -60,7 +60,7 @@ class ProductOptionValue extends BaseModel implements Contracts\ProductOptionVal
 
     public function variants(): BelongsToMany
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->belongsToMany(
             ProductVariant::modelClass(),

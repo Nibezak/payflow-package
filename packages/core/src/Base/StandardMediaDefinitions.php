@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
 use Spatie\Image\Enums\BorderType;
 use Spatie\Image\Enums\Fit;
@@ -23,14 +23,14 @@ class StandardMediaDefinitions implements MediaDefinitionsInterface
 
     public function registerMediaCollections(HasMedia $model): void
     {
-        $fallbackUrl = config('lunar.media.fallback.url');
-        $fallbackPath = config('lunar.media.fallback.path');
+        $fallbackUrl = config('payflow.media.fallback.url');
+        $fallbackPath = config('payflow.media.fallback.path');
 
         // Reset to avoid duplication
         $model->mediaCollections = [];
 
         $collection = $model->addMediaCollection(
-            config('lunar.media.collection')
+            config('payflow.media.collection')
         );
 
         if ($fallbackUrl) {
@@ -79,7 +79,7 @@ class StandardMediaDefinitions implements MediaDefinitionsInterface
     public function getMediaCollectionTitles(): array
     {
         return [
-            'images' => __('lunar::base.standard-media-definitions.collection-titles.images'),
+            'images' => __('payflow::base.standard-media-definitions.collection-titles.images'),
         ];
     }
 

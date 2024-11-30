@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Base\Traits\HasModelExtending;
+use Payflow\Base\Traits\HasModelExtending;
 
 abstract class BaseModel extends Model
 {
@@ -16,9 +16,9 @@ abstract class BaseModel extends Model
     {
         parent::__construct($attributes);
 
-        $this->setTable(config('lunar.database.table_prefix').$this->getTable());
+        $this->setTable(config('payflow.database.table_prefix').$this->getTable());
 
-        if ($connection = config('lunar.database.connection')) {
+        if ($connection = config('payflow.database.connection')) {
             $this->setConnection($connection);
         }
     }

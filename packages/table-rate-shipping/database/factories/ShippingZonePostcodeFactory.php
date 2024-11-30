@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Shipping\Factories;
+namespace Payflow\Shipping\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Lunar\Shipping\Models\ShippingZonePostcode;
+use Payflow\Shipping\Models\ShippingZonePostcode;
 
 class ShippingZonePostcodeFactory extends Factory
 {

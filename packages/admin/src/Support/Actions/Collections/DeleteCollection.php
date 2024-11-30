@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Admin\Support\Actions\Collections;
+namespace Payflow\Admin\Support\Actions\Collections;
 
 use Filament\Actions\DeleteAction;
-use Lunar\Models\Collection;
+use Payflow\Models\Collection;
 
 class DeleteCollection extends DeleteAction
 {
@@ -16,7 +16,7 @@ class DeleteCollection extends DeleteAction
         });
 
         $this->label(
-            __('lunarpanel::actions.collections.delete.label')
+            __('payflowpanel::actions.collections.delete.label')
         );
     }
 }

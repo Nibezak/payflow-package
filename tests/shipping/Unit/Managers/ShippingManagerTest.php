@@ -1,18 +1,18 @@
 <?php
 
-uses(\Lunar\Tests\Shipping\TestCase::class);
+uses(\Payflow\Tests\Shipping\TestCase::class);
 
-use Lunar\Models\CartAddress;
-use Lunar\Models\Country;
-use Lunar\Models\Currency;
-use Lunar\Models\TaxClass;
-use Lunar\Shipping\Facades\Shipping;
-use Lunar\Shipping\Models\ShippingMethod;
-use Lunar\Shipping\Models\ShippingZone;
-use Lunar\Shipping\Resolvers\ShippingZoneResolver;
+use Payflow\Models\CartAddress;
+use Payflow\Models\Country;
+use Payflow\Models\Currency;
+use Payflow\Models\TaxClass;
+use Payflow\Shipping\Facades\Shipping;
+use Payflow\Shipping\Models\ShippingMethod;
+use Payflow\Shipping\Models\ShippingZone;
+use Payflow\Shipping\Resolvers\ShippingZoneResolver;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
-uses(\Lunar\Tests\Shipping\TestUtils::class);
+uses(\Payflow\Tests\Shipping\TestUtils::class);
 
 test('zones method uses shipping zone resolver', function () {
     $resolver = Shipping::zones();
@@ -30,7 +30,7 @@ test('can fetch expected shipping rates', function () {
         'default' => true,
     ]);
 
-    $customerGroup = \Lunar\Models\CustomerGroup::factory()->create([
+    $customerGroup = \Payflow\Models\CustomerGroup::factory()->create([
         'default' => true,
     ]);
 
@@ -53,7 +53,7 @@ test('can fetch expected shipping rates', function () {
         $customerGroup->id => ['enabled' => true, 'visible' => true, 'starts_at' => now(), 'ends_at' => null],
     ]);
 
-    $shippingRate = \Lunar\Shipping\Models\ShippingRate::factory()
+    $shippingRate = \Payflow\Shipping\Models\ShippingRate::factory()
         ->create([
             'shipping_method_id' => $shippingMethod->id,
             'shipping_zone_id' => $shippingZone->id,

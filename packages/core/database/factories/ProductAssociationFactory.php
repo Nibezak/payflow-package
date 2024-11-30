@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
-use Lunar\Models\Product;
-use Lunar\Models\ProductAssociation;
+use Payflow\Models\Product;
+use Payflow\Models\ProductAssociation;
 
 class ProductAssociationFactory extends BaseFactory
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Extending;
+namespace Payflow\Admin\Support\Extending;
 
 use Filament\Forms\Form;
 use Filament\Tables\Table;

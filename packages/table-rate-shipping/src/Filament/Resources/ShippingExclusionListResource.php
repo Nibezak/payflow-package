@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Shipping\Filament\Resources;
+namespace Payflow\Shipping\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Forms\Components\Component;
@@ -9,10 +9,10 @@ use Filament\Pages\SubNavigationPosition;
 use Filament\Support\Facades\FilamentIcon;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Lunar\Admin\Support\Resources\BaseResource;
-use Lunar\Shipping\Filament\Resources\ShippingExclusionListResource\Pages;
-use Lunar\Shipping\Filament\Resources\ShippingExclusionListResource\RelationManagers\ShippingExclusionRelationManager;
-use Lunar\Shipping\Models\Contracts\ShippingExclusionList;
+use Payflow\Admin\Support\Resources\BaseResource;
+use Payflow\Shipping\Filament\Resources\ShippingExclusionListResource\Pages;
+use Payflow\Shipping\Filament\Resources\ShippingExclusionListResource\RelationManagers\ShippingExclusionRelationManager;
+use Payflow\Shipping\Models\Contracts\ShippingExclusionList;
 
 class ShippingExclusionListResource extends BaseResource
 {
@@ -24,22 +24,22 @@ class ShippingExclusionListResource extends BaseResource
 
     public static function getLabel(): string
     {
-        return __('lunarpanel.shipping::shippingexclusionlist.label');
+        return __('payflowpanel.shipping::shippingexclusionlist.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('lunarpanel.shipping::shippingexclusionlist.label_plural');
+        return __('payflowpanel.shipping::shippingexclusionlist.label_plural');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::shipping-exclusion-lists');
+        return FilamentIcon::resolve('payflow::shipping-exclusion-lists');
     }
 
     public static function getNavigationGroup(): ?string
     {
-        return __('lunarpanel.shipping::plugin.navigation.group');
+        return __('payflowpanel.shipping::plugin.navigation.group');
     }
 
     public static function getDefaultForm(Form $form): Form
@@ -68,7 +68,7 @@ class ShippingExclusionListResource extends BaseResource
     public static function getNameFormComponent(): Component
     {
         return Forms\Components\TextInput::make('name')
-            ->label(__('lunarpanel.shipping::shippingexclusionlist.form.name.label'))
+            ->label(__('payflowpanel.shipping::shippingexclusionlist.form.name.label'))
             ->required()
             ->maxLength(255)
             ->autofocus();
@@ -96,11 +96,11 @@ class ShippingExclusionListResource extends BaseResource
         return [
             Tables\Columns\TextColumn::make('name')
                 ->label(
-                    __('lunarpanel.shipping::shippingexclusionlist.table.name.label')
+                    __('payflowpanel.shipping::shippingexclusionlist.table.name.label')
                 ),
             Tables\Columns\TextColumn::make('exclusions_count')
                 ->label(
-                    __('lunarpanel.shipping::shippingexclusionlist.table.exclusions_count.label')
+                    __('payflowpanel.shipping::shippingexclusionlist.table.exclusions_count.label')
                 )
                 ->counts('exclusions'),
         ];

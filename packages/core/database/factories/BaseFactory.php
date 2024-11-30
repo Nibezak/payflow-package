@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

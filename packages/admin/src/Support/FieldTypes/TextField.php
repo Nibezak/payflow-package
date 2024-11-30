@@ -1,12 +1,12 @@
 <?php
 
-namespace Lunar\Admin\Support\FieldTypes;
+namespace Payflow\Admin\Support\FieldTypes;
 
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
-use Lunar\Admin\Support\Synthesizers\TextSynth;
-use Lunar\Models\Attribute;
+use Payflow\Admin\Support\Synthesizers\TextSynth;
+use Payflow\Models\Attribute;
 
 class TextField extends BaseFieldType
 {
@@ -16,7 +16,7 @@ class TextField extends BaseFieldType
     {
         return [
             \Filament\Forms\Components\Toggle::make('richtext')->label(
-                __('lunarpanel::fieldtypes.text.form.richtext.label')
+                __('payflowpanel::fieldtypes.text.form.richtext.label')
             ),
         ];
     }

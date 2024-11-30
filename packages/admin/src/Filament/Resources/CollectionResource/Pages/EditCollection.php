@@ -1,15 +1,15 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\CollectionResource\Pages;
+namespace Payflow\Admin\Filament\Resources\CollectionResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Forms;
 use Illuminate\Contracts\Support\Htmlable;
-use Lunar\Admin\Filament\Resources\CollectionGroupResource;
-use Lunar\Admin\Filament\Resources\CollectionResource;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
-use Lunar\Facades\DB;
-use Lunar\Models\Collection;
+use Payflow\Admin\Filament\Resources\CollectionGroupResource;
+use Payflow\Admin\Filament\Resources\CollectionResource;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Facades\DB;
+use Payflow\Models\Collection;
 
 class EditCollection extends BaseEditRecord
 {
@@ -19,12 +19,12 @@ class EditCollection extends BaseEditRecord
 
     public function getTitle(): string|Htmlable
     {
-        return __('lunarpanel::collection.pages.edit.label');
+        return __('payflowpanel::collection.pages.edit.label');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::collection.pages.edit.label');
+        return __('payflowpanel::collection.pages.edit.label');
     }
 
     public function getBreadcrumbs(): array

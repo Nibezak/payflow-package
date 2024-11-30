@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Listeners;
+namespace Payflow\Listeners;
 
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Logout;
-use Lunar\Facades\CartSession;
-use Lunar\Models\Cart;
+use Payflow\Facades\CartSession;
+use Payflow\Models\Cart;
 
 class CartSessionAuthListener
 {
@@ -26,7 +26,7 @@ class CartSessionAuthListener
      */
     public function login(Login $event)
     {
-        if (! is_lunar_user($event->user)) {
+        if (! is_payflow_user($event->user)) {
             return;
         }
 
@@ -36,7 +36,7 @@ class CartSessionAuthListener
             CartSession::associate(
                 $currentCart,
                 $event->user,
-                config('lunar.cart.auth_policy')
+                config('payflow.cart.auth_policy')
             );
         }
 
@@ -57,7 +57,7 @@ class CartSessionAuthListener
      */
     public function logout(Logout $event)
     {
-        if (is_null($event->user) || ! is_lunar_user($event->user)) {
+        if (is_null($event->user) || ! is_payflow_user($event->user)) {
             return;
         }
 

@@ -1,10 +1,10 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
-use Lunar\Actions\Taxes\GetTaxZoneCountry;
-use Lunar\Models\Country;
-use Lunar\Models\TaxZoneCountry;
+use Payflow\Actions\Taxes\GetTaxZoneCountry;
+use Payflow\Models\Country;
+use Payflow\Models\TaxZoneCountry;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class)->group('taxes');
 

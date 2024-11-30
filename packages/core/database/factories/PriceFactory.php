@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Database\Factories;
+namespace Payflow\Database\Factories;
 
-use Lunar\Models\Currency;
-use Lunar\Models\Price;
+use Payflow\Models\Currency;
+use Payflow\Models\Price;
 
 class PriceFactory extends BaseFactory
 {

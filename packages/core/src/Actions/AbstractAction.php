@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Actions;
+namespace Payflow\Actions;
 
 use Closure;
 

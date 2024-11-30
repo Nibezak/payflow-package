@@ -1,17 +1,17 @@
 <?php
 
-namespace Lunar\Admin\Support\Forms\Components;
+namespace Payflow\Admin\Support\Forms\Components;
 
 use Filament\Forms\Components\CheckboxList;
-use Lunar\Facades\ModelManifest;
-use Lunar\Models\Attribute;
-use Lunar\Models\AttributeGroup;
-use Lunar\Models\Product;
-use Lunar\Models\ProductType;
+use Payflow\Facades\ModelManifest;
+use Payflow\Models\Attribute;
+use Payflow\Models\AttributeGroup;
+use Payflow\Models\Product;
+use Payflow\Models\ProductType;
 
 class AttributeSelector extends CheckboxList
 {
-    protected string $view = 'lunarpanel::forms.components.attribute-selector';
+    protected string $view = 'payflowpanel::forms.components.attribute-selector';
 
     protected ?string $attributableType = null;
 

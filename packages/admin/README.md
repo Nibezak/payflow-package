@@ -1,10 +1,10 @@
-# Lunar Admin Panel
+# Payflow Admin Panel
 
-See the docs at https://lunar-panel.vercel.app/
+See the docs at https://payflow-panel.vercel.app/
 
 ## TODO
 
-- [ ] How to set the Lunar logo?
+- [ ] How to set the Payflow logo?
 - [ ] How will addons add buttons etc to existing screens?
 - [ ] Field types
 - [ ] Model Policies
@@ -14,7 +14,7 @@ See the docs at https://lunar-panel.vercel.app/
 - [ ] `ListField` FieldType shouldn't really have "Field" in its name -> change to simply "List"
 - [ ] Sometimes we use "Enabled" other times "Active". Do we want to consider consistency here also?
 - [ ] Staff "firstname" "lastname" I think should have underscores, e.g. "first_name"
-- [x] How to allow devs to extend Lunar's forms and tables
+- [x] How to allow devs to extend Payflow's forms and tables
 - [x] How to allow devs to overide validation rules
 - [x] Allow devs to extend by adding their own pages/resources
 - [ ] Tests!!

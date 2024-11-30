@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Tests\Core\Stubs;
+namespace Payflow\Tests\Core\Stubs;
 
 use Illuminate\Support\Collection;
-use Lunar\Base\Purchasable;
-use Lunar\DataTypes\Price;
-use Lunar\Models\TaxClass;
+use Payflow\Base\Purchasable;
+use Payflow\DataTypes\Price;
+use Payflow\Models\TaxClass;
 
 class TestPurchasable implements Purchasable
 {
@@ -26,7 +26,7 @@ class TestPurchasable implements Purchasable
     /**
      * Get the price for the purchasable item.
      *
-     * @return \Lunar\DataTypes\Price
+     * @return \Payflow\DataTypes\Price
      */
     public function getPrice()
     {

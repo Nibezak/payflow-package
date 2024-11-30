@@ -1,17 +1,17 @@
 <?php
 
-uses(\Lunar\Tests\Shipping\TestCase::class);
+uses(\Payflow\Tests\Shipping\TestCase::class);
 
-use Lunar\DataTypes\ShippingOption;
-use Lunar\Models\Currency;
-use Lunar\Models\TaxClass;
-use Lunar\Shipping\DataTransferObjects\ShippingOptionRequest;
-use Lunar\Shipping\Drivers\ShippingMethods\ShipBy;
-use Lunar\Shipping\Models\ShippingMethod;
-use Lunar\Shipping\Models\ShippingZone;
+use Payflow\DataTypes\ShippingOption;
+use Payflow\Models\Currency;
+use Payflow\Models\TaxClass;
+use Payflow\Shipping\DataTransferObjects\ShippingOptionRequest;
+use Payflow\Shipping\Drivers\ShippingMethods\ShipBy;
+use Payflow\Shipping\Models\ShippingMethod;
+use Payflow\Shipping\Models\ShippingZone;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
-uses(\Lunar\Tests\Shipping\TestUtils::class);
+uses(\Payflow\Tests\Shipping\TestUtils::class);
 
 test('can get shipping option by cart total', function () {
     $currency = Currency::factory()->create([
@@ -33,7 +33,7 @@ test('can get shipping option by cart total', function () {
         ],
     ]);
 
-    $shippingRate = \Lunar\Shipping\Models\ShippingRate::factory()
+    $shippingRate = \Payflow\Shipping\Models\ShippingRate::factory()
         ->create([
             'shipping_method_id' => $shippingMethod->id,
             'shipping_zone_id' => $shippingZone->id,
@@ -87,7 +87,7 @@ test('can get shipping option by cart total', function () {
 
 test('can get shipping option by cart total when prices include tax', function () {
 
-    \Illuminate\Support\Facades\Config::set('lunar.pricing.stored_inclusive_of_tax', true);
+    \Illuminate\Support\Facades\Config::set('payflow.pricing.stored_inclusive_of_tax', true);
 
     $currency = Currency::factory()->create([
         'default' => true,
@@ -108,7 +108,7 @@ test('can get shipping option by cart total when prices include tax', function (
         ],
     ]);
 
-    $shippingRate = \Lunar\Shipping\Models\ShippingRate::factory()
+    $shippingRate = \Payflow\Shipping\Models\ShippingRate::factory()
         ->create([
             'shipping_method_id' => $shippingMethod->id,
             'shipping_zone_id' => $shippingZone->id,
@@ -167,7 +167,7 @@ test('can get shipping option if outside tier without default price', function (
         ],
     ]);
 
-    $shippingRate = \Lunar\Shipping\Models\ShippingRate::factory()
+    $shippingRate = \Payflow\Shipping\Models\ShippingRate::factory()
         ->create([
             'shipping_method_id' => $shippingMethod->id,
             'shipping_zone_id' => $shippingZone->id,

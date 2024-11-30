@@ -1,41 +1,41 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\OrderResource\Concerns;
+namespace Payflow\Admin\Filament\Resources\OrderResource\Concerns;
 
 use Filament\Infolists;
 use Filament\Support\Enums\FontWeight;
 use Illuminate\Support\HtmlString;
-use Lunar\DataTypes\Price;
+use Payflow\DataTypes\Price;
 
 trait DisplaysOrderTotals
 {
     public static function getDefaultDeliveryInstructionsEntry(): Infolists\Components\TextEntry
     {
         return Infolists\Components\TextEntry::make('shippingAddress.delivery_instructions')
-            ->label(__('lunarpanel::order.infolist.delivery_instructions.label'))
+            ->label(__('payflowpanel::order.infolist.delivery_instructions.label'))
             ->hidden(fn ($state) => blank($state));
     }
 
     public static function getDeliveryInstructionsEntry(): Infolists\Components\TextEntry
     {
-        return self::callStaticLunarHook('extendDeliveryInstructionsEntry', static::getDefaultDeliveryInstructionsEntry());
+        return self::callStaticPayflowHook('extendDeliveryInstructionsEntry', static::getDefaultDeliveryInstructionsEntry());
     }
 
     public static function getDefaultOrderNotesEntry(): Infolists\Components\TextEntry
     {
         return Infolists\Components\TextEntry::make('notes')
-            ->label(__('lunarpanel::order.infolist.notes.label'))
-            ->placeholder(__('lunarpanel::order.infolist.notes.placeholder'));
+            ->label(__('payflowpanel::order.infolist.notes.label'))
+            ->placeholder(__('payflowpanel::order.infolist.notes.placeholder'));
     }
 
     public static function getOrderNotesEntry(): Infolists\Components\TextEntry
     {
-        return self::callStaticLunarHook('extendOrderNotesEntry', static::getDefaultOrderNotesEntry());
+        return self::callStaticPayflowHook('extendOrderNotesEntry', static::getDefaultOrderNotesEntry());
     }
 
     public static function getOrderTotalsAsideSchema(): array
     {
-        return self::callStaticLunarHook('extendOrderTotalsAsideSchema', [
+        return self::callStaticPayflowHook('extendOrderTotalsAsideSchema', [
             static::getDeliveryInstructionsEntry(),
             static::getOrderNotesEntry(),
         ]);
@@ -44,7 +44,7 @@ trait DisplaysOrderTotals
     public static function getDefaultSubTotalEntry(): Infolists\Components\TextEntry
     {
         return Infolists\Components\TextEntry::make('sub_total')
-            ->label(__('lunarpanel::order.infolist.sub_total.label'))
+            ->label(__('payflowpanel::order.infolist.sub_total.label'))
             ->inlineLabel()
             ->alignEnd()
             ->formatStateUsing(fn ($state) => $state->formatted);
@@ -52,13 +52,13 @@ trait DisplaysOrderTotals
 
     public static function getSubTotalEntry(): Infolists\Components\TextEntry
     {
-        return self::callStaticLunarHook('extendSubTotalEntry', static::getDefaultSubTotalEntry());
+        return self::callStaticPayflowHook('extendSubTotalEntry', static::getDefaultSubTotalEntry());
     }
 
     public static function getDefaultDiscountTotalEntry(): Infolists\Components\TextEntry
     {
         return Infolists\Components\TextEntry::make('discount_total')
-            ->label(__('lunarpanel::order.infolist.discount_total.label'))
+            ->label(__('payflowpanel::order.infolist.discount_total.label'))
             ->inlineLabel()
             ->alignEnd()
             ->formatStateUsing(fn ($state) => $state->formatted);
@@ -66,7 +66,7 @@ trait DisplaysOrderTotals
 
     public static function getDiscountTotalEntry(): Infolists\Components\TextEntry
     {
-        return self::callStaticLunarHook('extendDiscountTotalEntry', static::getDefaultDiscountTotalEntry());
+        return self::callStaticPayflowHook('extendDiscountTotalEntry', static::getDefaultDiscountTotalEntry());
     }
 
     public static function getDefaultShippingBreakdownGroup(): Infolists\Components\Group
@@ -89,7 +89,7 @@ trait DisplaysOrderTotals
 
     public static function getShippingBreakdownGroup(): Infolists\Components\Group
     {
-        return self::callStaticLunarHook('extendShippingBreakdownGroup', static::getDefaultShippingBreakdownGroup());
+        return self::callStaticPayflowHook('extendShippingBreakdownGroup', static::getDefaultShippingBreakdownGroup());
     }
 
     public static function getDefaultTaxBreakdownGroup(): Infolists\Components\Group
@@ -112,13 +112,13 @@ trait DisplaysOrderTotals
 
     public static function getTaxBreakdownGroup(): Infolists\Components\Group
     {
-        return self::callStaticLunarHook('extendTaxBreakdownGroup', static::getDefaultTaxBreakdownGroup());
+        return self::callStaticPayflowHook('extendTaxBreakdownGroup', static::getDefaultTaxBreakdownGroup());
     }
 
     public static function getDefaultTotalEntry(): Infolists\Components\TextEntry
     {
         return Infolists\Components\TextEntry::make('total')
-            ->label(fn () => new HtmlString('<b>'.__('lunarpanel::order.infolist.total.label').'</b>'))
+            ->label(fn () => new HtmlString('<b>'.__('payflowpanel::order.infolist.total.label').'</b>'))
             ->inlineLabel()
             ->alignEnd()
             ->weight(FontWeight::Bold)
@@ -127,13 +127,13 @@ trait DisplaysOrderTotals
 
     public static function getTotalEntry(): Infolists\Components\TextEntry
     {
-        return self::callStaticLunarHook('extendTotalEntry', static::getDefaultTotalEntry());
+        return self::callStaticPayflowHook('extendTotalEntry', static::getDefaultTotalEntry());
     }
 
     public static function getDefaultPaidEntry(): Infolists\Components\TextEntry
     {
         return Infolists\Components\TextEntry::make('paid')
-            ->label(fn () => __('lunarpanel::order.infolist.paid.label'))
+            ->label(fn () => __('payflowpanel::order.infolist.paid.label'))
             ->inlineLabel()
             ->alignEnd()
             ->weight(FontWeight::SemiBold)
@@ -150,13 +150,13 @@ trait DisplaysOrderTotals
 
     public static function getPaidEntry(): Infolists\Components\TextEntry
     {
-        return self::callStaticLunarHook('extendPaidEntry', static::getDefaultPaidEntry());
+        return self::callStaticPayflowHook('extendPaidEntry', static::getDefaultPaidEntry());
     }
 
     public static function getDefaultRefundEntry(): Infolists\Components\TextEntry
     {
         return Infolists\Components\TextEntry::make('refund')
-            ->label(fn () => __('lunarpanel::order.infolist.refund.label'))
+            ->label(fn () => __('payflowpanel::order.infolist.refund.label'))
             ->inlineLabel()
             ->alignEnd()
             ->color('warning')
@@ -173,12 +173,12 @@ trait DisplaysOrderTotals
 
     public static function getRefundEntry(): Infolists\Components\TextEntry
     {
-        return self::callStaticLunarHook('extendRefundEntry', static::getDefaultRefundEntry());
+        return self::callStaticPayflowHook('extendRefundEntry', static::getDefaultRefundEntry());
     }
 
     public static function getOrderTotalsSchema(): array
     {
-        return self::callStaticLunarHook('extendOrderTotalsSchema', [
+        return self::callStaticPayflowHook('extendOrderTotalsSchema', [
             static::getSubTotalEntry(),
             static::getDiscountTotalEntry(),
             static::getShippingBreakdownGroup(),
@@ -214,6 +214,6 @@ trait DisplaysOrderTotals
 
     public static function getOrderTotalsInfolist(): Infolists\Components\Section
     {
-        return self::callStaticLunarHook('extendOrderTotalsInfolist', static::getDefaultOrderTotalsInfolist());
+        return self::callStaticPayflowHook('extendOrderTotalsInfolist', static::getDefaultOrderTotalsInfolist());
     }
 }

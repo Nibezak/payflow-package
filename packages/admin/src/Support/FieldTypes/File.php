@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Admin\Support\FieldTypes;
+namespace Payflow\Admin\Support\FieldTypes;
 
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\FileUpload;
-use Lunar\Admin\Support\Synthesizers\FileSynth;
-use Lunar\Models\Attribute;
+use Payflow\Admin\Support\Synthesizers\FileSynth;
+use Payflow\Models\Attribute;
 
 class File extends BaseFieldType
 {
@@ -47,7 +47,7 @@ class File extends BaseFieldType
         return [
             \Filament\Forms\Components\TagsInput::make('file_types')
                 ->label(
-                    __('lunarpanel::fieldtypes.file.form.file_types.label')
+                    __('payflowpanel::fieldtypes.file.form.file_types.label')
                 )->suggestions([
                     'image/*',
                     'image/jpeg',
@@ -65,17 +65,17 @@ class File extends BaseFieldType
                     'application/rtf',
                     'application/pdf',
                 ])
-                ->placeholder(__('lunarpanel::fieldtypes.file.form.file_types.placeholder'))
+                ->placeholder(__('payflowpanel::fieldtypes.file.form.file_types.placeholder'))
                 ->reorderable(),
             \Filament\Forms\Components\Toggle::make('multiple')->label(
-                __('lunarpanel::fieldtypes.file.form.multiple.label')
+                __('payflowpanel::fieldtypes.file.form.multiple.label')
             ),
             \Filament\Forms\Components\TextInput::make('min_files')
                 ->label(
-                    __('lunarpanel::fieldtypes.file.form.min_files.label')
+                    __('payflowpanel::fieldtypes.file.form.min_files.label')
                 )->nullable()->numeric(),
             \Filament\Forms\Components\TextInput::make('max_files')->label(
-                __('lunarpanel::fieldtypes.file.form.max_files.label')
+                __('payflowpanel::fieldtypes.file.form.max_files.label')
             )->nullable()->numeric(),
         ];
     }

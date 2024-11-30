@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\LanguageResource\Pages;
+namespace Payflow\Admin\Filament\Resources\LanguageResource\Pages;
 
 use Filament\Actions;
-use Lunar\Admin\Filament\Resources\LanguageResource;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Admin\Filament\Resources\LanguageResource;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
 
 class EditLanguage extends BaseEditRecord
 {

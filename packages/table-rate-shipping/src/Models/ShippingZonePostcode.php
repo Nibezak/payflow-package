@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Shipping\Models;
+namespace Payflow\Shipping\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Lunar\Base\BaseModel;
-use Lunar\Shipping\Factories\ShippingZonePostcodeFactory;
+use Payflow\Base\BaseModel;
+use Payflow\Shipping\Factories\ShippingZonePostcodeFactory;
 
 class ShippingZonePostcode extends BaseModel implements Contracts\ShippingZonePostcode
 {

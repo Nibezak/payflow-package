@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Stripe;
+namespace Payflow\Stripe;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -26,7 +26,7 @@ class MockClient implements ClientInterface
     {
         $id = array_slice(explode('/', $absUrl), -1)[0];
 
-        $policy = config('lunar.stripe.policy');
+        $policy = config('payflow.stripe.policy');
 
         if ($method == 'get' && str_contains($absUrl, 'charges')) {
 

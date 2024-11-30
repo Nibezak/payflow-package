@@ -1,21 +1,30 @@
 {
-    "name": "lunarphp/core",
-    "description": "Lunar Laravel e-commerce core functionality.",
-    "keywords": ["lunar", "laravel", "ecommerce", "e-commerce", "headless", "store", "shop", "cart"],
+    "name": "payflowphp/core",
+    "description": "Payflow Laravel e-commerce core functionality.",
+    "keywords": [
+        "payflow",
+        "laravel",
+        "ecommerce",
+        "e-commerce",
+        "headless",
+        "store",
+        "shop",
+        "cart"
+    ],
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-          "name": "Lunar",
-          "homepage": "https://lunarphp.io/"
+            "name": "Payflow",
+            "homepage": "https://payflowphp.io/"
         }
     ],
     "autoload": {
         "psr-4": {
-            "Lunar\\": "src",
-            "Lunar\\Database\\Factories\\": "database/factories",
-            "Lunar\\Database\\Seeders\\": "database/seeders",
-            "Lunar\\Database\\State\\": "database/state"
+            "Payflow\\": "src",
+            "Payflow\\Database\\Factories\\": "database/factories",
+            "Payflow\\Database\\Seeders\\": "database/seeders",
+            "Payflow\\Database\\State\\": "database/state"
         },
         "files": [
             "src/helpers.php"
@@ -24,7 +33,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Lunar\\LunarServiceProvider"
+                "Payflow\\PayflowServiceProvider"
             ]
         }
     },

@@ -1,33 +1,33 @@
 <?php
 
-use Lunar\Models\Order;
-use Lunar\Shipping\Observers\OrderObserver;
+use Payflow\Models\Order;
+use Payflow\Shipping\Observers\OrderObserver;
 
-uses(\Lunar\Tests\Shipping\TestCase::class);
+uses(\Payflow\Tests\Shipping\TestCase::class);
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
-uses(\Lunar\Tests\Shipping\TestUtils::class);
+uses(\Payflow\Tests\Shipping\TestUtils::class);
 
 test('can store shipping zone against order', function () {
 
     Order::observe(OrderObserver::class);
 
-    $currency = \Lunar\Models\Currency::factory()->create([
+    $currency = \Payflow\Models\Currency::factory()->create([
         'default' => true,
     ]);
 
-    $country = \Lunar\Models\Country::factory()->create();
+    $country = \Payflow\Models\Country::factory()->create();
 
-    \Lunar\Models\TaxClass::factory()->create([
+    \Payflow\Models\TaxClass::factory()->create([
         'default' => true,
     ]);
 
-    $shippingZone = \Lunar\Shipping\Models\ShippingZone::factory()->create([
+    $shippingZone = \Payflow\Shipping\Models\ShippingZone::factory()->create([
         'type' => 'countries',
     ]);
 
     $shippingZone->countries()->attach($country);
 
-    $shippingMethod = \Lunar\Shipping\Models\ShippingMethod::factory()->create([
+    $shippingMethod = \Payflow\Shipping\Models\ShippingMethod::factory()->create([
         'driver' => 'ship-by',
         'data' => [
             'minimum_spend' => [
@@ -36,14 +36,14 @@ test('can store shipping zone against order', function () {
         ],
     ]);
 
-    $customerGroup = \Lunar\Models\CustomerGroup::factory()->create([
+    $customerGroup = \Payflow\Models\CustomerGroup::factory()->create([
         'default' => true,
     ]);
     $shippingMethod->customerGroups()->sync([
         $customerGroup->id => ['enabled' => true, 'visible' => true, 'starts_at' => now(), 'ends_at' => null],
     ]);
 
-    $shippingRate = \Lunar\Shipping\Models\ShippingRate::factory()
+    $shippingRate = \Payflow\Shipping\Models\ShippingRate::factory()
         ->create([
             'shipping_method_id' => $shippingMethod->id,
             'shipping_zone_id' => $shippingZone->id,
@@ -70,28 +70,28 @@ test('can store shipping zone against order', function () {
     $cart = $this->createCart($currency, 500);
 
     $cart->shippingAddress()->create(
-        \Lunar\Models\CartAddress::factory()->make([
+        \Payflow\Models\CartAddress::factory()->make([
             'country_id' => $country->id,
             'state' => null,
         ])->toArray()
     );
 
     $cart->billingAddress()->create(
-        \Lunar\Models\CartAddress::factory()->make([
+        \Payflow\Models\CartAddress::factory()->make([
             'country_id' => $country->id,
             'type' => 'billing',
             'state' => null,
         ])->toArray()
     );
 
-    $shippingOption = \Lunar\Facades\ShippingManifest::getOptions($cart->refresh())->first();
+    $shippingOption = \Payflow\Facades\ShippingManifest::getOptions($cart->refresh())->first();
 
     $cart->setShippingOption($shippingOption);
 
     $order = $cart->refresh()->createOrder();
     $orderShippingZone = $order->shippingZone->first();
 
-    expect($orderShippingZone)->toBeInstanceOf(\Lunar\Shipping\Models\ShippingZone::class)
+    expect($orderShippingZone)->toBeInstanceOf(\Payflow\Shipping\Models\ShippingZone::class)
         ->and($orderShippingZone->id)
         ->toBe($shippingZone->id);
 });

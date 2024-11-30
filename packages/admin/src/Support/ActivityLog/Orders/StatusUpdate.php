@@ -1,9 +1,9 @@
 <?php
 
-namespace Lunar\Admin\Support\ActivityLog\Orders;
+namespace Payflow\Admin\Support\ActivityLog\Orders;
 
-use Lunar\Admin\Support\ActivityLog\AbstractRender;
-use Lunar\Admin\Support\OrderStatus;
+use Payflow\Admin\Support\ActivityLog\AbstractRender;
+use Payflow\Admin\Support\OrderStatus;
 use Spatie\Activitylog\Models\Activity;
 
 class StatusUpdate extends AbstractRender
@@ -18,7 +18,7 @@ class StatusUpdate extends AbstractRender
         $previousStatus = $log->getExtraProperty('previous');
         $newStatus = $log->getExtraProperty('new');
 
-        return view('lunarpanel::partials.orders.activity.status-update', [
+        return view('payflowpanel::partials.orders.activity.status-update', [
             'log' => $log,
             'previousStatus' => $previousStatus,
             'newStatus' => $newStatus,

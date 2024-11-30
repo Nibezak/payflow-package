@@ -1,13 +1,13 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\CollectionResource\Pages;
+namespace Payflow\Admin\Filament\Resources\CollectionResource\Pages;
 
 use Filament\Resources\RelationManagers\RelationGroup;
 use Filament\Support\Facades\FilamentIcon;
-use Lunar\Admin\Filament\Resources\CollectionResource;
-use Lunar\Admin\Filament\Resources\ProductResource\RelationManagers\CustomerGroupRelationManager;
-use Lunar\Admin\Support\Pages\BaseManageRelatedRecords;
-use Lunar\Admin\Support\RelationManagers\ChannelRelationManager;
+use Payflow\Admin\Filament\Resources\CollectionResource;
+use Payflow\Admin\Filament\Resources\ProductResource\RelationManagers\CustomerGroupRelationManager;
+use Payflow\Admin\Support\Pages\BaseManageRelatedRecords;
+use Payflow\Admin\Support\RelationManagers\ChannelRelationManager;
 
 class ManageCollectionAvailability extends BaseManageRelatedRecords
 {
@@ -17,7 +17,7 @@ class ManageCollectionAvailability extends BaseManageRelatedRecords
 
     public function getTitle(): string
     {
-        return __('lunarpanel::product.pages.availability.label');
+        return __('payflowpanel::product.pages.availability.label');
     }
 
     public function getBreadcrumbs(): array
@@ -31,12 +31,12 @@ class ManageCollectionAvailability extends BaseManageRelatedRecords
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::availability');
+        return FilamentIcon::resolve('payflow::availability');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::product.pages.availability.label');
+        return __('payflowpanel::product.pages.availability.label');
     }
 
     public function getRelationManagers(): array

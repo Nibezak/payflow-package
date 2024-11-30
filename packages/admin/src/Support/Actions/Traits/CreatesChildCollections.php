@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Admin\Support\Actions\Traits;
+namespace Payflow\Admin\Support\Actions\Traits;
 
-use Lunar\Facades\DB;
-use Lunar\Models\Attribute;
-use Lunar\Models\Collection;
+use Payflow\Facades\DB;
+use Payflow\Models\Attribute;
+use Payflow\Models\Collection;
 
 trait CreatesChildCollections
 {

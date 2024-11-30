@@ -1,22 +1,22 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
-use Lunar\Exceptions\FieldTypes\FieldTypeMissingException;
-use Lunar\Exceptions\FieldTypes\InvalidFieldTypeException;
-use Lunar\FieldTypes\Dropdown;
-use Lunar\FieldTypes\File;
-use Lunar\FieldTypes\ListField;
-use Lunar\FieldTypes\Number;
-use Lunar\FieldTypes\Text;
-use Lunar\FieldTypes\Toggle;
-use Lunar\FieldTypes\TranslatedText;
-use Lunar\FieldTypes\YouTube;
+use Payflow\Exceptions\FieldTypes\FieldTypeMissingException;
+use Payflow\Exceptions\FieldTypes\InvalidFieldTypeException;
+use Payflow\FieldTypes\Dropdown;
+use Payflow\FieldTypes\File;
+use Payflow\FieldTypes\ListField;
+use Payflow\FieldTypes\Number;
+use Payflow\FieldTypes\Text;
+use Payflow\FieldTypes\Toggle;
+use Payflow\FieldTypes\TranslatedText;
+use Payflow\FieldTypes\YouTube;
 
 class FieldTypeManifest
 {
     /**
-     * The FieldTypes available in Lunar.
+     * The FieldTypes available in Payflow.
      *
      * @var \Illuminate\Support\Collection
      */
@@ -37,7 +37,7 @@ class FieldTypeManifest
     }
 
     /**
-     * Add a FieldType into Lunar.
+     * Add a FieldType into Payflow.
      *
      * @param  string  $classname
      * @return void

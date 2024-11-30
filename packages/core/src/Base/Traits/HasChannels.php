@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Base\Traits;
+namespace Payflow\Base\Traits;
 
 use DateTime;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Collection;
-use Lunar\Facades\DB;
-use Lunar\Models\Channel;
+use Payflow\Facades\DB;
+use Payflow\Models\Channel;
 
 trait HasChannels
 {
@@ -37,7 +37,7 @@ trait HasChannels
      */
     public function channels()
     {
-        $prefix = config('lunar.database.table_prefix');
+        $prefix = config('payflow.database.table_prefix');
 
         return $this->morphToMany(
             Channel::class,

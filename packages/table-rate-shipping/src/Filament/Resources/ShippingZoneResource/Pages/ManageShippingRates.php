@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Shipping\Filament\Resources\ShippingZoneResource\Pages;
+namespace Payflow\Shipping\Filament\Resources\ShippingZoneResource\Pages;
 
 use Awcodes\Shout\Components\Shout;
 use Filament\Forms;
@@ -12,11 +12,11 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Models\Currency;
-use Lunar\Models\CustomerGroup;
-use Lunar\Models\Price;
-use Lunar\Shipping\Filament\Resources\ShippingZoneResource;
-use Lunar\Shipping\Models\ShippingRate;
+use Payflow\Models\Currency;
+use Payflow\Models\CustomerGroup;
+use Payflow\Models\Price;
+use Payflow\Shipping\Filament\Resources\ShippingZoneResource;
+use Payflow\Shipping\Models\ShippingRate;
 
 class ManageShippingRates extends ManageRelatedRecords
 {
@@ -26,17 +26,17 @@ class ManageShippingRates extends ManageRelatedRecords
 
     public function getTitle(): string|Htmlable
     {
-        return __('lunarpanel.shipping::relationmanagers.shipping_rates.title_plural');
+        return __('payflowpanel.shipping::relationmanagers.shipping_rates.title_plural');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::shipping-rates');
+        return FilamentIcon::resolve('payflow::shipping-rates');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel.shipping::relationmanagers.shipping_rates.title_plural');
+        return __('payflowpanel.shipping::relationmanagers.shipping_rates.title_plural');
     }
 
     public function form(Form $form): Form
@@ -44,25 +44,25 @@ class ManageShippingRates extends ManageRelatedRecords
         return $form->schema([
             Shout::make('')->content(
                 function () {
-                    $pricesIncTax = config('lunar.pricing.stored_inclusive_of_tax', false);
+                    $pricesIncTax = config('payflow.pricing.stored_inclusive_of_tax', false);
 
                     if ($pricesIncTax) {
-                        return __('lunarpanel.shipping::relationmanagers.shipping_rates.notices.prices_inc_tax');
+                        return __('payflowpanel.shipping::relationmanagers.shipping_rates.notices.prices_inc_tax');
                     }
 
-                    return __('lunarpanel.shipping::relationmanagers.shipping_rates.notices.prices_excl_tax');
+                    return __('payflowpanel.shipping::relationmanagers.shipping_rates.notices.prices_excl_tax');
                 }
             ),
             Forms\Components\Select::make('shipping_method_id')
                 ->label(
-                    __('lunarpanel.shipping::relationmanagers.shipping_rates.form.shipping_method_id.label')
+                    __('payflowpanel.shipping::relationmanagers.shipping_rates.form.shipping_method_id.label')
                 )
                 ->required()
                 ->relationship(name: 'shippingMethod', titleAttribute: 'name')
                 ->columnSpan(2),
             Forms\Components\TextInput::make('price')
                 ->label(
-                    __('lunarpanel.shipping::relationmanagers.shipping_rates.form.price.label')
+                    __('payflowpanel.shipping::relationmanagers.shipping_rates.form.price.label')
                 )
                 ->numeric()
                 ->required()
@@ -78,20 +78,20 @@ class ManageShippingRates extends ManageRelatedRecords
                 }),
             Forms\Components\Repeater::make('prices')
                 ->label(
-                    __('lunarpanel.shipping::relationmanagers.shipping_rates.form.prices.label')
+                    __('payflowpanel.shipping::relationmanagers.shipping_rates.form.prices.label')
                 )->schema([
                     Forms\Components\Select::make('customer_group_id')
                         ->label(
-                            __('lunarpanel.shipping::relationmanagers.shipping_rates.form.prices.repeater.customer_group_id.label')
+                            __('payflowpanel.shipping::relationmanagers.shipping_rates.form.prices.repeater.customer_group_id.label')
                         )
                         ->options(
                             fn () => CustomerGroup::all()->pluck('name', 'id')
                         )->placeholder(
-                            __('lunarpanel.shipping::relationmanagers.shipping_rates.form.prices.repeater.customer_group_id.placeholder')
+                            __('payflowpanel.shipping::relationmanagers.shipping_rates.form.prices.repeater.customer_group_id.placeholder')
                         )->preload(),
                     Forms\Components\Select::make('currency_id')
                         ->label(
-                            __('lunarpanel.shipping::relationmanagers.shipping_rates.form.prices.repeater.currency_id.label')
+                            __('payflowpanel.shipping::relationmanagers.shipping_rates.form.prices.repeater.currency_id.label')
                         )
                         ->options(
                             fn () => Currency::all()->pluck('name', 'id')
@@ -100,13 +100,13 @@ class ManageShippingRates extends ManageRelatedRecords
                         )->required()->preload(),
                     Forms\Components\TextInput::make('min_quantity')
                         ->label(
-                            __('lunarpanel.shipping::relationmanagers.shipping_rates.form.prices.repeater.min_quantity.label')
+                            __('payflowpanel.shipping::relationmanagers.shipping_rates.form.prices.repeater.min_quantity.label')
                         )
                         ->numeric()
                         ->required(),
                     Forms\Components\TextInput::make('price')
                         ->label(
-                            __('lunarpanel.shipping::relationmanagers.shipping_rates.form.prices.repeater.price.label')
+                            __('payflowpanel.shipping::relationmanagers.shipping_rates.form.prices.repeater.price.label')
                         )
                         ->numeric()
                         ->required(),
@@ -134,20 +134,20 @@ class ManageShippingRates extends ManageRelatedRecords
         return $table->columns([
             TextColumn::make('shippingMethod.name')
                 ->label(
-                    __('lunarpanel.shipping::relationmanagers.shipping_rates.table.shipping_method.label')
+                    __('payflowpanel.shipping::relationmanagers.shipping_rates.table.shipping_method.label')
                 ),
             TextColumn::make('basePrices.0')->formatStateUsing(
                 fn ($state = null) => $state->price->formatted
             )->label(
-                __('lunarpanel.shipping::relationmanagers.shipping_rates.table.price.label')
+                __('payflowpanel.shipping::relationmanagers.shipping_rates.table.price.label')
             ),
             TextColumn::make('price_breaks_count')
                 ->label(
-                    __('lunarpanel.shipping::relationmanagers.shipping_rates.table.price_breaks_count.label')
+                    __('payflowpanel.shipping::relationmanagers.shipping_rates.table.price_breaks_count.label')
                 )->counts('priceBreaks'),
         ])->headerActions([
             Tables\Actions\CreateAction::make()->label(
-                __('lunarpanel.shipping::relationmanagers.shipping_rates.actions.create.label')
+                __('payflowpanel.shipping::relationmanagers.shipping_rates.actions.create.label')
             )->action(function (Table $table, ?ShippingRate $shippingRate = null, array $data = []) {
                 $relationship = $table->getRelationship();
 

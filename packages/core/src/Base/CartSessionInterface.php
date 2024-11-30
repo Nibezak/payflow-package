@@ -1,18 +1,18 @@
 <?php
 
-namespace Lunar\Base;
+namespace Payflow\Base;
 
 use Illuminate\Contracts\Auth\Authenticatable;
-use Lunar\Models\Cart;
-use Lunar\Models\Channel;
-use Lunar\Models\Currency;
+use Payflow\Models\Cart;
+use Payflow\Models\Channel;
+use Payflow\Models\Currency;
 
 interface CartSessionInterface
 {
     /**
      * Return the current cart.
      *
-     * @return \Lunar\Models\Cart|null
+     * @return \Payflow\Models\Cart|null
      */
     public function current();
 

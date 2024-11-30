@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Str;
-use Lunar\Opayo\DataTransferObjects\AuthPayloadParameters;
+use Payflow\Opayo\DataTransferObjects\AuthPayloadParameters;
 
-uses(\Lunar\Tests\Opayo\TestCase::class);
+uses(\Payflow\Tests\Opayo\TestCase::class);
 
 it('can return valid auth payload', function () {
     $params = new AuthPayloadParameters(
@@ -36,7 +36,7 @@ it('can return valid auth payload', function () {
         reusable: false,
     );
 
-    $payload = \Lunar\Opayo\Facades\Opayo::getAuthPayload($params);
+    $payload = \Payflow\Opayo\Facades\Opayo::getAuthPayload($params);
 
     expect($payload['transactionType'])
         ->toBe($params->transactionType)
@@ -124,7 +124,7 @@ it('does not try and save or reuse payments by default', function () {
         authCode: null,
     );
 
-    $payload = \Lunar\Opayo\Facades\Opayo::getAuthPayload($params);
+    $payload = \Payflow\Opayo\Facades\Opayo::getAuthPayload($params);
 
     expect($payload['paymentMethod']['card'])->not->toHaveKey('save')
         ->and($payload['strongCustomerAuthentication'])
@@ -163,7 +163,7 @@ it('can allow saved cards', function () {
         reusable: false,
     );
 
-    $payload = \Lunar\Opayo\Facades\Opayo::getAuthPayload($params);
+    $payload = \Payflow\Opayo\Facades\Opayo::getAuthPayload($params);
 
     expect($payload['paymentMethod']['card']['save'])->toBeTrue()
         ->and($payload['credentialType'])->toEqual([
@@ -205,7 +205,7 @@ it('can allow card reuse in the payload', function () {
         authCode: 'AUTH-CODE',
     );
 
-    $payload = \Lunar\Opayo\Facades\Opayo::getAuthPayload($params);
+    $payload = \Payflow\Opayo\Facades\Opayo::getAuthPayload($params);
 
     expect($payload['paymentMethod']['card']['reusable'])->toBeTrue()
         ->and($payload['credentialType'])->toEqual([

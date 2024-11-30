@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Facades;
+namespace Payflow\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Lunar\Base\BaseModel;
-use Lunar\Base\ModelManifestInterface;
+use Payflow\Base\BaseModel;
+use Payflow\Base\ModelManifestInterface;
 
 /**
  * Class ModelManifest.
@@ -16,12 +16,12 @@ use Lunar\Base\ModelManifestInterface;
  * @method static string|null get(string $interfaceClass)
  * @method static string guessContractClass(string $modelClass)
  * @method static string guessModelClass(string $modelContract)
- * @method static bool isLunarModel(string|BaseModel $model)
+ * @method static bool isPayflowModel(string|BaseModel $model)
  * @method static string getTable(BaseModel $model)
  * @method static void morphMap()
  * @method static string getMorphMapKey(string $className)
  *
- * @see \Lunar\Base\ModelManifest
+ * @see \Payflow\Base\ModelManifest
  */
 class ModelManifest extends Facade
 {

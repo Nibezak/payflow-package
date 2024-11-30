@@ -1,13 +1,13 @@
 <?php
 
-uses(\Lunar\Tests\Core\TestCase::class);
+uses(\Payflow\Tests\Core\TestCase::class);
 
 use Illuminate\Support\Facades\Config;
-use Lunar\DataTypes\Price as DataTypesPrice;
-use Lunar\Models\Currency;
-use Lunar\Models\CustomerGroup;
-use Lunar\Models\Price;
-use Lunar\Models\ProductVariant;
+use Payflow\DataTypes\Price as DataTypesPrice;
+use Payflow\Models\Currency;
+use Payflow\Models\CustomerGroup;
+use Payflow\Models\Price;
+use Payflow\Models\ProductVariant;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -227,7 +227,7 @@ test('can get a price', function () {
 });
 
 test('can get a price ex tax', function () {
-    Config::set('lunar.pricing.stored_inclusive_of_tax', true);
+    Config::set('payflow.pricing.stored_inclusive_of_tax', true);
 
     $variant = ProductVariant::factory()->create();
 
@@ -249,7 +249,7 @@ test('can get a price ex tax', function () {
 });
 
 test('can get a price inc tax', function () {
-    Config::set('lunar.pricing.stored_inclusive_of_tax', false);
+    Config::set('payflow.pricing.stored_inclusive_of_tax', false);
 
     $variant = ProductVariant::factory()->create();
 

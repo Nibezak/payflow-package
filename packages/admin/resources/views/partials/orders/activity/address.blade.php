@@ -1,8 +1,8 @@
 <div class="space-y-2">
 
     <span>
-        {{ __('lunarpanel::components.activity-log.partials.orders.address', [
-            'type' => __("lunarpanel::components.activity-log.partials.orders.{$type}"),
+        {{ __('payflowpanel::components.activity-log.partials.orders.address', [
+            'type' => __("payflowpanel::components.activity-log.partials.orders.{$type}"),
         ]) }}
     </span>
 
@@ -11,7 +11,7 @@
             @foreach($diff as $field => $value)
                 <tr>
                     @php
-                        $key = "lunarpanel::order.form.{$field}.label";
+                        $key = "payflowpanel::order.form.{$field}.label";
                         if(($label = __($key)) == $key){
                             $label = str($field)->studly()->snake(' ')->ucfirst();
                         }                    

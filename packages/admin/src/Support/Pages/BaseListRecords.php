@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Admin\Support\Pages;
+namespace Payflow\Admin\Support\Pages;
 
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Builder;
-use Lunar\Base\Traits\Searchable;
+use Payflow\Base\Traits\Searchable;
 
 abstract class BaseListRecords extends ListRecords
 {
@@ -14,11 +14,11 @@ abstract class BaseListRecords extends ListRecords
     use Concerns\ExtendsHeadings;
     use Concerns\ExtendsTablePagination;
     use Concerns\ExtendsTabs;
-    use \Lunar\Admin\Support\Concerns\CallsHooks;
+    use \Payflow\Admin\Support\Concerns\CallsHooks;
 
     protected function applySearchToTableQuery(Builder $query): Builder
     {
-        $scoutEnabled = config('lunar.panel.scout_enabled', false);
+        $scoutEnabled = config('payflow.panel.scout_enabled', false);
         $isScoutSearchable = in_array(Searchable::class, class_uses_recursive(static::getModel()));
 
         $this->applyColumnSearchesToTableQuery($query);

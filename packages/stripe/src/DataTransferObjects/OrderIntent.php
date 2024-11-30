@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Stripe\DataTransferObjects;
+namespace Payflow\Stripe\DataTransferObjects;
 
-use Lunar\Models\Order;
+use Payflow\Models\Order;
 use Stripe\PaymentIntent;
 
 class OrderIntent

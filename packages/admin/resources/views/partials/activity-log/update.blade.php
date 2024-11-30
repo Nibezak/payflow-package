@@ -1,3 +1,3 @@
 <div>
-    {{ __('lunarpanel::components.activity-log.partials.update.updated', ['model' => $model]) }}
+    {{ __('payflowpanel::components.activity-log.partials.update.updated', ['model' => $model]) }}
 </div>

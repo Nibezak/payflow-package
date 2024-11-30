@@ -1,10 +1,10 @@
 <?php
 
-namespace Lunar\Stripe\Components;
+namespace Payflow\Stripe\Components;
 
 use Livewire\Component;
-use Lunar\Models\Cart;
-use Lunar\Stripe\Facades\Stripe;
+use Payflow\Models\Cart;
+use Payflow\Stripe\Facades\Stripe;
 use Stripe\Stripe as StripeClient;
 
 class PaymentForm extends Component
@@ -73,6 +73,6 @@ class PaymentForm extends Component
      */
     public function render()
     {
-        return view('lunar::stripe.components.payment-form');
+        return view('payflow::stripe.components.payment-form');
     }
 }

@@ -1,3 +1,3 @@
 <div>
-    {{ __('lunarpanel::components.activity-log.partials.create.created', ['model' => $model]) }}
+    {{ __('payflowpanel::components.activity-log.partials.create.created', ['model' => $model]) }}
 </div>

@@ -1,15 +1,15 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\DiscountResource\RelationManagers;
+namespace Payflow\Admin\Filament\Resources\DiscountResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Support\RelationManagers\BaseRelationManager;
-use Lunar\Facades\ModelManifest;
-use Lunar\Models\Product;
-use Lunar\Models\ProductVariant;
+use Payflow\Admin\Support\RelationManagers\BaseRelationManager;
+use Payflow\Facades\ModelManifest;
+use Payflow\Models\Product;
+use Payflow\Models\ProductVariant;
 
 class ProductVariantLimitationRelationManager extends BaseRelationManager
 {
@@ -27,10 +27,10 @@ class ProductVariantLimitationRelationManager extends BaseRelationManager
 
         return $table
             ->heading(
-                __('lunarpanel::discount.relationmanagers.productvariants.title')
+                __('payflowpanel::discount.relationmanagers.productvariants.title')
             )
             ->description(
-                __('lunarpanel::discount.relationmanagers.productvariants.description')
+                __('payflowpanel::discount.relationmanagers.productvariants.description')
             )
             ->paginated(false)
             ->modifyQueryUsing(
@@ -58,7 +58,7 @@ class ProductVariantLimitationRelationManager extends BaseRelationManager
                                 }),
                         ]),
                 ])->label(
-                    __('lunarpanel::discount.relationmanagers.productvariants.actions.attach.label')
+                    __('payflowpanel::discount.relationmanagers.productvariants.actions.attach.label')
                 )->mutateFormDataUsing(function (array $data) {
                     $data['type'] = 'limitation';
 
@@ -70,11 +70,11 @@ class ProductVariantLimitationRelationManager extends BaseRelationManager
                         fn (Model $model) => $model->purchasable->getDescription()
                     )
                     ->label(
-                        __('lunarpanel::discount.relationmanagers.productvariants.table.name.label')
+                        __('payflowpanel::discount.relationmanagers.productvariants.table.name.label')
                     ),
                 Tables\Columns\TextColumn::make('purchasable.sku')
                     ->label(
-                        __('lunarpanel::discount.relationmanagers.productvariants.table.sku.label')
+                        __('payflowpanel::discount.relationmanagers.productvariants.table.sku.label')
                     ),
                 Tables\Columns\TextColumn::make('purchasable.values')
                     ->formatStateUsing(function (Model $record) {
@@ -82,7 +82,7 @@ class ProductVariantLimitationRelationManager extends BaseRelationManager
                             fn ($value) => $value->translate('name')
                         )->join(', ');
                     })->label(
-                        __('lunarpanel::discount.relationmanagers.productvariants.table.values.label')
+                        __('payflowpanel::discount.relationmanagers.productvariants.table.values.label')
                     ),
             ])->actions([
                 Tables\Actions\DeleteAction::make(),

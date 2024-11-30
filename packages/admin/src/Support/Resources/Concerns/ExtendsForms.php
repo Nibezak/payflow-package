@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Support\Resources\Concerns;
+namespace Payflow\Admin\Support\Resources\Concerns;
 
 use Filament\Forms\Form;
 
@@ -8,7 +8,7 @@ trait ExtendsForms
 {
     public static function form(Form $form): Form
     {
-        return self::callStaticLunarHook('extendForm', static::getDefaultForm($form));
+        return self::callStaticPayflowHook('extendForm', static::getDefaultForm($form));
     }
 
     public static function getDefaultForm(Form $form): Form

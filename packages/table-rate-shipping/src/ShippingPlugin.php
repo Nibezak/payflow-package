@@ -1,14 +1,14 @@
 <?php
 
-namespace Lunar\Shipping;
+namespace Payflow\Shipping;
 
 use Filament\Contracts\Plugin;
 use Filament\Navigation\NavigationGroup;
 use Filament\Panel;
 use Filament\Support\Facades\FilamentIcon;
-use Lunar\Shipping\Filament\Resources\ShippingExclusionListResource;
-use Lunar\Shipping\Filament\Resources\ShippingMethodResource;
-use Lunar\Shipping\Filament\Resources\ShippingZoneResource;
+use Payflow\Shipping\Filament\Resources\ShippingExclusionListResource;
+use Payflow\Shipping\Filament\Resources\ShippingMethodResource;
+use Payflow\Shipping\Filament\Resources\ShippingZoneResource;
 
 class ShippingPlugin implements Plugin
 {
@@ -24,14 +24,14 @@ class ShippingPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        if (! config('lunar.shipping-tables.enabled')) {
+        if (! config('payflow.shipping-tables.enabled')) {
             return;
         }
 
         $panel->navigationGroups([
             NavigationGroup::make('shipping')
                 ->label(
-                    fn () => __('lunarpanel.shipping::plugin.navigation.group')
+                    fn () => __('payflowpanel.shipping::plugin.navigation.group')
                 ),
         ])->resources([
             ShippingMethodResource::class,
@@ -40,10 +40,10 @@ class ShippingPlugin implements Plugin
         ]);
 
         FilamentIcon::register([
-            'lunar::shipping-rates' => 'lucide-coins',
-            'lunar::shipping-zones' => 'lucide-globe-2',
-            'lunar::shipping-methods' => 'lucide-truck',
-            'lunar::shipping-exclusion-lists' => 'lucide-package-minus',
+            'payflow::shipping-rates' => 'lucide-coins',
+            'payflow::shipping-zones' => 'lucide-globe-2',
+            'payflow::shipping-methods' => 'lucide-truck',
+            'payflow::shipping-exclusion-lists' => 'lucide-package-minus',
         ]);
     }
 

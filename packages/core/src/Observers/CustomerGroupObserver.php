@@ -1,8 +1,8 @@
 <?php
 
-namespace Lunar\Observers;
+namespace Payflow\Observers;
 
-use Lunar\Models\CustomerGroup;
+use Payflow\Models\CustomerGroup;
 
 class CustomerGroupObserver
 {
@@ -49,7 +49,7 @@ class CustomerGroupObserver
     /**
      * Ensures that only one default CustomerGroup exists.
      *
-     * @param  \Lunar\Models\CustomerGroup  $savedCustomerGroup  The customer group that was just saved.
+     * @param  \Payflow\Models\CustomerGroup  $savedCustomerGroup  The customer group that was just saved.
      */
     protected function ensureOnlyOneDefault(CustomerGroup $savedCustomerGroup): void
     {

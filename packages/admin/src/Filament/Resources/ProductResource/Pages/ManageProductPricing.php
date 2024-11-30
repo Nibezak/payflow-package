@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\ProductResource\Pages;
+namespace Payflow\Admin\Filament\Resources\ProductResource\Pages;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -8,14 +8,14 @@ use Filament\Support\Facades\FilamentIcon;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
-use Lunar\Admin\Filament\Resources\ProductResource;
-use Lunar\Admin\Filament\Resources\ProductResource\RelationManagers\CustomerGroupPricingRelationManager;
-use Lunar\Admin\Filament\Resources\ProductVariantResource;
-use Lunar\Admin\Support\Concerns\Products\ManagesProductPricing;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
-use Lunar\Admin\Support\RelationManagers\PriceRelationManager;
-use Lunar\Models\Currency;
-use Lunar\Models\Price;
+use Payflow\Admin\Filament\Resources\ProductResource;
+use Payflow\Admin\Filament\Resources\ProductResource\RelationManagers\CustomerGroupPricingRelationManager;
+use Payflow\Admin\Filament\Resources\ProductVariantResource;
+use Payflow\Admin\Support\Concerns\Products\ManagesProductPricing;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Admin\Support\RelationManagers\PriceRelationManager;
+use Payflow\Models\Currency;
+use Payflow\Models\Price;
 
 class ManageProductPricing extends BaseEditRecord
 {
@@ -25,7 +25,7 @@ class ManageProductPricing extends BaseEditRecord
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::product-pricing');
+        return FilamentIcon::resolve('payflow::product-pricing');
     }
 
     public static function shouldRegisterNavigation(array $parameters = []): bool
@@ -55,7 +55,7 @@ class ManageProductPricing extends BaseEditRecord
             $this->getBasePriceFormSection(),
         ])->statePath('');
 
-        $this->callLunarHook('extendForm', $form);
+        $this->callPayflowHook('extendForm', $form);
 
         return $form;
     }
@@ -74,7 +74,7 @@ class ManageProductPricing extends BaseEditRecord
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::relationmanagers.pricing.title');
+        return __('payflowpanel::relationmanagers.pricing.title');
     }
 
     public function table(Table $table): Table
@@ -87,18 +87,18 @@ class ManageProductPricing extends BaseEditRecord
             ->columns([
                 Tables\Columns\TextColumn::make('price')
                     ->label(
-                        __('lunarpanel::relationmanagers.pricing.table.price.label')
+                        __('payflowpanel::relationmanagers.pricing.table.price.label')
                     )->formatStateUsing(
                         fn ($state) => $state->formatted,
                     ),
                 Tables\Columns\TextColumn::make('currency.code')->label(
-                    __('lunarpanel::relationmanagers.pricing.table.currency.label')
+                    __('payflowpanel::relationmanagers.pricing.table.currency.label')
                 ),
                 Tables\Columns\TextColumn::make('min_quantity')->label(
-                    __('lunarpanel::relationmanagers.pricing.table.min_quantity.label')
+                    __('payflowpanel::relationmanagers.pricing.table.min_quantity.label')
                 ),
                 Tables\Columns\TextColumn::make('customerGroup.name')->label(
-                    __('lunarpanel::relationmanagers.pricing.table.customer_group.label')
+                    __('payflowpanel::relationmanagers.pricing.table.customer_group.label')
                 ),
             ])
             ->filters([

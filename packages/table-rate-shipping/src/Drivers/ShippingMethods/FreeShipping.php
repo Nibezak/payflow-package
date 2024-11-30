@@ -1,13 +1,13 @@
 <?php
 
-namespace Lunar\Shipping\Drivers\ShippingMethods;
+namespace Payflow\Shipping\Drivers\ShippingMethods;
 
-use Lunar\DataTypes\Price;
-use Lunar\DataTypes\ShippingOption;
-use Lunar\Models\Product;
-use Lunar\Shipping\DataTransferObjects\ShippingOptionRequest;
-use Lunar\Shipping\Interfaces\ShippingRateInterface;
-use Lunar\Shipping\Models\ShippingRate;
+use Payflow\DataTypes\Price;
+use Payflow\DataTypes\ShippingOption;
+use Payflow\Models\Product;
+use Payflow\Shipping\DataTransferObjects\ShippingOptionRequest;
+use Payflow\Shipping\Interfaces\ShippingRateInterface;
+use Payflow\Shipping\Models\ShippingRate;
 
 class FreeShipping implements ShippingRateInterface
 {

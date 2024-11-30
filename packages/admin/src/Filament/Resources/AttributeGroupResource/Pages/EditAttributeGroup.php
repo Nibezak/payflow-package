@@ -1,11 +1,11 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\AttributeGroupResource\Pages;
+namespace Payflow\Admin\Filament\Resources\AttributeGroupResource\Pages;
 
 use Filament\Actions;
 use Filament\Notifications\Notification;
-use Lunar\Admin\Filament\Resources\AttributeGroupResource;
-use Lunar\Admin\Support\Pages\BaseEditRecord;
+use Payflow\Admin\Filament\Resources\AttributeGroupResource;
+use Payflow\Admin\Support\Pages\BaseEditRecord;
 
 class EditAttributeGroup extends BaseEditRecord
 {
@@ -19,7 +19,7 @@ class EditAttributeGroup extends BaseEditRecord
                     if ($record->attributes->count() > 0) {
                         Notification::make()
                             ->warning()
-                            ->body(__('lunarpanel::attributegroup.action.delete.notification.error_protected'))
+                            ->body(__('payflowpanel::attributegroup.action.delete.notification.error_protected'))
                             ->send();
                         $action->cancel();
                     }

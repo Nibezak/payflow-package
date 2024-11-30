@@ -1,16 +1,16 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources\BrandResource\Pages;
+namespace Payflow\Admin\Filament\Resources\BrandResource\Pages;
 
 use Filament\Forms;
 use Filament\Support\Facades\FilamentIcon;
 use Filament\Tables;
 use Filament\Tables\Actions\DetachAction;
 use Filament\Tables\Table;
-use Lunar\Admin\Filament\Resources\BrandResource;
-use Lunar\Admin\Support\Pages\BaseManageRelatedRecords;
-use Lunar\Admin\Support\Tables\Columns\TranslatedTextColumn;
-use Lunar\Models\Collection;
+use Payflow\Admin\Filament\Resources\BrandResource;
+use Payflow\Admin\Support\Pages\BaseManageRelatedRecords;
+use Payflow\Admin\Support\Tables\Columns\TranslatedTextColumn;
+use Payflow\Models\Collection;
 
 class ManageBrandCollections extends BaseManageRelatedRecords
 {
@@ -21,17 +21,17 @@ class ManageBrandCollections extends BaseManageRelatedRecords
     public function getTitle(): string
     {
 
-        return __('lunarpanel::brand.pages.collections.label');
+        return __('payflowpanel::brand.pages.collections.label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::collections');
+        return FilamentIcon::resolve('payflow::collections');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('lunarpanel::brand.pages.collections.label');
+        return __('payflowpanel::brand.pages.collections.label');
     }
 
     public function table(Table $table): Table
@@ -41,7 +41,7 @@ class ManageBrandCollections extends BaseManageRelatedRecords
                 ->attributeData()
                 ->limitedTooltip()
                 ->limit(50)
-                ->label(__('lunarpanel::product.table.name.label')),
+                ->label(__('payflowpanel::product.table.name.label')),
         ])->actions([
             DetachAction::make(),
         ])->headerActions([
@@ -49,7 +49,7 @@ class ManageBrandCollections extends BaseManageRelatedRecords
                 ->recordSelect(
                     function (Forms\Components\Select $select) {
                         return $select->placeholder(
-                            __('lunarpanel::brand.pages.collections.table.header_actions.attach.record_select.placeholder')
+                            __('payflowpanel::brand.pages.collections.table.header_actions.attach.record_select.placeholder')
                         )
                             ->getSearchResultsUsing(static function (Forms\Components\Select $component, string $search): array {
                                 return Collection::search($search)

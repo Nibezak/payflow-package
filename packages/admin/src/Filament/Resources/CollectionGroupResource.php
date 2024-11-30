@@ -1,6 +1,6 @@
 <?php
 
-namespace Lunar\Admin\Filament\Resources;
+namespace Payflow\Admin\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Forms\Components\Component;
@@ -9,9 +9,9 @@ use Filament\Support\Facades\FilamentIcon;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
-use Lunar\Admin\Filament\Resources\CollectionGroupResource\Pages;
-use Lunar\Admin\Support\Resources\BaseResource;
-use Lunar\Models\Contracts\CollectionGroup;
+use Payflow\Admin\Filament\Resources\CollectionGroupResource\Pages;
+use Payflow\Admin\Support\Resources\BaseResource;
+use Payflow\Models\Contracts\CollectionGroup;
 
 class CollectionGroupResource extends BaseResource
 {
@@ -23,22 +23,22 @@ class CollectionGroupResource extends BaseResource
 
     public static function getLabel(): string
     {
-        return __('lunarpanel::collectiongroup.label');
+        return __('payflowpanel::collectiongroup.label');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('lunarpanel::collectiongroup.plural_label');
+        return __('payflowpanel::collectiongroup.plural_label');
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('lunar::collections');
+        return FilamentIcon::resolve('payflow::collections');
     }
 
     public static function getNavigationGroup(): ?string
     {
-        return __('lunarpanel::global.sections.catalog');
+        return __('payflowpanel::global.sections.catalog');
     }
 
     public static function getDefaultForm(Form $form): Form
@@ -62,7 +62,7 @@ class CollectionGroupResource extends BaseResource
     protected static function getNameFormComponent(): Component
     {
         return Forms\Components\TextInput::make('name')
-            ->label(__('lunarpanel::collectiongroup.form.name.label'))
+            ->label(__('payflowpanel::collectiongroup.form.name.label'))
             ->required()
             ->maxLength(255)
             ->autofocus()
@@ -79,7 +79,7 @@ class CollectionGroupResource extends BaseResource
     protected static function getHandleFormComponent(): Component
     {
         return Forms\Components\TextInput::make('handle')
-            ->label(__('lunarpanel::collectiongroup.form.handle.label'))
+            ->label(__('payflowpanel::collectiongroup.form.handle.label'))
             ->unique(ignoreRecord: true)
             ->required()
             ->maxLength(255);
@@ -106,15 +106,15 @@ class CollectionGroupResource extends BaseResource
     {
         return [
             Tables\Columns\TextColumn::make('name')
-                ->label(__('lunarpanel::collectiongroup.table.name.label')),
+                ->label(__('payflowpanel::collectiongroup.table.name.label')),
             Tables\Columns\TextColumn::make('handle')
-                ->label(__('lunarpanel::collectiongroup.table.handle.label')),
+                ->label(__('payflowpanel::collectiongroup.table.handle.label')),
             Tables\Columns\TextColumn::make('collections_count')
                 ->counts('collections')
                 ->formatStateUsing(
                     fn ($state) => number_format($state, 0)
                 )
-                ->label(__('lunarpanel::collectiongroup.table.collections_count.label')),
+                ->label(__('payflowpanel::collectiongroup.table.collections_count.label')),
         ];
     }
 

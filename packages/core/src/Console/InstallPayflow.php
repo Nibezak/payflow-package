@@ -70,7 +70,7 @@ class InstallPayflow extends Command
             }
 
             if (! Country::count()) {
-                $this->components->info('Importing countries');
+                $this->components->info('Hold on a sec Importing countries');
                 $this->call('payflow:import:address-data');
             }
 
@@ -260,13 +260,13 @@ class InstallPayflow extends Command
         $this->components->info('Publishing Filament assets');
         $this->call('filament:assets');
 
-        $this->components->info('Payflow is now installed 🚀');
+        $this->components->info('Payflow.dev is now installed 🚀');
 
-        if (confirm('Would you like to show some love by giving us a star on GitHub?')) {
+        if (confirm('Would you like to show some love by following us on twitter?')) {
             match (PHP_OS_FAMILY) {
-                'Darwin' => exec('open https://github.com/payflowphp/payflow'),
-                'Linux' => exec('xdg-open https://github.com/payflowphp/payflow'),
-                'Windows' => exec('start https://github.com/payflowphp/payflow'),
+                'Darwin' => exec('open https://x.com/payflow_dev'),
+                'Linux' => exec('xdg-open https://x.com/payflow_dev'),
+                'Windows' => exec('start https://x.com/payflow_dev'),
             };
 
             $this->components->info('Thank you!');

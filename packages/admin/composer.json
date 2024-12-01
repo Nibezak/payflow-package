@@ -1,6 +1,6 @@
 {
     "name": "payflowphp/admin",
-    "description": "Admin panel for PayflowPHP",
+    "description": "Admin panel for the payflow Platform",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -30,6 +30,11 @@
             "providers": [
                 "Payflow\\Admin\\PayflowPanelProvider"
             ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
         }
     }
 }

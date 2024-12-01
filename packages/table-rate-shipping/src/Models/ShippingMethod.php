@@ -68,7 +68,7 @@ class ShippingMethod extends BaseModel implements Contracts\ShippingMethod
 
         return $this->belongsToMany(
             CustomerGroup::class,
-            "{$prefix}customer_shipping_method"
+            "{$prefix}customer_g_shipping_method"
         )->withPivot([
             'visible',
             'enabled',

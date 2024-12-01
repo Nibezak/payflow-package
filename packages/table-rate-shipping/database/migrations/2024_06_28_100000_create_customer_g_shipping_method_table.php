@@ -4,11 +4,11 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Payflow\Base\Migration;
 
-class CreateCustomerShippingMethodTable extends Migration
+class CreateCustomerGShippingMethodTable extends Migration
 {
     public function up()
     {
-        Schema::create($this->prefix.'customer_shipping_method', function (Blueprint $table) {
+        Schema::create($this->prefix.'customer_g_shipping_method', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('customer_group_id')->constrained(
                 $this->prefix.'customer_groups'
@@ -24,6 +24,6 @@ class CreateCustomerShippingMethodTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists($this->prefix.'customer_shipping_method');
+        Schema::dropIfExists($this->prefix.'customer_g_shipping_method');
     }
 }

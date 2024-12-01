@@ -58,7 +58,7 @@ class ShippingServiceProvider extends ServiceProvider
 
             return $customerGroup->belongsToMany(
                 ShippingMethod::class,
-                "{$prefix}customer_shipping_method"
+                "{$prefix}customer_g_shipping_method"
             )->withTimestamps();
         });
 

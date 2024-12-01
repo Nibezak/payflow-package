@@ -1,51 +1,119 @@
-<p align="center"><a href="https://payflowphp.io/" target="_blank"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/payflowphp/art/main/payflow-logo-dark.svg"><img alt="Payflow" width="200" src="https://raw.githubusercontent.com/payflowphp/art/main/payflow-logo.svg"></picture></a></p>
+# Payflow Installation Guide
 
-> [!CAUTION]
-> Version 1.x is currently in beta release. We recommend this version for new projects, however, it is not feature-complete and therefore may not be deemed production-ready.
-
-
-[Payflow](https://payflowphp.io) is a set of Laravel packages that bring functionality akin to Shopify and other e-commerce platforms to 
-Laravel. You have complete freedom to create your own storefront(s), but we've already done the hard work for you in 
-the backend.
-
-This repository serves as a monorepo for the main packages that make up Payflow.
-
-## Requirements
-
-- PHP >= 8.2
-- Laravel 10 / Laravel 11
-- MySQL 8.0+ / PostgreSQL 9.2+
-
-## Documentation
-
-- [v1.0 documentation](https://docs-v1.payflowphp.io/)
-
-## Contribution
-
-- Bug reports should be submitted as a new Github issue
-- Enhancements should [be in discussions](https://github.com/payflowphp/payflow/discussions/new?category=enhancements)
-- Feature requests should [be in discussions](https://github.com/payflowphp/payflow/discussions/new?category=feature-requests)
-
-## Community
-
-- [Join our discord server](https://discord.gg/v6qVWaf) and chat to the developers and people using Payflow.
-- [We have a roadmap](https://github.com/orgs/payflowphp/projects/8) where we will be detailing which features are next.
-
-## Packages in this monorepo
-
-### Admin panel
-
-The admin panel is provided to enable you to manage your store via a modern interface. You can manage all aspects of 
-your store including products, orders, staff members etc. It's built using Filament and can be extended to meet each of 
-your stores requirements.
-
-### Core
-
-The core Payflow package, this provides all the things needed for your store to function. This is where all the models, 
-actions and utilities live and is required by the admin hub.
+Welcome to the **Payflow Installation Guide**! This document will walk you through the steps required to set up **Payflow** and integrate it with your Laravel project seamlessly.
 
 ---
 
-## License
+## Prerequisites
 
-Payflow is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- **A Laravel Project**: Ensure you have a Laravel project set up. If not, you can create one using the Laravel installer or Composer:
+  ```bash
+  composer create-project laravel/laravel your-project-name
+  ```
+
+---
+
+## Installation Steps
+
+### 1. Clone the Payflow Package
+
+Inside your Laravel project directory, create a `packages` folder if it doesn't already exist:
+```bash
+mkdir packages
+```
+
+Next, clone the **Payflow Package** from GitHub into the `packages` folder:
+```bash
+git clone https://github.com/nibezak/payflow-package.git packages/payflow
+```
+
+---
+
+### 2. Update `composer.json`
+
+Update your Laravel project's `composer.json` file in the root directory to include the following:
+
+```json
+"repositories": [
+    {
+        "type": "path",
+        "url": "packages/*",
+        "symlink": true
+    }
+],
+"require": {
+    "payflow/dev": "*"
+}
+```
+
+---
+
+### 3. Install the Package
+
+Run the following command in your terminal to install the package:
+```bash
+composer update
+```
+
+---
+
+### 4. Register Payflow in `AppServiceProvider`
+
+Open the `App\Providers\AppServiceProvider` file in your project and update it as follows:
+
+```php
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Payflow\Admin\Support\Facades\PayflowPanel;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function register(): void
+    {
+        PayflowPanel::register();
+    }
+
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
+    {
+        //
+    }
+}
+```
+
+---
+
+### 5. Run Payflow Installation
+
+To finalize the installation, run the following Artisan command:
+```bash
+php artisan payflow:install
+```
+
+This will take you through a series of setup questions to configure your Payflow installation. During this process, you'll:
+- Create a default admin user (if required)
+- Seed initial data for your application
+
+---
+
+### 6. Access the Payflow Panel
+
+Once the installation is complete, navigate to:
+```
+http://localhost/payflow
+```
+
+Log in using the credentials of the admin user you just created.
+
+---
+
+## That's It!
+
+Your **Payflow** installation is now complete. Enjoy seamless payment integration and admin panel functionality. 🎉
+
+If you encounter any issues or need further assistance, feel free to check the [Payflow Documentation](#) or raise an issue on the [GitHub Repository](https://github.com/nibezak/payflow-package).

@@ -6,7 +6,7 @@ return [
         'catalog' => 'Catalog',
         'sales' => 'Sales',
         'reports' => 'Reports',
-        'settings' => 'Settings',
+        'settings' => 'Compliance',
     ],
 
 ];

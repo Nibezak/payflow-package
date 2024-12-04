@@ -24,6 +24,8 @@ class StaffResource extends BaseResource
 
     protected static ?int $navigationSort = 1;
 
+    protected static bool $shouldRegisterNavigation = false;
+
     public static function getLabel(): string
     {
         return __('payflowpanel::staff.label');

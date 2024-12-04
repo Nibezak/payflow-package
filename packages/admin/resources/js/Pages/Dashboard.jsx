@@ -219,7 +219,7 @@ export default function Dashboard({ auth, articles }) {
                     {auth.user.role === 'chief-editor' && (
                         <div className="bg-white p-8 shadow-sm sm:rounded-lg">
                             <h4 className="text-2xl font-bold">
-                                I am the Chief Editor
+                                I am the Chief
                             </h4>
                         </div>
                     )}

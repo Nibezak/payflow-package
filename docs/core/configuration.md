@@ -87,7 +87,7 @@ Transformations for all uploaded images.
 `payflow-hub/products.php`
 
 ```php
-'disable_variants' => false,
+'disable_variants' => true,
 'sku' => [
     'required' => true,
     'unique'   => true,

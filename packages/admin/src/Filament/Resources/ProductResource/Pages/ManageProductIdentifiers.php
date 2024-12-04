@@ -8,7 +8,6 @@ use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
 use Payflow\Admin\Filament\Resources\ProductResource;
-use Payflow\Admin\Filament\Resources\ProductVariantResource;
 use Payflow\Admin\Support\Pages\BaseEditRecord;
 use Payflow\Models\ProductVariant;
 
@@ -88,24 +87,7 @@ class ManageProductIdentifiers extends BaseEditRecord
         ];
     }
 
-    public function form(Form $form): Form
-    {
-        $variant = $this->getVariant();
 
-        return $form->schema([
-            Section::make()->schema([
-                ProductVariantResource::getSkuFormComponent()
-                    ->live()->unique(
-                        table: fn () => $variant->getTable(),
-                        ignorable: $variant,
-                        ignoreRecord: true,
-                    ),
-                ProductVariantResource::getGtinFormComponent(),
-                ProductVariantResource::getMpnFormComponent(),
-                ProductVariantResource::getEanFormComponent(),
-            ])->columns(1),
-        ])->statePath('');
-    }
 
     public function getRelationManagers(): array
     {

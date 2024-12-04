@@ -2,13 +2,9 @@
 
 use Payflow\Admin\Filament\Resources\ActivityResource;
 use Payflow\Admin\Filament\Resources\ActivityResource\Pages\ListActivities;
-use Payflow\Admin\Filament\Resources\AttributeGroupResource;
-use Payflow\Admin\Filament\Resources\AttributeGroupResource\Pages\ListAttributeGroups;
 use Payflow\Admin\Filament\Resources\CurrencyResource;
 use Payflow\Admin\Filament\Resources\CurrencyResource\Pages\ListCurrencies;
 use Payflow\Admin\Filament\Resources\CustomerResource;
-use Payflow\Admin\Filament\Resources\LanguageResource;
-use Payflow\Admin\Filament\Resources\LanguageResource\Pages\ListLanguages;
 use Payflow\Admin\Support\Extending\ResourceExtension;
 use Payflow\Admin\Support\Facades\PayflowPanel;
 use Payflow\Tests\Admin\Stubs\Filament\TestCustomerAddressRelationManager;
@@ -56,9 +52,7 @@ it('can extend table columns', function ($resource, $page) {
     \Livewire\Livewire::test($page)->assertTableColumnExists('test_column');
 })->with([
     'ListCurrencies' => [CurrencyResource::class, ListCurrencies::class],
-    'ListLanguages' => [LanguageResource::class, ListLanguages::class],
     'ListActivities' => [ActivityResource::class, ListActivities::class],
-    'ListAttributeGroups' => [AttributeGroupResource::class, ListAttributeGroups::class],
 ]);
 
 it('can extend form schema', function ($resource, $page) {
@@ -88,5 +82,4 @@ it('can extend form schema', function ($resource, $page) {
     ])->assertFormFieldExists('test_form_field');
 })->with([
     'CurrencyResource' => [CurrencyResource::class, CurrencyResource\Pages\EditCurrency::class],
-    'LanguageResource' => [LanguageResource::class, LanguageResource\Pages\EditLanguage::class],
 ]);

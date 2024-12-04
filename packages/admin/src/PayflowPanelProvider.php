@@ -25,7 +25,6 @@ use Payflow\Admin\Events\ProductAssociationsUpdated;
 use Payflow\Admin\Events\ProductCollectionsUpdated;
 use Payflow\Admin\Events\ProductCustomerGroupsUpdated;
 use Payflow\Admin\Events\ProductPricingUpdated;
-use Payflow\Admin\Events\ProductVariantOptionsUpdated;
 use Payflow\Admin\Listeners\FilamentUpgradedListener;
 use Payflow\Admin\Models\Staff;
 use Payflow\Admin\Support\ActivityLog\Manifest as ActivityLogManifest;
@@ -101,7 +100,6 @@ class PayflowPanelProvider extends ServiceProvider
             ProductCollectionsUpdated::class,
             ProductPricingUpdated::class,
             ProductCustomerGroupsUpdated::class,
-            ProductVariantOptionsUpdated::class,
             ModelChannelsUpdated::class,
             ModelPricesUpdated::class,
             ModelUrlsUpdated::class,

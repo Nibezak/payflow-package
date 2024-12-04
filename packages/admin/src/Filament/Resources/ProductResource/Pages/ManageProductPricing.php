@@ -10,7 +10,6 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Payflow\Admin\Filament\Resources\ProductResource;
 use Payflow\Admin\Filament\Resources\ProductResource\RelationManagers\CustomerGroupPricingRelationManager;
-use Payflow\Admin\Filament\Resources\ProductVariantResource;
 use Payflow\Admin\Support\Concerns\Products\ManagesProductPricing;
 use Payflow\Admin\Support\Pages\BaseEditRecord;
 use Payflow\Admin\Support\RelationManagers\PriceRelationManager;
@@ -38,27 +37,7 @@ class ManageProductPricing extends BaseEditRecord
         return $this->getRecord()->variants()->first();
     }
 
-    public function form(Form $form): Form
-    {
-        if (! count($this->basePrices)) {
-            $this->basePrices = $this->getBasePrices();
-        }
 
-        $form->schema([
-            Forms\Components\Section::make()
-                ->schema([
-                    Forms\Components\Group::make([
-                        ProductVariantResource::getTaxClassIdFormComponent(),
-                        ProductVariantResource::getTaxRefFormComponent(),
-                    ])->columns(2),
-                ]),
-            $this->getBasePriceFormSection(),
-        ])->statePath('');
-
-        $this->callPayflowHook('extendForm', $form);
-
-        return $form;
-    }
 
     public function getRelationManagers(): array
     {

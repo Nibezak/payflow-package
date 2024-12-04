@@ -83,7 +83,7 @@ class OrderTotalsChart extends ApexChartWidget
             ],
             'tooltip' => [
                 'x' => [
-                    'format' => 'dd MMM yyyy',
+                    'format' => 'd M yyyy',
                 ],
             ],
         ];

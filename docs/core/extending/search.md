@@ -81,9 +81,7 @@ class CustomProductIndexer extends ScoutIndexer
     {
         return $query->with([
             'thumbnail',
-            'variants',
             'productType',
-            'brand',
         ]);
     }
     

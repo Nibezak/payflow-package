@@ -23,8 +23,4 @@ it('can render relation manager', function ($model, $page) {
         'model' => \Payflow\Models\Product::class,
         'page' => \Payflow\Admin\Filament\Resources\ProductResource\Pages\ManageProductMedia::class,
     ],
-    'brand' => [
-        'model' => \Payflow\Models\Brand::class,
-        'page' => \Payflow\Admin\Filament\Resources\BrandResource\Pages\ManageBrandMedia::class,
-    ],
 ]);

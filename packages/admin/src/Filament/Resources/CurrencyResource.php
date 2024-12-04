@@ -19,6 +19,8 @@ class CurrencyResource extends BaseResource
 
     protected static ?string $model = Currency::class;
 
+    protected static bool $shouldRegisterNavigation = false;
+
     protected static ?int $navigationSort = 1;
 
     public static function getLabel(): string

@@ -1,14 +1,11 @@
 <?php
-
 namespace Payflow\Admin\Filament\Pages;
 
-use Filament\Support\Facades\FilamentIcon;
-use Payflow\Admin\Filament\Widgets\Dashboard\Orders\AverageOrderValueChart;
-use Payflow\Admin\Filament\Widgets\Dashboard\Orders\LatestOrdersTable;
-use Payflow\Admin\Filament\Widgets\Dashboard\Orders\NewVsReturningCustomersChart;
-use Payflow\Admin\Filament\Widgets\Dashboard\Orders\OrdersSalesChart;
+use Filament\Widgets\Widget;
+use Filament\Widgets\WidgetConfiguration;
 use Payflow\Admin\Filament\Widgets\Dashboard\Orders\OrderStatsOverview;
 use Payflow\Admin\Filament\Widgets\Dashboard\Orders\OrderTotalsChart;
+use Payflow\Admin\Filament\Widgets\Dashboard\Orders\NewVsReturningCustomersChart;
 use Payflow\Admin\Filament\Widgets\Dashboard\Orders\PopularProductsTable;
 use Payflow\Admin\Support\Pages\BaseDashboard;
 
@@ -19,18 +16,24 @@ class Dashboard extends BaseDashboard
     public function getWidgets(): array
     {
         return [
-            OrderStatsOverview::class,
-            OrderTotalsChart::class,
-            OrdersSalesChart::class,
-            AverageOrderValueChart::class,
-            NewVsReturningCustomersChart::class,
-            PopularProductsTable::class,
-            LatestOrdersTable::class,
+            new WidgetConfiguration(OrderStatsOverview::class, [
+                'columnSpan' => 12,  // Full width
+            ]),
+            new WidgetConfiguration(OrderTotalsChart::class, [
+                'columnSpan' => 12,  // Full width
+            ]),
+            new WidgetConfiguration(NewVsReturningCustomersChart::class, [
+                'columnSpan' => 12,  // Full width
+            ]),
+            new WidgetConfiguration(PopularProductsTable::class, [
+                'columnSpan' => 12,  // Full width
+            ]),
         ];
     }
 
     public static function getNavigationIcon(): ?string
     {
-        return FilamentIcon::resolve('payflow::dashboard');
+        // Use a valid Filament icon string
+        return 'heroicon-o-home';  // Example of a valid icon
     }
 }

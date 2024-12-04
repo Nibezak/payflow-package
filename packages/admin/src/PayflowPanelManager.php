@@ -1,5 +1,4 @@
 <?php
-
 namespace Payflow\Admin;
 
 use Filament\Facades\Filament;
@@ -7,7 +6,9 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Navigation\NavigationGroup;
+use Filament\Navigation\UserMenuItem;
 use Filament\Panel;
+use Filament\Navigation\MenuItem;
 use Filament\Support\Assets\Css;
 use Filament\Support\Colors\Color;
 use Filament\Support\Facades\FilamentColor;
@@ -44,8 +45,6 @@ class PayflowPanelManager
 
     protected static $resources = [
         Resources\ActivityResource::class,
-        Resources\AttributeGroupResource::class,
-        Resources\BrandResource::class,
         Resources\ChannelResource::class,
         Resources\CollectionGroupResource::class,
         Resources\CollectionResource::class,
@@ -53,12 +52,9 @@ class PayflowPanelManager
         Resources\CustomerGroupResource::class,
         Resources\CustomerResource::class,
         Resources\DiscountResource::class,
-        Resources\LanguageResource::class,
         Resources\OrderResource::class,
-        Resources\ProductOptionResource::class,
         Resources\ProductResource::class,
         Resources\ProductTypeResource::class,
-        Resources\ProductVariantResource::class,
         Resources\StaffResource::class,
         Resources\TagResource::class,
         Resources\TaxClassResource::class,
@@ -73,11 +69,11 @@ class PayflowPanelManager
     protected static $widgets = [
         OrderStatsOverview::class,
         OrderTotalsChart::class,
-        OrdersSalesChart::class,
-        AverageOrderValueChart::class,
+        // OrdersSalesChart::class,
+        // AverageOrderValueChart::class,
         NewVsReturningCustomersChart::class,
         PopularProductsTable::class,
-        LatestOrdersTable::class,
+        // LatestOrdersTable::class,
     ];
 
     public function register(): self
@@ -104,7 +100,6 @@ class PayflowPanelManager
             'payflow::attributes' => 'lucide-pencil-ruler',
             'payflow::availability' => 'lucide-calendar',
             'payflow::basic-information' => 'lucide-edit',
-            'payflow::brands' => 'lucide-badge-check',
             'payflow::channels' => 'lucide-store',
             'payflow::collections' => 'lucide-blocks',
             'payflow::sub-collection' => 'lucide-square-stack',
@@ -124,7 +119,6 @@ class PayflowPanelManager
             'payflow::product-inventory' => 'lucide-combine',
             'payflow::product-options' => 'lucide-list',
             'payflow::product-shipping' => 'lucide-truck',
-            'payflow::product-variants' => 'lucide-shapes',
             'payflow::products' => 'lucide-tag',
             'payflow::staff' => 'lucide-shield',
             'payflow::tags' => 'lucide-tags',
@@ -213,9 +207,31 @@ class PayflowPanelManager
             ->path('payflow')
             ->authGuard('staff')
             ->defaultAvatarProvider(GravatarProvider::class)
+            ->userMenuItems([  
+                UserMenuItem::make()
+                    ->label('Account & Permissions')  
+                    ->url('/staff')  // Absolute path to avoid double prefix
+                    ->icon('heroicon-o-lock-closed'), 
+            
+                UserMenuItem::make()
+                    ->label('Sandbox')  
+                    ->url('/sandbox')  // Absolute path to avoid double prefix
+                    ->icon('heroicon-o-cube-transparent'),
+
+                    UserMenuItem::make()
+                    ->label('Activity Logs')  
+                    ->url('/activities')  // Absolute path to avoid double prefix
+                    ->icon('lucide-activity'),
+            
+                UserMenuItem::make()
+                    ->label('Settings & API-keys')  
+                    ->url('/api-keys')  // Absolute path to avoid double prefix
+                    ->icon('heroicon-o-key'),  
+            ])            
             ->login()
+            ->registration()
             ->colors([
-                'primary' => Color::Sky,
+                'primary' => Color::rgb('rgb(96, 165, 250)'),
             ])
             ->font('Poppins')
             ->middleware($panelMiddleware)
@@ -247,10 +263,10 @@ class PayflowPanelManager
                 \Payflow\Admin\Filament\Resources\CollectionGroupResource\Widgets\CollectionTreeView::class,
             ])
             ->navigationGroups([
-                'Catalog',
                 'Sales',
+                'Catalog',
                 NavigationGroup::make()
-                    ->label('Settings')
+                    ->label('Utilities')
                     ->collapsed(),
             ])->sidebarCollapsibleOnDesktop();
     }

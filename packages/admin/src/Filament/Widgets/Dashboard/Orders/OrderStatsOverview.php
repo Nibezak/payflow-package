@@ -58,12 +58,12 @@ class OrderStatsOverview extends BaseWidget
         );
 
         return [
-            $this->getStatCount($today, $yesterday, 'stat_one'),
-            $this->getStatCount($current7Days, $previous7Days, 'stat_two'),
-            $this->getStatCount($current30Days, $previous30Days, 'stat_three'),
+            // $this->getStatCount($today, $yesterday, 'stat_one'),
+            // $this->getStatCount($current7Days, $previous7Days, 'stat_two'),
             $this->getStatTotal($today, $yesterday, 'stat_four'),
-            $this->getStatTotal($current7Days, $previous7Days, 'stat_five'),
+            // $this->getStatTotal($current7Days, $previous7Days, 'stat_five'),
             $this->getStatTotal($current30Days, $previous30Days, 'stat_six'),
+            $this->getStatCount($current30Days, $previous30Days, 'stat_three'),
         ];
     }
 
@@ -83,7 +83,7 @@ class OrderStatsOverview extends BaseWidget
 
         $increase = $percentage > 0;
         $neutral = $percentage === 0;
-        $trend = $neutral ? 'neutral' : ($increase ? 'increase' : 'decrease');
+        $trend = $neutral ? 'neutral' : ($increase ? 'up' : 'down');
 
         return Stat::make(
             label: __('payflowpanel::widgets.dashboard.orders.order_stats_overview.'.$reference.'.label'),

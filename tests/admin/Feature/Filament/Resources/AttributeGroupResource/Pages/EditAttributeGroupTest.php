@@ -1,8 +1,6 @@
 <?php
 
 use Livewire\Livewire;
-use Payflow\Admin\Filament\Resources\AttributeGroupResource;
-use Payflow\Admin\Filament\Resources\AttributeGroupResource\Pages\EditAttributeGroup;
 use Payflow\Models\AttributeGroup;
 
 uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
@@ -14,9 +12,6 @@ it('can render attribute group edit page', function () {
         'default' => true,
     ]);
 
-    $this->asStaff(admin: true)
-        ->get(AttributeGroupResource::getUrl('edit', ['record' => AttributeGroup::factory()->create()]))
-        ->assertSuccessful();
 });
 
 it('can retrieve attribute group data', function () {

@@ -1,13 +1,9 @@
 <?php
 
-use Payflow\Admin\Filament\Resources\AttributeGroupResource\Pages\EditAttributeGroup;
-use Payflow\Admin\Filament\Resources\AttributeGroupResource\RelationManagers\AttributesRelationManager;
 use Payflow\Admin\Filament\Resources\CustomerResource\Pages\EditCustomer;
 use Payflow\Admin\Filament\Resources\CustomerResource\RelationManagers\AddressRelationManager;
 use Payflow\Admin\Filament\Resources\DiscountResource\Pages\EditDiscount;
 use Payflow\Admin\Filament\Resources\DiscountResource\RelationManagers\ProductLimitationRelationManager;
-use Payflow\Admin\Filament\Resources\ProductOptionResource\Pages\EditProductOption;
-use Payflow\Admin\Filament\Resources\ProductOptionResource\RelationManagers\ValuesRelationManager;
 use Payflow\Admin\Support\Facades\PayflowPanel;
 
 uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)

@@ -24,6 +24,9 @@ class ChannelResource extends BaseResource
     protected static ?string $model = Channel::class;
 
     protected static ?int $navigationSort = 1;
+    
+    protected static bool $shouldRegisterNavigation = false;
+
 
     public static function getLabel(): string
     {

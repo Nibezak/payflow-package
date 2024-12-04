@@ -1,8 +1,6 @@
 <?php
 
 use Livewire\Livewire;
-use Payflow\Admin\Filament\Resources\AttributeGroupResource\Pages\EditAttributeGroup;
-use Payflow\Admin\Filament\Resources\AttributeGroupResource\RelationManagers\AttributesRelationManager;
 use Payflow\Models\AttributeGroup;
 
 uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)

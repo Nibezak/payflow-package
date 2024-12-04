@@ -60,8 +60,6 @@ All Payflow panel resources are extendable. This means you can now add your own 
 
 ```php
 use Payflow\Panel\Filament\Resources\ActivityResource;
-use Payflow\Panel\Filament\Resources\AttributeGroupResource;
-use Payflow\Panel\Filament\Resources\BrandResource;
 use Payflow\Panel\Filament\Resources\ChannelResource;
 use Payflow\Panel\Filament\Resources\CollectionGroupResource;
 use Payflow\Panel\Filament\Resources\CollectionResource;
@@ -75,7 +73,6 @@ use Payflow\Panel\Filament\Resources\ProductOptionrResource;
 use Payflow\Panel\Filament\Resources\ProductResource;
 use Payflow\Panel\Filament\Resources\ProductResource;
 use Payflow\Panel\Filament\Resources\ProductTypeResource;
-use Payflow\Panel\Filament\Resources\ProductVariantResource;
 use Payflow\Panel\Filament\Resources\StaffResource;
 use Payflow\Panel\Filament\Resources\TagResource;
 use Payflow\Panel\Filament\Resources\TaxClassResource;

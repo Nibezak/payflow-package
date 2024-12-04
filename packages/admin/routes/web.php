@@ -32,6 +32,9 @@ Route::middleware('auth')->group(function () {
 
     Route::post('delete-article-request', DeleteArticleRequestController::class);
     Route::delete('/article', [ArticleController::class, 'destroy'])->name('article.destroy');
+
+    // Redirect /staff to /payflow/staff
+    Route::redirect('/staff', '/payflow/staff');
 });
 
 require __DIR__.'/auth.php';

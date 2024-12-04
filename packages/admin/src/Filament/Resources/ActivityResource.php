@@ -17,6 +17,8 @@ class ActivityResource extends BaseResource
     protected static ?string $permission = 'settings';
 
     protected static ?string $model = Activity::class;
+    
+    protected static bool $shouldRegisterNavigation = false;
 
     protected static ?int $navigationSort = 1;
 

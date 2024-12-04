@@ -81,7 +81,7 @@ Make sure you have the Stripe credentials set in `config/services.php`
     'key' => env('STRIPE_SECRET'),
     'public_key' => env('STRIPE_PK'),
     'webhooks' => [
-        'payflow' => env('LUNAR_STRIPE_WEBHOOK_SECRET'),
+        'payflow' => env('PAYFLOW_STRIPE_WEBHOOK_SECRET'),
     ],
 ],
 ```

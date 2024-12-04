@@ -10,7 +10,7 @@ return [
     | storefront doesn't support variants, set this to false.
     |
     */
-    'enable_variants' => true,
+    'enable_variants' => false,
 
     /*
     |--------------------------------------------------------------------------

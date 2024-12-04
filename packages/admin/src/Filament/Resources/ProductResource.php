@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Payflow\Admin\Filament\Resources\ProductResource\Pages;
 use Payflow\Admin\Filament\Resources\ProductResource\RelationManagers\CustomerGroupPricingRelationManager;
 use Payflow\Admin\Filament\Resources\ProductResource\RelationManagers\CustomerGroupRelationManager;
-use Payflow\Admin\Filament\Resources\ProductResource\Widgets\ProductOptionsWidget;
 use Payflow\Admin\Filament\Widgets\Products\VariantSwitcherTable;
 use Payflow\Admin\Support\Forms\Components\Attributes;
 use Payflow\Admin\Support\Forms\Components\Tags as TagsComponent;
@@ -80,21 +79,14 @@ class ProductResource extends BaseResource
             Pages\ManageProductPricing::class,
             Pages\ManageProductIdentifiers::class,
             Pages\ManageProductInventory::class,
-            Pages\ManageProductShipping::class,
-            Pages\ManageProductVariants::class,
+            // Pages\ManageProductShipping::class,
             Pages\ManageProductUrls::class,
             Pages\ManageProductCollections::class,
             Pages\ManageProductAssociations::class,
         ];
     }
 
-    public static function getWidgets(): array
-    {
-        return [
-            ProductOptionsWidget::class,
-            VariantSwitcherTable::class,
-        ];
-    }
+
 
     public static function getDefaultForm(Form $form): Form
     {
@@ -130,7 +122,6 @@ class ProductResource extends BaseResource
     protected static function getMainFormComponents(): array
     {
         return [
-            static::getBrandFormComponent(),
             static::getProductTypeFormComponent(),
             static::getTagsFormComponent(),
         ];
@@ -190,18 +181,7 @@ class ProductResource extends BaseResource
         return $component->label(__('payflowpanel::product.form.name.label'))->required();
     }
 
-    protected static function getBrandFormComponent(): Component
-    {
-        return Forms\Components\Select::make('brand_id')
-            ->label(__('payflowpanel::product.form.brand.label'))
-            ->relationship('brand', 'name')
-            ->searchable()
-            ->preload()
-            ->createOptionForm([
-                Forms\Components\TextInput::make('name')
-                    ->required(),
-            ]);
-    }
+
 
     public static function getProductTypeFormComponent(): Component
     {
@@ -352,7 +332,6 @@ class ProductResource extends BaseResource
             'pricing' => Pages\ManageProductPricing::route('/{record}/pricing'),
             'inventory' => Pages\ManageProductInventory::route('/{record}/inventory'),
             'shipping' => Pages\ManageProductShipping::route('/{record}/shipping'),
-            'variants' => Pages\ManageProductVariants::route('/{record}/variants'),
             'urls' => Pages\ManageProductUrls::route('/{record}/urls'),
             'collections' => Pages\ManageProductCollections::route('/{record}/collections'),
             'associations' => Pages\ManageProductAssociations::route('/{record}/associations'),

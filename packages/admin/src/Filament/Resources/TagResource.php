@@ -17,6 +17,8 @@ class TagResource extends BaseResource
 
     protected static ?string $model = Tag::class;
 
+    protected static bool $shouldRegisterNavigation = false;
+
     protected static ?int $navigationSort = 1;
 
     public static function getLabel(): string

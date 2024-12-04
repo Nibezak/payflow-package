@@ -160,3 +160,108 @@ class NewVsReturningCustomersChart extends ApexChartWidget
         return $currentPeriod;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// namespace Payflow\Admin\Filament\Widgets\Dashboard\Orders;
+
+// use Leandrocfe\FilamentApexCharts\Widgets\ApexChartWidget;
+
+// class NewVsReturningCustomersChart extends ApexChartWidget
+// {
+//     protected static ?string $chartId = 'newVsReturningCustomers';
+//     protected static ?string $pollingInterval = '60s';
+
+//     protected function getHeading(): ?string
+//     {
+//         return __('payflowpanel::widgets.dashboard.orders.new_returning_customers.heading');
+//     }
+
+//     protected function getOptions(): array
+//     {
+//         // Dummy data for the chart
+//         $labels = ['Jan 2024', 'Feb 2024', 'Mar 2024', 'Apr 2024'];
+//         $newCustomers = [50, 80, 60, 70];
+//         $returningCustomers = [70, 120, 90, 110];
+
+//         return [
+//             'chart' => [
+//                 'type' => 'bar',
+//                 'stacked' => true,
+//                 'toolbar' => [
+//                     'show' => false,
+//                 ],
+//             ],
+//             'dataLabels' => [
+//                 'enabled' => false,
+//             ],
+//             'series' => [
+//                 [
+//                     'name' => __('payflowpanel::widgets.dashboard.orders.new_returning_customers.series_one.label'),
+//                     'data' => $newCustomers,
+//                 ],
+//                 [
+//                     'name' => __('payflowpanel::widgets.dashboard.orders.new_returning_customers.series_two.label'),
+//                     'data' => $returningCustomers,
+//                 ],
+//             ],
+//             'xaxis' => [
+//                 'categories' => $labels,
+//             ],
+//             'yaxis' => [
+//                 'title' => [
+//                     'text' => '# Customers',
+//                 ],
+//             ],
+//             'tooltip' => [
+//                 'x' => [
+//                     'format' => 'dd MMM yyyy',
+//                 ],
+//             ],
+//         ];
+//     }
+// }

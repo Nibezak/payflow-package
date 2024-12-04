@@ -24,7 +24,7 @@ it('can create staff', function () {
     $formData = [
         'firstname' => $staff->firstname,
         'lastname' => $staff->lastname,
-        'email' => 'test@example.com',
+        'email' => 'testpayer@example.com',
         'password' => 'password',
     ];
 

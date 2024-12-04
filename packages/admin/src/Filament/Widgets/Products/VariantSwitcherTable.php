@@ -9,7 +9,7 @@ use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Payflow\Admin\Filament\Resources\ProductVariantResource;
+
 use Payflow\Models\ProductOptionValue;
 use Payflow\Models\ProductVariant;
 
@@ -88,11 +88,7 @@ class VariantSwitcherTable extends TableWidget
 
     protected function getTableRecordUrlUsing(): ?Closure
     {
-        return function (ProductVariant $variant) {
-            return ProductVariantResource::getUrl('edit', [
-                'record' => $variant,
-            ]);
-        };
+       return "Hello Payflows";
     }
 
     protected function getTableHeading(): string|Htmlable|null

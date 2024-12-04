@@ -7,7 +7,6 @@ use Filament\Forms\Components\Section;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
-use Payflow\Admin\Filament\Resources\ProductVariantResource;
 use Payflow\Models\Currency;
 use Payflow\Models\Price;
 
@@ -153,8 +152,7 @@ trait ManagesProductPricing
         $form->schema([
             Forms\Components\Section::make()->schema([
                 Forms\Components\Group::make([
-                    ProductVariantResource::getTaxClassIdFormComponent(),
-                    ProductVariantResource::getTaxRefFormComponent(),
+                
                 ])->columns(2),
             ]),
             $this->getBasePriceFormSection(),

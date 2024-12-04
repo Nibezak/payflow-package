@@ -37,7 +37,7 @@ return [
         ],
         'admin' => [
             'label' => 'Super Admin',
-            'helper' => 'Super admin roles cannot be changed in the hub.',
+            'helper' => 'Super admin roles cannot be changed. You might need to reload to see changes.',
         ],
         'roles' => [
             'label' => 'Roles',

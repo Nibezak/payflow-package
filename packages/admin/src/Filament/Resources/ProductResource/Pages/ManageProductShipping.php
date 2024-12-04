@@ -11,7 +11,6 @@ use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
 use Payflow\Admin\Filament\Resources\ProductResource;
-use Payflow\Admin\Filament\Resources\ProductVariantResource\Pages\ManageVariantShipping;
 use Payflow\Admin\Support\Pages\BaseEditRecord;
 use Payflow\Models\ProductVariant;
 use Marvinosswald\FilamentInputSelectAffix\TextInputSelectAffix;

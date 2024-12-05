@@ -48,8 +48,8 @@ class AsAttributeData implements Castable
 
                 foreach ($value ?? [] as $handle => $item) {
                     $data[$handle] = [
-                        'field_type' => get_class($item),
-                        'value' => $item->getValue(),
+                        'field_type' => is_object($item) ? get_class($item) : 'string', // Handle non-object values
+                        'value' => is_object($item) ? $item->getValue() : $item, // Use the raw value for non-objects
                     ];
                 }
 

@@ -22,7 +22,13 @@ class ManageProductCollections extends BaseManageRelatedRecords
     {
         return FilamentIcon::resolve('payflow::collections');
     }
-
+    public static function booted()
+    {
+        static::creating(function ($product) {
+            $product->payflow_user_id = auth()->user()->id;
+        });
+    }
+    
     public function getTitle(): string
     {
         return __('payflowpanel::product.pages.collections.label');

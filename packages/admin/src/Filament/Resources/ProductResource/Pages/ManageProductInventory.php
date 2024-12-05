@@ -26,6 +26,14 @@ class ManageProductInventory extends BaseEditRecord
 
     public ?int $min_quantity = 1;
 
+    public static function booted()
+{
+    static::creating(function ($product) {
+        $product->payflow_user_id = auth()->user()->id;
+    });
+}
+
+
     public function getTitle(): string|Htmlable
     {
         return __('payflowpanel::product.pages.inventory.label');

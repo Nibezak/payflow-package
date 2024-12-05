@@ -23,6 +23,14 @@ class ManageProductIdentifiers extends BaseEditRecord
 
     public ?string $ean = null;
 
+    public static function booted()
+{
+    static::creating(function ($product) {
+        $product->payflow_user_id = auth()->user()->id;
+    });
+}
+
+
     public function getTitle(): string|Htmlable
     {
         return __('payflowpanel::product.pages.identifiers.label');

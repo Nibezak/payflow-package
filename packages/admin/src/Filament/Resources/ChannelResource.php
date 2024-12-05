@@ -24,9 +24,8 @@ class ChannelResource extends BaseResource
     protected static ?string $model = Channel::class;
 
     protected static ?int $navigationSort = 1;
-    
-    protected static bool $shouldRegisterNavigation = false;
 
+    protected static bool $shouldRegisterNavigation = false;
 
     public static function getLabel(): string
     {
@@ -46,6 +45,32 @@ class ChannelResource extends BaseResource
     public static function getNavigationGroup(): ?string
     {
         return __('payflowpanel::global.sections.settings');
+    }
+
+    public static function getNavigation(): array
+    {
+        return [
+            [
+                'label' => __('Channels'),
+                'icon' => 'heroicon-o-collection',
+                'url' => '/payflow/channels',
+            ],
+            [
+                'label' => __('Currencies'),
+                'icon' => 'heroicon-o-currency-dollar',
+                'url' => '/payflow/currencies',
+            ],
+            [
+                'label' => __('Customer Groups'),
+                'icon' => 'heroicon-o-user-group',
+                'url' => '/payflow/customer-groups',
+            ],
+            [
+                'label' => __('Taxes'),
+                'icon' => 'heroicon-o-calculator',
+                'url' => '/payflow/taxes',
+            ],
+        ];
     }
 
     protected static function getMainFormComponents(): array
@@ -136,9 +161,7 @@ class ChannelResource extends BaseResource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getDefaultPages(): array
@@ -155,6 +178,8 @@ class ChannelResource extends BaseResource
         return parent::getEloquentQuery()
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
-            ]);
+            ])
+            ->where('payflow_user_id', auth()->id()); // Add filter for the authenticated user
     }
+    
 }

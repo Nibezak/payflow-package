@@ -29,6 +29,13 @@ class ManageProductAssociations extends BaseManageRelatedRecords
         return __('payflowpanel::product.pages.associations.label');
     }
 
+    public static function booted()
+{
+    static::creating(function ($product) {
+        $product->payflow_user_id = auth()->user()->id;
+    });
+}
+
     public static function getNavigationLabel(): string
     {
         return __('payflowpanel::product.pages.associations.label');

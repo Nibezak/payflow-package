@@ -2,6 +2,7 @@
 
 namespace Payflow\Admin\Filament\Resources;
 
+use Illuminate\Support\Str;
 use Awcodes\Shout\Components\Shout;
 use Filament\Forms;
 use Filament\Forms\Components\Component;
@@ -35,6 +36,7 @@ use Payflow\Models\Contracts\Product;
 use Payflow\Models\Currency;
 use Payflow\Models\ProductVariant;
 use Payflow\Models\Tag;
+use Illuminate\Support\Facades\Hash;
 
 class ProductResource extends BaseResource
 {
@@ -87,7 +89,6 @@ class ProductResource extends BaseResource
     }
 
 
-
     public static function getDefaultForm(Form $form): Form
     {
         return $form
@@ -114,10 +115,32 @@ class ProductResource extends BaseResource
                     ->schema(
                         static::getMainFormComponents(),
                     ),
+                    
+                    
+                
                 static::getAttributeDataFormComponent(),
             ])
             ->columns(1);
     }
+    
+
+    public static function booted()
+    {
+        static::creating(function ($product) {
+            // Assign the authenticated user's ID to the 'payflow_user_id'
+            $product->payflow_user_id = auth()->user()->id;
+        });
+    }
+    
+    public static function create(array $data): Model
+    {
+        // Assign the authenticated user's ID to the 'payflow_user_id' before creation
+        $data['payflow_user_id'] = auth()->id();  // Current authenticated user's ID
+    
+        // Call the parent create method to create the product with the modified data
+        return parent::create($data);
+    }
+    
 
     protected static function getMainFormComponents(): array
     {
@@ -138,20 +161,38 @@ class ProductResource extends BaseResource
     public static function getSkuFormComponent(): Component
     {
         $validation = static::getSkuValidation();
-
+        
+        // SKU input field
         $input = Forms\Components\TextInput::make('sku')
             ->label(__('payflowpanel::product.form.sku.label'))
             ->required($validation['required'] ?? false);
-
+        
+        // Automatically generate SKU starting with #
+        $input->default(function () {
+            return '#' . auth()->user()->id . strtoupper(Str::random(8)); // Use property access for id
+        });
+        
+        // Ensure SKU is unique
         if ($validation['unique'] ?? false) {
             $input->unique(function () {
                 return (new ProductVariant)->getTable();
             });
         }
-
+        
         return $input;
     }
-
+    
+    public static function getAuthUserComponent(): Component
+    {
+        // SKU input field with hashed user ID
+        $input = Forms\Components\TextInput::make('payflow_user_id')
+            ->label(__('String session'))
+            ->default(fn() => Hash::make(auth()->id())) // Hash the user ID
+            ->required($validation['required'] ?? false)
+            ->disabled(); // Disable the input field to prevent editing
+    
+        return $input;
+    }
     public static function getBasePriceFormComponent(): Component
     {
         $currency = Currency::getDefault();
@@ -163,6 +204,7 @@ class ProductResource extends BaseResource
             "decimal:0,{$currency->decimal_places}",
         ])->required();
     }
+
 
     public static function getBaseNameFormComponent(): Component
     {
@@ -356,7 +398,8 @@ class ProductResource extends BaseResource
         return parent::getEloquentQuery()
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
-            ]);
+            ])
+            ->where('payflow_user_id', auth()->id()); // Add filter for the authenticated user
     }
 
     public static function getGlobalSearchEloquentQuery(): Builder

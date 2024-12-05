@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Payflow\Admin\Database\Factories\StaffFactory;
 use Spatie\Permission\Traits\HasRoles;
+use Laravel\Sanctum\HasApiTokens;
 
 class Staff extends Authenticatable implements FilamentUser, HasName
 {
@@ -18,6 +19,7 @@ class Staff extends Authenticatable implements FilamentUser, HasName
     use HasRoles;
     use Notifiable;
     use SoftDeletes;
+    use HasApiTokens;
 
     /**
      * Return a new factory instance for the model.
@@ -33,6 +35,7 @@ class Staff extends Authenticatable implements FilamentUser, HasName
      * @var array
      */
     protected $fillable = [
+        'id',
         'firstname',
         'lastname',
         'admin',

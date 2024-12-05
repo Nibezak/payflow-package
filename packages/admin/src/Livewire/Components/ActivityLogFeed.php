@@ -135,10 +135,10 @@ class ActivityLogFeed extends Component implements HasActions, HasForms
         return Filament::getUserAvatarUrl(Filament::auth()->user());
     }
 
-    public function getAvatarUrl(string $email): string
-    {
-        return Filament::getDefaultAvatarProvider()::generateGravatarUrl($email, size: 200);
-    }
+    // public function getAvatarUrl(string $email): string
+    // {
+    //     return Filament::getDefaultAvatarProvider()::generateGravatarUrl($email, size: 200);
+    // }
 
     public function render()
     {

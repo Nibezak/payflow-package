@@ -50,6 +50,7 @@ class StaffResource extends BaseResource
     {
         return static::getModel()::count();
     }
+    
 
     protected static function getMainFormComponents(): array
     {

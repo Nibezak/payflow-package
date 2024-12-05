@@ -15,6 +15,14 @@ class ManageProductAvailability extends BaseManageRelatedRecords
 
     protected static string $relationship = 'channels';
 
+    public static function booted()
+{
+    static::creating(function ($product) {
+        $product->payflow_user_id = auth()->user()->id;
+    });
+}
+
+
     public function getTitle(): string
     {
 

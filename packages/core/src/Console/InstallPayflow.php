@@ -36,7 +36,7 @@ class InstallPayflow extends Command
      *
      * @var string
      */
-    protected $description = 'Install the Payflow';
+    protected $description = 'Install Payflow';
 
     /**
      * Execute the console command.
@@ -260,17 +260,17 @@ class InstallPayflow extends Command
         $this->components->info('Publishing Filament assets');
         $this->call('filament:assets');
 
-        $this->components->info('Payflow.dev is now installed 🚀');
+        $this->components->info('Payflow.dev is now installed 🚀 & initiated');
 
-        if (confirm('Would you like to show some love by following us on twitter?')) {
-            match (PHP_OS_FAMILY) {
-                'Darwin' => exec('open https://x.com/payflow_dev'),
-                'Linux' => exec('xdg-open https://x.com/payflow_dev'),
-                'Windows' => exec('start https://x.com/payflow_dev'),
-            };
+        // if (confirm('Visit Twiiter.')) {
+        //     match (PHP_OS_FAMILY) {
+        //         'Darwin' => exec('open https://x.com/payflow_dev'),
+        //         'Linux' => exec('xdg-open https://x.com/payflow_dev'),
+        //         'Windows' => exec('start https://x.com/payflow_dev'),
+        //     };
 
-            $this->components->info('Thank you!');
-        }
+        //     $this->components->info('Thank you!');
+        // }
     }
 
     /**

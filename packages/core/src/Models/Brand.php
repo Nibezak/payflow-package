@@ -58,6 +58,7 @@ class Brand extends BaseModel implements Contracts\Brand, SpatieHasMedia
 
     protected static function booted(): void
     {
+        
         static::deleting(function (self $brand) {
             DB::beginTransaction();
             $brand->discounts()->detach();

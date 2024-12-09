@@ -73,7 +73,7 @@ use Payflow\Panel\Filament\Resources\ProductOptionrResource;
 use Payflow\Panel\Filament\Resources\ProductResource;
 use Payflow\Panel\Filament\Resources\ProductResource;
 use Payflow\Panel\Filament\Resources\ProductTypeResource;
-use Payflow\Panel\Filament\Resources\StaffResource;
+<!-- use Payflow\Panel\Filament\Resources\StaffResource; -->
 use Payflow\Panel\Filament\Resources\TagResource;
 use Payflow\Panel\Filament\Resources\TaxClassResource;
 use Payflow\Panel\Filament\Resources\TaxZoneResource;

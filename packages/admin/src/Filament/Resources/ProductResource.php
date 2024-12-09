@@ -36,6 +36,8 @@ use Payflow\Models\Contracts\Product;
 use Payflow\Models\Currency;
 use Payflow\Models\ProductVariant;
 use Payflow\Models\Tag;
+use Illuminate\Support\Str;
+
 
 class ProductResource extends BaseResource
 {
@@ -146,20 +148,26 @@ class ProductResource extends BaseResource
     public static function getSkuFormComponent(): Component
     {
         $validation = static::getSkuValidation();
-
+        
+        // SKU input field
         $input = Forms\Components\TextInput::make('sku')
             ->label(__('payflowpanel::product.form.sku.label'))
             ->required($validation['required'] ?? false);
-
+        
+        // Automatically generate SKU starting with #
+        $input->default(function () {
+            return '#' .  strtoupper(Str::random(8)); // Use property access for id
+        });
+        
+        // Ensure SKU is unique
         if ($validation['unique'] ?? false) {
             $input->unique(function () {
                 return (new ProductVariant)->getTable();
             });
         }
-
+        
         return $input;
     }
-
     public static function getBasePriceFormComponent(): Component
     {
         $currency = Currency::getDefault();

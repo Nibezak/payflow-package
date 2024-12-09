@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Hash;
 use Livewire\Livewire;
-use Payflow\Admin\Filament\Resources\StaffResource;
-use Payflow\Admin\Filament\Resources\StaffResource\Pages\CreateStaff;
+// use Payflow\Admin\Filament\Resources\StaffResource;
+// use Payflow\Admin\Filament\Resources\StaffResource\Pages\CreateStaff;
 use Payflow\Admin\Models\Staff;
 
 uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
@@ -11,10 +11,10 @@ uses(\Payflow\Tests\Admin\Feature\Filament\TestCase::class)
 
 beforeEach(fn () => $this->asStaff(admin: true));
 
-it('can render staff create page', function () {
-    $this->get(StaffResource::getUrl('create'))
-        ->assertSuccessful();
-});
+// it('can render staff create page', function () {
+//     $this->get(StaffResource::getUrl('create'))
+//         ->assertSuccessful();
+// });
 
 it('can create staff', function () {
     $staff = Staff::factory()->make();

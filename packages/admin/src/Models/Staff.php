@@ -1,5 +1,4 @@
 <?php
-
 namespace Payflow\Admin\Models;
 
 use Filament\Models\Contracts\FilamentUser;
@@ -11,21 +10,17 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Payflow\Admin\Database\Factories\StaffFactory;
 use Spatie\Permission\Traits\HasRoles;
+use Laravel\Sanctum\HasApiTokens;
+use Payflow\Admin\Models\Tenant; // Corrected namespace for the Tenant model
+use Illuminate\Support\Str; // Import Str facade for generating random strings
 
 class Staff extends Authenticatable implements FilamentUser, HasName
 {
+    use HasApiTokens;
     use HasFactory;
     use HasRoles;
     use Notifiable;
     use SoftDeletes;
-
-    /**
-     * Return a new factory instance for the model.
-     */
-    protected static function newFactory()
-    {
-        return StaffFactory::new();
-    }
 
     /**
      * The attributes that are mass assignable.
@@ -33,6 +28,7 @@ class Staff extends Authenticatable implements FilamentUser, HasName
      * @var array
      */
     protected $fillable = [
+        'tenant_id',  // Add tenant_id to the fillable array
         'firstname',
         'lastname',
         'admin',
@@ -132,5 +128,32 @@ class Staff extends Authenticatable implements FilamentUser, HasName
     public function getFilamentName(): string
     {
         return $this->fullName;
+    }
+
+    /**
+     * Boot method to ensure tenant_id is set when creating staff.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($staff) {
+            // If no tenant_id is set, create a new tenant and associate with the staff
+            if (!$staff->tenant_id) {
+                // Loop until a unique tenant name is found
+                do {
+                    // Generate a unique alphanumeric name (e.g., "A1B2C3D4E5")
+                    $tenantName = Str::random(10);
+                } while (Tenant::where('name', $tenantName)->exists()); // Check if name already exists
+
+                $tenant = Tenant::create([
+                    'name' => $tenantName, // Unique alphanumeric name
+                    'domain' => $tenantName . '.payflow.dev' // Ensure this is correct for subdomain handling
+                ]);
+
+                // Assign the generated tenant_id to the staff
+                $staff->tenant_id = $tenant->id;
+            }
+        });
     }
 }

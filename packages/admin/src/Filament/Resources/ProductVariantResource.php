@@ -47,7 +47,7 @@ class ProductVariantResource extends BaseResource
             Pages\ManageVariantMedia::class,
             Pages\ManageVariantPricing::class,
             Pages\ManageVariantIdentifiers::class,
-            Pages\ManageVariantInventory::class,
+            // Pages\ManageVariantInventory::class,
             Pages\ManageVariantShipping::class,
         ];
     }
@@ -330,7 +330,7 @@ class ProductVariantResource extends BaseResource
             'pricing' => Pages\ManageVariantPricing::route('/{record}/pricing'),
             'media' => Pages\ManageVariantMedia::route('/{record}/media'),
             'identifiers' => Pages\ManageVariantIdentifiers::route('/{record}/identifiers'),
-            'inventory' => Pages\ManageVariantInventory::route('/{record}/inventory'),
+            // 'inventory' => Pages\ManageVariantInventory::route('/{record}/inventory'),
             'shipping' => Pages\ManageVariantShipping::route('/{record}/shipping'),
         ];
     }

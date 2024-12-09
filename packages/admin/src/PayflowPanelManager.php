@@ -34,6 +34,7 @@ use Payflow\Admin\Filament\Widgets\Dashboard\Orders\OrderTotalsChart;
 use Payflow\Admin\Filament\Widgets\Dashboard\Orders\PopularProductsTable;
 use Payflow\Admin\Http\Controllers\DownloadPdfController;
 use Payflow\Admin\Support\Facades\PayflowAccessControl;
+use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
 
 class PayflowPanelManager
 {
@@ -55,7 +56,7 @@ class PayflowPanelManager
         Resources\OrderResource::class,
         Resources\ProductResource::class,
         Resources\ProductTypeResource::class,
-        Resources\StaffResource::class,
+        // Resources\StaffResource::class,
         Resources\TagResource::class,
         Resources\TaxClassResource::class,
         Resources\TaxZoneResource::class,
@@ -206,11 +207,11 @@ class PayflowPanelManager
             ->brandLogoHeight('2rem')
             ->path('payflow')
             ->authGuard('staff')
-            ->defaultAvatarProvider(GravatarProvider::class)
+            // ->defaultAvatarProvider(GravatarProvider::class)
             ->userMenuItems([  
                 UserMenuItem::make()
-                    ->label('Account & Permissions')  
-                    ->url('/staff')  // Absolute path to avoid double prefix
+                    ->label('Account & APIs')  
+                    ->url('/account')  // Absolute path to avoid double prefix
                     ->icon('heroicon-o-lock-closed'), 
             
                 UserMenuItem::make()
@@ -224,14 +225,14 @@ class PayflowPanelManager
                     ->icon('lucide-activity'),
             
                 UserMenuItem::make()
-                    ->label('Settings & API-keys')  
-                    ->url('/api-keys')  // Absolute path to avoid double prefix
-                    ->icon('heroicon-o-key'),  
+                    ->label('Customizations')  
+                    ->url('/channels')  // Absolute path to avoid double prefix
+                    ->icon('heroicon-o-cog'),  
             ])            
             ->login()
             ->registration()
             ->colors([
-                'primary' => Color::rgb('rgb(96, 165, 250)'),
+                'primary' => Color::rgb('rgb(75, 85, 99)'),
             ])
             ->font('Poppins')
             ->middleware($panelMiddleware)
@@ -256,6 +257,16 @@ class PayflowPanelManager
             ])
             ->plugins([
                 \Leandrocfe\FilamentApexCharts\FilamentApexChartsPlugin::make(),
+                FilamentEditProfilePlugin::make()
+                ->slug('account')
+                ->setTitle('Account & APIs')
+                ->setNavigationLabel('Account & APIs')
+                ->setIcon('heroicon-o-lock-closed')
+                ->shouldShowDeleteAccountForm(true)
+                ->setSort(10)
+                ->shouldRegisterNavigation(false)
+                ->shouldShowSanctumTokens()
+                ->shouldShowAvatarForm(),
             ])
             ->discoverLivewireComponents(__DIR__.'/Livewire', 'Payflow\\Admin\\Livewire')
             ->livewireComponents([

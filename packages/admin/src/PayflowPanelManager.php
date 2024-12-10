@@ -45,7 +45,7 @@ class PayflowPanelManager
     protected string $panelId = 'payflow';
 
     protected static $resources = [
-        Resources\ActivityResource::class,
+        // Resources\ActivityResource::class,
         Resources\ChannelResource::class,
         Resources\CollectionGroupResource::class,
         Resources\CollectionResource::class,
@@ -97,6 +97,7 @@ class PayflowPanelManager
             'actions::make-collection-root-action' => 'lucide-corner-left-up',
 
             // Payflow
+            'payflow::bank-account' => 'heroicon-o-bank',
             'payflow::activity' => 'lucide-activity',
             'payflow::attributes' => 'lucide-pencil-ruler',
             'payflow::availability' => 'lucide-calendar',
@@ -210,7 +211,7 @@ class PayflowPanelManager
             // ->defaultAvatarProvider(GravatarProvider::class)
             ->userMenuItems([  
                 UserMenuItem::make()
-                    ->label('Account & APIs')  
+                    ->label('Account')  
                     ->url('/account')  // Absolute path to avoid double prefix
                     ->icon('heroicon-o-lock-closed'), 
             
@@ -220,17 +221,20 @@ class PayflowPanelManager
                     ->icon('heroicon-o-cube-transparent'),
 
                     UserMenuItem::make()
-                    ->label('Activity Logs')  
-                    ->url('/activities')  // Absolute path to avoid double prefix
-                    ->icon('lucide-activity'),
+                    ->label('API Keys')  
+                    ->url('/apikeys')  // Absolute path to avoid double prefix
+                    ->icon('heroicon-o-key'),
             
                 UserMenuItem::make()
-                    ->label('Customizations')  
+                    ->label('Channels')  
                     ->url('/channels')  // Absolute path to avoid double prefix
                     ->icon('heroicon-o-cog'),  
             ])            
             ->login()
             ->registration()
+            ->topNavigation()
+            ->passwordReset()
+            ->emailVerification()
             ->colors([
                 'primary' => Color::rgb('rgb(75, 85, 99)'),
             ])
@@ -259,8 +263,8 @@ class PayflowPanelManager
                 \Leandrocfe\FilamentApexCharts\FilamentApexChartsPlugin::make(),
                 FilamentEditProfilePlugin::make()
                 ->slug('account')
-                ->setTitle('Account & APIs')
-                ->setNavigationLabel('Account & APIs')
+                ->setTitle('Account')
+                ->setNavigationLabel('Account')
                 ->setIcon('heroicon-o-lock-closed')
                 ->shouldShowDeleteAccountForm(true)
                 ->setSort(10)

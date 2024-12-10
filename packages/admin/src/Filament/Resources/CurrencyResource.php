@@ -19,7 +19,7 @@ class CurrencyResource extends BaseResource
 
     protected static ?string $model = Currency::class;
 
-    protected static bool $shouldRegisterNavigation = false;
+    protected static bool $shouldRegisterNavigation = true;
 
     protected static ?int $navigationSort = 1;
 

@@ -238,8 +238,8 @@ class ProductResource extends BaseResource
         return $table
             ->columns(static::getTableColumns())
             ->filters([
-                Tables\Filters\SelectFilter::make('brand')
-                    ->relationship('brand', 'name'),
+                // Tables\Filters\SelectFilter::make('brand')
+                //     ->relationship('brand', 'name'),
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
@@ -276,10 +276,10 @@ class ProductResource extends BaseResource
                 ->square()
                 ->label(''),
             static::getNameTableColumn(),
-            Tables\Columns\TextColumn::make('brand.name')
-                ->label(__('payflowpanel::product.table.brand.label'))
-                ->toggleable()
-                ->searchable(),
+            // Tables\Columns\TextColumn::make('brand.name')
+            //     ->label(__('payflowpanel::product.table.brand.label'))
+            //     ->toggleable()
+            //     ->searchable(),
             static::getSkuTableColumn(),
             Tables\Columns\TextColumn::make('variants_sum_stock')
                 ->label(__('payflowpanel::product.table.stock.label'))

@@ -14,6 +14,8 @@ return new class extends Migration
             $table->foreignId('tax_rate_id')->nullable()->constrained($this->prefix.'tax_rates');
             $table->decimal('percentage', 7, 3)->index();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

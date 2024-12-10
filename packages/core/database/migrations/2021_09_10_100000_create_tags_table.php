@@ -12,6 +12,8 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('value')->index();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

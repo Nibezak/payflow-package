@@ -13,6 +13,8 @@ return new class extends Migration
             $table->foreignId('tax_zone_id')->nullable()->constrained($this->prefix.'tax_zones');
             $table->foreignId('customer_group_id')->nullable()->constrained($this->prefix.'customer_groups');
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

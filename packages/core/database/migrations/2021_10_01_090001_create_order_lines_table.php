@@ -27,6 +27,8 @@ return new class extends Migration
             $table->text('notes')->nullable();
             $table->json('meta')->nullable();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

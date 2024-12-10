@@ -22,6 +22,8 @@ return new class extends Migration
                 $table->uuid('batch_uuid')->nullable();
                 $table->timestamps();
                 $table->index('log_name');
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
             });
         }
     }

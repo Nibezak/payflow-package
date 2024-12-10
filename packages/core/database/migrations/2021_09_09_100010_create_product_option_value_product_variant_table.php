@@ -13,6 +13,8 @@ return new class extends Migration
             $table->foreignId('value_id')->constrained($this->prefix.'product_option_values');
             $table->foreignId('variant_id')->constrained($this->prefix.'product_variants');
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

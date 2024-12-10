@@ -8,6 +8,14 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+
+
+
+Route::post('/payflow/register', function () {
+    return redirect('/payflow/login');
+});
+
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -35,6 +43,8 @@ Route::middleware('auth')->group(function () {
 
     // Redirect /staff to /payflow/staff
     Route::redirect('/staff', '/payflow/staff');
+    // Redirect POST requests from /payflow/register to /payflow/login
+
 });
 
 require __DIR__.'/auth.php';

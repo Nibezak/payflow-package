@@ -17,6 +17,8 @@ return new class extends Migration
             $table->integer('compare_price')->unsigned()->nullable();
             $table->integer('tier')->default(1)->index();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

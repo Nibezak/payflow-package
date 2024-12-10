@@ -15,6 +15,8 @@ return new class extends Migration
             $table->scheduling();
             $table->boolean('visible')->default(true)->index();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

@@ -14,6 +14,8 @@ return new class extends Migration
             $table->foreignId('product_target_id')->constrained($this->prefix.'products');
             $table->string('type')->index();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

@@ -15,6 +15,8 @@ return new class extends Migration
             $table->string('slug')->index();
             $table->boolean('default')->default(false)->index();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

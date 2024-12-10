@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('restriction')->index()->nullable();
             $table->json('data')->nullable();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

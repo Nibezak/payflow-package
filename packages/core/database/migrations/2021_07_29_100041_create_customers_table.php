@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('vat_no')->nullable();
             $table->json('meta')->nullable();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

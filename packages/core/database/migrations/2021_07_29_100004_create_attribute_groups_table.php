@@ -14,6 +14,7 @@ return new class extends Migration
             $table->json('name');
             $table->string('handle')->unique();
             $table->integer('position')->index();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
             $table->timestamps();
         });
     }

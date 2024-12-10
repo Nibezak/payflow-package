@@ -16,6 +16,8 @@ return new class extends Migration
             $table->boolean('visible')->default(true)->index();
             $table->boolean('purchasable')->default(true)->index();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

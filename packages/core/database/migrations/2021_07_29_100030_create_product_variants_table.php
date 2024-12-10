@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('purchasable')->default('always')->index();
             $table->timestamps();
             $table->softDeletes();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

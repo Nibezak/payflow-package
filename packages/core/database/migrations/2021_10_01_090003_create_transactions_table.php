@@ -22,6 +22,8 @@ return new class extends Migration
             $table->smallInteger('last_four');
             $table->json('meta')->nullable();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

@@ -29,6 +29,8 @@ return new class extends Migration
             $table->boolean('shipping_default')->default(false);
             $table->boolean('billing_default')->default(false);
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

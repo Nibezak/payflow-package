@@ -28,6 +28,8 @@ return new class extends Migration
                 $table->unsignedInteger('order_column')->nullable();
 
                 $table->nullableTimestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
             });
         }
     }

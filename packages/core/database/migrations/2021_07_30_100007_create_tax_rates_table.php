@@ -14,6 +14,8 @@ return new class extends Migration
             $table->tinyInteger('priority')->default(1)->index()->unsigned();
             $table->string('name');
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

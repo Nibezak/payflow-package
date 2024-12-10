@@ -14,6 +14,8 @@ return new class extends Migration
             $table->morphs('purchasable', 'purchasable_idx');
             $table->string('type')->default('condition')->index();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

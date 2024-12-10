@@ -15,6 +15,9 @@ return new class extends Migration
             $table->boolean('default')->default(false)->index();
             $table->string('url')->nullable();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+            // $table->foreignId('tenant_id')->constrained('tenants');
+
             $table->softDeletes();
         });
     }

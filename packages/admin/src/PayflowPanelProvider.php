@@ -1,4 +1,5 @@
 <?php
+
 namespace Payflow\Admin;
 
 use Filament\Support\Events\FilamentUpgraded;
@@ -10,7 +11,6 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
-use Filament\Panel;
 use Payflow\Admin\Auth\Manifest;
 use Payflow\Admin\Console\Commands\MakePayflowAdminCommand;
 use Payflow\Admin\Database\State\EnsureBaseRolesAndPermissions;
@@ -30,7 +30,6 @@ use Payflow\Admin\Models\Staff;
 use Payflow\Admin\Support\ActivityLog\Manifest as ActivityLogManifest;
 use Payflow\Admin\Support\Forms\AttributeData;
 use Payflow\Admin\Support\Synthesizers\PriceSynth;
-use App\Models\Scopes\TenantScope;
 
 class PayflowPanelProvider extends ServiceProvider
 {
@@ -59,23 +58,8 @@ class PayflowPanelProvider extends ServiceProvider
         });
     }
 
-    protected function applyTenantScopeToResources()
-    {
-        // Listen for the ResourceRegistered event and apply the TenantScope
-        Event::listen(\Filament\Events\ResourceRegistered::class, function ($event) {
-            $resource = $event->resource;
-
-            if ($resource instanceof \Filament\Resources\Resource) {
-                // Apply the TenantScope to each resource
-                $resource::addGlobalScope(new TenantScope);
-            }
-        });
-    }
-
     public function boot(): void
     {
-        $this->applyTenantScopeToResources();
-
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'payflowpanel');

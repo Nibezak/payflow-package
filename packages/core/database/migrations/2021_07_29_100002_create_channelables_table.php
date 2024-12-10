@@ -14,6 +14,8 @@ return new class extends Migration
             $table->morphs('channelable');
             $table->boolean('enabled')->default(false);
             $table->datetime('published_at')->nullable();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
             $table->timestamps();
         });
     }

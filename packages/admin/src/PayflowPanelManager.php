@@ -265,7 +265,7 @@ class PayflowPanelManager
                 ->shouldShowDeleteAccountForm(true)
                 ->setSort(10)
                 ->shouldRegisterNavigation(false)
-                ->shouldShowSanctumTokens()
+                // ->shouldShowSanctumTokens()
                 ->shouldShowAvatarForm(),
             ])
             ->discoverLivewireComponents(__DIR__.'/Livewire', 'Payflow\\Admin\\Livewire')

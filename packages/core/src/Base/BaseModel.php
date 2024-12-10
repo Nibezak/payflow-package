@@ -2,6 +2,7 @@
 
 namespace Payflow\Base;
 
+use App\Models\Scopes\TenantScope;
 use Illuminate\Database\Eloquent\Model;
 use Payflow\Base\Traits\HasModelExtending;
 
@@ -21,5 +22,21 @@ abstract class BaseModel extends Model
         if ($connection = config('payflow.database.connection')) {
             $this->setConnection($connection);
         }
+    }
+
+    /**
+     * Boot the model to apply the TenantScope globally.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Add the TenantScope globally
+        static::addGlobalScope(new TenantScope());
+
+        // Handle the "creating" event to set tenant_id dynamically
+        static::creating(function ($model) {
+            (new TenantScope())->creating($model);
+        });
     }
 }

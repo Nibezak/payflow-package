@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('brand')->nullable()->index();
             $table->timestamps();
             $table->softDeletes();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

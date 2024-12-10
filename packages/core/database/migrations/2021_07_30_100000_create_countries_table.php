@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('emoji');
             $table->string('emoji_u');
             $table->timestamps();
+
         });
     }
 

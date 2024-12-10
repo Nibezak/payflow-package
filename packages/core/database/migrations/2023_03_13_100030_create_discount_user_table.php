@@ -13,6 +13,8 @@ return new class extends Migration
             $table->foreignId('discount_id')->constrained($this->prefix.'discounts')->cascadeOnDelete();
             $table->userForeignKey();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

@@ -14,6 +14,8 @@ return new class extends Migration
             $table->foreignId('product_variant_id')->constrained($this->prefix.'product_variants')->onDelete('cascade');
             $table->boolean('primary')->default(false)->index();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

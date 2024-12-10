@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('sort')->default('custom')->index();
             $table->timestamps();
             $table->softDeletes();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

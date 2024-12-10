@@ -13,6 +13,8 @@ return new class extends Migration
             $table->foreignId('tag_id')->constrained($this->prefix.'tags');
             $table->morphs('taggable');
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

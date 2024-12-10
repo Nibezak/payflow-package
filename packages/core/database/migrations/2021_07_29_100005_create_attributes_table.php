@@ -22,7 +22,7 @@ return new class extends Migration
             $table->json('configuration');
             $table->boolean('system');
             $table->timestamps();
-
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
             $table->unique(['attribute_type', 'handle']);
         });
     }

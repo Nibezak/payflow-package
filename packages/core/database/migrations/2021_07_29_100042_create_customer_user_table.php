@@ -13,6 +13,8 @@ return new class extends Migration
             $table->foreignId('customer_id')->constrained($this->prefix.'customers');
             $table->userForeignKey();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

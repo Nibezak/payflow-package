@@ -19,6 +19,8 @@ return new class extends Migration
             $table->dateTime('completed_at')->nullable()->index();
             $table->json('meta')->nullable();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

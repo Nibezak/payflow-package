@@ -16,6 +16,8 @@ return new class extends Migration
             $table->boolean('active')->index();
             $table->boolean('default')->index();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

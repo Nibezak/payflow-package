@@ -14,6 +14,8 @@ return new class extends Migration
             $table->foreignId('country_id')->nullable()->constrained($this->prefix.'countries');
             $table->string('postcode', 20)->index();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

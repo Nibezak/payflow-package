@@ -13,6 +13,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('handle')->index();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

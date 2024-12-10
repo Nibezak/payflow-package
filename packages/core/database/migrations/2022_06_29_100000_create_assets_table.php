@@ -11,6 +11,8 @@ return new class extends Migration
         Schema::create($this->prefix.'assets', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants');
+
         });
     }
 

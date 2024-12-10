@@ -36,6 +36,11 @@ use Payflow\Admin\Http\Controllers\DownloadPdfController;
 use Payflow\Admin\Support\Facades\PayflowAccessControl;
 use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
+use DutchCodingCompany\FilamentSocialite\Provider;
+use Laravel\Socialite\Contracts\User as SocialiteUserContract;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Filament\Support\Colors;
+use DutchCodingCompany\FilamentSocialite\FilamentSocialitePlugin;
 
 
 class PayflowPanelManager
@@ -210,7 +215,7 @@ class PayflowPanelManager
             ->brandLogoHeight('2rem')
             ->path('payflow')
             ->authGuard('staff')
-            // ->defaultAvatarProvider(GravatarProvider::class)
+            ->defaultAvatarProvider(GravatarProvider::class)
             ->userMenuItems([  
 
                 
@@ -236,7 +241,7 @@ class PayflowPanelManager
                     ->icon('heroicon-o-key'), 
             ])            
             ->login()
-            ->registration()
+            // ->registration()
             ->topNavigation()
             ->passwordReset()
             ->emailVerification()
@@ -265,34 +270,36 @@ class PayflowPanelManager
                 Authenticate::class,
             ])
             ->plugins([
-                /// === CHARTS PLUGIN 
+                // === CHARTS PLUGIN 
                 \Leandrocfe\FilamentApexCharts\FilamentApexChartsPlugin::make(),
-
+            
                 // === BREEZY PLUGIN
                 BreezyCore::make()
-                ->myProfile(
-                    shouldRegisterUserMenu: false,
-                    hasAvatars: false,
-                    slug: 'api-keys' ,
-                )
-                ->withoutMyProfileComponents([
-                    'personal_info',
-                    'update_password',
-                ])
-                ->enableSanctumTokens()
-                ->enableTwoFactorAuthentication(true),
-                
+                    ->myProfile(
+                        shouldRegisterUserMenu: false,
+                        hasAvatars: false,
+                        slug: 'api-keys'
+                    )
+                    ->withoutMyProfileComponents([
+                        'personal_info',
+                        'update_password',
+                    ])
+                    ->enableSanctumTokens()
+                    ->enableTwoFactorAuthentication(true),
+            
+                // === EDIT PROFILE PLUGIN
                 FilamentEditProfilePlugin::make()
-                ->slug('account')
-                ->setTitle('Account Settings')
-                ->setNavigationLabel('Account')
-                ->setIcon('heroicon-o-lock-closed')
-                ->shouldShowDeleteAccountForm(true)
-                ->setSort(10)
-                ->shouldRegisterNavigation(false)
-                // ->shouldShowSanctumTokens()
-                ->shouldShowAvatarForm(),
-            ])
+                    ->slug('account')
+                    ->setTitle('Account Settings')
+                    ->setNavigationLabel('Account')
+                    ->setIcon('heroicon-o-lock-closed')
+                    ->shouldShowDeleteAccountForm(true)
+                    ->setSort(10)
+                    ->shouldRegisterNavigation(false),
+                    // ->shouldShowSanctumTokens()
+                    // ->shouldShowAvatarForm(),
+           
+            ])            
             ->discoverLivewireComponents(__DIR__.'/Livewire', 'Payflow\\Admin\\Livewire')
             ->livewireComponents([
                 Resources\OrderResource\Pages\Components\OrderItemsTable::class,

@@ -141,7 +141,7 @@ class PayflowPanelProvider extends ServiceProvider
             // Are we trying to authorize something within the admin panel?
             $permission = $this->app->get('payflow-access-control')->getPermissions()->first(fn ($permission) => $permission->handle === $ability);
             if ($permission) {
-                return $user->admin || $user->hasPermissionTo($ability);
+                return $user->admin || $user->admin;
             }
         });
     }

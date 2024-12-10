@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('lastname')->nullable()->index();  // Made nullable
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->foreignId('tenant_id')->nullable()->constrained('tenants');

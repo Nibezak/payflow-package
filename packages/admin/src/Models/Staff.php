@@ -17,6 +17,8 @@ use Illuminate\Support\Str; // Import Str facade for generating random strings
 use Payflow\Models\TaxClass; 
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon; 
+use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
+
 
 class Staff extends Authenticatable implements FilamentUser, HasName
 {
@@ -25,6 +27,7 @@ class Staff extends Authenticatable implements FilamentUser, HasName
     use HasRoles;
     use Notifiable;
     use SoftDeletes;
+    use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -138,56 +141,61 @@ class Staff extends Authenticatable implements FilamentUser, HasName
      * Boot method to ensure tenant_id is set when creating staff.
      */
  
-protected static function boot()
-{
-    parent::boot();
-
-    static::creating(function ($staff) {
-        // If no tenant_id is set, create a new tenant and associate with the staff
-        if (!$staff->tenant_id) {
-            // Loop until a unique tenant name is found
-            do {
-                // Generate a unique alphanumeric name (e.g., "A1B2C3D4E5")
-                $tenantName = Str::random(10);
-            } while (Tenant::where('name', $tenantName)->exists()); // Check if name already exists
-
-            // Create a new tenant
-            $tenant = Tenant::create([
-                'name' => $tenantName, // Unique alphanumeric name
-                'domain' => $tenantName . '.payflow.dev' // Ensure this is correct for subdomain handling
-            ]);
-
-            // Assign the generated tenant_id to the staff
-            $staff->tenant_id = $tenant->id;
-
-            // Create a new default TaxClass associated with the new tenant
-            TaxClass::create([
-                'name' => 'Default Tax Class',
-                'default' => true, // Set the default flag to true
-                'tenant_id' => $tenant->id, // Associate with the newly created tenant
-            ]);
-
-            // Generate a unique handle for the payflow_channels table
-            $handle = 'webstore';
-            $uniqueHandle = $handle;
-            $counter = 1;
-
-            // Check if handle exists, and make it unique
-            while (DB::table('payflow_channels')->where('handle', $uniqueHandle)->exists()) {
-                $uniqueHandle = $handle . '-' . $counter;
-                $counter++;
-            }
-
-            // Add a new record to payflow_channels table for 'Webstore' channel
-            DB::table('payflow_channels')->insert([
-                'name' => 'Webstore', 
-                'handle' => $uniqueHandle, // Set a unique handle
-                'default' => 1, // Set the default flag to true (1)
-                'created_at' => Carbon::now(), // Set created_at to current time
-                'updated_at' => Carbon::now(), // Set updated_at to current time
-                'tenant_id' => $tenant->id, // Associate with the newly created tenant
-            ]);
-        }
-    });
-}
+     protected static function boot()
+     {
+         parent::boot();
+     
+         static::creating(function ($staff) {
+             // If no tenant_id is set, create a new tenant and associate with the staff
+             if (!$staff->tenant_id) {
+                 // Loop until a unique tenant name is found
+                 do {
+                     // Generate a unique alphanumeric name (e.g., "A1B2C3D4E5")
+                     $tenantName = Str::random(10);
+                 } while (Tenant::where('name', $tenantName)->exists()); // Check if name already exists
+     
+                 // Create a new tenant
+                 $tenant = Tenant::create([
+                     'name' => $tenantName, // Unique alphanumeric name
+                     'domain' => $tenantName . '.payflow.dev', // Ensure this is correct for subdomain handling
+                 ]);
+     
+                 // Assign the generated tenant_id to the staff
+                 $staff->tenant_id = $tenant->id;
+     
+                 // Create a new default TaxClass associated with the new tenant
+                 TaxClass::create([
+                     'name' => 'Default Tax Class',
+                     'default' => true, // Set the default flag to true
+                     'tenant_id' => $tenant->id, // Associate with the newly created tenant
+                 ]);
+     
+                 // Generate a unique handle using random alphanumeric characters
+                 do {
+                     $uniqueHandle = Str::random(10); // Generate a random string of 10 characters
+                 } while (DB::table('payflow_channels')->where('handle', $uniqueHandle)->exists()); // Ensure the handle is unique
+     
+                 // Add a new record to payflow_channels table for 'Webstore' channel
+                 DB::table('payflow_channels')->insert([
+                     'name' => 'Webstore',
+                     'handle' => $uniqueHandle, // Set a unique handle
+                     'default' => 1, // Set the default flag to true (1)
+                     'url' => 'http://localhost',
+                     'created_at' => Carbon::now(), // Set created_at to current time
+                     'updated_at' => Carbon::now(), // Set updated_at to current time
+                     'tenant_id' => $tenant->id, // Associate with the newly created tenant
+                 ]);
+     
+                 // Extract the part of the email before the '@' symbol
+                 $emailUsername = explode('@', $staff->email)[0];
+     
+                 // Update the staff's firstname and leave lastname blank
+                 DB::table('payflow_staff')->where('tenant_id', $tenant->id)->update([
+                     'firstname' => $emailUsername,
+                     'lastname' => '', // Leave the lastname blank
+                 ]);
+             }
+         });
+     }
+     
 }

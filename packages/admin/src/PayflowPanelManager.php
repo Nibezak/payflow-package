@@ -35,6 +35,8 @@ use Payflow\Admin\Filament\Widgets\Dashboard\Orders\PopularProductsTable;
 use Payflow\Admin\Http\Controllers\DownloadPdfController;
 use Payflow\Admin\Support\Facades\PayflowAccessControl;
 use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
+use Jeffgreco13\FilamentBreezy\BreezyCore;
+
 
 class PayflowPanelManager
 {
@@ -210,25 +212,28 @@ class PayflowPanelManager
             ->authGuard('staff')
             // ->defaultAvatarProvider(GravatarProvider::class)
             ->userMenuItems([  
+
+                
                 UserMenuItem::make()
-                    ->label('Account')  
-                    ->url('/account')  // Absolute path to avoid double prefix
-                    ->icon('heroicon-o-lock-closed'), 
+                ->label('Account')  
+                ->url('/account')  // Absolute path to avoid double prefix
+                ->icon('heroicon-o-lock-closed'),
             
                 UserMenuItem::make()
                     ->label('Sandbox')  
                     ->url('/sandbox')  // Absolute path to avoid double prefix
                     ->icon('heroicon-o-cube-transparent'),
 
-                    UserMenuItem::make()
-                    ->label('API Keys')  
-                    ->url('/apikeys')  // Absolute path to avoid double prefix
-                    ->icon('heroicon-o-key'),
             
                 UserMenuItem::make()
                     ->label('Channels')  
                     ->url('/channels')  // Absolute path to avoid double prefix
                     ->icon('heroicon-o-cog'),  
+
+                 UserMenuItem::make()
+                    ->label('2FA & API keys')  
+                    ->url('/api-keys')  // Absolute path to avoid double prefix
+                    ->icon('heroicon-o-key'), 
             ])            
             ->login()
             ->registration()
@@ -260,10 +265,26 @@ class PayflowPanelManager
                 Authenticate::class,
             ])
             ->plugins([
+                /// === CHARTS PLUGIN 
                 \Leandrocfe\FilamentApexCharts\FilamentApexChartsPlugin::make(),
+
+                // === BREEZY PLUGIN
+                BreezyCore::make()
+                ->myProfile(
+                    shouldRegisterUserMenu: false,
+                    hasAvatars: false,
+                    slug: 'api-keys' ,
+                )
+                ->withoutMyProfileComponents([
+                    'personal_info',
+                    'update_password',
+                ])
+                ->enableSanctumTokens()
+                ->enableTwoFactorAuthentication(true),
+                
                 FilamentEditProfilePlugin::make()
                 ->slug('account')
-                ->setTitle('Account')
+                ->setTitle('Account Settings')
                 ->setNavigationLabel('Account')
                 ->setIcon('heroicon-o-lock-closed')
                 ->shouldShowDeleteAccountForm(true)
